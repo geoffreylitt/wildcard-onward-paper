@@ -164,44 +164,95 @@
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-Many software applications don't meet the precise needs of their users.
-When this happens, the only recourse is to complain to the developers,
-or, more likely, to simply give up. Back in 1977, in Personal Dynamic
-Media \citep{kay1977}, Alan Kay envisioned personal computing as a
-medium that let a user ``mold and channel its power to his own needs,''
-but today, software behaves more like concrete than clay.
+There have been many attempts at empowering end users to customize their
+software by offering them a simplified programming tool. Some scripting
+languages (AppleScript, Chickenfoot) have a friendly syntax that
+resembles natural language. Visual programming tools (Mac Automator,
+Zapier) eliminate text syntax entirely. Macro recorders (Applescript,
+Helena, WebVCR) remove some of the initial programming burden by letting
+a user start by concrete demonstrations.
+
+These approaches have many differences, but they all share something in
+common: an imperative programming model, with mutable variables,
+conditionals and loops. End users ultimately must use these traditional
+programming constructs to express their ideas, and the object of
+interest is fundamentally a \emph{script}, a sequence of commands.
+
+For decades, we have known about an easier model: \emph{direct
+manipulation} \citep{shneiderman1983}, where ``visibility of the object
+of interest'' replaces ``complex command language syntax''. Direct
+manipulation is widely used in GUIs today, but rarely applied for
+software customization. In this work, we ask: what would it look like to
+build a software customization interface that deeply relies on direct
+manipulation?
+
+We take particular inspiration from spreadsheets and visual database
+query interfaces \citep{2020a, bakke2016}. These tools enable users to
+construct queries, edit data, and compute derived values through direct
+manipulation of the data itself, with intermediate feedback available at
+every step. These tools have successfully enabled millions of end users
+to view, edit, and compute with data.
+
+We have developed a technique called \emph{table-driven customization}
+which applies ideas from visual query interfaces in the context of
+software customization. We provide the end user with a table view where
+they can directly manipulate the internal state of an application.
+Changes in the structured table view result in changes to the original
+user interface of the application, enabling the user to customize an
+application with immediate feedback.
+
+To demonstrate the viability of this approach, we have developed a
+browser extension called Wildcard which implements table-driven
+customization in the context of the Web. Wildcard works with existing
+web applications by using web scraping techniques to extract relevant
+application state into a table and to reify changes back into the
+original application UI. In Section~\ref{sec:examples} we present
+examples of using Wildcard to implement useful customizations across
+many real websites, ranging from sorting lists of data to adding whole
+new features to applications.
+
+In Section~\ref{sec:architecture} we explain the architecture of the
+Wildcard system, focusing on the key abstraction of the \emph{table
+adapter} which manages a single table of data. We explain why some of
+these abstractions are general enough to support many customizations
+beyond the ones we've built so far in Wildcard---for example, we explore
+how applications themselves could be re-architected to expose tabular
+data to end users, rather than relying on web scraping techniques.
+
+Table-driven customization embodies several design principles for
+building customizable software systems, described in
+Section~\ref{sec:design-principles}:
 
 \begin{itemize}
 \tightlist
 \item
-  many approaches to customizing software. Most are imperative command
-  based. Can't get around it.
+  \emph{Data-oriented programming}: End users should be able to
+  customize an application by examining and modifying its data, rather
+  than by issuing imperative commands to an API
 \item
-  there are successful systems for visual SQL queries: Airtable,
-  Sieuferd. Even spreadsheets.
+  \emph{Black-box + semantic}: Typically, ``black-box'' customization
+  tools, which don't rely on official extension APIs, resort to offering
+  low-level APIs for customization. Instead, we suggest a third-party
+  community of semantic wrappers, offering end users a more convenient
+  semantic API for customization, even if it wasn't built in by the
+  original developer.
 \item
-  what if you could see the data queries powering a website and directly
-  modify them yourself?
-\item
-  we call this table-driven customization.
+  \emph{Gentle slope}: Customization tools should offer a ``gentle
+  slope'' from normal use to customization. We explore how our approach
+  offers end users opportunities to start customizing software with
+  almost no effort, which we hope can make customization a viable part
+  of everyday software usage rather than a rare event.
 \end{itemize}
 
-To make it work with the real world, we develop Wildcard, shim this on
-top of existing web apps. Show in Section Examples that it really works!
-can do tons of useful stuff with real apps.
+Table-driven customization relates to existing work in many areas. Our
+goals overlap with many software customization tools, in the browser and
+on the desktop. Our methods overlap with direct manipulation interfaces
+for working with data, including visual database query systems and
+spreadsheets. We explore these connections and more in
+Section~\ref{sec:related-work}.
 
-Architecture: Describe implementation of Wildcard. We've developed
-generic abstractions that make this system even more extensible in the
-future. we also propose a future architecture where apps are built for
-this; they expose their data queries and their structured data results.
-
-Design Principles: explain ideas behind the system, generalizable to
-software customization more generally
-
-Related Work: table editors,
-
-\hypertarget{examples}{%
-\section{Examples}\label{examples}}
+\hypertarget{sec:examples}{%
+\section{Examples}\label{sec:examples}}
 
 \emph{This section still todo. Borrow heavily from Convivial paper, but
 extend with newer results}
@@ -226,8 +277,8 @@ extend with newer results}
   \end{itemize}
 \end{itemize}
 
-\hypertarget{system-architecture}{%
-\section{System architecture}\label{system-architecture}}
+\hypertarget{sec:architecture}{%
+\section{System architecture}\label{sec:architecture}}
 
 The basic data unit in table-driven customization is a Table: an ordered
 list of tuples, each of which has an ID and some attributes. The user
@@ -416,8 +467,8 @@ extended to support more types of queries.
   Note that there could be other entire table editors
 \end{itemize}
 
-\hypertarget{design-aspects}{%
-\section{Design aspects}\label{design-aspects}}
+\hypertarget{sec:design-principles}{%
+\section{Design principles}\label{sec:design-principles}}
 
 \hypertarget{data-oriented-programming}{%
 \subsection{Data-oriented programming}\label{data-oriented-programming}}
@@ -532,8 +583,8 @@ successfully used by projects like Gmail.js, an open source project that
 creates a convenient API for browser extensions to interface with the
 Gmail web email client.
 
-\hypertarget{proximity-to-use}{%
-\subsection{Proximity to use}\label{proximity-to-use}}
+\hypertarget{gentle-slope}{%
+\subsection{Gentle slope}\label{gentle-slope}}
 
 \emph{borrow from convivial paper's discussion of in-place}
 
@@ -557,8 +608,8 @@ Gmail web email client.
   the CLI GUI thing
 \end{itemize}
 
-\hypertarget{related-work}{%
-\section{Related Work}\label{related-work}}
+\hypertarget{sec:related-work}{%
+\section{Related Work}\label{sec:related-work}}
 
 Find a way to organize all this:
 
@@ -577,9 +628,26 @@ Find a way to organize all this:
     more fully describing how the system works
   \end{itemize}
 \item
+  database GUIs:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Sieuferd \citep{bakke2016}
+  \item
+    Airtable \citep{2020a}
+  \item
+    other similar tools?
+  \item
+    Liu \& Jagadish: rules for a spreadsheet algebra for database
+    queries \citep{liu2009}
+  \item
+    mention DIRECT MANIPULATION
+  \end{itemize}
+\item
   browser extensions
 \item
-  instrumental interaction, Scotty, Webstrates
+  instrumental interaction, Scotty \citep{eagan2011}, Webstrates
 \item
   customization research tools: Chickenfoot, Coscripter
 
@@ -590,6 +658,22 @@ Find a way to organize all this:
     show a structured data view, whereas Chickenfoot shows nothing
   \end{itemize}
 \item
+  visual customization tools:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Mac Automator
+  \item
+    Zapier
+  \item
+    IFTTT
+  \item
+    These are weakly direct manipulation. But usually the thing you
+    directly manipulate in these UIs is the \emph{script}: not the
+    actual \emph{data} you want to operate on. VERY DIFFERENT.
+  \end{itemize}
+\item
   desktop customization: Applescript, VBA, COM
 \item
   browser dev tools
@@ -597,13 +681,15 @@ Find a way to organize all this:
   database GUIs
 \item
   spreadsheets
+\item
+  ScrAPIr
 \end{itemize}
 
 %%
 %% The next two lines define the bibliography style to be used, and
 %% the bibliography file.
-%% \bibliographystyle{ACM-Reference-Format}
-%%\bibliography{references2.bib}
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{wildcard-onward-bibtex.bib}
 
 \end{document}
 \endinput

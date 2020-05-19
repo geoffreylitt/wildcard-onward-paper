@@ -18,23 +18,27 @@ abstract: |
 
 # Introduction
 
-Many software applications don’t meet the precise needs of their users. When this happens, the only recourse is to complain to the developers, or, more likely, to simply give up. Back in 1977, in Personal Dynamic Media [@kay1977], Alan Kay envisioned personal computing as a medium that let a user “mold and channel its power to his own needs,” but today, software behaves more like concrete than clay.
+There have been many attempts at empowering end users to customize their software by offering them a simplified programming tool. Some scripting languages (AppleScript, Chickenfoot) have a friendly syntax that resembles natural language. Visual programming tools (Mac Automator, Zapier) eliminate text syntax entirely. Macro recorders (Applescript, Helena, WebVCR) remove some of the initial programming burden by letting a user start by concrete demonstrations.
 
-* many approaches to customizing software. Most are imperative command based. Can't get around it.
-* there are successful systems for visual SQL queries: Airtable, Sieuferd. Even spreadsheets.
-* what if you could see the data queries powering a website and directly modify them yourself?
-* we call this table-driven customization.
+These approaches have many differences, but they all share something in common: an imperative programming model, with mutable variables, conditionals and loops. End users ultimately must use these traditional programming constructs to express their ideas, and the object of interest is fundamentally a _script_, a sequence of commands.
 
-To make it work with the real world, we develop Wildcard, shim this on top of existing web apps. Show in Section Examples that it really works! can do tons of useful stuff with real apps.
+For decades, we have known about an easier model: _direct manipulation_ [@shneiderman1983], where "visibility of the object of interest" replaces "complex command language syntax". Direct manipulation is widely used in GUIs today, but rarely applied for software customization. In this work, we ask: what would it look like to build a software customization interface that deeply relies on direct manipulation? We take inspiration from spreadsheets and visual database query interfaces [@2020a; @bakke2016]. These tools enable users to construct queries, edit data, and compute derived values through direct manipulation of the data itself, with intermediate feedback available at every step. They have successfully enabled millions of end users to view, edit, and compute with data.
 
-Architecture: Describe implementation of Wildcard. We've developed generic abstractions that make this system even more extensible in the future. we also propose a future architecture where apps are built for this; they expose their data queries and their structured data results.
+We have developed a technique called _table-driven customization_ which applies ideas from visual query interfaces in the context of software customization. We provide the end user with a table view where they can directly manipulate the internal state of an application. Changes in the structured table view result in changes to the original user interface of the application, enabling the user to customize an application with immediate feedback.
 
-Design Principles: explain ideas behind the system, generalizable to software customization more generally
+To demonstrate the viability of this approach, we have developed a browser extension called Wildcard which implements table-driven customization in the context of the Web. Wildcard works with existing web applications by using web scraping techniques to extract relevant application state into a table and to reify changes back into the original application UI. In [@sec:examples] we present examples of using Wildcard to implement useful customizations across many real websites, ranging from sorting lists of data to adding whole new features to applications.
 
-Related Work: table editors,
+In [@sec:architecture] we explain the architecture of the Wildcard system, focusing on _table adapters_ which define how a data table relates to some underlying state. We explain how the abstractions of table-driven customization are general enough to support many customizations beyond the ones we've built so far in Wildcard. We also explore how applications themselves could be re-architected to expose tabular data to end users, rather than relying on web scraping techniques.
 
+Table-driven customization embodies several design principles for building customizable software systems, described in [@sec:design-principles]:
 
-# Examples
+* *Data-oriented programming*: End users should be able to customize an application by examining and modifying its data, rather than by issuing imperative commands to an API
+* *Black-box + semantic*: Typically, "black-box" customization tools, which don't rely on official extension APIs, resort to offering low-level APIs for customization. Instead, we suggest a third-party community of semantic wrappers, offering end users a more convenient semantic API for customization, even if it wasn't built in by the original developer.
+* *Gentle slope*: Customization tools should offer a "gentle slope" from normal use to customization. We explore how our approach offers end users opportunities to start customizing software with almost no effort, which we hope can make customization a viable part of everyday software usage rather than a rare event.
+
+Table-driven customization relates to existing work in many areas. Our goals overlap with many software customization tools, in the browser and on the desktop. Our methods overlap with direct manipulation interfaces for working with data, including visual database query systems and spreadsheets. We explore these connections and more in [@sec:related-work].
+
+# Examples {#sec:examples}
 
 *This section still todo. Borrow heavily from Convivial paper, but extend with newer results*
 
@@ -45,7 +49,7 @@ Related Work: table editors,
 	- 1 externally contributed adapter
 	- flux adapter in actual use by Sergio
 
-# System architecture
+# System architecture {#sec:architecture}
 
 The basic data unit in table-driven customization is a Table: an ordered list of tuples, each of which has an ID and some attributes. The user always sees a single table in the table editor, but this table is the result of combining data across one or more underlying tables, much like viewing the result of a SQL query across multiple database tables. Each individual table's data is managed by a "table adapter" component, and a query engine coordinates across the various table adapters.
 
@@ -113,7 +117,7 @@ One way to think of this model is a tiny constrained subset of the SQL query mod
 * cell editors
 * Note that there could be other entire table editors
 
-# Design aspects
+# Design principles {#sec:design-principles}
 
 ## Data-oriented programming
 
@@ -139,7 +143,7 @@ With Wildcard, we use a hybrid approach that takes the best of both worlds. Prog
 
 One way to view this approach is as introducing a new abstraction barrier into black-box extension. Typically, a black box customization script combines two responsibilities: 1) mapping the low-level details of a user interface to semantic constructs (e.g., using CSS selectors to find certain page elements), and 2) the actual logic of the specific customization. (todo: could easily show examples of this from browser extensions, Chickenfoot, etc) Even though the mapping logic is often more generic than the specific customization (e.g., finding a given input element is independent of what text to insert into that element), the intertwining of these two responsibilities in a single script makes it very difficult to share the mapping logic across scripts. With Wildcard we propose a decoupling of these two layers: a community-maintained mapping layer, shared across many specific customizations by individual users. This architecture has been successfully used by projects like Gmail.js, an open source project that creates a convenient API for browser extensions to interface with the Gmail web email client.
 
-## Proximity to use
+## Gentle slope
 
 _borrow from convivial paper's discussion of in-place_
 
@@ -151,7 +155,7 @@ _borrow from convivial paper's discussion of in-place_
 - the CLI GUI thing
 
 
-# Related Work
+# Related Work {#sec:related-work}
 
 Find a way to organize all this:
 
@@ -159,11 +163,24 @@ Find a way to organize all this:
   * fundamentally rearchitected around table adapters
   * evaluated on many more websites
   * more fully describing how the system works
+* database GUIs:
+	* Sieuferd [@bakke2016]
+	* Airtable [@2020a]
+	* other similar tools?
+	* Liu & Jagadish: rules for a spreadsheet algebra for database queries [@liu2009]
+	* mention DIRECT MANIPULATION
 * browser extensions
-* instrumental interaction, Scotty, Webstrates
+* instrumental interaction, Scotty [@eagan2011], Webstrates
 * customization research tools: Chickenfoot, Coscripter
 	* Wildcard, like Chickenfoot, wants to hide HTML from users. But we show a structured data view, whereas Chickenfoot shows nothing
+* visual customization tools:
+	* Mac Automator
+	* Zapier
+	* IFTTT
+	* These are weakly direct manipulation. But usually the thing you directly manipulate in these UIs is the _script_: not the actual _data_ you want to operate on. VERY DIFFERENT.
 * desktop customization: Applescript, VBA, COM
 * browser dev tools
 * database GUIs
 * spreadsheets
+* ScrAPIr
+

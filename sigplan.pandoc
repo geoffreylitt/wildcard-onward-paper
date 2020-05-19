@@ -150,8 +150,8 @@ $body$
 %%
 %% The next two lines define the bibliography style to be used, and
 %% the bibliography file.
-%% \bibliographystyle{ACM-Reference-Format}
-%%\bibliography{references2.bib}
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{wildcard-onward-bibtex.bib}
 
 \end{document}
 \endinput

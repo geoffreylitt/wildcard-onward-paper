@@ -13,7 +13,7 @@ pandoc \
   paper.md
 
 pdflatex paper.tex
-# bibtex paper
-# pdflatex -interaction=batchmode paper.tex
-# pdflatex -interaction=batchmode paper.tex
+bibtex paper
+pdflatex -interaction=batchmode paper.tex
+pdflatex -interaction=batchmode paper.tex
 open paper.pdf

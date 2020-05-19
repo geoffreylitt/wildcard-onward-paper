@@ -1,0 +1,114 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{5}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[\protect\citeauthoryear{??}{202}{2020}]%
+        {2020a}
+ \bibinfo{year}{2020}\natexlab{}.
+\newblock \bibinfo{title}{Airtable}.
+\newblock \bibinfo{howpublished}{https://airtable.com}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Bakke and Karger}{Bakke and Karger}{2016}]%
+        {bakke2016}
+\bibfield{author}{\bibinfo{person}{Eirik Bakke} {and} \bibinfo{person}{David~R.
+  Karger}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Expressive {{Query Construction}} through {{Direct
+  Manipulation}} of {{Nested Relational Results}}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 2016 {{International
+  Conference}} on {{Management}} of {{Data}} - {{SIGMOD}} '16}}.
+  \bibinfo{publisher}{{ACM Press}}, \bibinfo{address}{{San Francisco,
+  California, USA}}, \bibinfo{pages}{1377--1392}.
+\newblock
+\showISBNx{978-1-4503-3531-7}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/2882903.2915210}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Eagan, {Beaudouin-Lafon}, and Mackay}{Eagan
+  et~al\mbox{.}}{2011}]%
+        {eagan2011}
+\bibfield{author}{\bibinfo{person}{James~R. Eagan}, \bibinfo{person}{Michel
+  {Beaudouin-Lafon}}, {and} \bibinfo{person}{Wendy~E. Mackay}.}
+  \bibinfo{year}{2011}\natexlab{}.
+\newblock \showarticletitle{Cracking the Cocoa Nut: User Interface Programming
+  at Runtime}. In \bibinfo{booktitle}{\emph{Proceedings of the 24th Annual
+  {{ACM}} Symposium on {{User}} Interface Software and Technology - {{UIST}}
+  '11}}. \bibinfo{publisher}{{ACM Press}}, \bibinfo{address}{{Santa Barbara,
+  California, USA}}, \bibinfo{pages}{225}.
+\newblock
+\showISBNx{978-1-4503-0716-1}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/2047196.2047226}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Liu and Jagadish}{Liu and Jagadish}{2009}]%
+        {liu2009}
+\bibfield{author}{\bibinfo{person}{Bin Liu} {and} \bibinfo{person}{H.~V.
+  Jagadish}.} \bibinfo{year}{2009}\natexlab{}.
+\newblock \showarticletitle{A {{Spreadsheet Algebra}} for a {{Direct Data
+  Manipulation Query Interface}}}. In \bibinfo{booktitle}{\emph{2009 {{IEEE}}
+  25th {{International Conference}} on {{Data Engineering}}}}.
+  \bibinfo{pages}{417--428}.
+\newblock
+\showISSN{2375-026X}
+\urldef\tempurl%
+\url{https://doi.org/10.1109/ICDE.2009.34}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Shneiderman}{Shneiderman}{1983}]%
+        {shneiderman1983}
+\bibfield{author}{\bibinfo{person}{B. Shneiderman}.}
+  \bibinfo{year}{1983}\natexlab{}.
+\newblock \showarticletitle{Direct {{Manipulation}}: {{A Step Beyond
+  Programming Languages}}}.
+\newblock \bibinfo{journal}{\emph{Computer}} \bibinfo{volume}{16},
+  \bibinfo{number}{8} (\bibinfo{date}{Aug.} \bibinfo{year}{1983}),
+  \bibinfo{pages}{57--69}.
+\newblock
+\showISSN{0018-9162}
+\urldef\tempurl%
+\url{https://doi.org/10.1109/MC.1983.1654471}
+\showDOI{\tempurl}
+
+
+\end{thebibliography}
