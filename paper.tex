@@ -164,25 +164,66 @@
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-TBD, Summarize the paper
-
-\hypertarget{examples}{%
-\section{Examples}\label{examples}}
+Many software applications don't meet the precise needs of their users.
+When this happens, the only recourse is to complain to the developers,
+or, more likely, to simply give up. Back in 1977, in Personal Dynamic
+Media \citep{kay1977}, Alan Kay envisioned personal computing as a
+medium that let a user ``mold and channel its power to his own needs,''
+but today, software behaves more like concrete than clay.
 
 \begin{itemize}
 \tightlist
 \item
-  use airbnb + expedia
+  many approaches to customizing software. Most are imperative command
+  based. Can't get around it.
 \item
-  instacart?
+  there are successful systems for visual SQL queries: Airtable,
+  Sieuferd. Even spreadsheets.
 \item
-  new screenshots
+  what if you could see the data queries powering a website and directly
+  modify them yourself?
 \item
-  mention in text all the different sites we've used it with
+  we call this table-driven customization.
+\end{itemize}
+
+To make it work with the real world, we develop Wildcard, shim this on
+top of existing web apps. Show in Section Examples that it really works!
+can do tons of useful stuff with real apps.
+
+Architecture: Describe implementation of Wildcard. We've developed
+generic abstractions that make this system even more extensible in the
+future. we also propose a future architecture where apps are built for
+this; they expose their data queries and their structured data results.
+
+Design Principles: explain ideas behind the system, generalizable to
+software customization more generally
+
+Related Work: table editors,
+
+\hypertarget{examples}{%
+\section{Examples}\label{examples}}
+
+\emph{This section still todo. Borrow heavily from Convivial paper, but
+extend with newer results}
+
+\begin{itemize}
+\tightlist
 \item
-  1 externally contributed adapter
+  Just use airbnb + expedia from Convivial paper?
 \item
-  flux story
+  instacart + hacker news?
+\item
+  summarize/mention all 12 sites we've used it with
+\item
+  real usage:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    1 externally contributed adapter
+  \item
+    flux adapter in actual use by Sergio
+  \end{itemize}
 \end{itemize}
 
 \hypertarget{system-architecture}{%
@@ -248,68 +289,43 @@ DOM scraping adapter to make changes to the original web page:
   corresponding row in the page
 \end{itemize}
 
-\hypertarget{specific-table-adapters}{%
-\subsection{Specific table adapters}\label{specific-table-adapters}}
+\hypertarget{table-adapters}{%
+\subsection{Table adapters}\label{table-adapters}}
 
-\emph{(Todo: maybe move this upwards into the worked example?)}
+Here we describe the three types of table adapters which we have
+implemented so far to power the customizations shown above. Then, to
+demonstrate the generality of the table adapter paradigm, we describe
+three more hypothetical types of table adapters which could extend the
+power of the Wildcard system.
 
-Currently, our system supports three types of table adapters.
+\hypertarget{existing-adapters}{%
+\subsubsection{Existing Adapters}\label{existing-adapters}}
 
-\textbf{DOM scraping adapter}: extracts data from the DOM of a web page,
-and manipulates the DOM to re-order rows, edit form entries, and inject
-annotations. A programmer only needs to write a single function which
-returns scraped data and pointers to relevant DOM elements; the Wildcard
-framework uses this function to implement the rest of the needed
-functionality.
+A \textbf{DOM scraping adapter} extracts data from the DOM of a web
+page, and manipulates the DOM to re-order rows, edit form entries, and
+inject annotations. A programmer only needs to write a single function
+which returns scraped data and pointers to relevant DOM elements; the
+Wildcard framework uses this function to implement the rest of the
+needed functionality.
 
-\textbf{AJAX scraping adapter}: intercepts AJAX requests made by a web
+(\emph{do we want to call DOM scraping adapter a ``live'' adapter
+because its data is also shown elsewhere\ldots?})
+
+An \textbf{AJAX scraping adapter} intercepts AJAX requests made by a web
 page, and extracts information from those requests. A programmer writes
 a function which specifies how to extract data from an AJAX request, and
 the framework handles the details of actually intercepting requests and
 calling the programmer-defined function.
 
-\textbf{Local storage adapter}: simply stores a table of data in the
+The \textbf{local storage adapter} simply stores a table of data in the
 browser.
 
-\hypertarget{query-engine}{%
-\subsection{Query engine}\label{query-engine}}
+\hypertarget{future-adapters}{%
+\subsubsection{Future Adapters}\label{future-adapters}}
 
-The query engine is responsible for coordinating across multiple table
-adapters. It joins data across multiple tables and creates a single
-result table which is shown to the user through the editor. It also
-handles all user interactions and routes appropriate messages to each
-table adapter.
-
-First, every query involves a primary DOM scraping table adapter which
-associates records in the result with elements in the application's user
-interface. At minimum, the primary table adapter needs to return record
-IDs and have the ability to manipulate the application's UI. It can also
-optionally return data about each record.
-
-Next, additional tables (AJAX data, local storage data) are left joined
-by ID. (\emph{todo: discuss IDs here?}) Finally, the result table can be
-sorted and filtered by any column.
-
-One way to think of this model is a tiny constrained subset of the SQL
-query model. We've found that this simple model has proven sufficient
-for meeting the needs of customization in practice, and minimizes the
-complexity of supporting more general and arbitrary queries. But because
-it fits into the general SQL paradigm, it could theoretically be
-extended to support more types of queries.
-
-\hypertarget{table-editor-instruments}{%
-\subsection{Table editor instruments}\label{table-editor-instruments}}
-
-Our editor is closer to visual SQL query engines like Sieuferd or
-Airtable than a freeform spreadsheet.
-
-\hypertarget{future-table-adapters}{%
-\subsection{Future table adapters}\label{future-table-adapters}}
-
-However, we have intentionally designed the table adapter API to be
-general enough to encapsulate other types of data and additional
-functionality in the future. Here are three concrete examples of such
-possibilities:
+we have intentionally designed the table adapter API to be general
+enough to encapsulate other types of data and additional functionality
+in the future. Here are three concrete examples of such possibilities:
 
 \textbf{Integrated website adapters}: We have taken pains to design a
 customization system which is not limited to web scraping as the only
@@ -353,6 +369,52 @@ API queries to populate a result table. (\emph{todo: why is this better
 than spreadsheet formulas? I don't think it offers any more room for
 batching performance optimization because we've already framed formulas
 as whole-column, not row specific})
+
+\hypertarget{query-engine}{%
+\subsection{Query engine}\label{query-engine}}
+
+The query engine is responsible for coordinating across multiple table
+adapters. It joins data across multiple tables and creates a single
+result table which is shown to the user through the editor. It also
+handles all user interactions and routes appropriate messages to each
+table adapter.
+
+First, every query involves a primary DOM scraping table adapter which
+associates records in the result with elements in the application's user
+interface. At minimum, the primary table adapter needs to return record
+IDs and have the ability to manipulate the application's UI. It can also
+optionally return data about each record.
+
+Next, additional tables (AJAX data, local storage data) are left joined
+by ID. (\emph{todo: discuss IDs here?}) Finally, the result table can be
+sorted and filtered by any column.
+
+One way to think of this model is a tiny constrained subset of the SQL
+query model. We've found that this simple model has proven sufficient
+for meeting the needs of customization in practice, and minimizes the
+complexity of supporting more general and arbitrary queries. But because
+it fits into the general SQL paradigm, it could theoretically be
+extended to support more types of queries.
+
+\begin{itemize}
+\tightlist
+\item
+  formulas: do they go here?
+\end{itemize}
+
+\hypertarget{table-editor}{%
+\subsection{Table editor}\label{table-editor}}
+
+\begin{itemize}
+\tightlist
+\item
+  Our editor is closer to visual SQL query engines like Sieuferd or
+  Airtable than a freeform spreadsheet.
+\item
+  cell editors
+\item
+  Note that there could be other entire table editors
+\end{itemize}
 
 \hypertarget{design-aspects}{%
 \section{Design aspects}\label{design-aspects}}
@@ -445,13 +507,12 @@ for manipulating GUIs as a means of black-box customization, while also
 enabling developers to optionally add application-specific APIs to add
 support for semantic customization.
 
-With data-oriented customization and Wildcard, we use a hybrid approach
-that takes the best of both worlds. Programmers implement an API wrapper
-that is internally implemented as a black-box customization, but
-externally provides a semantic interface to the application. End users
-get an ergonomic and simplified customization experience, but without
-the need to depend on a first-party application developer exposing
-extension APIs.
+With Wildcard, we use a hybrid approach that takes the best of both
+worlds. Programmers implement an API wrapper that is internally
+implemented as a black-box customization, but externally provides a
+semantic interface to the application. End users get an ergonomic and
+simplified customization experience, but without the need to depend on a
+first-party application developer exposing extension APIs.
 
 One way to view this approach is as introducing a new abstraction
 barrier into black-box extension. Typically, a black box customization
@@ -474,7 +535,7 @@ Gmail web email client.
 \hypertarget{proximity-to-use}{%
 \subsection{Proximity to use}\label{proximity-to-use}}
 
-borrow from the in-place
+\emph{borrow from convivial paper's discussion of in-place}
 
 \begin{itemize}
 \tightlist
@@ -494,6 +555,48 @@ borrow from the in-place
   contrast this clearly)
 \item
   the CLI GUI thing
+\end{itemize}
+
+\hypertarget{related-work}{%
+\section{Related Work}\label{related-work}}
+
+Find a way to organize all this:
+
+\begin{itemize}
+\tightlist
+\item
+  our own workshop paper. since then\ldots{}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    fundamentally rearchitected around table adapters
+  \item
+    evaluated on many more websites
+  \item
+    more fully describing how the system works
+  \end{itemize}
+\item
+  browser extensions
+\item
+  instrumental interaction, Scotty, Webstrates
+\item
+  customization research tools: Chickenfoot, Coscripter
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Wildcard, like Chickenfoot, wants to hide HTML from users. But we
+    show a structured data view, whereas Chickenfoot shows nothing
+  \end{itemize}
+\item
+  desktop customization: Applescript, VBA, COM
+\item
+  browser dev tools
+\item
+  database GUIs
+\item
+  spreadsheets
 \end{itemize}
 
 %%
