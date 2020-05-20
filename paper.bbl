@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{5}
+\begin{thebibliography}{6}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -77,6 +77,22 @@
 \showISBNx{978-1-4503-0716-1}
 \urldef\tempurl%
 \url{https://doi.org/10.1145/2047196.2047226}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Litt and Jackson}{Litt and Jackson}{2020}]%
+        {litt2020}
+\bibfield{author}{\bibinfo{person}{Geoffrey Litt} {and} \bibinfo{person}{Daniel
+  Jackson}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Wildcard: {{Spreadsheet}}-{{Driven Customization}}
+  of {{Web Applications}}}. In \bibinfo{booktitle}{\emph{Companion
+  {{Proceedings}} of the 4th {{In}}- Ternational {{Conference}} on the {{Art}},
+  {{Science}}, and {{Engineering}} of {{Programming}}}}.
+  \bibinfo{publisher}{{Association for Computing Machinery}},
+  \bibinfo{address}{{Porto, Portugal.}}, \bibinfo{pages}{10}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1145/3397537.3397541}
 \showDOI{\tempurl}
 
 
