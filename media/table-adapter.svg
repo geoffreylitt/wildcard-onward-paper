@@ -3,68 +3,68 @@
     <title>table-adapter</title>
     <g id="table-adapter" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <text id="Webpage-DOM" font-family="LinLibertine, Linux Libertine" font-size="16" font-weight="normal" fill="#222222">
-            <tspan x="58.453125" y="367">Webpage </tspan>
-            <tspan x="70.53125" y="385">DOM</tspan>
+            <tspan x="19.453125" y="367">Webpage </tspan>
+            <tspan x="31.53125" y="385">DOM</tspan>
         </text>
         <text id="AJAX-response" font-family="LinLibertine, Linux Libertine" font-size="16" font-weight="normal" fill="#222222">
-            <tspan x="185.03125" y="367">AJAX </tspan>
-            <tspan x="175.136719" y="385">response</tspan>
+            <tspan x="204.03125" y="367">AJAX </tspan>
+            <tspan x="194.136719" y="385">response</tspan>
         </text>
-        <text id="Table-adapters" font-family="LinLibertine, Linux Libertine" font-size="16" font-weight="normal" fill="#222222">
-            <tspan x="20.3398438" y="252">Table </tspan>
-            <tspan x="10.2929688" y="270">adapters</tspan>
+        <text id="Table-adapters-expos" font-family="LinLibertine, Linux Libertine" font-size="16" font-weight="normal" fill="#222222">
+            <tspan x="68" y="250">Table adapters expose </tspan>
+            <tspan x="68" y="268">table interface</tspan>
         </text>
-        <text id="Query-engine" font-family="LinLibertine, Linux Libertine" font-size="16" font-weight="normal" fill="#222222">
-            <tspan x="17.25" y="112">Query </tspan>
-            <tspan x="16.0117188" y="130">engine</tspan>
+        <text id="Query-engine-combine" font-family="LinLibertine, Linux Libertine" font-size="16" font-weight="normal" fill="#222222">
+            <tspan x="86" y="112">Query engine </tspan>
+            <tspan x="86" y="130">combines tables</tspan>
         </text>
         <text id="Browser-local-storag" font-family="LinLibertine, Linux Libertine" font-size="16" font-weight="normal" fill="#222222">
             <tspan x="315.257812" y="367">Browser </tspan>
             <tspan x="301.367188" y="385">local storage</tspan>
         </text>
         <text id="&lt;html&gt;-…-&lt;/html&gt;" font-family="Courier" font-size="14" font-weight="normal" fill="#787878">
-            <tspan x="65" y="305">&lt;html&gt;</tspan>
-            <tspan x="65" y="322">…</tspan>
-            <tspan x="65" y="339">&lt;/html&gt;</tspan>
+            <tspan x="26" y="305">&lt;html&gt;</tspan>
+            <tspan x="26" y="322">…</tspan>
+            <tspan x="26" y="339">&lt;/html&gt;</tspan>
         </text>
         <text id="{-data:-…-}" font-family="Courier" font-size="14" font-weight="normal" fill="#787878">
-            <tspan x="178" y="305">{</tspan>
-            <tspan x="178" y="322">  data: …</tspan>
-            <tspan x="178" y="339">}</tspan>
+            <tspan x="197" y="305">{</tspan>
+            <tspan x="197" y="322">  data: …</tspan>
+            <tspan x="197" y="339">}</tspan>
         </text>
         <g id="Group" transform="translate(320.000000, 305.000000)" fill="#D8D8D8" stroke="#979797">
             <ellipse id="Oval" cx="17" cy="37.5" rx="17" ry="3.5"></ellipse>
             <rect id="Rectangle" x="0" y="4" width="34" height="34"></rect>
             <ellipse id="Oval" cx="18" cy="3.5" rx="17" ry="3.5"></ellipse>
         </g>
-        <rect id="Rectangle" fill="#F5F5F5" x="28" y="181" width="119" height="19"></rect>
-        <rect id="Rectangle" stroke="#979797" x="28" y="149" width="119" height="71"></rect>
+        <rect id="Rectangle" fill="#F5F5F5" x="10" y="181" width="119" height="19"></rect>
+        <rect id="Rectangle" stroke="#979797" x="10" y="149" width="119" height="71"></rect>
         <text id="id" font-family="Courier-Oblique, Courier" font-size="14" font-style="italic" font-weight="normal" fill="#222222">
-            <tspan x="29.0986328" y="161">id</tspan>
+            <tspan x="11.0986328" y="161">id</tspan>
         </text>
         <text id="1" font-family="Courier" font-size="14" font-weight="normal" fill="#222222">
-            <tspan x="32.2993164" y="177">1</tspan>
+            <tspan x="14.2993164" y="177">1</tspan>
         </text>
         <text id="2" font-family="Courier" font-size="14" font-weight="normal" fill="#222222">
-            <tspan x="32.2993164" y="195">2</tspan>
+            <tspan x="14.2993164" y="195">2</tspan>
         </text>
         <text id="3" font-family="Courier" font-size="14" font-weight="normal" fill="#222222">
-            <tspan x="32.2993164" y="214">3</tspan>
+            <tspan x="14.2993164" y="214">3</tspan>
         </text>
         <text id="name" font-family="Courier-Oblique, Courier" font-size="14" font-style="italic" font-weight="normal" fill="#222222">
-            <tspan x="56.6972656" y="161">name</tspan>
+            <tspan x="38.6972656" y="161">name</tspan>
         </text>
         <text id="Nice-apt" font-family="Courier" font-size="14" font-weight="normal" fill="#222222">
-            <tspan x="54.8945312" y="177">Nice apt</tspan>
+            <tspan x="36.8945312" y="177">Nice apt</tspan>
         </text>
         <text id="Big-house" font-family="Courier" font-size="14" font-weight="normal" fill="#222222">
-            <tspan x="54.6938477" y="195">Big house</tspan>
+            <tspan x="36.6938477" y="195">Big house</tspan>
         </text>
         <text id="Cozy-shack" font-family="Courier" font-size="14" font-weight="normal" fill="#222222">
-            <tspan x="54.4931641" y="214">Cozy shack</tspan>
+            <tspan x="36.4931641" y="214">Cozy shack</tspan>
         </text>
-        <line x1="28.5" y1="164" x2="147.5" y2="164.5" id="Line" stroke="#979797" stroke-linecap="square"></line>
-        <line x1="50" y1="149.5" x2="50.5" y2="220.5" id="Line-2" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="10.5" y1="164" x2="129.5" y2="164.5" id="Line" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="32" y1="149.5" x2="32.5" y2="220.5" id="Line-2" stroke="#979797" stroke-linecap="square"></line>
         <rect id="Rectangle" fill="#F5F5F5" x="48" y="48" width="310" height="19"></rect>
         <rect id="Rectangle" stroke="#979797" x="48" y="15" width="310" height="71"></rect>
         <text id="id" font-family="Courier-Oblique, Courier" font-size="14" font-style="italic" font-weight="normal" fill="#222222">
@@ -79,8 +79,9 @@
         <text id="3" font-family="Courier" font-size="14" font-weight="normal" fill="#222222">
             <tspan x="52.2993164" y="62">3</tspan>
         </text>
-        <text id="name" font-family="Courier-Oblique, Courier" font-size="14" font-style="italic" font-weight="normal" fill="#222222">
-            <tspan x="76.6972656" y="27">name</tspan>
+        <text id="name-(ASC)" font-family="Courier-Oblique, Courier" font-size="14" font-style="italic" font-weight="normal" fill="#222222">
+            <tspan x="75.4931641" y="27">name </tspan>
+            <tspan x="117.5" y="27" font-family="Courier-BoldOblique, Courier" font-weight="bold">(ASC)</tspan>
         </text>
         <text id="Nice-apt" font-family="Courier" font-size="14" font-weight="normal" fill="#222222">
             <tspan x="74.8945312" y="81">Nice apt</tspan>
@@ -96,43 +97,43 @@
         <line x1="165.75" y1="15.5" x2="166.25" y2="86.5" id="Line-2" stroke="#979797" stroke-linecap="square"></line>
         <line x1="205.75" y1="15.5" x2="206.25" y2="86.5" id="Line-2" stroke="#979797" stroke-linecap="square"></line>
         <line x1="248.75" y1="15.5" x2="249.25" y2="86.5" id="Line-2" stroke="#979797" stroke-linecap="square"></line>
-        <rect id="Rectangle" fill="#F5F5F5" x="160" y="181" width="101" height="19"></rect>
-        <rect id="Rectangle" stroke="#979797" x="160" y="149" width="102" height="71"></rect>
+        <rect id="Rectangle" fill="#F5F5F5" x="156" y="181" width="101" height="19"></rect>
+        <rect id="Rectangle" stroke="#979797" x="156" y="149" width="102" height="71"></rect>
         <text id="id" font-family="Courier-Oblique, Courier" font-size="14" font-style="italic" font-weight="normal" fill="#222222">
-            <tspan x="161.098633" y="161">id</tspan>
+            <tspan x="157.098633" y="161">id</tspan>
         </text>
         <text id="1" font-family="Courier" font-size="14" font-weight="normal" fill="#222222">
-            <tspan x="164.299316" y="177">1</tspan>
+            <tspan x="160.299316" y="177">1</tspan>
         </text>
         <text id="2" font-family="Courier" font-size="14" font-weight="normal" fill="#222222">
-            <tspan x="164.299316" y="195">2</tspan>
+            <tspan x="160.299316" y="195">2</tspan>
         </text>
         <text id="3" font-family="Courier" font-size="14" font-weight="normal" fill="#222222">
-            <tspan x="164.299316" y="214">3</tspan>
+            <tspan x="160.299316" y="214">3</tspan>
         </text>
         <text id="lat" font-family="Courier-Oblique, Courier" font-size="14" font-style="italic" font-weight="normal" fill="#222222">
-            <tspan x="186.897949" y="161">lat</tspan>
+            <tspan x="182.897949" y="161">lat</tspan>
         </text>
         <text id="53" font-family="Courier" font-size="14" font-weight="normal" fill="#222222">
-            <tspan x="191.598633" y="177">53</tspan>
+            <tspan x="187.598633" y="177">53</tspan>
         </text>
         <text id="42" font-family="Courier" font-size="14" font-weight="normal" fill="#222222">
-            <tspan x="191.598633" y="195">42</tspan>
+            <tspan x="187.598633" y="195">42</tspan>
         </text>
         <text id="77" font-family="Courier" font-size="14" font-weight="normal" fill="#222222">
-            <tspan x="191.598633" y="214">77</tspan>
+            <tspan x="187.598633" y="214">77</tspan>
         </text>
         <text id="long" font-family="Courier-Oblique, Courier" font-size="14" font-style="italic" font-weight="normal" fill="#222222">
-            <tspan x="221.697266" y="161">long</tspan>
+            <tspan x="217.697266" y="161">long</tspan>
         </text>
         <text id="43" font-family="Courier" font-size="14" font-weight="normal" fill="#222222">
-            <tspan x="230.598633" y="177">43</tspan>
+            <tspan x="226.598633" y="177">43</tspan>
         </text>
         <text id="66" font-family="Courier" font-size="14" font-weight="normal" fill="#222222">
-            <tspan x="230.598633" y="195">66</tspan>
+            <tspan x="226.598633" y="195">66</tspan>
         </text>
         <text id="23" font-family="Courier" font-size="14" font-weight="normal" fill="#222222">
-            <tspan x="230.598633" y="214">23</tspan>
+            <tspan x="226.598633" y="214">23</tspan>
         </text>
         <text id="lat" font-family="Courier-Oblique, Courier" font-size="14" font-style="italic" font-weight="normal" fill="#222222">
             <tspan x="173.897949" y="28">lat</tspan>
@@ -158,9 +159,9 @@
         <text id="23" font-family="Courier" font-size="14" font-weight="normal" fill="#222222">
             <tspan x="217.598633" y="63">23</tspan>
         </text>
-        <line x1="160.5" y1="164" x2="262.5" y2="164.5" id="Line" stroke="#979797" stroke-linecap="square"></line>
-        <line x1="182" y1="149.5" x2="182.5" y2="220.5" id="Line-2" stroke="#979797" stroke-linecap="square"></line>
-        <line x1="218.25" y1="149" x2="216.75" y2="220.5" id="Line-2" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="156.5" y1="164" x2="258.5" y2="164.5" id="Line" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="178" y1="149.5" x2="178.5" y2="220.5" id="Line-2" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="214.25" y1="149" x2="212.75" y2="220.5" id="Line-2" stroke="#979797" stroke-linecap="square"></line>
         <rect id="Rectangle" fill="#F5F5F5" x="274" y="181" width="119" height="19"></rect>
         <rect id="Rectangle" stroke="#979797" x="274" y="149" width="124" height="71"></rect>
         <text id="id" font-family="Courier-Oblique, Courier" font-size="14" font-style="italic" font-weight="normal" fill="#222222">
@@ -188,15 +189,15 @@
             <tspan x="255.993164" y="82">looks good</tspan>
         </text>
         <text id="don’t-book" font-family="Courier" font-size="14" font-weight="normal" fill="#222222">
-            <tspan x="258.493164" y="44">don’t book</tspan>
+            <tspan x="258.493164" y="63">don’t book</tspan>
         </text>
         <line x1="274.5" y1="164" x2="398.5" y2="164.5" id="Line" stroke="#979797" stroke-linecap="square"></line>
         <line x1="296" y1="149.5" x2="296.5" y2="220.5" id="Line-2" stroke="#979797" stroke-linecap="square"></line>
         <path id="Line-3" d="M337.5,223.2875 L342,232.2875 L338,232.287 L338,276.712 L342,276.7125 L337.5,285.7125 L333,276.7125 L337,276.712 L337,232.287 L333,232.2875 L337.5,223.2875 Z" fill="#979797" fill-rule="nonzero"></path>
-        <path id="Line-3" d="M94.7348014,88.0585611 L94.4813261,98.1176739 L90.949,96.239 L69.433,136.691 L72.964574,138.57029 L64.7651986,144.402977 L65.0186739,134.343865 L68.55,136.222 L90.066,95.769 L86.535426,93.8912485 L94.7348014,88.0585611 Z" fill="#979797" fill-rule="nonzero"></path>
+        <path id="Line-3" d="M61.9848014,88.0585611 L61.7313261,98.1176739 L58.199,96.239 L36.683,136.691 L40.214574,138.57029 L32.0151986,144.402977 L32.2686739,134.343865 L35.8,136.222 L57.316,95.769 L53.785426,93.8912485 L61.9848014,88.0585611 Z" fill="#979797" fill-rule="nonzero"></path>
         <path id="Line-3" d="M283.217384,88.0875338 L292.016663,92.9683837 L288.717,95.229 L316.107,135.205 L319.407728,132.944533 L320.782616,142.912466 L311.983337,138.031616 L315.282,135.77 L287.892,95.794 L284.592272,98.0554666 L283.217384,88.0875338 Z" fill="#979797" fill-rule="nonzero"></path>
-        <path id="Line-3" d="M200,223.2875 L204.5,232.2875 L200.5,232.287 L200.5,276.712 L204.5,276.7125 L200,285.7125 L195.5,276.7125 L199.5,276.712 L199.5,232.287 L195.5,232.2875 L200,223.2875 Z" fill="#979797" fill-rule="nonzero"></path>
-        <path id="Line-3" d="M199.994846,93.5000266 L204.587385,102.453159 L200.587,102.494 L200.912,133.995 L204.912137,133.954062 L200.505154,142.999973 L195.912615,134.046841 L199.912,134.005 L199.587,102.504 L195.587863,102.545938 L199.994846,93.5000266 Z" fill="#979797" fill-rule="nonzero"></path>
-        <path id="Line-3" d="M89,223.2875 L93.5,232.2875 L89.5,232.287 L89.5,276.712 L93.5,276.7125 L89,285.7125 L84.5,276.7125 L88.5,276.712 L88.5,232.287 L84.5,232.2875 L89,223.2875 Z" fill="#979797" fill-rule="nonzero"></path>
+        <path id="Line-3" d="M237.744846,93.5000266 L242.337385,102.453159 L238.337,102.494 L238.662,133.995 L242.662137,133.954062 L238.255154,142.999973 L233.662615,134.046841 L237.662,134.005 L237.337,102.504 L233.337863,102.545938 L237.744846,93.5000266 Z" fill="#979797" fill-rule="nonzero"></path>
+        <path id="Line-3" d="M242,223.2875 L246.5,232.2875 L242.5,232.287 L242.5,276.712 L246.5,276.7125 L242,285.7125 L237.5,276.7125 L241.5,276.712 L241.5,232.287 L237.5,232.2875 L242,223.2875 Z" fill="#979797" fill-rule="nonzero"></path>
+        <path id="Line-3" d="M41,223.2875 L45.5,232.2875 L41.5,232.287 L41.5,276.712 L45.5,276.7125 L41,285.7125 L36.5,276.7125 L40.5,276.712 L40.5,232.287 L36.5,232.2875 L41,223.2875 Z" fill="#979797" fill-rule="nonzero"></path>
     </g>
 </svg>
