@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{6}
+\begin{thebibliography}{8}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -43,6 +43,21 @@
 \newblock \bibinfo{title}{Airtable}.
 \newblock \bibinfo{howpublished}{https://airtable.com}.
 \newblock
+
+
+\bibitem[\protect\citeauthoryear{Ainsworth}{Ainsworth}{1999}]%
+        {ainsworth1999}
+\bibfield{author}{\bibinfo{person}{Shaaron Ainsworth}.}
+  \bibinfo{year}{1999}\natexlab{}.
+\newblock \showarticletitle{The Functions of Multiple Representations}.
+\newblock \bibinfo{journal}{\emph{Computers \& Education}}
+  \bibinfo{volume}{33}, \bibinfo{number}{2-3} (\bibinfo{date}{Sept.}
+  \bibinfo{year}{1999}), \bibinfo{pages}{131--152}.
+\newblock
+\showISSN{03601315}
+\urldef\tempurl%
+\url{https://doi.org/10.1016/S0360-1315(99)00029-9}
+\showDOI{\tempurl}
 
 
 \bibitem[\protect\citeauthoryear{Bakke and Karger}{Bakke and Karger}{2016}]%
@@ -108,6 +123,24 @@
 \showISSN{2375-026X}
 \urldef\tempurl%
 \url{https://doi.org/10.1109/ICDE.2009.34}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{MacLean, Carter, L{\"o}vstrand, and
+  Moran}{MacLean et~al\mbox{.}}{1990}]%
+        {maclean1990}
+\bibfield{author}{\bibinfo{person}{Allan MacLean}, \bibinfo{person}{Kathleen
+  Carter}, \bibinfo{person}{Lennart L{\"o}vstrand}, {and}
+  \bibinfo{person}{Thomas Moran}.} \bibinfo{year}{1990}\natexlab{}.
+\newblock \showarticletitle{User-Tailorable Systems: Pressing the Issues with
+  Buttons}. In \bibinfo{booktitle}{\emph{Proceedings of the {{SIGCHI}}
+  Conference on {{Human}} Factors in Computing Systems {{Empowering}} People -
+  {{CHI}} '90}}. \bibinfo{publisher}{{ACM Press}}, \bibinfo{address}{{Seattle,
+  Washington, United States}}, \bibinfo{pages}{175--182}.
+\newblock
+\showISBNx{978-0-201-50932-8}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/97243.97271}
 \showDOI{\tempurl}
 
 

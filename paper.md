@@ -28,9 +28,11 @@ In this paper we present a technique called _table-driven customization_ which a
 
 To demonstrate the viability of this approach, we have developed a browser extension called Wildcard which implements table-driven customization in the context of the Web. Wildcard is compatible with existing unmodified applications because it uses web scraping techniques to extract relevant state into a table and to reify changes in the original application UI. In [@sec:examples] we present a many examples of using Wildcard to implement useful customizations across real websites, ranging from sorting lists of data to adding whole new features to applications.
 
-In [@sec:architecture] we describe the architecture of the Wildcard system. We explain the _table adapter_ abstraction, which allows many different types of underlying state to be bidirectionally mapped to a table of data. We explore how table adapters are general enough to support many customizations beyond the ones we've built so far in Wildcard; we also discuss how applications could be re-architected to expose tabular data directly to end users, rather than relying on web scraping techniques.
+In [@sec:architecture] explain the _table adapter_ abstraction, which allows many different types of underlying state to be bidirectionally mapped to a table of data. We explore how table adapters are general enough to support many customizations beyond the ones we've built so far in Wildcard; we also discuss how applications could be re-architected to expose tabular data directly to end users, rather than relying on web scraping techniques.
 
-Table-driven customization embodies several design principles for building customizable software systems, described in [@sec:design-principles]:
+In [@sec:prototype] we discuss in more detail the implementation of the Wildcard browser extension. We reflect on the experience of using the tool to customize websites, and some of the challenges from the perspective of programmers and end users.
+
+Table-driven customization embodies several design principles for building customizable software systems, discussed in [@sec:discussion]:
 
 * *Customization by direct manipulation*: End users should be able to customize an application by examining and modifying its data, rather than by writing imperative scripts.
 * *Third-party semantic wrappers*: Typically, customization tools which don't rely on official extension APIs resort to offering low-level APIs for customization. Instead, we suggest a community-maintained library of semantic wrappers around existing applications, offering end users a more convenient semantic API for customization.
@@ -40,7 +42,7 @@ Table-driven customization relates to existing work in many areas. In particular
 
 # Examples {#sec:examples}
 
-To illustrate the end user experience of table-driven customization, here are several real examples of using the Wildcard browser extension.
+To concretely illustrate the end user experience of table-driven customization, here are several real examples of using the Wildcard browser extension to customize websites.
 
 <div class="html-only">
 ![Using Wildcard to augment the Airbnb search page for booking accommodations](media/airbnb-demo-300dpi.png){#fig:airbnb-demo}
@@ -153,15 +155,57 @@ Filling in dates for a flight search often requires a cumbersome workflow: open 
 
 # System architecture {#sec:architecture}
 
-The Wildcard browser extension is implemented in Typescript and works with Chrome, Firefox, and Edge.
+A key idea in table-driven customization is that different data sources
+can all be mapped to the generic abstraction of an editable table.
+In a relational database, the table closely matches the actual underlying
+storage format, but in table-driven customization, it is merely
+an _interface layer_. The data in the table is a projection of some underlying
+state, and edits to the table can have arbitrary effects.
 
-The basic data unit in table-driven customization is a Table: an ordered list of tuples, each of which has an ID and some attributes. The user always sees a single table in the table editor, but this table is the result of combining data across one or more underlying tables, much like viewing the result of a SQL query across multiple database tables. Each individual table's data is managed by a "table adapter" component, and a query engine coordinates across the various table adapters.
+<div class="html-only">
+![The table adapter architecture](media/table-adapter.svg){#fig:table-adapter}
+</div>
+<div class="pdf-only">
+```{=latex}
+\begin{figure}
+\hypertarget{fig:table-adapter}{%
+\centering
+\includegraphics[width=\columnwidth]{media/table-adapter.eps}
+\caption{The table adapter architecture}\label{fig:table-adapter}
+}
+\end{figure}
+```
+</div>
 
-(*Todo: drive this explanation via concrete Instacart example. Add a figure.*) For example, one table adapter manages scraping data from the DOM of a site, while another manages extracting data from AJAX requests. Each table adapter produces a table of data, and the two are joined together by a shared ID column to produce what looks like a single table of data extracted from the site. Similarly, when the user makes annotations on a site, these annotations are handled by a third table adapter, which manages a data table stored in the browser's local storage.
+Figure [@fig:table-adapter] summarizes the overall architecture of
+table-driven customization, using a simplified version of the Airbnb
+example above. In this example, the name of each listing
+is being scraped from the web page, the latitude and longitude of each listing
+is being scraped from AJAX requests, and the user has made annotations about
+two of the listings as well.
+
+**Table adapters**: First, the three different data sources are each
+bidirectionally mapped to a table interface by a _table adapter_.
+The table adapter defines how to map a particular type of data to a table,
+and what effects edits should have on the original data source.
+In some cases, the mapping logic is straightforward. The local
+storage adapter internally just stores a table of data, so the mapping
+to the table abstraction is trivial. In other cases, the mapping can be
+much more complex. The DOM scraping adapter implements web scraping logic
+to produce a table of data from the web page. Edits to the table can result
+in various DOM manipulations, like entering form data or reordering
+rows of data on the page.
+
+**Query engine**: Ultimately, we provide the user with a single combined table
+view that they can edit, rather than three separate tables. The _query engine_
+is responsible for combining the tables of data into a single view, and routing
+the user's edits back to the individual table adapters. In this example,
+the query engine has joined the three tables together by a shared ID column,
+and sorted the result by the name column. This process largely
+resembles a query across multiple tables in a relational database, but
+also has some key differences described below.
 
 ## Table adapter API
-
-(*Todo: formalize this more? Would math notation help?*)
 
 In order to promote uniformity within the system, we've defined a small abstract API, which all table adapters conform to.
 
@@ -182,10 +226,6 @@ The query engine also sends each table adapter information about the entire cros
 Here we describe in more detail the table adapters which we have implemented to power the customizations shown above.
 
 **DOM scraping adapters** are a key part of the Wildcard system. These adapters extract data from the DOM of a web page, and manipulate the DOM to re-order rows, edit form entries, and inject annotations. To create a DOM scraping adapter for a specific website, a programmer does not need to implement all this functionality from scratch. They only need to write a single scraping function which uses CSS selectors and DOM APIs to extract and return relevant elements. The Wildcard framework then wraps this function to implement the rest of the needed functionality.
-
-To determine the viability of writing DOM scraping adapters, we built adapters for 10 websites, including transactional sites like Amazon and Uber Eats, media consumption sites like Hacker News and Youtube, and a medical results entry platform managed by a member of our research group. The adapters ranged from 36 to 117 lines of code, averaging 68 lines. In addition, an external developer unaffiliated with the project contributed one adapter, designed to sort the Github page listing a user's repositories, and described the experience as "very straightforward."
-
-Some of the challenges of writing a DOM scraping adapter are the same ones involved with writing normal web scraping code, but the more interactive nature of Wildcard introduces additional challenges. One challenge is triggering updates to the spreadsheet data in response to UI changes that happen after initial page load. Site adapters are responsible for recognizing these changes by observing the DOM. So far, we have been able to use event listeners and the MutationObserver API to successfully observe changes, but it may prove challenging to observe changes on some sites only through the DOM. Another challenge is persisting updates to the DOM—some websites use virtual DOM frameworks that can occasionally overwrite changes made by Wildcard. In practice, we've managed to create an implementation that works around these issues and results in a usable customization experience for all the websites we've tried.
 
 (_todo: get into the Sorting Problem? i.e., once we sort the page, the original sort order is lost from the page. Maybe not necessary..._)
 
@@ -225,7 +265,13 @@ In Wildcard we provide a basic table editor as the user interface on top of the 
 
 _todo: other table instruments_
 
-# Design principles {#sec:design-principles}
+# Evaluation {#sec:evaluation}
+
+To determine the viability of writing DOM scraping adapters, we built adapters for 10 websites, including transactional sites like Amazon and Uber Eats, media consumption sites like Hacker News and Youtube, and a medical results entry platform managed by a member of our research group. The adapters ranged from 36 to 117 lines of code, averaging 68 lines. In addition, an external developer unaffiliated with the project contributed one adapter, designed to sort the Github page listing a user's repositories, and described the experience as "very straightforward."
+
+Some of the challenges of writing a DOM scraping adapter are the same ones involved with writing normal web scraping code, but the more interactive nature of Wildcard introduces additional challenges. One challenge is triggering updates to the spreadsheet data in response to UI changes that happen after initial page load. Site adapters are responsible for recognizing these changes by observing the DOM. So far, we have been able to use event listeners and the MutationObserver API to successfully observe changes, but it may prove challenging to observe changes on some sites only through the DOM. Another challenge is persisting updates to the DOM—some websites use virtual DOM frameworks that can occasionally overwrite changes made by Wildcard. In practice, we've managed to create an implementation that works around these issues and results in a usable customization experience for all the websites we've tried.
+
+# Discussion {#sec:discussion}
 
 ## Customization by direct manipulation
 

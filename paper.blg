@@ -21,45 +21,45 @@ Warning--no author, editor, organization, or key in 2020a
 Warning--empty author in 2020a
 Warning--empty publisher in liu2009
 Warning--empty address in liu2009
-You've used 6 entries,
+You've used 8 entries,
             5945 wiz_defined-function locations,
-            1373 strings with 16053 characters,
-and the built_in function-call counts, 6911 in all, are:
-= -- 800
-> -- 175
+            1392 strings with 16551 characters,
+and the built_in function-call counts, 9470 in all, are:
+= -- 1147
+> -- 247
 < -- 0
-+ -- 60
-- -- 68
-* -- 448
-:= -- 639
-add.period$ -- 29
-call.type$ -- 6
-change.case$ -- 34
-chr.to.int$ -- 6
-cite$ -- 20
-duplicate$ -- 678
-empty$ -- 471
-format.name$ -- 84
-if$ -- 1635
++ -- 84
+- -- 92
+* -- 623
+:= -- 877
+add.period$ -- 39
+call.type$ -- 8
+change.case$ -- 47
+chr.to.int$ -- 8
+cite$ -- 22
+duplicate$ -- 911
+empty$ -- 633
+format.name$ -- 112
+if$ -- 2267
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 24
-newline$ -- 103
-num.names$ -- 40
-pop$ -- 263
+missing$ -- 33
+newline$ -- 126
+num.names$ -- 56
+pop$ -- 338
 preamble$ -- 1
-purify$ -- 88
+purify$ -- 119
 quote$ -- 0
-skip$ -- 254
+skip$ -- 337
 stack$ -- 0
-substring$ -- 524
-swap$ -- 74
+substring$ -- 746
+swap$ -- 103
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 166
+type$ -- 212
 warning$ -- 10
-while$ -- 47
+while$ -- 65
 width$ -- 0
-write$ -- 161
+write$ -- 204
 (There were 10 warnings)
