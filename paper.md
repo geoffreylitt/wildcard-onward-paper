@@ -1,5 +1,5 @@
 ---
-title: "Customizing Software by Direct Manipulation of Structured Data"
+title: "Customizing Software by Direct Manipulation of Tabular Data"
 bibliography: wildcard-onward-biblatex.bib
 link-citations: true
 csl: acm.csl
@@ -235,9 +235,187 @@ In Wildcard we provide a basic table editor as the user interface on top of the 
 
 _todo: other table instruments_
 
+<div class="pdf-only">
+```{=latex}
+\begin{table*}[]
+\begin{tabular}{llrl}
+\hline
+\textbf{Website} & \textbf{Description} & \textbf{LOC} & \textbf{Example customizations}                                                              \\ \hline
+Airbnb           & Travel               & 73                                       & Add Walkability Scores to listings. Sort listings by price.                           \\
+Amazon           & Online shopping      & 99                                       & Sort used book sellers by total price, including delivery fees                                \\
+Blogger          & Blogging             & 36                                       & Use alternate text editor to edit blog posts                                                 \\
+Expedia          & Travel               & 41                                       & Use alternate datepicker to enter travel dates                                               \\
+Flux             & Data portal          & 67                                       & Use Wildcard as a faster table editor for editing lab results                                \\
+Github           & Code repository      & 62                                       & Sort a user's code repositories by stars to find popular work                                \\
+Hacker News      & News                 & 69                                       & Add read times to links. Filter out links that have been read. \\
+Instacart        & Grocery delivery     & 48                                       & Sort groceries by price and category. Take notes on items.                                   \\
+Uber Eats        & Food delivery        & 117                                      & Sort/filter restaurants by estimated delivery ETA and price.                                 \\
+Weather.com  & Weather              & 51                                       & Sort/filter hourly weather to find nice times of day.                                        \\
+Youtube          & Videos               & 80                                       & Sort/filter videos by length, to find short videos to watch.                                 \\ \hline
+\end{tabular}
+\caption{A list of table-driven customizations that we have implemented using Wildcard.}
+\label{tab:websites}
+\end{table*}
+```
+</div>
+
+# Evaluation {#sec:evaluation}
+
+<div class="html-only">
+  todo: fill in this table
+</div>
+
+To evaluate table-driven customization in practice, we built the Wildcard
+browser extension, which implements table-driven customization in the context of
+existing websites. It is built in Typescript, and works across
+three major browsers: Chrome, Firefox, and Edge.
+
+We have used Wildcard to customize 11 websites, including transactional sites like Amazon and Uber Eats, and media consumption sites like Hacker News and Youtube. Table 1 summarizes all these customizations, including the number of lines of code in the adapter configuration for each site.
+
+So far, most usage of Wildcard has come from members of the project team. Here we offer our reflections on using the system, focused on two key questions:
+
+* How broad is the range of possible customizations in this paradigm?
+* How feasible is it to build DOM scraping adapters for real websites, in practice?
+
+## Range of customizations
+
+We have found that table-driven customization can serve a broad range of useful purposes.
+Here we expand on some examples that illuminate various aspects of
+using the system in practice.
+
+### Sorting/filtering
+
+It might seem that most websites already have adequate sorting and filtering functionality,
+but we have found it surprisingly helpful to add new sorting/filtering functionality to websites
+using Wildcard.
+
+Sometimes, websites have opaque algorithms which they use to rank
+results, which presumably maximize profit but don't offer much control to the user.
+For example, Airbnb doesn't allow users to sort listings by price,
+and Youtube doesn't allow users to sort the homepage by watch time.
+Wildcard enables users to take back some control over this process.
+
+In other cases we have found that a lack of sorting options seems less intentional,
+and simply a missing feature. For example, the Instacart grocery delivery service
+doesn't allow users to sort their grocery cart by price or category.
+Our guess is that they simply haven't gotten around to implementing the feature yet.
+
+In the current implementation of Wildcard, users can only sort and filter
+entries which are shown on the current page, which means that users are
+not entirely liberated from the suggestions of the opaque algorithm.
+We could work around this restriction in the future
+by fetching content across multiple pages,
+but we've also found that sorting/filtering a single page of a paginated list is often an
+acceptable outcome, and even a preferable one. For example, it's more useful to sort
+30 recommended Youtube videos than to try to sort all videos on Youtube;
+similarly it's convenient to view the Hacker News front page sorted by read time,
+rather than all Hacker News articles.
+
+### Annotating
+
+Many other web annotation systems focus on annotating text or arbitrary webpage content,
+but Wildcard only allows for annotating structured objects extracted by an adapter,
+which results in quite a different set of use cases.
+
+Annotating with Wildcard has proven most useful when taking notes
+on a list of possible options: e.g., evaluating possible Airbnb locations to rent.
+We have also used it with Instacart's online grocery cart, for jotting down notes like
+"should we get more milk?"
+
+### Formulas
+
+Formulas are the most powerful part of the Wildcard system.
+So far, we have only built a small number of functions into the language,
+but by adding more functions, the fundamental computing model
+could support a very broad range of useful computations, as shown by the success of spreadsheets.
+
+We have found that formulas are useful for fetching data
+from Web APIs. We've used them to augment Airbnb listings with walkability scores,
+and augment Hacker News articles with estimated read times.
+One challenge of the current language design is that
+supporting each web API requires adding a new function to the language using code,
+because web APIs typically return complex JSON data structures
+which don't make sense to display in a single table cell.
+Adding functions for handling JSON data to the formula language
+might help resolve this.
+
+We have also found instances where simple data manipulation is useful:
+adding together different subtotals into a total price, or
+manipulating the results of a formula expression with arithmetic
+or concatenating string labels, as shown in the example in [@sec:examples]. (_todo: this makes sense iff we switch the examples sectino to HN_)
+
+### Cell editors
+
+(_note: written with the assumption that Expedia gets cut from the Examples section_)
+
+"Cell editors" are UI widgets that expose
+a custom editing UI for a single cell of the table view.
+A programmer building a cell editor only needs to integrate
+it with the table viewer; actually propagating values into
+the website UI is handled by the site-specific DOM adapter.
+As a result, creating a new cell editor can be as easy as just
+creating glue code between the table editor and an existing UI widget library.
+
+One benefit of cell editors is that a user can use their personal information
+in a web UI without uploading it to the website. To
+explore this idea, we created a cell editor based on the
+FullCalendar Javascript plugin, which can load data from a Google Calendar.
+This makes it convenient to enter dates into a website based on
+the user's personal calendar information.
+
+Another benefit of cell editors is that a user can choose their preferred
+widget for editing some type of information.
+We built a cell editor based on the CKEditor rich text editor.
+As an example of using this editor, we integrated it with the Blogger website
+and used it to edit blog posts, in place of the Blogger website's built-in editor.
+
+### Limitations
+
+There are many useful customizations
+which are not possible in the table-driven customization paradigm.
+Wildcard can only make customizations that use the available data
+exposed in the table. UI modifications are limited in scope;
+for example, deleting arbitrary buttons isn't possible.
+At one point, we wanted to build an automation to repeatedly
+load a grocery delivery website to check for open delivery slots,
+but it wasn't clear how to achieve this.
+Some of these limitations are specific to the current implementation
+of the Wildcard extension, but some are more general to the entire
+idea of table-driven customization.
+
+We consider this an acceptable outcome—our goal is simply to
+make many useful customizations available to end users with a low threshold,
+not to span all possible customizations. [@sec:dm] discusses this point further.
+
+One benefit of Wildcard is _predictability_: once we built a site adapter for a website,
+it was generally obvious to us what types of customizations were and weren't possible,
+and the UI guided us towards building customizations that matched the system's model.
+For example, it's clear that it's not possible to customize a website using
+data not available in the table.
+
+## Viability of DOM scraping
+
+Our second evaluation area is less about the conceptual approach of
+table-driven customization, and more about our specific implementation
+of customizing existing web applications.
+In order for third-party customization through Wildcard to succeed,
+it is important that creating usable adapters for existing websites takes minimal effort.
+
+Most of our DOM scraping adapters were created by members of our team. However, an external developer unaffiliated with the project contributed one adapter, designed to sort the Github page listing a user's repositories. They described the experience as "very straightforward."
+
+The adapters for our test sites ranged from 36 to 117 lines of code, averaging 68 lines; Table 1 shows the full lines of code for each adapter.
+
+Some of the challenges of writing a DOM scraping adapter are the same ones as with writing normal web scraping code, but the more interactive nature of Wildcard introduces additional challenges.
+rve changes, but it may prove challenging to observe changes on some sites only through the DOM.
+One challenge is triggering updates to the spreadsheet data in response to UI changes that happen after initial page load. Site adapters are responsible for recognizing these changes by observing the DOM. So far, we have been able to use event listeners and the MutationObserver API to successfully obse
+
+Another challenge is persisting updates to the DOM—some websites use virtual DOM frameworks that can occasionally overwrite changes made by Wildcard.
+
+So far, we've managed to work around these issues for all the websites we've tried, but we don't claim that any website can be customized through DOM scraping. As web frontend code gets increasingly complex (and starts to move beyond the DOM to other technologies like Shadow DOM or even WebGL for rendering), it may become increasingly difficult to customize websites from the outside without first-party support.
+
 # Key themes {#sec:themes}
 
-## Customization by direct manipulation
+## Customization by direct manipulation {#sec:dm}
 
 Hutchins, Hollan and Norman [@hutchins1985] describe a direct manipulation interface
 as one that uses a model-world metaphor, rather than a conversation metaphor.
@@ -316,7 +494,6 @@ implement many useful customizations in practice.
 Also, there is sometimes a way to reframe an imperative script in terms of our direct manipulation model;
 for example, a script that iterates through rows in a page adding some
 additional information could be reproduced using a formula in Wildcard.
-(_todo: mention the fact that the data abstraction step limits possibilities_)
 
 ## Wrapping applications for customization
 
@@ -334,93 +511,83 @@ With Wildcard we propose a decoupling of these two layers: a repository of share
 
 (_todo: mention automated wrapper induction here or somewhere else?_)
 
-# Evaluation {#sec:evaluation}
 
-We used Wildcard to customize 11 websites, including transactional sites like Amazon and Uber Eats, media consumption sites like Hacker News and Youtube, and a lab results platform called Flux managed by a member of our research group. All of these customizations are summarized in Table 1.
-
-So far, most usage has come from members of the project team, although we have had a few external users try the system. Here we offer our reflections on using the system, focused on two key questions:
-
-* What is the range of useful customizations possible in this paradigm?
-* How feasible is it to build DOM scraping adapters for real websites, in practice?
-
-## Range of customizations
-
-Sorting/filtering
-
-* Instacart: organize groceries
-* uber eats: sort by category
-* youtube: sorting by watch time
-
-Annotating
-
-* annotate
-
-Augmenting
-
-* hacker news: media consumption
-* amazon: finding deals
-
-Cell editors
-
-Better table editor
-
-Not possible
-
-## Viability of DOM scraping
-
-In order for third-party customization through Wildcard to succeed, it is important that creating usable adapters for existing websites takes minimal effort.
-
-Most of our adapters were created by members of our team. However, an external developer unaffiliated with the project contributed one adapter, designed to sort the Github page listing a user's repositories. They described the experience as "very straightforward."
-
-The adapters for our test sites ranged from 36 to 117 lines of code, averaging 68 lines.
-
-Some of the challenges of writing a DOM scraping adapter are the same ones as with writing normal web scraping code, but the more interactive nature of Wildcard introduces additional challenges.
-
-One challenge is triggering updates to the spreadsheet data in response to UI changes that happen after initial page load. Site adapters are responsible for recognizing these changes by observing the DOM. So far, we have been able to use event listeners and the MutationObserver API to successfully observe changes, but it may prove challenging to observe changes on some sites only through the DOM.
-
-Another challenge is persisting updates to the DOM—some websites use virtual DOM frameworks that can occasionally overwrite changes made by Wildcard.
-
-Despite these challenges, we've managed to create an implementation that works around these issues in practice for all the websites we've tried so far, including fairly dynamic websites with rich frontends. However, we don't claim that any website can be customized through DOM scraping; as frontend complexity increases, robust DOM scraping becomes increasingly difficult.
 
 # Related Work {#sec:related-work}
 
-This paper extends a workshop paper by Litt and Jackson [@litt2020] which presented an earlier prototype version of the Wildcard system. We build on their work in this paper by rearchitecting the internal implementation of the system around the table adapter abstraction, evaluating it on many more websites, and by more fully characterizing the behavior and design of the system.
+This paper extends work reported in a workshop paper by Litt and Jackson [@litt2020] which presented an early prototype version of Wildcard. We have substantially extended their work in this paper by creating the table adapter abstraction and reimplementing the system around that abstraction, evaluating the system more fully on many more websites, and by characterizing the design of the system in more detail.
+
+Table-driven customization relates to two broad areas of related work. Our problem statement is related to software customization tools, and our solution approach is related to spreadsheets and other direct manipulation interfaces.
 
 ## Customization tools
 
-* Buttons [@maclean1990]: the original DM customization tool
-* ScrAPIr: direct manipulation for APIs!
+Table-driven customization is most closely related to other tools that aim
+to empower end users to customize software without doing any programming.
 
-* customization tools
-	* browser extensions
+This lineage goes back at least to the Buttons system by MacLean et al [@maclean1990], where
+Xerox Lisp users could share buttons that performed various "tailoring" actions
+on the system. The authors proposed the "gentle slope" idea which has
+greatly influenced our approach to table-driven customization (as discussed in [@sec:dm]).
+The authors also point out the importance of a "tailoring culture"
+where people with different skillsets collaborate to produce useful customizations;
+in their system, Lisp programmers create buttons that others can use, modify,
+and rearrange. This division of labor corresponds to our idea of semantic wrappers,
+where end user customization is supported by programmer-created building blocks.
 
-	* Thresher
-	* Sifter
-	* customization research tools: Chickenfoot, Coscripter
-	* Wildcard, like Chickenfoot, wants to hide HTML from users. But we show a structured data view, whereas Chickenfoot shows nothing
-	* visual customization tools:
-		* Mac Automator
-		* Zapier
-		* IFTTT
-		* These are weakly direct manipulation. But usually the thing you directly manipulate in these UIs is the _script_: not the actual _data_ you want to operate on. VERY DIFFERENT.
-	* desktop customization: Applescript, VBA, COM
+Some recent web customization tools aim to enable end users
+to modify web interfaces without programming.
 
-## Visual database query tools
+Sifter [@huynh2006] enables end users to sort and filter lists of data based
+on web scraping, much like Wildcard's sorting features. The main difference
+between the systems is that table-driven customization has many other use cases
+besides sorting and filtering. Also, Sifter
+involves end users in a semi-automated data extraction process, rather than
+having programmers create wrappers. This provides coverage of more websites,
+but at the expense of complicating the end user experience.
+We might explore such techniques in Wildcard in the future, but we think
+that it's valuable for end users to have a customization experience
+free of web scraping details on supported websites.
+Finally Sifter implements scraping across multiple pages,
+a valuable feature for sorting and filtering which isn't present in Wildcard.
 
-* database GUIs:
+Thresher [@hogue2005] enables end users to create wrappers which
+map website content to Semantic Web schemas, making customizations available
+using the schema information. We share the general idea of wrappers with
+Thresher, but we have chosen to map to a single generic data type,
+rather than more specific schemas, which increases the range of websites
+and data supported by the system.
+
+scripting tools
+* Chickenfoot [@bolin2005]
+* Coscripter [@leshed2008]
+* Applescript
+* Mac Automator
+* VBA
+* Zapier, IFTTT
+* Some are weakly direct manipulation. But usually the thing you directly manipulate in these UIs is the _script_: not the actual _data_ you want to operate on. VERY DIFFERENT.
+
+## Direct manipulation programming interfaces.
+
+closest: database GUIs:
 	* Sieuferd [@bakke2016]
+    * provides useful overview
 	* Airtable [@2020a]
-	* other similar tools?
-	* Liu & Jagadish: rules for a spreadsheet algebra for database queries [@liu2009]
-	* Shneiderman paper
+
+
 	* spreadsheets
 
-## Other
+Object Spreadsheets [@mccutchen2016]
+Quilt [@benson2014]
+Gneiss [@chang2014]
+Marmite [@wong2007]
+Airtable [@zotero-79]
+Glide [@zotero-81]
 
-* web scraping / wrapper induction
-* instrumental interaction, Scotty [@eagan2011], Webstrates
-* browser dev tools
-* Self, Smalltalk
-* multiple representations
-* Semantic Web
+???
+
+* Scrapir [@alrashed2020]
+  * similar goal: fetch data from web APIs, avoid scraping
+  * declarative, no coding
+
+  Self
 
