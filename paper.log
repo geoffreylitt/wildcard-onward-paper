@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  20 MAY 2020 23:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  20 MAY 2020 23:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1148,7 +1148,7 @@ T-TLF/m/n/10 (-20) : Cur-rently, the main mech-
 Underfull \vbox (badness 2698) has occurred while \output is active []
 
 [7.7] [8.8]
-Overfull \hbox (3.4535pt too wide) in paragraph at lines 859--861
+Overfull \hbox (3.4535pt too wide) in paragraph at lines 853--855
 []\T1/LinuxLibertineT-TLF/m/n/10 (-20) customization re-search tools: Chick-en-
 foot, Co-scripter 
  []
@@ -1169,27 +1169,23 @@ LaTeX Info: Redefining \tempurl on input line 203.
 
 Class acmart Warning: Some images may lack descriptions.
 
-
-Package balance Warning: You have called \balance in second column
-(balance)                Columns might not be balanced.
-
 [10.10]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 934.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 934.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 928.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 928.
 (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 934.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 934.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 928.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 928.
 Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: 2B1359988CC4CADA4A5AF758117FCF74;3335.
  ) 
 Here is how much of TeX's memory you used:
- 18370 strings out of 492616
- 279073 string characters out of 6129482
- 401628 words of memory out of 5000000
- 21379 multiletter control sequences out of 15000+600000
+ 18364 strings out of 492616
+ 278959 string characters out of 6129482
+ 406518 words of memory out of 5000000
+ 21377 multiletter control sequences out of 15000+600000
  168620 words of font info for 317 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,16n,94p,796b,556s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,17n,94p,796b,512s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-4.enc}{
 /usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/
 usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/u
@@ -1205,10 +1201,10 @@ bertineTB.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/
 LinLibertineTBI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libe
 rtine/LinLibertineTI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public
 /newtx/txsys.pfb>
-Output written on paper.pdf (10 pages, 4160374 bytes).
+Output written on paper.pdf (10 pages, 4159688 bytes).
 PDF statistics:
- 335 PDF objects out of 1000 (max. 8388607)
- 286 compressed objects within 3 object streams
- 81 named destinations out of 1000 (max. 500000)
+ 330 PDF objects out of 1000 (max. 8388607)
+ 281 compressed objects within 3 object streams
+ 77 named destinations out of 1000 (max. 500000)
  51913 words of extra memory for PDF output out of 61914 (max. 10000000)
 

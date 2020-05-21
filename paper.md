@@ -279,14 +279,13 @@ and dropping commands. These environments still do not constitute
 direct manipulation, though: the objects being manipulated are in the domain of
 programming, not the domain of the task at hand.
 
-It is a perfectly unreasonable choice to choose imperative programming as the model
-for building customizations. Imperative programming
-provides a high ceiling for possible customizations, and the model of a
-sequence of commands is a natural fit for automation workflows which
+It is reasonable to choose imperative programming as the model
+for building customizations. Turing-Complete programming
+provides a high ceiling for possible customizations, and the a
+sequence of commands is a natural fit for automations which
 simulate a series of steps taken by the user.
-However, there is a serious drawback to this approach.
 
-MacLean et al [@maclean1990]
+However, there is a serious drawback to this approach. MacLean et al [@maclean1990]
 describe an ideal for user-tailorable systems: a "gentle slope" from using
 to customizing, where small incremental increases in skill lead to
 corresponding increments of customization power. Requiring users to learn

@@ -631,9 +631,6 @@ well as basic query operations like sorting and filtering.
 \subsection{Customization by direct
 manipulation}\label{customization-by-direct-manipulation}}
 
-\hypertarget{the-programming-cliff}{%
-\subsubsection{The programming cliff}\label{the-programming-cliff}}
-
 Hutchins, Hollan and Norman \citep{hutchins1985} describe a direct
 manipulation interface as one that uses a model-world metaphor, rather
 than a conversation metaphor. Rather than conversing with the system
@@ -659,27 +656,24 @@ by dragging and dropping commands. These environments still do not
 constitute direct manipulation, though: the objects being manipulated
 are in the domain of programming, not the domain of the task at hand.
 
-It is a perfectly unreasonable choice to choose imperative programming
-as the model for building customizations. Imperative programming
-provides a high ceiling for possible customizations, and the model of a
-sequence of commands is a natural fit for automation workflows which
-simulate a series of steps taken by the user. However, there is a
-serious drawback to this approach.
+It is reasonable to choose imperative programming as the model for
+building customizations. Turing-Complete programming provides a high
+ceiling for possible customizations, and the a sequence of commands is a
+natural fit for automations which simulate a series of steps taken by
+the user.
 
-MacLean et al \citep{maclean1990} describe an ideal for user-tailorable
-systems: a ``gentle slope'' from using to customizing, where small
-incremental increases in skill lead to corresponding increments of
-customization power. Requiring users to learn programming for
-customization creates an abrupt ``cliff,'' where a significant learning
-investment is required even to implement simple customizations. Another
-goal of MacLean et al is that ``it should be as easy to change the
-environment as it is to use it,'' at least for some subset of changes.
-In scripting languages, even user-friendly ones like Applescript or
-Chickenfoot, the experience of customization does not remotely resemble
-the experience of use, so these systems can't meet this goal.
-
-\hypertarget{a-gentler-slope}{%
-\subsubsection{A gentler slope}\label{a-gentler-slope}}
+However, there is a serious drawback to this approach. MacLean et al
+\citep{maclean1990} describe an ideal for user-tailorable systems: a
+``gentle slope'' from using to customizing, where small incremental
+increases in skill lead to corresponding increments of customization
+power. Requiring users to learn programming for customization creates an
+abrupt ``cliff,'' where a significant learning investment is required
+even to implement simple customizations. Another goal of MacLean et al
+is that ``it should be as easy to change the environment as it is to use
+it,'' at least for some subset of changes. In scripting languages, even
+user-friendly ones like Applescript or Chickenfoot, the experience of
+customization does not remotely resemble the experience of use, so these
+systems can't meet this goal.
 
 With table-driven customization we aim to provide a gentler slope, by
 using direct manipulation for software customization. The data shown in
