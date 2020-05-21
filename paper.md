@@ -11,9 +11,12 @@ secPrefix:
   - "Section"
   - "Sections"
 abstract: |
-  In this paper we propose *table-driven customization,* a new paradigm for enabling end users to customize software applications without doing traditional programming*.* Users directly manipulate a tabular view of the structured data inside the application, rather than writing imperative scripts as in most customization tools. We extend this simple model with a spreadsheet formula language and custom data editing widgets, which provide sufficient expressivity to implement many useful customizations.
+  In this paper we show how the behavior of a software application can be extended and adapted  by direct manipulation, using  table-driven customization, a new paradigm that allows end users to customize applications without writing traditional code.
 
-  We describe Wildcard, a browser extension which implements table-driven customization in the context of web applications. Through concrete examples, we demonstrate that this paradigm can be used to create useful customizations for real applications. We share reflections from our usage of the Wildcard system, including its strengths and limitations relative to other customization approaches. We further explore how new software architectures might encourage application developers to promote this style of end-user customization.
+  Instead, users directly manipulate a tabular view of the structured data inside the application—rather than writing imperative scripts (as in most customization tools). This simple model also accommodates a spreadsheet formula language and custom data editing widgets, which provide sufficient expressivity to implement many useful customizations.
+
+  We illustrate the approach with Wildcard, a browser extension that implements table-driven customization in the context of web applications. Through concrete examples, we show that our paradigm can be used to create useful customizations for real applications. We share reflections from experience using the Wildcard system, on both its strengths and limitations relative to other customization approaches. Finally, we explore how this paradigm might lead to new software architectures that encourage this form of customization.
+
 ---
 
 # Introduction
