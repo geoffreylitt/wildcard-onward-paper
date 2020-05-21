@@ -24,6 +24,44 @@
 %% The first command in your LaTeX source must be the \documentclass command.
 \documentclass[sigplan,10pt,anonymous,review]{acmart}
 
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -659,11 +697,10 @@ by dragging and dropping commands. These environments still do not
 constitute direct manipulation, though: the objects being manipulated
 are in the domain of programming, not the domain of the task at hand.
 
-It is reasonable to choose imperative programming as the model for
-building customizations. Turing-Complete programming provides a high
-ceiling for possible customizations, and the a sequence of commands is a
-natural fit for automations which simulate a series of steps taken by
-the user.
+Imperative programming is a reasonable choice as the model for building
+customizations. Turing-complete programming provides a high ceiling for
+possible customizations, and a sequence of commands is a natural fit for
+automations which simulate a series of steps taken by the user.
 
 However, there is a serious drawback to this approach. MacLean et al
 \citep{maclean1990} describe an ideal for user-tailorable systems: a
@@ -778,10 +815,15 @@ else?})
 \hypertarget{sec:evaluation}{%
 \section{Evaluation}\label{sec:evaluation}}
 
-We have used Wildcard to build customizations for many real websites. So
-far, most usage has come from members of the project team, although we
-have had a few external users try the system. Here we offer our
-reflections on using the system, focused on two key questions:
+We used Wildcard to customize 11 websites, including transactional sites
+like Amazon and Uber Eats, media consumption sites like Hacker News and
+Youtube, and a medical results entry platform managed by a member of our
+research group. (\emph{todo: summarize all of these in a table}) So far,
+most usage has come from members of the project team, although we have
+had a few external users try the system.
+
+Here we offer our reflections on using the system, focused on two key
+questions:
 
 \begin{itemize}
 \tightlist
@@ -795,24 +837,87 @@ reflections on using the system, focused on two key questions:
 \hypertarget{range-of-customizations}{%
 \subsection{Range of customizations}\label{range-of-customizations}}
 
-\emph{todo}
-
 \hypertarget{viability-of-dom-scraping}{%
 \subsection{Viability of DOM scraping}\label{viability-of-dom-scraping}}
 
-In order for our idea of third-party customization through Wildcard to
-succeed, it is important that creating usable adapters for existing
-websites takes minimal effort.
+In order for third-party customization through Wildcard to succeed, it
+is important that creating usable adapters for existing websites takes
+minimal effort.
 
-To test the viability of writing DOM scraping adapters, we built
-adapters for 10 websites, including transactional sites like Amazon and
-Uber Eats, media consumption sites like Hacker News and Youtube, and a
-medical results entry platform managed by a member of our research
-group. The adapters ranged from 36 to 117 lines of code, averaging 68
-lines. In addition, an external developer unaffiliated with the project
-contributed one adapter, designed to sort the Github page listing a
-user's repositories, and described the experience as ``very
-straightforward.''
+Most of our adapters were created by members of our team. However, an
+external developer unaffiliated with the project contributed one
+adapter, designed to sort the Github page listing a user's repositories.
+They described the experience as ``very straightforward.''
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\StringTok{\textquotesingle{}use strict\textquotesingle{}}\OperatorTok{;}
+\ImportTok{import} \OperatorTok{\{}\NormalTok{ urlMatches}\OperatorTok{,}\NormalTok{ extractNumber }\OperatorTok{\}} \ImportTok{from} \StringTok{"../utils"}\OperatorTok{;}
+\ImportTok{import} \OperatorTok{\{}\NormalTok{ createDomScrapingAdapter }\OperatorTok{\}} \ImportTok{from} \StringTok{"./domScrapingBase"}
+
+\KeywordTok{const}\NormalTok{ GithubAdapter }\OperatorTok{=} \AttributeTok{createDomScrapingAdapter}\NormalTok{(}\OperatorTok{\{}
+  \DataTypeTok{name}\OperatorTok{:} \StringTok{"Github"}\OperatorTok{,}
+  \DataTypeTok{enabled}\OperatorTok{:}\NormalTok{ () }\KeywordTok{=>} \AttributeTok{urlMatches}\NormalTok{(}\SpecialStringTok{/github.com.}\SpecialCharTok{*}\SpecialStringTok{tab=repositories/}\NormalTok{)}\OperatorTok{,}
+  \DataTypeTok{attributes}\OperatorTok{:}\NormalTok{ [}
+    \OperatorTok{\{} \DataTypeTok{name}\OperatorTok{:} \StringTok{"name"}   \OperatorTok{,} \DataTypeTok{type}\OperatorTok{:} \StringTok{"text"}\OperatorTok{\},}
+    \OperatorTok{\{} \DataTypeTok{name}\OperatorTok{:} \StringTok{"stars"}  \OperatorTok{,} \DataTypeTok{type}\OperatorTok{:} \StringTok{"numeric"}\OperatorTok{\},}
+    \OperatorTok{\{} \DataTypeTok{name}\OperatorTok{:} \StringTok{"forks"}  \OperatorTok{,} \DataTypeTok{type}\OperatorTok{:} \StringTok{"text"}\OperatorTok{\},}
+    \OperatorTok{\{} \DataTypeTok{name}\OperatorTok{:} \StringTok{"updated"}\OperatorTok{,} \DataTypeTok{type}\OperatorTok{:} \StringTok{"text"}\OperatorTok{\},}
+    \CommentTok{// }\AlertTok{TODO}\CommentTok{ datetime type would be nice? not everything has ISO formatted strings}
+\NormalTok{  ]}\OperatorTok{,}
+  \AttributeTok{scrapePage}\NormalTok{() }\OperatorTok{\{}
+    \ControlFlowTok{return} \VariableTok{Array}\NormalTok{.}\AttributeTok{from}\NormalTok{(}\VariableTok{document}\NormalTok{.}\AttributeTok{querySelectorAll}\NormalTok{(}\StringTok{"li.source"}\NormalTok{)).}\AttributeTok{map}\NormalTok{(el }\KeywordTok{=>} \OperatorTok{\{}
+      \KeywordTok{let}\NormalTok{ name\_el }\OperatorTok{=} \VariableTok{el}\NormalTok{.}\AttributeTok{querySelector}\NormalTok{(}\StringTok{\textquotesingle{}a[itemprop="name codeRepository"]\textquotesingle{}}\NormalTok{)}
+      \KeywordTok{let}\NormalTok{ name }\OperatorTok{=} \VariableTok{name\_el}\NormalTok{.}\VariableTok{textContent}\NormalTok{.}\AttributeTok{trim}\NormalTok{()}
+
+      \KeywordTok{let}\NormalTok{ stars\_el }\OperatorTok{=} \VariableTok{el}\NormalTok{.}\AttributeTok{querySelector}\NormalTok{(}\StringTok{\textquotesingle{}*[href*="/stargazers"\textquotesingle{}}\NormalTok{)}
+      \KeywordTok{let}\NormalTok{ stars }\OperatorTok{=} \AttributeTok{extractNumber}\NormalTok{(stars\_el}\OperatorTok{,} \DecValTok{0}\NormalTok{)}
+
+      \KeywordTok{let}\NormalTok{ forks\_el }\OperatorTok{=} \VariableTok{el}\NormalTok{.}\AttributeTok{querySelector}\NormalTok{(}\StringTok{\textquotesingle{}*[href*="/network/members"]\textquotesingle{}}\NormalTok{)}
+      \KeywordTok{let}\NormalTok{ forks }\OperatorTok{=} \AttributeTok{extractNumber}\NormalTok{(forks\_el}\OperatorTok{,} \DecValTok{0}\NormalTok{)}
+
+      \KeywordTok{let}\NormalTok{ lang\_el }\OperatorTok{=} \VariableTok{el}\NormalTok{.}\AttributeTok{querySelector}\NormalTok{(}\StringTok{\textquotesingle{}*[itemprop="programmingLanguage"]\textquotesingle{}}\NormalTok{)}
+      \CommentTok{// some repos don\textquotesingle{}t have language set}
+      \KeywordTok{let}\NormalTok{ lang }\OperatorTok{=}\NormalTok{ lang\_el }\OperatorTok{==} \KeywordTok{null} \OperatorTok{?} \KeywordTok{null}\NormalTok{ : }\VariableTok{lang\_el}\NormalTok{.}\VariableTok{textContent}\NormalTok{.}\AttributeTok{trim}\NormalTok{()}
+
+      \KeywordTok{let}\NormalTok{ updated\_el }\OperatorTok{=} \VariableTok{el}\NormalTok{.}\AttributeTok{querySelector}\NormalTok{(}\StringTok{\textquotesingle{}relative{-}time\textquotesingle{}}\NormalTok{)}
+      \KeywordTok{let}\NormalTok{ updated }\OperatorTok{=} \VariableTok{updated\_el}\NormalTok{.}\AttributeTok{getAttribute}\NormalTok{(}\StringTok{\textquotesingle{}datetime\textquotesingle{}}\NormalTok{)}
+
+      \ControlFlowTok{return} \OperatorTok{\{}
+          \DataTypeTok{id}\OperatorTok{:}\NormalTok{ name}\OperatorTok{,}
+          \DataTypeTok{rowElements}\OperatorTok{:}\NormalTok{ [el]}\OperatorTok{,}
+          \DataTypeTok{dataValues}\OperatorTok{:} \OperatorTok{\{}
+              \DataTypeTok{name}\OperatorTok{:}\NormalTok{ name}\OperatorTok{,}
+              \DataTypeTok{stars}\OperatorTok{:}\NormalTok{ stars}\OperatorTok{,}
+              \DataTypeTok{forks}\OperatorTok{:}\NormalTok{ forks}\OperatorTok{,}
+              \DataTypeTok{updated}\OperatorTok{:}\NormalTok{ updated}\OperatorTok{,}
+          \OperatorTok{\},}
+      \OperatorTok{\}}
+    \OperatorTok{\}}\NormalTok{)}
+  \OperatorTok{\},}
+  \DataTypeTok{onRowSelected}\OperatorTok{:}\NormalTok{ (row) }\KeywordTok{=>} \OperatorTok{\{}
+      \VariableTok{row}\NormalTok{.}\VariableTok{rowElements}\NormalTok{.}\AttributeTok{forEach}\NormalTok{(el }\KeywordTok{=>} \OperatorTok{\{}
+          \ControlFlowTok{if}\NormalTok{ (}\VariableTok{el}\NormalTok{.}\AttributeTok{style}\NormalTok{) }\OperatorTok{\{}
+              \VariableTok{el}\NormalTok{.}\AttributeTok{style}\NormalTok{[}\StringTok{"background{-}color"}\NormalTok{] }\OperatorTok{=} \StringTok{"\#def3ff"}
+          \OperatorTok{\}}
+      \OperatorTok{\}}\NormalTok{)}\OperatorTok{;}
+      \VariableTok{row}\NormalTok{.}\AttributeTok{rowElements}\NormalTok{[}\DecValTok{0}\NormalTok{].}\AttributeTok{scrollIntoView}\NormalTok{(}\OperatorTok{\{} \DataTypeTok{behavior}\OperatorTok{:} \StringTok{"smooth"}\OperatorTok{,} \DataTypeTok{block}\OperatorTok{:} \StringTok{"center"} \OperatorTok{\}}\NormalTok{)}
+  \OperatorTok{\},}
+  \DataTypeTok{onRowUnselected}\OperatorTok{:}\NormalTok{ (row) }\KeywordTok{=>} \OperatorTok{\{}
+      \VariableTok{row}\NormalTok{.}\VariableTok{rowElements}\NormalTok{.}\AttributeTok{forEach}\NormalTok{(el }\KeywordTok{=>} \OperatorTok{\{}
+          \ControlFlowTok{if}\NormalTok{(}\VariableTok{el}\NormalTok{.}\AttributeTok{style}\NormalTok{) }\OperatorTok{\{}
+              \VariableTok{el}\NormalTok{.}\AttributeTok{style}\NormalTok{[}\StringTok{"background{-}color"}\NormalTok{] }\OperatorTok{=} \VerbatimStringTok{\textasciigrave{}\textasciigrave{}}
+          \OperatorTok{\}}
+      \OperatorTok{\}}\NormalTok{)}
+  \OperatorTok{\},}
+\OperatorTok{\}}\NormalTok{)}
+
+\ImportTok{export} \ImportTok{default}\NormalTok{ GithubAdapter}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+The adapters for our test sites ranged from 36 to 117 lines of code,
+averaging 68 lines.
 
 Some of the challenges of writing a DOM scraping adapter are the same
 ones involved with writing normal web scraping code, but the more

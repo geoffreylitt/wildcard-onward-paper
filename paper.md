@@ -263,9 +263,9 @@ and dropping commands. These environments still do not constitute
 direct manipulation, though: the objects being manipulated are in the domain of
 programming, not the domain of the task at hand.
 
-It is reasonable to choose imperative programming as the model
-for building customizations. Turing-Complete programming
-provides a high ceiling for possible customizations, and the a
+Imperative programming is a reasonable choice as the model
+for building customizations. Turing-complete programming
+provides a high ceiling for possible customizations, and a
 sequence of commands is a natural fit for automations which
 simulate a series of steps taken by the user.
 
@@ -336,25 +336,51 @@ With Wildcard we propose a decoupling of these two layers: a repository of share
 
 # Evaluation {#sec:evaluation}
 
-We have used Wildcard to build customizations for many real websites.
-So far, most usage has come from members of the project team, although we have
-had a few external users try the system.
-Here we offer our reflections on using the system, focused on two key questions:
+We used Wildcard to customize 11 websites, including transactional sites like Amazon and Uber Eats, media consumption sites like Hacker News and Youtube, and a lab results platform called Flux managed by a member of our research group. All of these customizations are summarized in Table 1.
+
+So far, most usage has come from members of the project team, although we have had a few external users try the system. Here we offer our reflections on using the system, focused on two key questions:
 
 * What is the range of useful customizations possible in this paradigm?
 * How feasible is it to build DOM scraping adapters for real websites, in practice?
 
 ## Range of customizations
 
-_todo_
+Sorting/filtering
+
+* Instacart: organize groceries
+* uber eats: sort by category
+* youtube: sorting by watch time
+
+Annotating
+
+* annotate
+
+Augmenting
+
+* hacker news: media consumption
+* amazon: finding deals
+
+Cell editors
+
+Better table editor
+
+Not possible
 
 ## Viability of DOM scraping
 
-In order for our idea of third-party customization through Wildcard to succeed, it is important that creating usable adapters for existing websites takes minimal effort.
+In order for third-party customization through Wildcard to succeed, it is important that creating usable adapters for existing websites takes minimal effort.
 
-To test the viability of writing DOM scraping adapters, we built adapters for 10 websites, including transactional sites like Amazon and Uber Eats, media consumption sites like Hacker News and Youtube, and a medical results entry platform managed by a member of our research group. The adapters ranged from 36 to 117 lines of code, averaging 68 lines. In addition, an external developer unaffiliated with the project contributed one adapter, designed to sort the Github page listing a user's repositories, and described the experience as "very straightforward."
+Most of our adapters were created by members of our team. However, an external developer unaffiliated with the project contributed one adapter, designed to sort the Github page listing a user's repositories. They described the experience as "very straightforward."
 
-Some of the challenges of writing a DOM scraping adapter are the same ones involved with writing normal web scraping code, but the more interactive nature of Wildcard introduces additional challenges. One challenge is triggering updates to the spreadsheet data in response to UI changes that happen after initial page load. Site adapters are responsible for recognizing these changes by observing the DOM. So far, we have been able to use event listeners and the MutationObserver API to successfully observe changes, but it may prove challenging to observe changes on some sites only through the DOM. Another challenge is persisting updates to the DOM—some websites use virtual DOM frameworks that can occasionally overwrite changes made by Wildcard. Despite these challenges, we've managed to create an implementation that works around these issues in practice, and results in a usable customization experience for all the websites we've tried so far.
+The adapters for our test sites ranged from 36 to 117 lines of code, averaging 68 lines.
+
+Some of the challenges of writing a DOM scraping adapter are the same ones as with writing normal web scraping code, but the more interactive nature of Wildcard introduces additional challenges.
+
+One challenge is triggering updates to the spreadsheet data in response to UI changes that happen after initial page load. Site adapters are responsible for recognizing these changes by observing the DOM. So far, we have been able to use event listeners and the MutationObserver API to successfully observe changes, but it may prove challenging to observe changes on some sites only through the DOM.
+
+Another challenge is persisting updates to the DOM—some websites use virtual DOM frameworks that can occasionally overwrite changes made by Wildcard.
+
+Despite these challenges, we've managed to create an implementation that works around these issues in practice for all the websites we've tried so far, including fairly dynamic websites with rich frontends. However, we don't claim that any website can be customized through DOM scraping; as frontend complexity increases, robust DOM scraping becomes increasingly difficult.
 
 # Related Work {#sec:related-work}
 
