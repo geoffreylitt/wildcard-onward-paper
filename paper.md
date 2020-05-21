@@ -32,11 +32,10 @@ In [@sec:architecture] we explain the architecture of table-driven customization
 
 We have used Wildcard to build real customizations for 11 different websites. In [@sec:evaluation] we present reflections from this process: customizations we were able to build, limitations we encountered, and reflections on the ease of integrating scraping logic with real websites.
 
-Table-driven customization embodies several design principles for building customizable software systems, discussed in [@sec:themes]:
+In [@sec:themes], we discuss some key themes from our work:
 
 * *Customization by direct manipulation*: End users should be able to customize an application by examining and modifying its data, rather than by writing imperative scripts.
-* *Third-party semantic wrappers*: Typically, customization tools which don't rely on official extension APIs resort to offering low-level APIs for customization. Instead, we suggest a community-maintained library of semantic wrappers around existing applications, offering end users a more convenient semantic API for customization.
-* *Gentle slope*: Customization tools should ideally offer a "gentle slope" from normal use to customization. We explore how our approach meets this goal by making some software customizations as easy as normal use of the software.
+* *Third-party semantic wrappers*: Typically, tools that don't rely on official extension APIs resort to offering low-level APIs for customization. Instead, we suggest a community-maintained library of semantic wrappers around existing applications, enabling end users to work with domain objects rather than low-level representations.
 
 Table-driven customization relates to existing work in many areas. In particular, our goals overlap with many software customization tools, and our methods overlap with direct manipulation interfaces for working with structured data, including visual database query systems and spreadsheets. We explore these connections and more in [@sec:related-work].
 
@@ -68,30 +67,15 @@ In 2012, the travel site Airbnb removed the ability to sort accommodation search
 
 Using Wildcard, the user can fix this omission, while leaving the page's design and the rest of its functionality unchanged.<span class="pdf-only"> [@fig:airbnb-demo] shows an overview of augmenting the Airbnb site.</span> First, the user opens up the Wildcard panel, which shows a table corresponding to the search results in the page. As they click around in the table, the corresponding row in the page is highlighted to indicate the mapping between the views.
 
-<video controls="controls" muted="muted" src="media/table.mp4" muted playsinline controls class>
-</video>
-
 Then, the user clicks on the price column header to sort the spreadsheet and the Airbnb UI by price<span class="pdf-only"> ([@fig:airbnb-demo], Note A)</span>. They also filter to listings with a user rating above 4.5 (another feature missing in the original Airbnb UI).
-
-<video controls="controls" muted="muted" src="media/sort-filter.mp4" muted playsinline controls class>
-</video>
 
 After manipulating the data, the user closes the table view and continues using the website. Because the application's UI usually has a nicer visual design than a spreadsheet, Wildcard does not aim to replace it—at any time, the user can use either the UI, the spreadsheet, or both together.
 
 Many websites that show lists of data also offer actions on rows in the table, like adding an item to a shopping cart. Wildcard has the ability to make these "row actions" available in the data table through the site adapter. In the Airbnb UI, saving multiple listings to a Favorites list requires tediously clicking through them one by one. Using Wildcard row actions, the user can select multiple rows and favorite all of them with a single click<span class="pdf-only"> ([@fig:airbnb-demo], Note B)</span>. Similarly, the user can open the detailed pages for many listings at once.
 
-<video controls="controls" muted="muted" src="media/favorite-open.mp4" muted playsinline controls class>
-</video>
-
 Next, the user wants to jot down some notes about each listing. To do this, they type some notes into an additional column in each row, and the notes appear inside the listings in the original UI<span class="pdf-only"> ([@fig:airbnb-demo], Note C)</span>. The annotations are saved in the browser and associated with the backend ID of the listing, so they will appear in future browser sessions that display the same listing.
 
-<video controls="controls" muted="muted" src="media/annotate.mp4" muted playsinline controls class>
-</video>
-
 Wildcard also includes a formula language that enables more sophisticated customizations. When traveling without a car, it's useful to evaluate potential places to stay based on how walkable the surroundings are. Using a formula, the user can integrate Airbnb with Walkscore, an API that rates the walkability of any location on a 1-100 scale. When the user calls the `walkscore` formula with the listing's latitude and longitude as arguments, it returns the walk score for that location and shows it as the cell value. Because the cell's contents are injected into the page, the score also appears in the UI<span class="pdf-only"> ([@fig:airbnb-demo], Note D)</span>.
-
-<video controls="controls" muted="muted" src="media/walkscore.mp4" muted playsinline controls class>
-</video>
 
 ## Snoozing todos
 
@@ -114,13 +98,7 @@ In addition to fetching data from other sources, Wildcard formulas can also perf
 
 The user opens the table view, which shows the text and completed status of each todo. They start the customization by adding a new column to store the snooze date for each todo<span class="pdf-only"> ([@fig:todomvc-demo], Note A)</span>.
 
-<video controls="controls" muted="muted" src="media/todo-date.mp4" muted playsinline controls class>
-</video>
-
 The next step is to hide snoozed todos. The user creates a `snoozed?` column, which uses a formula to compute whether a todo is snoozed—i.e., whether it has a snooze date in the future<span class="pdf-only"> ([@fig:todomvc-demo], Note B)</span>. Then, they simply filter the table to hide the snoozed todos<span class="pdf-only"> ([@fig:todomvc-demo], Note C)</span>.
-
-<video controls="controls" muted="muted" src="media/todo-snooze-formula.mp4" muted playsinline controls class>
-</video>
 
 Because the built-in `NOW()` function always returns the current datetime, snoozed todos will automatically appear once their snooze date arrives.
 
@@ -145,15 +123,9 @@ Because this implementation of snoozing was built on the spreadsheet abstraction
 
 It might seem that Wildcard is only useful on websites that display lists of tabular data, but the table metaphor is flexible enough to represent many types of data. For example, a flight search form on Expedia can be represented as a single row, with a column corresponding to each input<span class="pdf-only"> ([@fig:expedia-demo], Note A)</span>.
 
-<video controls="controls" muted="muted" src="media/expedia-table.mp4" muted playsinline controls class>
-</video>
-
 In some of the previous examples, the table cells were read-only (because users can't, for example, change the name or price of an Airbnb listing). In this case, the cells are writable, which means that changes in the table are reflected in the form inputs. This becomes especially useful when combined with GUI widgets that can edit the value of a table cell.
 
-Filling in dates for a flight search often requires a cumbersome workflow: open up a separate calendar app, find the dates for the trip, and then carefully copy them into the form. In Wildcard, the user can avoid this by using a datepicker widget that shows the user's personal calendar events<span class="pdf-only"> ([@fig:expedia-demo], Note B)</span>. The user can directly click on the correct date, and it gets inserted into both the spreadsheet and the original form.
-
-<video controls="controls" muted="muted" src="media/datepicker.mp4" muted playsinline controls class>
-</video>
+Filling in dates for a flight search often requires a cumbersome workflow: open up a separate calendar app, find the dates for the trip, and then carefully copy them into the form. In Wildcard, the user can avoid this by using a datepicker widget that shows the user's personal calendar events<span class="pdf-only"> ([@fig:expedia-demo], Note B)</span>. The user can directly click on the correct date, and it gets inserted into both the spreadsheet and the original form.n
 
 # System architecture {#sec:architecture}
 
@@ -275,7 +247,7 @@ The query engine is also responsible for executing formulas. We have built a sma
 
 ## Table editor
 
-In Wildcard we provide a basic table editor as the user interface on top of the query engine. It is built with the Handsontable Javascript library, which provides UI elements for  viewing and editing a table, as well as basic query operations like sorting and filtering.
+In Wildcard we provide a basic table editor as the user interface on top of the query engine. It is built with the Handsontable Javascript library, which provides UI elements for viewing and editing a table, as well as basic query operations like sorting and filtering.
 
 _todo: other table instruments_
 
@@ -283,37 +255,96 @@ _todo: other table instruments_
 
 ## Customization by direct manipulation
 
-* reprise intro--explain direct manipulation
-* the key is that the DATA is being direct manipulated, not a script
-* it's essentially an alternate UI for an existing app, not a scripting env
-* argue for the benefit of multiple representations [@ainsworth1999]
-  * abstraction
-  * different affordances
-* address Tchernavskij's point about contrasting with instrumental interaction
+Hutchins, Hollan and Norman [@hutchins1985] describe a direct manipulation interface
+as one that uses a model-world metaphor, rather than a conversation metaphor.
+Rather than conversing with the system about an assumed world, "the world is
+explicitly represented" and the user can "[act] upon the objects of the task domain themselves."
 
+Most GUIs today employ direct manipulation, but
+software customization tools typically use an imperative programming model,
+which implements the conversational metaphor rather than direct manipulation.
+For example, in Applescript [@cook2007], the scripting language for
+customizing Mac OS applications, here is how a user retrieves a list of
+of calendar names from the Calendar application:
 
-## Gentle slope
+```
+tell application "Calendar"
+  name of calendars
+end tell
+```
 
-Term originally came from [@maclean1990]
+Some customization environments (Mac Automator, Zapier) forego text syntax
+and enable the user to connect programs and construct automations by dragging
+and dropping commands. These environments still do not constitute
+direct manipulation, though: the objects being manipulated are in the domain of
+programming, not the domain of the task at hand.
 
-- [@maclean1990] says "some customizations should be as easy as using the app", we have achieved that
-- here's where "automation vs customization" comes in: automation frames it as entering a whole new scripting environment; we frame it more as just an alternate UI that you can use.
-- backend APIs: terrible
-- the best would be right inline with the GUI (cite Scotty, instrumental work) but this has its own problems
-- we settle for a compromise: an alternate structured view. (explicitly contrast this clearly)
-- the CLI GUI thing
+It is a perfectly unreasonable choice to choose imperative programming as the model
+for building customizations. Imperative programming
+provides a high ceiling for possible customizations, and the model of a
+sequence of commands is a natural fit for automation workflows which
+simulate a series of steps taken by the user.
+However, there is a serious drawback to this approach.
+
+MacLean et al [@maclean1990]
+describe an ideal for user-tailorable systems: a "gentle slope" from using
+to customizing, where small incremental increases in skill lead to
+corresponding increments of customization power. Requiring users to learn
+programming for customization creates an abrupt "cliff," where a significant
+learning investment is required even to implement simple customizations.
+Another goal of MacLean et al is that "it should be as easy to change the
+environment as it is to use it," at least for some subset of changes.
+In scripting languages, even user-friendly ones like Applescript or Chickenfoot,
+the experience of customization does not remotely resemble the experience of use,
+so these systems can't meet this goal.
+
+With table-driven customization we aim to provide a gentler slope,
+by using direct manipulation for software customization. The data shown
+in the table view is the domain data from the original application.
+The user makes changes to the data by selecting areas of interest
+in the table, e.g. sorting/filtering by clicking the relevant column
+header, or adding annotation by clicking on the relevant row.
+These interactions are common in GUI applications, and Wildcard
+therefore meets MacLean et al's goal: some one-click customizations
+are as easy as using the original application.
+
+One aspect of directness which we have chosen not to maintain in Wildcard
+is enabling customization in the context of the original user interface,
+as explored by some other tools like Scotty [@eagan2011].
+We have found that augmenting the original UI with
+an additional structured representation has numerous benefits.
+It provides a consistent experience across all applications,
+and clearly shows the user what structured data is available to work with.
+
+Ainsworth et al's provide a helpful taxonomy of the value of multiple representations [@ainsworth1999]. In their terms,
+Wildcard plays a _complementary role_ by supporting a different set of tasks from the original application,
+while displaying _shared information_. We also suspect that Wildcard helps
+_constructs deeper understanding_ by _subtraction_. By stripping away details
+and only showing the essential data in an interface, Wildcard helps users
+think of new ways of using that data, outside the specific constraints
+of the original application.
+
+It is important to note that there are many specific customizations that can
+be achieved in systems like Chickenfoot [@bolin2005] that cannot
+be reproduced in Wildcard. We consider this an acceptable tradeoff
+in exchange for achieving a gentler slope of customization, and we
+show in [@sec:examples] and [@sec:evaluation] that our model can still
+implement many useful customizations in practice.
+Also, there is sometimes a way to reframe an imperative script in terms of our direct manipulation model;
+for example, a script that iterates through rows in a page adding some
+additional information could be reproduced using a formula in Wildcard.
 
 ## Third-party semantic wrappers
 
 Software customization tools typically fall into one of two categories: third-party, or semantic.
 
-**Third-party customization tools** enable customization without using official extension APIs, enabling a broader range of customizations on top of more applications. For example, web browser extensions have demonstrated the utility of customizing websites through manipulating the DOM, without needing explicit extension APIs to be built in. However, third-party customization comes with a corresponding cost: these tools can typically only operate at a low level of abstraction, e.g. manipulating user interface elements. This makes it harder for end users to write scripts, and makes the resulting scripts more brittle. (todo: support this claim more, provide examples)
+_Third-party customization tools_ enable customization without using official extension APIs, enabling a broader range of customizations on top of more applications. For example, web browser extensions have demonstrated the utility of customizing websites through manipulating the DOM, without needing explicit extension APIs to be built in. However, third-party customization comes with a corresponding cost: these tools can typically only operate at a low level of abstraction, e.g. manipulating user interface elements. This makes it harder for end users to write scripts, and makes the resulting scripts more brittle. (todo: support this claim more, provide examples)
 
-**Semantic customization tools** use explicit extension APIs provided by the application developer. Examples of this include accessing a backend web API, or writing a customization in Applescript that uses an application-specific API. The main benefit is that this allows the extension author to work with meaningful concepts in the application domain—"create a new calendar event" rather than "click the button that says new event."—which makes customizations easier to build and more robust. However, this style limits the range of extensions that can be built, to only those which the official plugin API supports.
+_Semantic customization tools_ use explicit extension APIs provided by the application developer. Examples of this include accessing a backend web API, or writing a customization in Applescript that uses an application-specific API. The main benefit is that this allows the extension author to work with meaningful concepts in the application domain—"create a new calendar event" rather than "click the button that says new event."—which makes customizations easier to build and more robust. However, this style limits the range of extensions that can be built, to only those which the official plugin API supports.
 
 With Wildcard, we use a hybrid approach that takes the best of both worlds. Programmers implement an API wrapper that is internally implemented as a black-box customization, but externally provides a semantic interface to the application. These wrappers are added to a shared repository, available to all users of the system. When an end user is using a site that already has an adapter, they get a semantic customization experience that avoids low-level details.
 
-One way to view this approach is as introducing a new abstraction barrier into third-party extension. Typically, a third party customization script combines two responsibilities: 1) mapping the low-level details of a user interface to semantic constructs (e.g., using CSS selectors to find certain page elements), and 2) the actual logic of the specific customization. (todo: could easily show examples of this from browser extensions, Chickenfoot, etc) Even though the mapping logic is often more generic than the specific customization, the intertwining of these two responsibilities in a single script makes it very difficult to share the mapping logic across scripts.
+One way to view this approach is as introducing a new abstraction barrier into third-party extension. Typically, a third party customization script combines two responsibilities: 1) mapping the low-level details of a user interface to semantic constructs (e.g., using CSS selectors to find certain page elements), and 2) the actual logic of the specific customization. Even though the mapping logic is often more generic than the specific customization, the intertwining of these two responsibilities in a single script makes it very difficult to share the mapping logic across scripts.
 
 With Wildcard we propose a decoupling of these two layers: a community-maintained mapping layer, shared across many specific customizations by individual users. This architecture has been successfully used by projects like Gmail.js, an open source project that creates a convenient API for browser extensions to interface with the Gmail web email client.
 
@@ -337,17 +368,20 @@ In order for our idea of third-party customization through Wildcard to succeed, 
 
 To test the viability of writing DOM scraping adapters, we built adapters for 10 websites, including transactional sites like Amazon and Uber Eats, media consumption sites like Hacker News and Youtube, and a medical results entry platform managed by a member of our research group. The adapters ranged from 36 to 117 lines of code, averaging 68 lines. In addition, an external developer unaffiliated with the project contributed one adapter, designed to sort the Github page listing a user's repositories, and described the experience as "very straightforward."
 
-Some of the challenges of writing a DOM scraping adapter are the same ones involved with writing normal web scraping code, but the more interactive nature of Wildcard introduces additional challenges. One challenge is triggering updates to the spreadsheet data in response to UI changes that happen after initial page load. Site adapters are responsible for recognizing these changes by observing the DOM. So far, we have been able to use event listeners and the MutationObserver API to successfully observe changes, but it may prove challenging to observe changes on some sites only through the DOM. Another challenge is persisting updates to the DOM—some websites use virtual DOM frameworks that can occasionally overwrite changes made by Wildcard. In practice, we've managed to create an implementation that works around these issues and results in a usable customization experience for all the websites we've tried.
+Some of the challenges of writing a DOM scraping adapter are the same ones involved with writing normal web scraping code, but the more interactive nature of Wildcard introduces additional challenges. One challenge is triggering updates to the spreadsheet data in response to UI changes that happen after initial page load. Site adapters are responsible for recognizing these changes by observing the DOM. So far, we have been able to use event listeners and the MutationObserver API to successfully observe changes, but it may prove challenging to observe changes on some sites only through the DOM. Another challenge is persisting updates to the DOM—some websites use virtual DOM frameworks that can occasionally overwrite changes made by Wildcard. Despite these challenges, we've managed to create an implementation that works around these issues in practice, and results in a usable customization experience for all the websites we've tried so far.
 
 # Related Work {#sec:related-work}
 
-This paper extends a workshop paper by Litt and Jackson [@litt2020] which presented an earlier prototype of the Wildcard system. We build on that work in this paper by rearchitecting the internal implementation of the system around the table adapter abstraction, evaluating it on many more websites, and by more fully characterizing the behavior and design of the system.
+This paper extends a workshop paper by Litt and Jackson [@litt2020] which presented an earlier prototype version of the Wildcard system. We build on their work in this paper by rearchitecting the internal implementation of the system around the table adapter abstraction, evaluating it on many more websites, and by more fully characterizing the behavior and design of the system.
 
 ## Customization tools
 
+* Buttons [@maclean1990]: the original DM customization tool
+* ScrAPIr: direct manipulation for APIs!
+
 * customization tools
 	* browser extensions
-	* ScrAPIr
+
 	* Thresher
 	* Sifter
 	* customization research tools: Chickenfoot, Coscripter
