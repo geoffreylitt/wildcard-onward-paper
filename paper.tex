@@ -169,9 +169,9 @@
 
 Most attempts at empowering end users to customize their software offer
 a simplified version of programming. Some scripting languages
-(AppleScript, Chickenfoot) have a friendly syntax that resembles natural
-language. Visual programming tools (Mac Automator, Zapier) eliminate
-text syntax entirely. Macro recorders (Applescript, Helena, WebVCR)
+\citep{bolin2005, cook2007} have a friendly syntax that resembles
+natural language. Some visual customization tools eliminate text syntax
+entirely. Macro recorders \citep{cook2007, chasins2018, anupam2000}
 remove some of the initial programming burden by letting a user start
 with concrete demonstrations.
 
@@ -864,11 +864,12 @@ tell application "Calendar"
 end tell
 \end{verbatim}
 
-Some customization environments (Mac Automator, Zapier) forego text
-syntax and enable the user to connect programs and construct automations
-by dragging and dropping commands. These environments still do not
-constitute direct manipulation, though: the objects being manipulated
-are in the domain of programming, not the domain of the task at hand.
+Some customization environments (Automator for Mac, Shortcuts for iOS,
+Zapier for web APIs) forego text syntax and enable the user to connect
+programs and construct automations by dragging and dropping commands.
+These environments still do not constitute direct manipulation, though:
+the objects being manipulated are in the domain of programming, not the
+domain of the task at hand.
 
 Imperative programming is a reasonable choice as the model for building
 customizations. Turing-complete programming provides a high ceiling for
@@ -988,101 +989,120 @@ else?})
 \section{Related Work}\label{sec:related-work}}
 
 This paper extends work reported in a workshop paper by Litt and Jackson
-\citep{litt2020} which presented an earlier prototype version of the
-Wildcard system. We build on their work in this paper by rearchitecting
-the internal implementation of the system around the table adapter
-abstraction, evaluating it on many more websites, and by more fully
-characterizing the behavior and design of the system.
+\citep{litt2020} which presented an early prototype version of Wildcard.
+We have substantially extended their work in this paper by creating the
+table adapter abstraction and reimplementing the system around that
+abstraction, evaluating the system more fully on many more websites, and
+by characterizing the design of the system in more detail.
+
+Table-driven customization relates to two broad areas of related work.
+Our problem statement is related to software customization tools, and
+our solution approach is related to spreadsheets and other direct
+manipulation interfaces.
 
 \hypertarget{customization-tools}{%
 \subsection{Customization tools}\label{customization-tools}}
 
-\begin{itemize}
-\item
-  Buttons \citep{maclean1990}: the original DM customization tool
-\item
-  ScrAPIr: direct manipulation for APIs!
-\item
-  customization tools
+Table-driven customization is most closely related to other tools that
+aim to empower end users to customize software without doing any
+programming.
 
-  \begin{itemize}
-  \item
-    browser extensions
-  \item
-    Thresher
-  \item
-    Sifter
-  \item
-    customization research tools: Chickenfoot, Coscripter
-  \item
-    Wildcard, like Chickenfoot, wants to hide HTML from users. But we
-    show a structured data view, whereas Chickenfoot shows nothing
-  \item
-    visual customization tools:
+This lineage goes back at least to the Buttons system by MacLean et al
+\citep{maclean1990}, where Xerox Lisp users could share buttons that
+performed various ``tailoring'' actions on the system. The authors
+proposed the ``gentle slope'' idea which has greatly influenced our
+approach to table-driven customization (as discussed in
+Section~\ref{sec:dm}). The authors also point out the importance of a
+``tailoring culture'' where people with different skillsets collaborate
+to produce useful customizations; in their system, Lisp programmers
+create buttons that others can use, modify, and rearrange. This division
+of labor corresponds to our idea of semantic wrappers, where end user
+customization is supported by programmer-created building blocks.
 
-    \begin{itemize}
-    \tightlist
-    \item
-      Mac Automator
-    \item
-      Zapier
-    \item
-      IFTTT
-    \item
-      These are weakly direct manipulation. But usually the thing you
-      directly manipulate in these UIs is the \emph{script}: not the
-      actual \emph{data} you want to operate on. VERY DIFFERENT.
-    \end{itemize}
-  \item
-    desktop customization: Applescript, VBA, COM
-  \end{itemize}
-\end{itemize}
+Some recent web customization tools aim to enable end users to modify
+web interfaces without programming.
 
-\hypertarget{visual-database-query-tools}{%
-\subsection{Visual database query
-tools}\label{visual-database-query-tools}}
+Sifter \citep{huynh2006} enables end users to sort and filter lists of
+data based on web scraping, much like Wildcard's sorting features. The
+main difference between the systems is that table-driven customization
+has many other use cases besides sorting and filtering. Also, Sifter
+involves end users in a semi-automated data extraction process, rather
+than having programmers create wrappers. This provides coverage of more
+websites, but at the expense of complicating the end user experience. We
+might explore such techniques in Wildcard in the future, but we think
+that it's valuable for end users to have a customization experience free
+of web scraping details on supported websites. Finally Sifter implements
+scraping across multiple pages, a valuable feature for sorting and
+filtering which isn't present in Wildcard.
 
-\begin{itemize}
-\tightlist
-\item
-  database GUIs:
+Thresher \citep{hogue2005} enables end users to create wrappers which
+map website content to Semantic Web schemas, making customizations
+available using the schema information. We share the general idea of
+wrappers with Thresher, but we have chosen to map to a single generic
+data type, rather than more specific schemas, which increases the range
+of websites and data supported by the system.
 
-  \begin{itemize}
-  \tightlist
-  \item
-    Sieuferd \citep{bakke2016}
-  \item
-    Airtable \citep{2020a}
-  \item
-    other similar tools?
-  \item
-    Liu \& Jagadish: rules for a spreadsheet algebra for database
-    queries \citep{liu2009}
-  \item
-    Shneiderman paper
-  \item
-    spreadsheets
-  \end{itemize}
-\end{itemize}
+There are many software customization tools that offer simplified
+versions of programming for end users. Chickenfoot \citep{bolin2005} and
+Coscripter \citep{leshed2008} offer friendly syntax for writing web
+automation scripts; Applescript \citep{cook2007} attempts a similar goal
+for desktop customization. There are visual programming environments for
+customization which don't involve writing any text: as a few examples,
+\href{https://support.apple.com/guide/automator/welcome/mac}{Automator}
+for Mac and
+\href{https://apps.apple.com/us/app/shortcuts/id915249334}{Shortcuts}
+for iOS are modern options for customizing Apple products, and
+\href{https://zapier.com/}{Zapier} enables users to connect different
+web applications together visually. As mentioned previously, these tools
+all require writing imperative programs in some form; we take a
+fundamentally different approach in table-driven customization.
 
-\hypertarget{other}{%
-\subsection{Other}\label{other}}
+\hypertarget{direct-manipulation-programming-interfaces.}{%
+\subsection{Direct manipulation programming
+interfaces.}\label{direct-manipulation-programming-interfaces.}}
 
-\begin{itemize}
-\tightlist
-\item
-  web scraping / wrapper induction
-\item
-  instrumental interaction, Scotty \citep{eagan2011}, Webstrates
-\item
-  browser dev tools
-\item
-  Self, Smalltalk
-\item
-  multiple representations
-\item
-  Semantic Web
-\end{itemize}
+Another relevant area of literature is direct manipulation interfaces
+for interacting with structured data. We take much inspiration from
+these tools in our work, but apply them in a different domain:
+customizing existing software applications, rather than interacting with
+databases or constructing software from scratch.
+
+The most closely related work is in systems that offer spreadsheet-like
+querying of relational data, as proposed by Liu and Jagadish
+\citep{liu2009}. SIEUFERD by Bakke and Karger \citep{bakke2016} is an
+example; their paper presents a survey of various other similar tools.
+Our work is particularly influenced by the authors' observation that
+direct manipulation requires that the user manipulate the \emph{results}
+of a database query rather than the query itself, and that the user must
+see intermediate results at every step of constructing a computation.
+SIEUFERD's interface supports a far wider range of possible queries than
+Wildcard, but the basic ideas of the user interface are similar.
+
+\href{https://airtable.com/}{Airtable} is another example of a modern
+commercial product that offers spreadsheet-like interaction with a
+relational database.
+
+Our work is also inspired by the many projects which have explored using
+spreadsheets as a foundation for building software applications,
+including Object Spreadsheets \citep{mccutchen2016}, Quilt
+\citep{benson2014}, Gneiss \citep{chang2014}, Marmite \citep{wong2007},
+\href{https://www.glideapps.com/}{Glide}. These projects share the idea
+that a spreadsheet is a convenient interface for editing the data
+underlying a GUI application. We share that idea, but apply it to
+software customization, rather than building software from scratch.
+
+Another system in this space is ScrAPIr, by Alrashed et
+al.~\citep{alrashed2020}, which enables end users to access backend web
+APIs without programming. ScrAPIr shares a high level goal of end user
+empowerment, and also shares the idea of wrappers, by creating a shared
+library of wrappers around existing web APIs. However, unlike Wildcard,
+ScrAPIr targets explicit APIs exposed by developers, and also doesn't
+aim to extend the frontend interfaces of web applications.
+
+\hypertarget{conclusion}{%
+\section{Conclusion}\label{conclusion}}
+
+\emph{todo}
 
 %%
 %% The next two lines define the bibliography style to be used, and

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  21 MAY 2020 16:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  21 MAY 2020 18:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1026,18 +1026,13 @@ File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-Overfull \hbox (3.6396pt too wide) in paragraph at lines 170--177
-\T1/LinuxLibertineT-TLF/m/n/10 (-20) script-ing lan-guages (Ap-ple-Script, Chic
-k-en-foot) have a friendly
- []
-
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 10.0pt on input line 185.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 222.
+(Font)              scaled to size 7.0pt on input line 227.
 [1.1{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
@@ -1049,7 +1044,7 @@ Overfull \hbox (3.2758pt too wide) in paragraph at lines 231--237
 -tion\T1/LinuxLibertineT-TLF/m/n/10 (-20) : Typ-i-cally, tools
  []
 
-<media/airbnb-demo-300dpi.png, id=122, 433.62pt x 570.6921pt>
+<media/airbnb-demo-300dpi.png, id=131, 433.62pt x 570.6921pt>
 File: media/airbnb-demo-300dpi.png Graphic file (type png)
 <use media/airbnb-demo-300dpi.png>
 Package pdftex.def Info: media/airbnb-demo-300dpi.png  used on input line 262.
@@ -1073,7 +1068,7 @@ Package microtype Info: Character `textendash ' is missing
 Package microtype Info: Character `textemdash ' is missing
 (microtype)             in font `T1/zi4/m/n/10'.
 (microtype)             Ignoring protrusion settings for this character.
-<media/todomvc-demo-300dpi.png, id=130, 433.62pt x 481.0773pt>
+<media/todomvc-demo-300dpi.png, id=139, 433.62pt x 481.0773pt>
 File: media/todomvc-demo-300dpi.png Graphic file (type png)
 <use media/todomvc-demo-300dpi.png>
 Package pdftex.def Info: media/todomvc-demo-300dpi.png  used on input line 331.
@@ -1082,7 +1077,7 @@ Package pdftex.def Info: media/todomvc-demo-300dpi.png  used on input line 331.
 
 Class acmart Warning: A possible image without description on input line 332.
 
-<media/expedia-demo-300dpi.png, id=135, 433.62pt x 444.4605pt>
+<media/expedia-demo-300dpi.png, id=144, 433.62pt x 444.4605pt>
 File: media/expedia-demo-300dpi.png Graphic file (type png)
 <use media/expedia-demo-300dpi.png>
 Package pdftex.def Info: media/expedia-demo-300dpi.png  used on input line 371.
@@ -1090,6 +1085,9 @@ Package pdftex.def Info: media/expedia-demo-300dpi.png  used on input line 371.
 (pdftex.def)             Requested size: 433.61894pt x 444.45941pt.
 
 Class acmart Warning: A possible image without description on input line 372.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
 (Font)              scaled to size 10.0pt on input line 372.
@@ -1119,7 +1117,7 @@ Package epstopdf Info: Source file: <media/table-adapter.eps>
 nverted-to.pdf media/table-adapter.eps>
 (epstopdf)             \includegraphics on input line 403.
 Package epstopdf Info: Output file is already uptodate.
-<media/table-adapter-eps-converted-to.pdf, id=163, 401.5pt x 401.5pt>
+<media/table-adapter-eps-converted-to.pdf, id=173, 401.5pt x 401.5pt>
 File: media/table-adapter-eps-converted-to.pdf Graphic file (type pdf)
 <use media/table-adapter-eps-converted-to.pdf>
 Package pdftex.def Info: media/table-adapter-eps-converted-to.pdf  used on inpu
@@ -1161,51 +1159,59 @@ Underfull \vbox (badness 1132) has occurred while \output is active []
 Underfull \vbox (badness 2698) has occurred while \output is active []
 
 [9.9] [10.10]
-Overfull \hbox (3.4535pt too wide) in paragraph at lines 1016--1018
-[]\T1/LinuxLibertineT-TLF/m/n/10 (-20) customization re-search tools: Chick-en-
-foot, Co-scripter 
- []
+Underfull \vbox (badness 1558) has occurred while \output is active []
 
 
-Underfull \vbox (badness 1502) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-(./paper.bbl
-LaTeX Info: Redefining \tempurl on input line 76.
-LaTeX Info: Redefining \tempurl on input line 94.
-LaTeX Info: Redefining \tempurl on input line 109.
-LaTeX Info: Redefining \tempurl on input line 127.
-LaTeX Info: Redefining \tempurl on input line 154.
-LaTeX Info: Redefining \tempurl on input line 169.
-LaTeX Info: Redefining \tempurl on input line 187.
-LaTeX Info: Redefining \tempurl on input line 203.
-[11.11])
+[11.11] (./paper.bbl
+LaTeX Info: Redefining \tempurl on input line 78.
+LaTeX Info: Redefining \tempurl on input line 95.
+LaTeX Info: Redefining \tempurl on input line 112.
+LaTeX Info: Redefining \tempurl on input line 130.
+LaTeX Info: Redefining \tempurl on input line 148.
+LaTeX Info: Redefining \tempurl on input line 164.
+
+Underfull \vbox (badness 6396) has occurred while \output is active []
+
+LaTeX Info: Redefining \tempurl on input line 182.
+LaTeX Info: Redefining \tempurl on input line 197.
+LaTeX Info: Redefining \tempurl on input line 215.
+LaTeX Info: Redefining \tempurl on input line 231.
+LaTeX Info: Redefining \tempurl on input line 261.
+LaTeX Info: Redefining \tempurl on input line 280.
+LaTeX Info: Redefining \tempurl on input line 296.
+LaTeX Info: Redefining \tempurl on input line 311.
+LaTeX Info: Redefining \tempurl on input line 329.
+LaTeX Info: Redefining \tempurl on input line 349.
+LaTeX Info: Redefining \tempurl on input line 365.
+LaTeX Info: Redefining \tempurl on input line 381.
+)
 
 Class acmart Warning: Some images may lack descriptions.
 
 
-Overfull \vbox (6.0pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (7.90399pt too high) has occurred while \output is active []
+Package balance Warning: You have called \balance in second column
+(balance)                Columns might not be balanced.
 
 [12.12]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1093.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1093.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1113.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1113.
 (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1093.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1093.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1113.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1113.
 
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: 9DF7A659DC8175B220BDC44B6F36559E;3388.
+(rerunfilecheck)             Checksum: 71A3DF812473A20597FC7077660F6772;3469.
  ) 
 Here is how much of TeX's memory you used:
- 18386 strings out of 492616
- 279235 string characters out of 6129482
- 405882 words of memory out of 5000000
- 21384 multiletter control sequences out of 15000+600000
- 168681 words of font info for 318 fonts, out of 8000000 for 9000
+ 18479 strings out of 492616
+ 281268 string characters out of 6129482
+ 407526 words of memory out of 5000000
+ 21415 multiletter control sequences out of 15000+600000
+ 174130 words of font info for 353 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,17n,94p,796b,616s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,17n,94p,796b,540s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-4.enc}{
 /usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/
 usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{/u
@@ -1221,10 +1227,10 @@ bertineTB.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/
 LinLibertineTBI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libe
 rtine/LinLibertineTI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public
 /newtx/txsys.pfb>
-Output written on paper.pdf (12 pages, 4169758 bytes).
+Output written on paper.pdf (12 pages, 4178734 bytes).
 PDF statistics:
- 354 PDF objects out of 1000 (max. 8388607)
- 302 compressed objects within 4 object streams
- 90 named destinations out of 1000 (max. 500000)
+ 400 PDF objects out of 1000 (max. 8388607)
+ 348 compressed objects within 4 object streams
+ 100 named destinations out of 1000 (max. 500000)
  51913 words of extra memory for PDF output out of 61914 (max. 10000000)
 

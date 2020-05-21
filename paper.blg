@@ -23,45 +23,45 @@ Warning--no journal in hutchins1985
 Warning--no number and no volume in hutchins1985
 Warning--empty publisher in liu2009
 Warning--empty address in liu2009
-You've used 11 entries,
+You've used 21 entries,
             5945 wiz_defined-function locations,
-            1414 strings with 17185 characters,
-and the built_in function-call counts, 12847 in all, are:
-= -- 1487
-> -- 371
+            1498 strings with 20036 characters,
+and the built_in function-call counts, 25698 in all, are:
+= -- 2946
+> -- 805
 < -- 0
-+ -- 123
-- -- 132
-* -- 873
-:= -- 1227
-add.period$ -- 54
-call.type$ -- 11
-change.case$ -- 68
-chr.to.int$ -- 11
-cite$ -- 27
-duplicate$ -- 1241
-empty$ -- 863
-format.name$ -- 160
-if$ -- 3051
++ -- 265
+- -- 276
+* -- 1818
+:= -- 2478
+add.period$ -- 104
+call.type$ -- 21
+change.case$ -- 138
+chr.to.int$ -- 21
+cite$ -- 37
+duplicate$ -- 2463
+empty$ -- 1706
+format.name$ -- 344
+if$ -- 6082
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 47
-newline$ -- 155
-num.names$ -- 80
-pop$ -- 472
+missing$ -- 96
+newline$ -- 266
+num.names$ -- 160
+pop$ -- 916
 preamble$ -- 1
-purify$ -- 167
+purify$ -- 327
 quote$ -- 0
-skip$ -- 451
+skip$ -- 910
 stack$ -- 0
-substring$ -- 986
-swap$ -- 137
+substring$ -- 1997
+swap$ -- 284
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 288
+type$ -- 574
 warning$ -- 12
-while$ -- 85
+while$ -- 163
 width$ -- 0
-write$ -- 264
+write$ -- 485
 (There were 12 warnings)

@@ -24,10 +24,6 @@
 %% The first command in your LaTeX source must be the \documentclass command.
 \documentclass[sigplan,10pt,anonymous,review]{acmart}
 
-$if(highlighting-macros)$
-$highlighting-macros$
-$endif$
-
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 

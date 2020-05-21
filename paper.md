@@ -21,9 +21,9 @@ abstract: |
 
 # Introduction
 
-Most attempts at empowering end users to customize their software offer a simplified version of programming. Some scripting languages (AppleScript, Chickenfoot) have a friendly syntax that resembles natural language. Visual programming tools (Mac Automator, Zapier) eliminate text syntax entirely. Macro recorders (Applescript, Helena, WebVCR) remove some of the initial programming burden by letting a user start with concrete demonstrations.
+Most attempts at empowering end users to customize their software offer a simplified version of programming. Some scripting languages [@bolin2005;@cook2007] have a friendly syntax that resembles natural language. Some visual customization tools eliminate text syntax entirely. Macro recorders [@cook2007;@chasins2018;@anupam2000] remove some of the initial programming burden by letting a user start with concrete demonstrations.
 
-Despite  their many differences, these approaches all share something in common: an imperative programming model, with statement sequencing, mutable variables and loops. End users express their ideas in scripts—sequences of commands—which, name aside, are not very different from conventional code.
+Despite their many differences, these approaches all share something in common: an imperative programming model, with statement sequencing, mutable variables and loops. End users express their ideas in scripts—sequences of commands—which, name aside, are not very different from conventional code.
 
 We have known for decades about an alternate approach: _direct manipulation_ [@shneiderman1983], where "visibility of the object of interest" replaces "complex command language syntax". Direct manipulation is the _de facto_ standard in GUIs today, but when it comes to customizing software, it is rarely to be found. In this work, we ask: what would it look like to build a software customization interface that  relies on direct manipulation? We take inspiration from spreadsheets and visual database query interfaces [@2020a; @bakke2016], which have successfully enabled end users to run queries and computations through direct manipulation of data.
 
@@ -435,8 +435,8 @@ tell application "Calendar"
 end tell
 ```
 
-Some customization environments (Mac Automator, Zapier) forego text syntax
-and enable the user to connect programs and construct automations by dragging
+Some customization environments (Automator for Mac, Shortcuts for iOS, Zapier for web APIs)
+forego text syntax and enable the user to connect programs and construct automations by dragging
 and dropping commands. These environments still do not constitute
 direct manipulation, though: the objects being manipulated are in the domain of
 programming, not the domain of the task at hand.
@@ -511,8 +511,6 @@ With Wildcard we propose a decoupling of these two layers: a repository of share
 
 (_todo: mention automated wrapper induction here or somewhere else?_)
 
-
-
 # Related Work {#sec:related-work}
 
 This paper extends work reported in a workshop paper by Litt and Jackson [@litt2020] which presented an early prototype version of Wildcard. We have substantially extended their work in this paper by creating the table adapter abstraction and reimplementing the system around that abstraction, evaluating the system more fully on many more websites, and by characterizing the design of the system in more detail.
@@ -557,37 +555,56 @@ Thresher, but we have chosen to map to a single generic data type,
 rather than more specific schemas, which increases the range of websites
 and data supported by the system.
 
-scripting tools
-* Chickenfoot [@bolin2005]
-* Coscripter [@leshed2008]
-* Applescript
-* Mac Automator
-* VBA
-* Zapier, IFTTT
-* Some are weakly direct manipulation. But usually the thing you directly manipulate in these UIs is the _script_: not the actual _data_ you want to operate on. VERY DIFFERENT.
+There are many software customization tools that offer simplified versions
+of programming for end users. Chickenfoot [@bolin2005] and Coscripter [@leshed2008]
+offer friendly syntax for writing web automation scripts; Applescript [@cook2007]
+attempts a similar goal for desktop customization. There are visual
+programming environments for customization which don't involve writing any
+text: as a few examples, [Automator](https://support.apple.com/guide/automator/welcome/mac) for Mac and [Shortcuts](https://apps.apple.com/us/app/shortcuts/id915249334) for iOS are modern options for customizing Apple products, and [Zapier](https://zapier.com/) enables users to
+connect different web applications together visually.
+As mentioned previously, these tools all require writing imperative programs
+in some form; we take a fundamentally different approach in table-driven customization.
 
 ## Direct manipulation programming interfaces.
 
-closest: database GUIs:
-	* Sieuferd [@bakke2016]
-    * provides useful overview
-	* Airtable [@2020a]
+Another relevant area of literature is direct manipulation interfaces
+for interacting with structured data. We take much inspiration
+from these tools in our work, but apply them in a different domain:
+customizing existing software applications, rather than
+interacting with databases or constructing software from scratch.
 
+The most closely related work is in systems that offer spreadsheet-like
+querying of relational data, as proposed by Liu and Jagadish [@liu2009].
+SIEUFERD by Bakke and Karger [@bakke2016] is an example;
+their paper presents a survey of various other similar tools.
+Our work is particularly influenced by the authors' observation that direct manipulation requires
+that the user manipulate the _results_ of a database query rather than
+the query itself, and that the user must see intermediate results at every step
+of constructing a computation. SIEUFERD's interface supports a far
+wider range of possible queries than Wildcard, but the basic ideas
+of the user interface are similar.
 
-	* spreadsheets
+[Airtable](https://airtable.com/) is another example of a modern
+commercial product that offers spreadsheet-like interaction
+with a relational database.
 
-Object Spreadsheets [@mccutchen2016]
-Quilt [@benson2014]
-Gneiss [@chang2014]
-Marmite [@wong2007]
-Airtable [@zotero-79]
-Glide [@zotero-81]
+Our work is also inspired by the many projects which have explored using
+spreadsheets as a foundation for building software applications, including
+Object Spreadsheets [@mccutchen2016], Quilt [@benson2014], Gneiss [@chang2014],
+Marmite [@wong2007], [Glide](https://www.glideapps.com/). These projects
+share the idea that a spreadsheet is a convenient interface for
+editing the data underlying a GUI application. We share that idea, but
+apply it to software customization, rather than building software from scratch.
 
-???
+Another system in this space is ScrAPIr, by Alrashed et al. [@alrashed2020],
+which enables end users to access backend web APIs without programming.
+ScrAPIr shares a high level goal of end user empowerment, and
+also shares the idea of wrappers, by creating a shared library of wrappers
+around existing web APIs. However, unlike Wildcard,
+ScrAPIr targets explicit APIs exposed by developers, and also
+doesn't aim to extend the frontend interfaces of web applications.
 
-* Scrapir [@alrashed2020]
-  * similar goal: fetch data from web APIs, avoid scraping
-  * declarative, no coding
+# Conclusion
 
-  Self
+_todo_
 
