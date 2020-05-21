@@ -218,9 +218,7 @@ this process: customizations we were able to build, limitations we
 encountered, and reflections on the ease of integrating scraping logic
 with real websites.
 
-Table-driven customization embodies several design principles for
-building customizable software systems, discussed in
-Section~\ref{sec:themes}:
+In Section~\ref{sec:themes}, we discuss some key themes from our work:
 
 \begin{itemize}
 \tightlist
@@ -229,17 +227,11 @@ Section~\ref{sec:themes}:
   to customize an application by examining and modifying its data,
   rather than by writing imperative scripts.
 \item
-  \emph{Third-party semantic wrappers}: Typically, customization tools
-  which don't rely on official extension APIs resort to offering
-  low-level APIs for customization. Instead, we suggest a
-  community-maintained library of semantic wrappers around existing
-  applications, offering end users a more convenient semantic API for
-  customization.
-\item
-  \emph{Gentle slope}: Customization tools should ideally offer a
-  ``gentle slope'' from normal use to customization. We explore how our
-  approach meets this goal by making some software customizations as
-  easy as normal use of the software.
+  \emph{Third-party semantic wrappers}: Typically, tools that don't rely
+  on official extension APIs resort to offering low-level APIs for
+  customization. Instead, we suggest a community-maintained library of
+  semantic wrappers around existing applications, enabling end users to
+  work with domain objects rather than low-level representations.
 \end{itemize}
 
 Table-driven customization relates to existing work in many areas. In
@@ -396,7 +388,7 @@ and then carefully copy them into the form. In Wildcard, the user can
 avoid this by using a datepicker widget that shows the user's personal
 calendar events{ (Figure~\ref{fig:expedia-demo}, Note B)}. The user can
 directly click on the correct date, and it gets inserted into both the
-spreadsheet and the original form.
+spreadsheet and the original form.n
 
 \hypertarget{sec:architecture}{%
 \section{System architecture}\label{sec:architecture}}
@@ -639,56 +631,94 @@ well as basic query operations like sorting and filtering.
 \subsection{Customization by direct
 manipulation}\label{customization-by-direct-manipulation}}
 
-\begin{itemize}
-\tightlist
-\item
-  reprise intro--explain direct manipulation
-\item
-  the key is that the DATA is being direct manipulated, not a script
-\item
-  it's essentially an alternate UI for an existing app, not a scripting
-  env
-\item
-  argue for the benefit of multiple representations
-  \citep{ainsworth1999}
+\hypertarget{the-programming-cliff}{%
+\subsubsection{The programming cliff}\label{the-programming-cliff}}
 
-  \begin{itemize}
-  \tightlist
-  \item
-    abstraction
-  \item
-    different affordances
-  \end{itemize}
-\item
-  address Tchernavskij's point about contrasting with instrumental
-  interaction
-\end{itemize}
+Hutchins, Hollan and Norman \citep{hutchins1985} describe a direct
+manipulation interface as one that uses a model-world metaphor, rather
+than a conversation metaphor. Rather than conversing with the system
+about an assumed world, ``the world is explicitly represented'' and the
+user can ``{[}act{]} upon the objects of the task domain themselves.''
 
-\hypertarget{gentle-slope}{%
-\subsection{Gentle slope}\label{gentle-slope}}
+Most GUIs today employ direct manipulation, but software customization
+tools typically use an imperative programming model, which implements
+the conversational metaphor rather than direct manipulation. For
+example, in Applescript \citep{cook2007}, the scripting language for
+customizing Mac OS applications, here is how a user retrieves a list of
+of calendar names from the Calendar application:
 
-Term originally came from \citep{maclean1990}
+\begin{verbatim}
+tell application "Calendar"
+  name of calendars
+end tell
+\end{verbatim}
 
-\begin{itemize}
-\tightlist
-\item
-  \citep{maclean1990} says ``some customizations should be as easy as
-  using the app'', we have achieved that
-\item
-  here's where ``automation vs customization'' comes in: automation
-  frames it as entering a whole new scripting environment; we frame it
-  more as just an alternate UI that you can use.
-\item
-  backend APIs: terrible
-\item
-  the best would be right inline with the GUI (cite Scotty, instrumental
-  work) but this has its own problems
-\item
-  we settle for a compromise: an alternate structured view. (explicitly
-  contrast this clearly)
-\item
-  the CLI GUI thing
-\end{itemize}
+Some customization environments (Mac Automator, Zapier) forego text
+syntax and enable the user to connect programs and construct automations
+by dragging and dropping commands. These environments still do not
+constitute direct manipulation, though: the objects being manipulated
+are in the domain of programming, not the domain of the task at hand.
+
+It is a perfectly unreasonable choice to choose imperative programming
+as the model for building customizations. Imperative programming
+provides a high ceiling for possible customizations, and the model of a
+sequence of commands is a natural fit for automation workflows which
+simulate a series of steps taken by the user. However, there is a
+serious drawback to this approach.
+
+MacLean et al \citep{maclean1990} describe an ideal for user-tailorable
+systems: a ``gentle slope'' from using to customizing, where small
+incremental increases in skill lead to corresponding increments of
+customization power. Requiring users to learn programming for
+customization creates an abrupt ``cliff,'' where a significant learning
+investment is required even to implement simple customizations. Another
+goal of MacLean et al is that ``it should be as easy to change the
+environment as it is to use it,'' at least for some subset of changes.
+In scripting languages, even user-friendly ones like Applescript or
+Chickenfoot, the experience of customization does not remotely resemble
+the experience of use, so these systems can't meet this goal.
+
+\hypertarget{a-gentler-slope}{%
+\subsubsection{A gentler slope}\label{a-gentler-slope}}
+
+With table-driven customization we aim to provide a gentler slope, by
+using direct manipulation for software customization. The data shown in
+the table view is the domain data from the original application. The
+user makes changes to the data by selecting areas of interest in the
+table, e.g.~sorting/filtering by clicking the relevant column header, or
+adding annotation by clicking on the relevant row. These interactions
+are common in GUI applications, and Wildcard therefore meets MacLean et
+al's goal: some one-click customizations are as easy as using the
+original application.
+
+One aspect of directness which we have chosen not to maintain in
+Wildcard is enabling customization in the context of the original user
+interface, as explored by some other tools like Scotty
+\citep{eagan2011}. We have found that augmenting the original UI with an
+additional structured representation has numerous benefits. It provides
+a consistent experience across all applications, and clearly shows the
+user what structured data is available to work with.
+
+Ainsworth et al's provide a helpful taxonomy of the value of multiple
+representations \citep{ainsworth1999}. In their terms, Wildcard plays a
+\emph{complementary role} by supporting a different set of tasks from
+the original application, while displaying \emph{shared information}. We
+also suspect that Wildcard helps \emph{constructs deeper understanding}
+by \emph{subtraction}. By stripping away details and only showing the
+essential data in an interface, Wildcard helps users think of new ways
+of using that data, outside the specific constraints of the original
+application.
+
+It is important to note that there are many specific customizations that
+can be achieved in systems like Chickenfoot \citep{bolin2005} that
+cannot be reproduced in Wildcard. We consider this an acceptable
+tradeoff in exchange for achieving a gentler slope of customization, and
+we show in Section~\ref{sec:examples} and Section~\ref{sec:evaluation}
+that our model can still implement many useful customizations in
+practice. Also, there is sometimes a way to reframe an imperative script
+in terms of our direct manipulation model; for example, a script that
+iterates through rows in a page adding some additional information could
+be reproduced using a formula in Wildcard.
 
 \hypertarget{third-party-semantic-wrappers}{%
 \subsection{Third-party semantic
@@ -697,7 +727,7 @@ wrappers}\label{third-party-semantic-wrappers}}
 Software customization tools typically fall into one of two categories:
 third-party, or semantic.
 
-\textbf{Third-party customization tools} enable customization without
+\emph{Third-party customization tools} enable customization without
 using official extension APIs, enabling a broader range of
 customizations on top of more applications. For example, web browser
 extensions have demonstrated the utility of customizing websites through
@@ -708,16 +738,15 @@ abstraction, e.g.~manipulating user interface elements. This makes it
 harder for end users to write scripts, and makes the resulting scripts
 more brittle. (todo: support this claim more, provide examples)
 
-\textbf{Semantic customization tools} use explicit extension APIs
-provided by the application developer. Examples of this include
-accessing a backend web API, or writing a customization in Applescript
-that uses an application-specific API. The main benefit is that this
-allows the extension author to work with meaningful concepts in the
-application domain---``create a new calendar event'' rather than ``click
-the button that says new event.''---which makes customizations easier to
-build and more robust. However, this style limits the range of
-extensions that can be built, to only those which the official plugin
-API supports.
+\emph{Semantic customization tools} use explicit extension APIs provided
+by the application developer. Examples of this include accessing a
+backend web API, or writing a customization in Applescript that uses an
+application-specific API. The main benefit is that this allows the
+extension author to work with meaningful concepts in the application
+domain---``create a new calendar event'' rather than ``click the button
+that says new event.''---which makes customizations easier to build and
+more robust. However, this style limits the range of extensions that can
+be built, to only those which the official plugin API supports.
 
 With Wildcard, we use a hybrid approach that takes the best of both
 worlds. Programmers implement an API wrapper that is internally
@@ -732,11 +761,10 @@ barrier into third-party extension. Typically, a third party
 customization script combines two responsibilities: 1) mapping the
 low-level details of a user interface to semantic constructs (e.g.,
 using CSS selectors to find certain page elements), and 2) the actual
-logic of the specific customization. (todo: could easily show examples
-of this from browser extensions, Chickenfoot, etc) Even though the
-mapping logic is often more generic than the specific customization, the
-intertwining of these two responsibilities in a single script makes it
-very difficult to share the mapping logic across scripts.
+logic of the specific customization. Even though the mapping logic is
+often more generic than the specific customization, the intertwining of
+these two responsibilities in a single script makes it very difficult to
+share the mapping logic across scripts.
 
 With Wildcard we propose a decoupling of these two layers: a
 community-maintained mapping layer, shared across many specific
@@ -794,35 +822,35 @@ we have been able to use event listeners and the MutationObserver API to
 successfully observe changes, but it may prove challenging to observe
 changes on some sites only through the DOM. Another challenge is
 persisting updates to the DOM---some websites use virtual DOM frameworks
-that can occasionally overwrite changes made by Wildcard. In practice,
-we've managed to create an implementation that works around these issues
-and results in a usable customization experience for all the websites
-we've tried.
+that can occasionally overwrite changes made by Wildcard. Despite these
+challenges, we've managed to create an implementation that works around
+these issues in practice, and results in a usable customization
+experience for all the websites we've tried so far.
 
 \hypertarget{sec:related-work}{%
 \section{Related Work}\label{sec:related-work}}
 
 This paper extends a workshop paper by Litt and Jackson \citep{litt2020}
-which presented an earlier prototype of the Wildcard system. We build on
-that work in this paper by rearchitecting the internal implementation of
-the system around the table adapter abstraction, evaluating it on many
-more websites, and by more fully characterizing the behavior and design
-of the system.
+which presented an earlier prototype version of the Wildcard system. We
+build on their work in this paper by rearchitecting the internal
+implementation of the system around the table adapter abstraction,
+evaluating it on many more websites, and by more fully characterizing
+the behavior and design of the system.
 
 \hypertarget{customization-tools}{%
 \subsection{Customization tools}\label{customization-tools}}
 
 \begin{itemize}
-\tightlist
+\item
+  Buttons \citep{maclean1990}: the original DM customization tool
+\item
+  ScrAPIr: direct manipulation for APIs!
 \item
   customization tools
 
   \begin{itemize}
-  \tightlist
   \item
     browser extensions
-  \item
-    ScrAPIr
   \item
     Thresher
   \item

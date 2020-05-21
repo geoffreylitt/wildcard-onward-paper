@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{8}
+\begin{thebibliography}{11}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -77,6 +77,39 @@
 \showDOI{\tempurl}
 
 
+\bibitem[\protect\citeauthoryear{Bolin, Webber, Rha, Wilson, and Miller}{Bolin
+  et~al\mbox{.}}{2005}]%
+        {bolin2005}
+\bibfield{author}{\bibinfo{person}{Michael Bolin}, \bibinfo{person}{Matthew
+  Webber}, \bibinfo{person}{Philip Rha}, \bibinfo{person}{Tom Wilson}, {and}
+  \bibinfo{person}{Robert~C. Miller}.} \bibinfo{year}{2005}\natexlab{}.
+\newblock \showarticletitle{Automation and Customization of Rendered Web
+  Pages}. In \bibinfo{booktitle}{\emph{Proceedings of the 18th Annual {{ACM}}
+  Symposium on {{User}} Interface Software and Technology - {{UIST}} '05}}.
+  \bibinfo{publisher}{{ACM Press}}, \bibinfo{address}{{Seattle, WA, USA}},
+  \bibinfo{pages}{163}.
+\newblock
+\showISBNx{978-1-59593-271-6}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/1095034.1095062}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Cook}{Cook}{2007}]%
+        {cook2007}
+\bibfield{author}{\bibinfo{person}{William~R. Cook}.}
+  \bibinfo{year}{2007}\natexlab{}.
+\newblock \showarticletitle{{{AppleScript}}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the Third {{ACM SIGPLAN}} Conference
+  on {{History}} of Programming Languages - {{HOPL III}}}}.
+  \bibinfo{publisher}{{ACM Press}}, \bibinfo{address}{{San Diego, California}},
+  \bibinfo{pages}{1--1--1--21}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1145/1238844.1238845}
+\showDOI{\tempurl}
+
+
 \bibitem[\protect\citeauthoryear{Eagan, {Beaudouin-Lafon}, and Mackay}{Eagan
   et~al\mbox{.}}{2011}]%
         {eagan2011}
@@ -93,6 +126,17 @@
 \urldef\tempurl%
 \url{https://doi.org/10.1145/2047196.2047226}
 \showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Hutchins, Hollan, and Norman}{Hutchins
+  et~al\mbox{.}}{1985}]%
+        {hutchins1985}
+\bibfield{author}{\bibinfo{person}{Edwin~L Hutchins}, \bibinfo{person}{James~D
+  Hollan}, {and} \bibinfo{person}{Donald~A Norman}.}
+  \bibinfo{year}{1985}\natexlab{}.
+\newblock \showarticletitle{Direct {{Manipulation Interfaces}}}.
+\newblock  (\bibinfo{year}{1985}), \bibinfo{pages}{28}.
+\newblock
 
 
 \bibitem[\protect\citeauthoryear{Litt and Jackson}{Litt and Jackson}{2020}]%

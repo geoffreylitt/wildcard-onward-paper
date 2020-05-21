@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  20 MAY 2020 15:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  20 MAY 2020 23:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1036,24 +1036,24 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 
 ]
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 228.
-<media/airbnb-demo-300dpi.png, id=126, 433.62pt x 570.6921pt>
+(Font)              scaled to size 10.0pt on input line 226.
+<media/airbnb-demo-300dpi.png, id=122, 433.62pt x 570.6921pt>
 File: media/airbnb-demo-300dpi.png Graphic file (type png)
 <use media/airbnb-demo-300dpi.png>
-Package pdftex.def Info: media/airbnb-demo-300dpi.png  used on input line 268.
+Package pdftex.def Info: media/airbnb-demo-300dpi.png  used on input line 260.
 (pdftex.def)             Requested size: 433.61894pt x 570.69069pt.
 
-Class acmart Warning: A possible image without description on input line 269.
+Class acmart Warning: A possible image without description on input line 261.
 
 
 Underfull \vbox (badness 1019) has occurred while \output is active []
 
-LaTeX Font Info:    Try loading font information for T1+zi4 on input line 323.
+LaTeX Font Info:    Try loading font information for T1+zi4 on input line 315.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/inconsolata/t1zi4.fd
 File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
 )
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 10.0pt on input line 323.
+(Font)              scaled to size 10.0pt on input line 315.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zi4' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
@@ -1064,14 +1064,14 @@ Package microtype Info: Character `textendash ' is missing
 Package microtype Info: Character `textemdash ' is missing
 (microtype)             in font `T1/zi4/m/n/10'.
 (microtype)             Ignoring protrusion settings for this character.
-<media/todomvc-demo-300dpi.png, id=134, 433.62pt x 481.0773pt>
+<media/todomvc-demo-300dpi.png, id=130, 433.62pt x 481.0773pt>
 File: media/todomvc-demo-300dpi.png Graphic file (type png)
 <use media/todomvc-demo-300dpi.png>
-Package pdftex.def Info: media/todomvc-demo-300dpi.png  used on input line 337.
+Package pdftex.def Info: media/todomvc-demo-300dpi.png  used on input line 329.
 
 (pdftex.def)             Requested size: 433.61894pt x 481.07613pt.
 
-Class acmart Warning: A possible image without description on input line 338.
+Class acmart Warning: A possible image without description on input line 330.
 
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
 (Font)              scaled to size 10.0pt on input line 362.
@@ -1082,19 +1082,19 @@ with the same identifier (name{fig:airbnb-demo}) has been already used, duplica
 te ignored
 <to be read again> 
                    \relax 
-l.377 }
+l.369 }
        
-<media/expedia-demo-300dpi.png, id=157, 433.62pt x 444.4605pt>
+<media/expedia-demo-300dpi.png, id=153, 433.62pt x 444.4605pt>
 File: media/expedia-demo-300dpi.png Graphic file (type png)
 <use media/expedia-demo-300dpi.png>
-Package pdftex.def Info: media/expedia-demo-300dpi.png  used on input line 377.
+Package pdftex.def Info: media/expedia-demo-300dpi.png  used on input line 369.
 
 (pdftex.def)             Requested size: 433.61894pt x 444.45941pt.
 
-Class acmart Warning: A possible image without description on input line 378.
+Class acmart Warning: A possible image without description on input line 370.
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 6204) has occurred while \output is active []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1114,16 +1114,16 @@ Package epstopdf Info: Source file: <media/table-adapter.eps>
 (epstopdf)                    size: 36043 bytes
 (epstopdf)             Command: <repstopdf --outfile=media/table-adapter-eps-co
 nverted-to.pdf media/table-adapter.eps>
-(epstopdf)             \includegraphics on input line 409.
+(epstopdf)             \includegraphics on input line 401.
 Package epstopdf Info: Output file is already uptodate.
-<media/table-adapter-eps-converted-to.pdf, id=167, 401.5pt x 401.5pt>
+<media/table-adapter-eps-converted-to.pdf, id=163, 401.5pt x 401.5pt>
 File: media/table-adapter-eps-converted-to.pdf Graphic file (type pdf)
 <use media/table-adapter-eps-converted-to.pdf>
 Package pdftex.def Info: media/table-adapter-eps-converted-to.pdf  used on inpu
-t line 409.
+t line 401.
 (pdftex.def)             Requested size: 240.94499pt x 240.95085pt.
 
-Class acmart Warning: A possible image without description on input line 410.
+Class acmart Warning: A possible image without description on input line 402.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1131,37 +1131,40 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[5.5 <./media/expedia-demo-300dpi.png>] [6.6 <./media/table-adapter-eps-convert
-ed-to.pdf>]
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 530.
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.2pt on input line 534.
+[5.5 <./media/expedia-demo-300dpi.png>]
+Underfull \vbox (badness 3281) has occurred while \output is active []
 
-Overfull \hbox (2.52051pt too wide) in paragraph at lines 576--585
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 7.3pt on input line 522.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 6.2pt on input line 526.
+[6.6 <./media/table-adapter-eps-converted-to.pdf>]
+Overfull \hbox (2.52051pt too wide) in paragraph at lines 568--577
 []\T1/LinuxLibertineT-TLF/b/n/10 Third party API data adapter\T1/LinuxLibertine
 T-TLF/m/n/10 (-20) : Cur-rently, the main mech-
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 2698) has occurred while \output is active []
 
-[7.7]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[8.8]
-Overfull \hbox (3.4535pt too wide) in paragraph at lines 831--833
+[7.7] [8.8]
+Overfull \hbox (3.4535pt too wide) in paragraph at lines 859--861
 []\T1/LinuxLibertineT-TLF/m/n/10 (-20) customization re-search tools: Chick-en-
 foot, Co-scripter 
  []
 
-(./paper.bbl
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[9.9] (./paper.bbl
 LaTeX Info: Redefining \tempurl on input line 76.
 LaTeX Info: Redefining \tempurl on input line 94.
-LaTeX Info: Redefining \tempurl on input line 110.
-LaTeX Info: Redefining \tempurl on input line 125.
-LaTeX Info: Redefining \tempurl on input line 143.
-LaTeX Info: Redefining \tempurl on input line 159.
+LaTeX Info: Redefining \tempurl on input line 109.
+LaTeX Info: Redefining \tempurl on input line 127.
+LaTeX Info: Redefining \tempurl on input line 154.
+LaTeX Info: Redefining \tempurl on input line 169.
+LaTeX Info: Redefining \tempurl on input line 187.
+LaTeX Info: Redefining \tempurl on input line 203.
 )
 
 Class acmart Warning: Some images may lack descriptions.
@@ -1170,23 +1173,23 @@ Class acmart Warning: Some images may lack descriptions.
 Package balance Warning: You have called \balance in second column
 (balance)                Columns might not be balanced.
 
-[9.9]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 906.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 906.
+[10.10]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 934.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 934.
 (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 906.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 906.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 934.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 934.
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: 36CD60B1B5707523B76AC2D6487115CA;3479.
+(rerunfilecheck)             Checksum: 2B1359988CC4CADA4A5AF758117FCF74;3335.
  ) 
 Here is how much of TeX's memory you used:
- 18348 strings out of 492616
- 278630 string characters out of 6129482
- 403385 words of memory out of 5000000
- 21370 multiletter control sequences out of 15000+600000
- 167762 words of font info for 312 fonts, out of 8000000 for 9000
+ 18370 strings out of 492616
+ 279073 string characters out of 6129482
+ 401628 words of memory out of 5000000
+ 21379 multiletter control sequences out of 15000+600000
+ 168620 words of font info for 317 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,17n,94p,796b,494s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,16n,94p,796b,556s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-4.enc}{
 /usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/
 usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/u
@@ -1202,10 +1205,10 @@ bertineTB.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/
 LinLibertineTBI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libe
 rtine/LinLibertineTI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public
 /newtx/txsys.pfb>
-Output written on paper.pdf (9 pages, 4152979 bytes).
+Output written on paper.pdf (10 pages, 4160374 bytes).
 PDF statistics:
- 318 PDF objects out of 1000 (max. 8388607)
- 270 compressed objects within 3 object streams
- 75 named destinations out of 1000 (max. 500000)
- 51921 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 335 PDF objects out of 1000 (max. 8388607)
+ 286 compressed objects within 3 object streams
+ 81 named destinations out of 1000 (max. 500000)
+ 51913 words of extra memory for PDF output out of 61914 (max. 10000000)
 

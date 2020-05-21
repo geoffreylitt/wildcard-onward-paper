@@ -19,47 +19,49 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Warning--no key, author in 2020a
 Warning--no author, editor, organization, or key in 2020a
 Warning--empty author in 2020a
+Warning--no journal in hutchins1985
+Warning--no number and no volume in hutchins1985
 Warning--empty publisher in liu2009
 Warning--empty address in liu2009
-You've used 8 entries,
+You've used 11 entries,
             5945 wiz_defined-function locations,
-            1392 strings with 16551 characters,
-and the built_in function-call counts, 9470 in all, are:
-= -- 1147
-> -- 247
+            1414 strings with 17185 characters,
+and the built_in function-call counts, 12847 in all, are:
+= -- 1487
+> -- 371
 < -- 0
-+ -- 84
-- -- 92
-* -- 623
-:= -- 877
-add.period$ -- 39
-call.type$ -- 8
-change.case$ -- 47
-chr.to.int$ -- 8
-cite$ -- 22
-duplicate$ -- 911
-empty$ -- 633
-format.name$ -- 112
-if$ -- 2267
++ -- 123
+- -- 132
+* -- 873
+:= -- 1227
+add.period$ -- 54
+call.type$ -- 11
+change.case$ -- 68
+chr.to.int$ -- 11
+cite$ -- 27
+duplicate$ -- 1241
+empty$ -- 863
+format.name$ -- 160
+if$ -- 3051
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 33
-newline$ -- 126
-num.names$ -- 56
-pop$ -- 338
+missing$ -- 47
+newline$ -- 155
+num.names$ -- 80
+pop$ -- 472
 preamble$ -- 1
-purify$ -- 119
+purify$ -- 167
 quote$ -- 0
-skip$ -- 337
+skip$ -- 451
 stack$ -- 0
-substring$ -- 746
-swap$ -- 103
+substring$ -- 986
+swap$ -- 137
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 212
-warning$ -- 10
-while$ -- 65
+type$ -- 288
+warning$ -- 12
+while$ -- 85
 width$ -- 0
-write$ -- 204
-(There were 10 warnings)
+write$ -- 264
+(There were 12 warnings)

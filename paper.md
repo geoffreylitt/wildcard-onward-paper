@@ -255,6 +255,8 @@ _todo: other table instruments_
 
 ## Customization by direct manipulation
 
+### The programming cliff
+
 Hutchins, Hollan and Norman [@hutchins1985] describe a direct manipulation interface
 as one that uses a model-world metaphor, rather than a conversation metaphor.
 Rather than conversing with the system about an assumed world, "the world is
@@ -297,6 +299,8 @@ environment as it is to use it," at least for some subset of changes.
 In scripting languages, even user-friendly ones like Applescript or Chickenfoot,
 the experience of customization does not remotely resemble the experience of use,
 so these systems can't meet this goal.
+
+### A gentler slope
 
 With table-driven customization we aim to provide a gentler slope,
 by using direct manipulation for software customization. The data shown
