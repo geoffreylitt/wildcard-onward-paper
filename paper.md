@@ -21,24 +21,24 @@ abstract: |
 
 # Introduction
 
-There have been many attempts at empowering end users to customize their software by offering them a simplified programming tool. Some scripting languages (AppleScript, Chickenfoot) have a friendly syntax that resembles natural language. Visual programming tools (Mac Automator, Zapier) eliminate text syntax entirely. Macro recorders (Applescript, Helena, WebVCR) remove some of the initial programming burden by letting a user start by concrete demonstrations.
+Most attempts at empowering end users to customize their software offer a simplified version of programming. Some scripting languages (AppleScript, Chickenfoot) have a friendly syntax that resembles natural language. Visual programming tools (Mac Automator, Zapier) eliminate text syntax entirely. Macro recorders (Applescript, Helena, WebVCR) remove some of the initial programming burden by letting a user start with concrete demonstrations.
 
-These approaches have many differences, but they all share something in common: an imperative programming model, with mutable variables, conditionals and loops. End users ultimately must use these traditional programming constructs to express their ideas, and the object of interest is a _script_, a sequence of commands.
+Despite  their many differences, these approaches all share something in common: an imperative programming model, with statement sequencing, mutable variables and loops. End users express their ideas in scripts—sequences of commands—which, name aside, are not very different from conventional code.
 
-We have known for decades about an alternate approach: _direct manipulation_ [@shneiderman1983], where "visibility of the object of interest" replaces "complex command language syntax". Direct manipulation is the de facto standard in GUIs today, but when it comes to customizing software, it is rarely to be found. In this work, we ask: what would it look like to build a software customization interface that  relies on direct manipulation? We take inspiration from spreadsheets and visual database query interfaces [@2020a; @bakke2016], which have successfully enabled end users to run queries and computations through direct manipulation of data.
+We have known for decades about an alternate approach: _direct manipulation_ [@shneiderman1983], where "visibility of the object of interest" replaces "complex command language syntax". Direct manipulation is the _de facto_ standard in GUIs today, but when it comes to customizing software, it is rarely to be found. In this work, we ask: what would it look like to build a software customization interface that  relies on direct manipulation? We take inspiration from spreadsheets and visual database query interfaces [@2020a; @bakke2016], which have successfully enabled end users to run queries and computations through direct manipulation of data.
 
-In this paper we present a technique called _table-driven customization_ which applies these ideas from visual query interfaces in the context of software customization. We augment an application's UI with a table view, where the user can see and manipulate the structured data inside an application. Changes in the table view result in immediate corresponding changes to the original user interface of the application, enabling the user to customize an application with live feedback.
+In this paper we present a technique called _table-driven customization_, which applies ideas from visual query interfaces in the context of software customization. An application’s UI is augmented with a table view, where the user can see and manipulate the application’s internal data . Changes in the table view result in immediate corresponding changes to the original user interface of the application, enabling the user to customize an application with live feedback.
 
-We have developed a browser extension called Wildcard which uses web scraping techniques to implement table-driven customization for existing Web applications. In [@sec:examples] we concretely introduce the key ideas of table-driven customization by presenting several examples of real customizations implemented in Wildcard.
+We have developed a browser extension called Wildcard which uses web scraping techniques to implement table-driven customization for existing Web applications. In [@sec:examples], we introduce the key ideas of table-driven customization by presenting several examples of real customizations implemented in Wildcard.
 
-In [@sec:architecture] we explain the architecture of table-driven customization. We focus on the _table adapter_ abstraction, which allows many different types of underlying state to be bidirectionally mapped to a table of data. We describe certain types of table adapters we've built in Wildcard; we also describe future adapters that could be supported in the general paradigm.
+In [@sec:architecture], we explain the architecture of table-driven customization. We focus on the _table adapter_ abstraction, which allows many different types of underlying data to be bidirectionally mapped to a table. We describe several types of table adapters we’ve built in Wildcard, and also describe future adapters that are supported by the general paradigm.
 
-We have used Wildcard to build real customizations for 11 different websites. In [@sec:evaluation] we present reflections from this process: customizations we were able to build, limitations we encountered, and reflections on the ease of integrating scraping logic with real websites.
+We have used Wildcard to build real customizations for 11 different websites. In [@sec:evaluation], we present reflections from this process, outlining the kinds of customizations we were able to build, limitations we encountered, and reflections on the ease of integrating scraping logic with real websites.
 
 In [@sec:themes], we discuss some key themes from our work:
 
-* *Customization by direct manipulation*: End users should be able to customize an application by examining and modifying its data, rather than by writing imperative scripts.
-* *Third-party semantic wrappers*: Typically, tools that don't rely on official extension APIs resort to offering low-level APIs for customization. Instead, we suggest a community-maintained library of semantic wrappers around existing applications, enabling end users to work with domain objects rather than low-level representations.
+* *Customization by direct manipulation*: End users should be able to customize an application by directly examining and modifying its data, rather than by writing imperative scripts.
+* *Third-party semantic wrappers*: Typically, tools that don't rely on official extension APIs resort to offering low-level APIs for customization. Instead, we propose a community-maintained library of semantic wrappers around existing applications, enabling end users to work with domain objects rather than low-level representations.
 
 Table-driven customization relates to existing work in many areas. In particular, our goals overlap with many software customization tools, and our methods overlap with direct manipulation interfaces for working with structured data, including visual database query systems and spreadsheets. We explore these connections and more in [@sec:related-work].
 
@@ -160,42 +160,21 @@ The table adapter defines how to map a particular type of data to a table,
 and what effects edits should have on the original data source.
 In some cases, the mapping logic is straightforward: the local
 storage adapter stores a table of data, so the mapping
-to the table abstraction is trivial. In other cases, the mapping is
-more involved: the DOM scraping adapter implements web scraping logic
-to produce a table of data from the web page, and edits to the table result
-in DOM manipulations like reordering rows of data on the page.
+to the table abstraction is trivial. In other cases, the mapping is more involved: the DOM scraping adapter implements web scraping logic to produce a table of data from the web page, and turns edits to the table into DOM manipulations like reordering rows of data on the page.
 
-Ultimately, we provide the user with a single combined table
-view that they can edit, rather than three separate tables. The **query engine**
-is responsible for combining the tables of data into this single view, and routing
-the user's edits back to the individual table adapters. In this example,
-the query engine has joined the three tables together by a shared ID column,
-and sorted the result by the name column.
+The three separate tables are then combined into a single table for the end user to view and edit. The **query engine** is responsible for creating this combined view, and routing the user’s edits back to the individual table adapters. In this example, the query engine has joined the three tables together by a shared ID column, and sorted the result by the name column.
 
 We now examine each component of the system in more detail.
 
 ## Table adapters
 
-A key idea in table-driven customization is that different data sources
-can all be mapped to the generic abstraction of an editable table.
-In a relational database, the table matches the underlying
-storage format, but in table-driven customization, the table is merely
-an _interface layer_. The data shown in the table is a projection of some underlying
-state, and edits to the table can have arbitrary effects on the underlying state.
+A key idea in table-driven customization is that a wide variety of data sources can be mapped to the generic abstraction of an editable table. In a relational database, the table matches the underlying storage format, but in table-driven customization, the table is merely an _interface layer_. The data shown in the table is a projection of some underlying state, and edits to the table can have complex effects on the underlying state.
 
-Externally, a table adapter must satisfy an abstract interface.
-The first two parts of the interface largely resemble the interface
-exposed by a table in a relational database:
+Externally, a table adapter must satisfy an abstract interface. The first two parts of the interface resemble the interface exposed by a table in a relational database:
 
-**Returning a table**: A table adapter exposes a table of data: an ordered
-list of records. Each record contains associates attributes and values.
-Tables have a typed schema, so the same attributes are shared across all records.
-A table adapter can update the contents of a table at any time, in response to
-changes in the underlying state (e.g., a DOM scraping adapter can update the table
-when the page body changes). New data is pushed out to other components of the system,
-and the query view reactively updates in response.
+**Returning a table**: A table adapter exposes a table of data: an ordered list of records. Each record carries a unique identifier and  associates named attributes with values. Tables have a typed schema, so the same attributes are shared across all records. A table adapter can update the contents of a table at any time, in response to changes in the underlying state (e.g., a DOM scraping adapter can update the table when the page body changes). When data changes, the query view is reactively updated in response.
 
-**Making edits**: The query engine can request to a table adapter to make an edit to a record. The meaning of making an edit can vary depending on the adapter: in the local storage adapter, an annotation can be persisted into local storage; in the DOM scraping adapter, an edit can represent filling in a form field. An adapter can also mark values as read-only if it wouldn't be meaningful to edit them; for example, the DOM scraping adapter typically marks page content as read-only, except for editable form fields.
+**Making edits**: The query engine can issue a request to a table adapter to make an edit to a record. The meaning of making an edit can vary depending on the adapter: in the local storage adapter, an annotation may be persisted into local storage; in the DOM scraping adapter, an edit may represent filling in a form field. An adapter can also mark values as read-only if it wouldn’t be meaningful to edit them; for example, the DOM scraping adapter typically marks page content as read-only, except for editable form fields.
 
 The query engine also sends additional information about the combined query view
 to each table adapter. These functions are currently used to provide the
