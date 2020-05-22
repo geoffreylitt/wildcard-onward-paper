@@ -166,19 +166,21 @@
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-Most attempts at empowering end users to customize their software offer
-a simplified version of programming. Some scripting languages
-\citep{bolin2005, cook2007} have a friendly syntax that resembles
-natural language. Some visual customization tools eliminate text syntax
-entirely. Macro recorders \citep{cook2007, chasins2018, anupam2000}
-remove some of the initial programming burden by letting a user start
-with concrete demonstrations.
+Many applications don't meet the precise needs of their users. End user
+customization systems can help improve the situation, by empowering
+non-programmers to modify their software in the way they would like.
+
+Most end user customization systems offer a simplified version of
+programming. Some scripting languages \citep{bolin2005, cook2007} have a
+friendly syntax that resembles natural language. Some visual
+customization tools eliminate text syntax entirely. Macro recorders
+\citep{cook2007, chasins2018, anupam2000} remove some of the initial
+programming burden by letting a user start with concrete demonstrations.
 
 Despite their many differences, these approaches all share something in
 common: an imperative programming model, with statement sequencing,
-mutable variables and loops. End users express their ideas in
-scripts---sequences of commands---which, name aside, are not very
-different from conventional code.
+mutable variables and loops. End users express their ideas in scripts
+made up of sequences of commands.
 
 We have known for decades about an alternate approach: \emph{direct
 manipulation} \citep{shneiderman1983}, where ``visibility of the object
@@ -201,7 +203,7 @@ enabling the user to customize an application with live feedback.
 
 We have developed a browser extension called Wildcard which uses web
 scraping techniques to implement table-driven customization for existing
-Web applications. In Section~\ref{sec:examples}, we introduce the key
+Web applications. In Section~\ref{sec:example}, we introduce the key
 ideas of table-driven customization through an example scenario.
 
 In Section~\ref{sec:architecture}, we explain the architecture of
@@ -241,28 +243,13 @@ with structured data, including visual database query systems and
 spreadsheets. We explore these connections and more in
 Section~\ref{sec:related-work}.
 
-\hypertarget{sec:examples}{%
-\section{Example Scenario}\label{sec:examples}}
+\hypertarget{sec:example}{%
+\section{Example Scenario}\label{sec:example}}
 
-To concretely illustrate the end user experience of table-driven
-customization, here is a real example of using the Wildcard browser
-extension to customize a website.
-
-\begin{itemize}
-\tightlist
-\item
-  Hacker News
-\item
-  open the table
-\item
-  sort by comments
-\item
-  take notes on links
-\item
-  filter out visited sites with a formula
-\item
-  add read times with a formula
-\end{itemize}
+To illustrate the end user experience of table-driven customization, we
+consider a real example of using the Wildcard browser extension to
+customize Hacker News, a tech news aggregator. Figure 1 shows
+accompanying screenshots.
 
 \begin{figure*}
 \hypertarget{fig:hacker-news}{%
@@ -271,6 +258,67 @@ extension to customize a website.
 \caption{Customizing Hacker News by interacting with a table view}\label{fig:hacker-news}
 }
 \end{figure*}
+
+When the user opens Hacker News in a browser equipped with the Wildcard
+extension, they see a table at the bottom of the page, listing
+information about each link on the site: its title, URL, number of
+upvote points, etc. (Figure~\ref{fig:hacker-news}, Note A) The end user
+didn't need to do any work to produce this table; Wildcard contains a
+library of adapters created by programmers for extracting data from
+websites.
+
+The user's first goal might be to change the ranking of links on the
+homepage. Hacker News itself uses a ranking algorithm in which the
+position of an article depends not only on its point count (a measure of
+popularity), but also on how long it has been on the site. If the user
+hasn't been checking the site frequently, it'seasy to miss a popular
+article that has fallen down the page. Sorting the page solely by number
+of points would achieve a more stable ranking, with the most upvoted
+articles remaining at the top of the list until they are no longer on
+the home page.
+
+To achieve this sort order, the user simply clicks on the ``points''
+column header in the table. This sorts the table view by points, and the
+website UI also becomes sorted in the same order
+(Figure~\ref{fig:hacker-news}, Note B). This sort order persists across
+page loads, so every time the user loads Hacker News, they will see
+articles with this stable ordering.
+
+Next, the user might decide to attempt a more substantial customization:
+to show estimated read times next to each article, as additional context
+when deciding what to read. The table contains additional columns to the
+right of the original attributes for each link, where the user can enter
+spreadsheet-style formulas to compute derived values. The user enters a
+formula (Figure~\ref{fig:hacker-news}, Note C):
+
+\begin{verbatim}
+=ReadTimeInSeconds(link)
+\end{verbatim}
+
+This calls a built-in function that takes a URL as an argument and makes
+a request to a public web service that returns an estimated read time
+for the contents of that link. The result of evaluating the formula is
+simply a numerical value in seconds, which is not a particularly legible
+format. The user enters another formula in the next column
+(Figure~\ref{fig:hacker-news}, Note D):
+
+\begin{verbatim}
+=Concat(Round(user1/60), "min read")
+\end{verbatim}
+
+This converts seconds to minutes by dividing by 60 and rounding to the
+nearest integer, and then concatenates a label to the number. Finally,
+the user chooses to show the results of this new column in the original
+page (Figure~\ref{fig:hacker-news}, Note E). Each article on the page
+now shows an annotation with the estimated read time in minutes.
+
+The user might also manually add notes to the table without using
+formulas. In this case, the user jots down a few notes about articles
+they might want to read, and the notes appear in the page as well.
+
+The features presented in this scenario can support a broad range of
+other customizations. Section~\ref{sec:evaluation} explains many other
+use cases, but first we explain how the system works internally.
 
 \hypertarget{sec:architecture}{%
 \section{System architecture}\label{sec:architecture}}
@@ -285,10 +333,10 @@ extension to customize a website.
 
 Figure~\ref{fig:table-adapter} summarizes the overall architecture of
 table-driven customization, using a simplified version of the Airbnb
-example above. In this example, the name of each listing is scraped from
-the web page DOM, the latitude and longitude of each listing is scraped
-from AJAX responses, and user annotations are loaded from the brower's
-local storage.
+example above. (\emph{todo: change this figure to hacker news}) In this
+example, the name of each listing is scraped from the web page DOM, the
+latitude and longitude of each listing is scraped from AJAX responses,
+and user annotations are loaded from the brower's local storage.
 
 First, the three different data sources are each bidirectionally mapped
 to a table interface by a \textbf{table adapter}. The table adapter
@@ -358,20 +406,20 @@ rows in the web page.
 table adapter the entire combined table of data being rendered to the
 user. The DOM scraping adapter uses this to add annotations to the page
 by looking for additional data columns joined to scraped rows, and
-rendering them in the page.
+rendering them in the page. (\emph{todo: explain joined})
 
 \textbf{Currently selected record}: The query engine notifies each table
 adapter about which record is currently selected by the user in the
 table UI. The DOM scraping adapter uses this information to highlight
 the row in the page that corresponds to the selected record in the
-table.
+table. (\emph{todo: clarify})
 
 \hypertarget{types-of-table-adapters}{%
 \subsubsection{Types of table adapters}\label{types-of-table-adapters}}
 
 Here we describe in more detail the table adapters that we have
 implemented in Wildcard to power the customizations shown in
-Section~\ref{sec:examples}.
+Section~\ref{sec:example}.
 
 \textbf{DOM scraping adapters} are the essential component that enables
 Wildcard to interface with an existing website UI. In addition to the
@@ -625,7 +673,7 @@ APIs without requiring an entire new function in the formula system.
 We have also found instances where simple data manipulation is useful:
 adding together different subtotals into a total price, or manipulating
 the results of a formula expression with arithmetic or concatenating
-string labels, as shown in the example in Section~\ref{sec:examples}.
+string labels, as shown in the example in Section~\ref{sec:example}.
 (\emph{todo: this makes sense iff we switch the examples sectino to HN})
 
 \hypertarget{cell-editors}{%
@@ -634,12 +682,12 @@ string labels, as shown in the example in Section~\ref{sec:examples}.
 (\emph{note: written with the assumption that Expedia gets cut from the
 Examples section})
 
-``Cell editors'' are UI widgets that expose a custom editing UI for a
-single cell of the table view. A programmer building a cell editor need
-only integrate it with the table viewer; propagating values into the
-website UI is handled by the site-specific DOM adapter. As a result,
-creating a new cell editor can be as easy as just writing some glue code
-between the table editor and an existing UI widget library.
+Cell editors are UI widgets that expose a custom editing UI for a single
+cell of the table view. A programmer building a cell editor need only
+integrate it with the table viewer; propagating values into the website
+UI is handled by the site-specific DOM adapter. As a result, creating a
+new cell editor can be as easy as just writing some glue code between
+the table editor and an existing UI widget library.
 
 An important benefit of cell editors is that they allow users to
 incorporate their personal information within the web UI but without
@@ -805,7 +853,7 @@ It is important to note that there are many specific customizations that
 can be achieved in systems like Chickenfoot \citep{bolin2005} that
 cannot be reproduced in Wildcard. We consider this an acceptable
 tradeoff in exchange for a gentler slope in customization, and we show
-in Section~\ref{sec:examples} and Section~\ref{sec:evaluation} that our
+in Section~\ref{sec:example} and Section~\ref{sec:evaluation} that our
 model can still implement many useful customizations in practice. Also,
 there is sometimes a way to reframe an imperative script in terms of our
 direct manipulation model; for example, a script that iterates through
@@ -816,7 +864,7 @@ using a formula in Wildcard.
 \subsection{Semantic wrappers}\label{semantic-wrappers}}
 
 Software customization tools typically fall into one of two categories:
-third-party, or semantic.
+ad hoc, or semantic.
 
 \emph{Ad hoc customization tools} enable customization without using
 official extension APIs, enabling a broader range of customizations on
@@ -986,10 +1034,33 @@ ScrAPIr targets explicit APIs exposed by developers. It also focused on
 backend services and doesn't aim to extend the frontend interfaces of
 web applications.
 
-\hypertarget{conclusion}{%
-\section{Conclusion}\label{conclusion}}
+\hypertarget{sec:conclusion}{%
+\section{Conclusion and Future Work}\label{sec:conclusion}}
 
-\emph{todo}
+In this paper, we have presented table-driven customization, a new
+paradigm for customizing software by direct manipulation of the
+underlying structured data. We have demonstrated the paradigm using a
+browser extension, and have used it to create useful customizations for
+a variety of websites.
+
+Our primary goal for future work is to evaluate the system with a
+broader group of users. What barriers do end users face when using the
+system? What types of customizations do they choose to create? What
+formulas prove most helpful?
+
+Another area for future work is exploring whether it is possible to
+express a broader range of customizations by extending our table-editing
+paradigm. Are there ways to offer an increase in power and functional
+complexity, while retaining a programming model that is simpler for end
+users than conventional coding?
+
+As computing plays an ever greater role in our lives, it is increasingly
+important that end users have agency over the behavior of their
+software, rather than having every detail be dictated by companies whose
+incentives are not always aligned with the user's interests. We hope
+that table-driven customization can serve as one point, and maybe a
+guidepost, on our path from normal use to deep modification, in support
+of a more adaptable experience for all computer users.
 
 %%
 %% The next two lines define the bibliography style to be used, and
