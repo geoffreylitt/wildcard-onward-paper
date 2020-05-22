@@ -100,7 +100,8 @@ This formula converts seconds to minutes by dividing by 60 and rounding to the n
 
 Finally, the user clicks a menu option in the table header to display the contents of this new column in the original page ([@fig:hacker-news], Note D). Each article on the page now shows an annotation with the estimated read time in minutes. (The format of how annotations appear for each item was determined by the programmer who created the Wildcard adapter for Hacker News.)
 
-**Adding notes to links**: The user can also manually add notes to the table, by simply entering values into the table without using formulas. In this case, the user jots down a few notes in another column about articles they might want to read, and the notes appear in the page next to the read times ([@fig:hacker-news], Note D).
+**Adding notes to links**: The user can also manually add notes to the table, by simply entering values into the table without using formulas. In this case, the user jots down a few notes in another column about articles they might want to read, and the notes appear in the page next to the read times ([@fig:hacker-news], Note D). The annotations are also stored in the browser's local storage
+so they can be retrieved on future visits.
 
 **Filtering out visited links**: Another way to use formulas to customize Hacker News is to filter out articles the user has already read. (We omit this example from the figure for brevity.) The user can call a built-in function that returns a boolean depending on whether a URL is in the browser's history:
 
@@ -163,38 +164,58 @@ We now examine each component of the system in more detail.
 
 ## Table adapters
 
-A key idea in table-driven customization is that a wide variety of data sources can be mapped to the generic abstraction of an editable table. In a relational database, the table matches the underlying storage format, but in table-driven customization, the table is merely an _interface layer_. The data shown in the table is a projection of some underlying state, and edits to the table can have complex effects on the underlying state.
+A key idea in table-driven customization is that a wide variety of data sources can be mapped to a generic table abstraction. In a relational database, the table matches the underlying storage format, but in table-driven customization, the table is merely an _interface layer_. The data shown in the table is a projection of some underlying state, and edits to the table can have complex effects on the underlying state.
 
-Externally, a table adapter must satisfy an abstract interface. The first two parts of the interface resemble the interface exposed by a table in a relational database:
+The first two parts of the table adapter interface resemble a typical database table:
 
-**Returning a table**: A table adapter exposes a table of data: an ordered list of records. Each record carries a unique identifier and  associates named attributes with values. Tables have a typed schema, so the same attributes are shared across all records. A table adapter can update the contents of a table at any time, in response to changes in the underlying state (e.g., a DOM scraping adapter can update the table when the page body changes). When data changes, the query view is reactively updated in response.
+_Returning a table_: A table adapter exposes a table of data: an ordered list of records. Each record carries a unique identifier and  associates named attributes with values. Tables have a typed schema, so the same attributes are shared across all records. The columns also carry some additional metadata in addition to their type, such as whether or not they are read-only or editable.
 
-**Making edits**: The query engine can issue a request to a table adapter to make an edit to a record. The meaning of making an edit can vary depending on the adapter: in the local storage adapter, an annotation may be persisted into local storage; in the DOM scraping adapter, an edit may represent filling in a form field. An adapter can also mark values as read-only if it wouldn’t be meaningful to edit them; for example, the DOM scraping adapter typically marks page content as read-only, except for editable form fields.
+A table adapter can update the contents of a table at any time in response to changes in the underlying state (e.g., a DOM scraping adapter can update the table when the page body changes). When data changes, the query view is reactively updated in response.
 
-The query engine also sends additional information about the combined query view
-to each table adapter. These functions are currently used to provide the
-DOM scraping adapter with sufficient information to manipulate the original application UI
-as the user manipulates the table view.
+_Handling edits_: The query engine can issue a request to a table adapter to make an edit to a record. The meaning of making an edit can vary depending on the adapter: in the local storage adapter, an annotation may be persisted into local storage; in the DOM scraping adapter, an edit may represent filling in a form field.
 
-**Sorting/filtering**: When the user sorts or filters the query view, an ordered list of
+In addition, the query engine also sends additional information about the combined query view
+to each table adapter:
+
+_Sorting/filtering_: When the user sorts or filters the query view, an ordered list of
 visible IDs is sent to each table adapter. The DOM scraping adapter uses this information
 to change the list of rows shown in the web page.
 
-**Information from other tables**: The query engine sends each table adapter the entire combined table of data being rendered to the user. The DOM scraping adapter uses this to add annotations to the page by looking for additional data columns joined to scraped rows, and rendering them in the page. (_todo: explain joined_)
+_Data from other tables_: The query engine provides each table adapter with the entire combined table  shown to the user. The DOM scraping adapter uses this for injecting annotations—values in additional columns from other tables are added to the original web page.
 
-**Currently selected record**: The query engine notifies each table adapter about which record is currently selected by the user in the table UI. The DOM scraping adapter uses this information to highlight the row in the page that corresponds to the selected record in the table. (_todo: clarify_)
+_Currently selected record_: As the user clicks in different parts of the table view, the query engine communicates the record currently selected by the user. The DOM scraping adapter uses this information to highlight the row in the page that corresponds to the selected row in the table (and scroll to the row if it's not currently showing on the page), which helps clarify the connection between the table and the original UI.
 
 ### Types of table adapters
 
-Here we describe in more detail the table adapters that we have implemented in Wildcard to power the customizations shown in [@sec:example].
+In Wildcard, we have built three specific types of table adapters so far.
 
 **DOM scraping adapters** are the essential component that enables Wildcard to interface with an existing website UI. In addition to the standard web scraping problem of extracting a table of data from the DOM, a scraping adapter must also manipulate the DOM to reorder rows, edit form entries, and inject annotations as the table is edited.
 
-Because each website has unique content, we rely on programmers to create a DOM scraping adapter for each individual website to make it available for customization in Wildcard. To make this approach viable, we have built a library of functions that make it easy to implement a scraping adapter, requiring the programmer only to implement the minimal site-specific parts. The programmer writes a single Javascript function which can use standard scraping techniques like CSS selectors and DOM APIs to extract relevant elements from the page. The library functions then wrap this function to implement the rest of the needed functionality; for example, when the table is sorted, we find the DOM elements corresponding to the rows in the table, remove them from the page, and then reinsert them in the new order.
+Because each website has unique content, we rely on programmers to create a DOM scraping adapter for each individual website to make it available for customization in Wildcard. To make this approach viable, we have built a generic DOM scraping adapter which a programmer can configure with the minimal site-specific parts.
 
-An **AJAX scraping adapter** intercepts AJAX requests made by a web page, and extracts information from those requests. When available, this tends to be a helpful technique because the data is already in a structured form, and often includes information not shown in the UI. As with DOM scraping adapters, we have made it easy for programmers to create site-specific AJAX scraping adapters. A programmer writes a function that specifies how to extract data from an AJAX request, and the framework handles the details of intercepting requests and calling the programmer-defined function.^[So far we have only implemented AJAX scraping in the Firefox version of Wildcard, since Firefox has convenient APIs for intercepting requests. It appears possible to implement in Chrome as well, but we have not finished our implementation.]
+After specifying basic metadata like which URLs the adapter should apply to,
+the programmer only needs to implement a single Javascript function
+that scrapes relevant elements from the page. They are free to use any
+scraping techniques; in practice simple CSS selectors and DOM APIs usually suffice. he generic adapter then wraps this scraping function to implement the table adapter interface. For example, when the table view is sorted, the generic adapter takes the DOM elements corresponding to the rows in the table, removes all of them from the page, and then reinserts them in the new order.
 
-The **local storage adapter** simply stores a table of data in the browser. As shown in the example use cases, this can be useful for persisting annotations in a private way, without  uploading them to a web service.
+The programmer can optionally override other default behavior of the generic DOM scraping adapter,
+including the logic for when to re-run the scraping function in response to page changes,
+how to style injected annotations, and how to style the currently selected row in the table.
+
+An **AJAX scraping adapter** intercepts AJAX requests made by a web page, and extracts information from those requests to add to the table. When available, this tends to be a helpful technique because the data is already in a structured form so it is easier to scrape, and it often includes valuable information not shown in the UI.
+
+As with DOM scraping adapters, we have made it easy for programmers to create site-specific AJAX scraping adapters. A programmer writes a function that specifies how to extract data from an AJAX request, and the framework handles the details of intercepting requests and calling the programmer-defined function.^[So far we have only implemented AJAX scraping in the Firefox version of Wildcard, since Firefox has convenient APIs for intercepting requests. It appears possible to implement in Chrome as well, but we have not finished our implementation.]
+
+In order to join the tables produced by AJAX scraping and DOM scraping,
+a common set of identifiers is required across records in the two tables.
+Often there is a server-defined ID present both in the DOM and in AJAX responses;
+if not, the programmer can use some set of overlapping data (e.g. an item name)
+as a shared ID.
+
+The **local storage adapter** simply stores a table of data in the browser.
+This is currently only used to persist annotations: the user makes edits
+in the table, they are stored privately in the browser,
+and can be loaded into the table on future pageloads.
 
 ### Future Adapters
 
@@ -204,14 +225,14 @@ We have designed the table adapter API to be general enough to support other typ
 
 With the advent of rich frontend web frameworks, structured application state is now often available in the web client. We suspect it is possible to create plugins for frontend frameworks that expose this state to Wildcard with only minimal effort from the application developers. To test this hypothesis, we have created an early prototype of a Wildcard adapter for the Redux state management library, and used it with the TodoMVC todo list application. To install the adapter, the programmer only needs to make a few small changes to their app:
 
-_Exposing a table_: In Redux, app developers already represent the state of a user interface as a single object. To expose a table of data, the developer simply writes a function that maps the state object to a table.
-_Editing data values_: The developer defines how edits to records in the table should map to edits in the state object.
-_Sorting/filtering the UI_: The developer inserts an additional data processing step before the state object is rendered in the UI, so that Wildcard can apply sorting and filtering.
-_Annotations_: The developer adds additional React components managed by Wildcard into their UI tree, which render additional data as annotations.
+* _Exposing a table_: In Redux, app developers already represent the state of a user interface as a single object. To expose a table of data, the developer simply writes a function that maps the state object to a table.
+* _Editing data values_: The developer defines how edits to records in the table should map to edits in the state object.
+* _Sorting/filtering the UI_: The developer inserts an additional data processing step before the state object is rendered in the UI, so that Wildcard can apply sorting and filtering.
+* _Annotations_: The developer adds additional React components managed by Wildcard into their UI tree, which render additional data as annotations.
 
-In certain types of software, customizability is often touted as a key selling point. An integrated website adapter would provide a way for developers to integrate with an existing ecosystem of formulas and customization tools, without needing to build all that functionality from scratch.
+Customizability is sometimes a key selling point for software. An integrated website adapter would provide a way for developers to integrate with an ecosystem of formulas and customization tools without needing to build all that functionality from scratch.
 
-**Shared storage adapter**: It would be useful to share user annotations among users and across devices—for example, collaboratively taking notes with friends on options for places to stay on Airbnb. The existing Local Storage Adapter could be extended to share live synchronized data with other users. This could be achieved through a centralized web server, or through P2P connections that might provide stronger privacy guarantees.
+**Shared storage adapter**: It would be useful to share user annotations among users and across devices—for example, collaboratively taking notes with friends on options for places to stay together on a trip. The existing local storage adapter could be extended to share live synchronized data with other users. This could be achieved through a centralized web server, or through P2P connections that might provide stronger privacy guarantees.
 
 ## Query engine
 
@@ -344,6 +365,9 @@ One challenge is triggering updates to the spreadsheet data in response to UI ch
 Another challenge is persisting updates to the DOM—some websites use virtual DOM frameworks that can occasionally overwrite changes made by Wildcard.
 
 So far, we've managed to work around these issues for all the websites we've tried, but we don't claim that any website can be customized through DOM scraping. As web frontend code gets increasingly complex (and starts to move beyond the DOM to other technologies like Shadow DOM or even WebGL for rendering), it may become increasingly difficult to customize websites from the outside without first-party support.
+
+_todo: mention ajax scraping_
+_todo: mention privacy benefits_
 
 # Key themes {#sec:themes}
 
