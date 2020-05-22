@@ -202,8 +202,7 @@ enabling the user to customize an application with live feedback.
 We have developed a browser extension called Wildcard which uses web
 scraping techniques to implement table-driven customization for existing
 Web applications. In Section~\ref{sec:examples}, we introduce the key
-ideas of table-driven customization by presenting several examples of
-real customizations implemented in Wildcard.
+ideas of table-driven customization through an example scenario.
 
 In Section~\ref{sec:architecture}, we explain the architecture of
 table-driven customization. We focus on the \emph{table adapter}
@@ -243,153 +242,35 @@ spreadsheets. We explore these connections and more in
 Section~\ref{sec:related-work}.
 
 \hypertarget{sec:examples}{%
-\section{Examples}\label{sec:examples}}
-
-\emph{todo: maybe redo this as a separate example to avoid self
-plagiarism?}
+\section{Example Scenario}\label{sec:examples}}
 
 To concretely illustrate the end user experience of table-driven
-customization, here are several real examples of using the Wildcard
-browser extension to customize websites.
+customization, here is a real example of using the Wildcard browser
+extension to customize a website.
+
+\begin{itemize}
+\tightlist
+\item
+  Hacker News
+\item
+  open the table
+\item
+  sort by comments
+\item
+  take notes on links
+\item
+  filter out visited sites with a formula
+\item
+  add read times with a formula
+\end{itemize}
 
 \begin{figure*}
-\hypertarget{fig:airbnb-demo}{%
+\hypertarget{fig:hacker-news}{%
 \centering
-\includegraphics{media/airbnb-demo-300dpi.png}
-\caption{Using Wildcard to augment the Airbnb search page for booking
-accommodations}\label{fig:airbnb-demo}
+\includegraphics[width=\textwidth]{media/hacker-news.png}
+\caption{Customizing Hacker News by interacting with a table view}\label{fig:hacker-news}
 }
 \end{figure*}
-
-\hypertarget{augmenting-search-results}{%
-\subsection{Augmenting search results}\label{augmenting-search-results}}
-
-In 2012, the travel site Airbnb removed the ability to sort
-accommodation searches by price. Users could still filter by price
-range, but could no longer view the cheapest listings first. Many users
-complained that the change seemed hostile to users. ``It's so
-frustrating! What is the logic behind not having this function?'' said
-one user on the
-\href{https://community.withairbnb.com/t5/Hosting/Sorting-listing-by-price/td-p/559404}{Airbnb
-support forum}. Alas, the feature remains missing to this day.
-
-Using Wildcard, the user can fix this omission, while leaving the page's
-design and the rest of its functionality unchanged.{
-Figure~\ref{fig:airbnb-demo} shows an overview of augmenting the Airbnb
-site.} First, the user opens up the Wildcard panel, which shows a table
-corresponding to the search results in the page. As they click around in
-the table, the corresponding row in the page is highlighted to indicate
-the mapping between the views.
-
-Then, the user clicks on the price column header to sort the spreadsheet
-and the Airbnb UI by price{ (Figure~\ref{fig:airbnb-demo}, Note A)}.
-They also filter to listings with a user rating above 4.5 (another
-feature missing in the original Airbnb UI).
-
-After manipulating the data, the user closes the table view and
-continues using the website. Because the application's UI usually has a
-nicer visual design than a spreadsheet, Wildcard does not aim to replace
-it---at any time, the user can use either the UI, the spreadsheet, or
-both together.
-
-Many websites that show lists of data also offer actions on rows in the
-table, like adding an item to a shopping cart. Wildcard has the ability
-to make these ``row actions'' available in the data table through the
-site adapter. In the Airbnb UI, saving multiple listings to a Favorites
-list requires tediously clicking through them one by one. Using Wildcard
-row actions, the user can select multiple rows and favorite all of them
-with a single click{ (Figure~\ref{fig:airbnb-demo}, Note B)}. Similarly,
-the user can open the detailed pages for many listings at once.
-
-Next, the user wants to jot down some notes about each listing. To do
-this, they type some notes into an additional column in each row, and
-the notes appear inside the listings in the original UI{
-(Figure~\ref{fig:airbnb-demo}, Note C)}. The annotations are saved in
-the browser and associated with the backend ID of the listing, so they
-will appear in future browser sessions that display the same listing.
-
-Wildcard also includes a formula language that enables more
-sophisticated customizations. When traveling without a car, it's useful
-to evaluate potential places to stay based on how walkable the
-surroundings are. Using a formula, the user can integrate Airbnb with
-Walkscore, an API that rates the walkability of any location on a 1-100
-scale. When the user calls the \texttt{walkscore} formula with the
-listing's latitude and longitude as arguments, it returns the walk score
-for that location and shows it as the cell value. Because the cell's
-contents are injected into the page, the score also appears in the UI{
-(Figure~\ref{fig:airbnb-demo}, Note D)}.
-
-\hypertarget{snoozing-todos}{%
-\subsection{Snoozing todos}\label{snoozing-todos}}
-
-\begin{figure*}
-\hypertarget{fig:airbnb-demo}{%
-\centering
-\includegraphics{media/todomvc-demo-300dpi.png}
-\caption{Using Wildcard to add a "snooze" feature to the TodoMVC todo list app}\label{fig:todomvc-demo}
-}
-\end{figure*}
-
-In addition to fetching data from other sources, Wildcard formulas can
-also perform computations. In this example, the user would like to
-augment the TodoMVC todo list app with a ``snooze'' feature, which will
-temporarily hide a todo from the list until a certain date.{
-Figure~\ref{fig:todomvc-demo} shows an overview of this customization.}
-
-The user opens the table view, which shows the text and completed status
-of each todo. They start the customization by adding a new column to
-store the snooze date for each todo{ (Figure~\ref{fig:todomvc-demo},
-Note A)}.
-
-The next step is to hide snoozed todos. The user creates a
-\texttt{snoozed?} column, which uses a formula to compute whether a todo
-is snoozed---i.e., whether it has a snooze date in the future{
-(Figure~\ref{fig:todomvc-demo}, Note B)}. Then, they simply filter the
-table to hide the snoozed todos{ (Figure~\ref{fig:todomvc-demo}, Note
-C)}.
-
-Because the built-in \texttt{NOW()} function always returns the current
-datetime, snoozed todos will automatically appear once their snooze date
-arrives.
-
-Because this implementation of snoozing was built on the spreadsheet
-abstraction, it is completely decoupled from this particular todo list
-app. We envision that users could share these types of customizations as
-generic browser extensions, which could be applied to any site supported
-by Wildcard with no additional effort.
-
-\hypertarget{adding-a-custom-datepicker}{%
-\subsection{Adding a custom
-datepicker}\label{adding-a-custom-datepicker}}
-
-\begin{figure*}
-\hypertarget{fig:airbnb-demo}{%
-\centering
-\includegraphics{media/expedia-demo-300dpi.png}
-\caption{Using Wildcard to augment the Expedia page for booking a flight}\label{fig:expedia-demo}
-}
-\end{figure*}
-
-It might seem that Wildcard is only useful on websites that display
-lists of tabular data, but the table metaphor is flexible enough to
-represent many types of data. For example, a flight search form on
-Expedia can be represented as a single row, with a column corresponding
-to each input{ (Figure~\ref{fig:expedia-demo}, Note A)}.
-
-In some of the previous examples, the table cells were read-only
-(because users can't, for example, change the name or price of an Airbnb
-listing). In this case, the cells are writable, which means that changes
-in the table are reflected in the form inputs. This becomes especially
-useful when combined with GUI widgets that can edit the value of a table
-cell.
-
-Filling in dates for a flight search often requires a cumbersome
-workflow: open up a separate calendar app, find the dates for the trip,
-and then carefully copy them into the form. In Wildcard, the user can
-avoid this by using a datepicker widget that shows the user's personal
-calendar events{ (Figure~\ref{fig:expedia-demo}, Note B)}. The user can
-directly click on the correct date, and it gets inserted into both the
-spreadsheet and the original form.n
 
 \hypertarget{sec:architecture}{%
 \section{System architecture}\label{sec:architecture}}
@@ -651,13 +532,13 @@ Youtube          & Videos               & 80                                    
 
 To evaluate table-driven customization in practice, we built the
 Wildcard browser extension, which implements table-driven customization
-in the context of existing websites. It is built in Typescript, and
-works across three major browsers: Chrome, Firefox, and Edge.
+in the context of existing websites. It is implemented in Typescript,
+and works across three major browsers: Chrome, Firefox, and Edge.
 
 We have used Wildcard to customize 11 websites, including transactional
 sites like Amazon and Uber Eats, and media consumption sites like Hacker
-News and Youtube. Table 1 summarizes all these customizations, including
-the number of lines of code in the adapter configuration for each site.
+News and Youtube. Table 1 summarizes these customizations, showing the
+number of lines of code in the adapter configuration for each site.
 
 So far, most usage of Wildcard has come from members of the project
 team. Here we offer our reflections on using the system, focused on two
@@ -668,16 +549,15 @@ key questions:
 \item
   How broad is the range of possible customizations in this paradigm?
 \item
-  How feasible is it to build DOM scraping adapters for real websites,
-  in practice?
+  How feasible is it to build DOM scraping adapters for real websites?
 \end{itemize}
 
 \hypertarget{range-of-customizations}{%
 \subsection{Range of customizations}\label{range-of-customizations}}
 
 We have found that table-driven customization can serve a broad range of
-useful purposes. Here we expand on some examples that illuminate various
-aspects of using the system in practice.
+useful purposes. Here we expand on some archetypal examples that
+illuminate various aspects of using the system in practice.
 
 \hypertarget{sortingfiltering}{%
 \subsubsection{Sorting/filtering}\label{sortingfiltering}}
@@ -694,52 +574,53 @@ time. Wildcard enables users to take back some control over this
 process.
 
 In other cases we have found that a lack of sorting options seems less
-intentional, and simply a missing feature. For example, the Instacart
-grocery delivery service doesn't allow users to sort their grocery cart
-by price or category. Our guess is that they simply haven't gotten
-around to implementing the feature yet.
+intentional, and simply represents a missing feature. For example, the
+Instacart grocery delivery service doesn't allow users to sort their
+grocery cart by price or category. Our guess is that they simply haven't
+gotten around to implementing the feature yet.
 
 In the current implementation of Wildcard, users can only sort and
-filter entries which are shown on the current page, which means that
+filter entries that are shown on the current page, which means that
 users are not entirely liberated from the suggestions of the opaque
 algorithm. We could work around this restriction in the future by
 fetching content across multiple pages, but we've also found that
 sorting/filtering a single page of a paginated list is often an
-acceptable outcome, and even a preferable one. For example, it's more
-useful to sort 30 recommended Youtube videos than to try to sort all
-videos on Youtube; similarly it's convenient to view the Hacker News
-front page sorted by read time, rather than all Hacker News articles.
+acceptable outcome (and sometimes even a preferable one). For example,
+it's more useful to sort (by length, say) 30 recommended Youtube videos
+than to try to sort all videos on Youtube, or to sort (by read time,
+say) the articles on the Hacker News front page than to sort all
+non-archived articles.
 
 \hypertarget{annotating}{%
 \subsubsection{Annotating}\label{annotating}}
 
 Many other web annotation systems focus on annotating text or arbitrary
-webpage content, but Wildcard only allows for annotating structured
-objects extracted by an adapter, which results in quite a different set
-of use cases.
+webpage content, but Wildcard limits annotations to structured objects
+extracted by an adapter, resulting in quite a different set of use
+cases.
 
 Annotating with Wildcard has proven most useful when taking notes on a
-list of possible options: e.g., evaluating possible Airbnb locations to
-rent. We have also used it with Instacart's online grocery cart, for
+list of possible options (e.g., evaluating possible Airbnb locations to
+rent). We have also used it with Instacart's online grocery cart, for
 jotting down notes like ``should we get more milk?''
 
 \hypertarget{formulas}{%
 \subsubsection{Formulas}\label{formulas}}
 
-Formulas are the most powerful part of the Wildcard system. So far, we
-have only built a small number of functions into the language, but by
-adding more functions, the fundamental computing model could support a
-very broad range of useful computations, as shown by the success of
-spreadsheets.
+Formulas are the most powerful part of the Wildcard system. So far, our
+language supports only a small number of predefined functions. Adding
+more will allow a very broad range of useful computations, as shown by
+the success of spreadsheets.
 
-We have found that formulas are useful for fetching data from Web APIs.
-We've used them to augment Airbnb listings with walkability scores, and
+Formulas are especially useful for fetching data from Web APIs. We've
+used them to augment Airbnb listings with walkability scores, and to
 augment Hacker News articles with estimated read times. One challenge of
-the current language design is that supporting each web API requires
-adding a new function to the language using code, because web APIs
-typically return complex JSON data structures which don't make sense to
-display in a single table cell. Adding functions for handling JSON data
-to the formula language might help resolve this.
+the current language design is that supporting a new web API requires
+writing conventional code to add a new function to the language, because
+web APIs typically return complex JSON data structures that can't be
+easily displayed in a single table cell. Adding functions for handling
+JSON data to the formula language might make it possible to access new
+APIs without requiring an entire new function in the formula system.
 
 We have also found instances where simple data manipulation is useful:
 adding together different subtotals into a total price, or manipulating
@@ -754,57 +635,58 @@ string labels, as shown in the example in Section~\ref{sec:examples}.
 Examples section})
 
 ``Cell editors'' are UI widgets that expose a custom editing UI for a
-single cell of the table view. A programmer building a cell editor only
-needs to integrate it with the table viewer; actually propagating values
-into the website UI is handled by the site-specific DOM adapter. As a
-result, creating a new cell editor can be as easy as just creating glue
-code between the table editor and an existing UI widget library.
+single cell of the table view. A programmer building a cell editor need
+only integrate it with the table viewer; propagating values into the
+website UI is handled by the site-specific DOM adapter. As a result,
+creating a new cell editor can be as easy as just writing some glue code
+between the table editor and an existing UI widget library.
 
-One benefit of cell editors is that a user can use their personal
-information in a web UI without uploading it to the website. To explore
-this idea, we created a cell editor based on the FullCalendar Javascript
-plugin, which can load data from a Google Calendar. This makes it
-convenient to enter dates into a website based on the user's personal
-calendar information.
+An important benefit of cell editors is that they allow users to
+incorporate their personal information within the web UI but without
+uploading their personal data to the web server. To explore this idea,
+we created a cell editor based on the FullCalendar Javascript plugin,
+which can load data from a Google Calendar. This makes it convenient to
+enter dates into a website based on the user's personal calendar
+information.
 
 Another benefit of cell editors is that a user can choose their
 preferred widget for editing some type of information. We built a cell
-editor based on the CKEditor rich text editor. As an example of using
-this editor, we integrated it with the Blogger website and used it to
-edit blog posts, in place of the Blogger website's built-in editor.
+editor based on the CKEditor rich text editor, and demonstrated its use
+by integrating it with Google's Blogger website and using it to edit
+blog posts, in place of Blogger's built-in editor.
 
 \hypertarget{limitations}{%
 \subsubsection{Limitations}\label{limitations}}
 
-There are many useful customizations which are not possible in the
-table-driven customization paradigm. Wildcard can only make
+There are many useful customizations that are not currently possible in
+the table-driven customization paradigm. Wildcard can only make
 customizations that use the available data exposed in the table. UI
-modifications are limited in scope; for example, deleting arbitrary
-buttons isn't possible. At one point, we wanted to build an automation
-to repeatedly load a grocery delivery website to check for open delivery
+modifications are limited in scope; deleting arbitrary buttons isn't
+possible, for example. At one point, we wanted to build an automation to
+repeatedly load a grocery delivery website to check for open delivery
 slots, but it wasn't clear how to achieve this. Some of these
 limitations are specific to the current implementation of the Wildcard
-extension, but some are more general to the entire idea of table-driven
-customization.
+extension, but some are more fundamental to the entire idea of
+table-driven customization.
 
-We consider this an acceptable outcome---our goal is simply to make many
-useful customizations available to end users with a low threshold, not
-to span all possible customizations. Section~\ref{sec:dm} discusses this
-point further.
+We consider this an acceptable outcome; our goal is to make many useful
+customizations available to end users with a low threshold, and not to
+span all possible customizations. Section 5.1 discusses this point
+further.
 
-One benefit of Wildcard is \emph{predictability}: once we built a site
-adapter for a website, it was generally obvious to us what types of
+One benefit of Wildcard is predictability: once we built a site adapter
+for a website, it was generally obvious to us what types of
 customizations were and weren't possible, and the UI guided us towards
-building customizations that matched the system's model. For example,
-it's clear that it's not possible to customize a website using data not
-available in the table.
+building customizations that matched the system's model. If data is not
+available in the table, for example, then it's abundantly clear that
+customizations relying on that data will not be expressible.
 
 \hypertarget{viability-of-dom-scraping}{%
 \subsection{Viability of DOM scraping}\label{viability-of-dom-scraping}}
 
-Our second evaluation area is less about the conceptual approach of
-table-driven customization, and more about our specific implementation
-of customizing existing web applications. In order for third-party
+Our second evaluation area relates less to the conceptual approach of
+table-driven customization, and more to the specific implementation of
+customizing existing web applications. In order for third-party
 customization through Wildcard to succeed, it is important that creating
 usable adapters for existing websites takes minimal effort.
 
@@ -844,18 +726,19 @@ customize websites from the outside without first-party support.
 \hypertarget{sec:dm}{%
 \subsection{Customization by direct manipulation}\label{sec:dm}}
 
-Hutchins, Hollan and Norman \citep{hutchins1985} describe a direct
-manipulation interface as one that uses a model-world metaphor, rather
-than a conversation metaphor. Rather than conversing with the system
-about an assumed world, ``the world is explicitly represented'' and the
-user can ``{[}act{]} upon the objects of the task domain themselves.''
+Hutchins, Hollan and Norman \citep{hutchins1985} define a direct
+manipulation interface as one that uses a model-world metaphor rather
+than a conversation metaphor. Instead of presenting an ``assumed'' but
+not directly visible world that the user converses with, ``the world is
+explicitly represented'' and the user can ``{[}act{]} upon the objects
+of the task domain themselves.''
 
-Most GUIs today employ direct manipulation, but software customization
-tools typically use an imperative programming model, which implements
-the conversational metaphor rather than direct manipulation. For
-example, in Applescript \citep{cook2007}, the scripting language for
-customizing Mac OS applications, here is how a user retrieves a list of
-of calendar names from the Calendar application:
+Although most GUIs today employ direct manipulation, software
+customization tools typically use an imperative programming model, which
+implements the conversational metaphor rather than direct manipulation.
+Here, for example, is how a user retrieves a list of of calendar names
+from the Calendar application in Applescript \citep{cook2007}, the
+scripting language for customizing Mac OS applications:
 
 \begin{verbatim}
 tell application "Calendar"
@@ -863,30 +746,34 @@ tell application "Calendar"
 end tell
 \end{verbatim}
 
-Some customization environments (Automator for Mac, Shortcuts for iOS,
-Zapier for web APIs) forego text syntax and enable the user to connect
-programs and construct automations by dragging and dropping commands.
-These environments still do not constitute direct manipulation, though:
-the objects being manipulated are in the domain of programming, not the
-domain of the task at hand.
+Some customization environments like Mac Automator and Zapier forego
+textual syntax and let the user connect programs and construct
+automations by dragging and dropping icons representing commands. These
+environments still do not constitute direct manipulation, though: the
+objects being manipulated are in the domain of programming, not in the
+domain of the task at hand. Imperative programming is a reasonable
+choice as the model for building customizations. Turing-complete
+programming provides a high ceiling for possible customizations, and a
+sequence of commands is a natural fit for automations that simulate a
+series of steps taken by the user.
 
 Imperative programming is a reasonable choice as the model for building
 customizations. Turing-complete programming provides a high ceiling for
 possible customizations, and a sequence of commands is a natural fit for
 automations which simulate a series of steps taken by the user.
 
-However, there is a serious drawback to this approach. MacLean et al
+There is, however, a serious drawback to this approach. MacLean et al
 \citep{maclean1990} describe an ideal for user-tailorable systems: a
 ``gentle slope'' from using to customizing, where small incremental
 increases in skill lead to corresponding increments of customization
-power. Requiring users to learn programming for customization creates an
-abrupt ``cliff,'' where a significant learning investment is required
-even to implement simple customizations. Another goal of MacLean et al
-is that ``it should be as easy to change the environment as it is to use
-it,'' at least for some subset of changes. In scripting languages, even
-user-friendly ones like Applescript or Chickenfoot, the experience of
-customization does not remotely resemble the experience of use, so these
-systems can't meet this goal.
+power. Requiring users wanting to customize their applications to learn
+programming creates an abrupt ``cliff,'' exacting a significant
+investment in learning even to implement the simplest customizations.
+Another goal of MacLean et al is to make it ``as easy to change the
+environment as it is to use it''---at least for some subset of changes.
+But in scripting languages, even user-friendly ones like Applescript or
+Chickenfoot, the experience of customization does not remotely resemble
+the experience of use, so these systems can't meet this goal.
 
 With table-driven customization we aim to provide a gentler slope, by
 using direct manipulation for software customization. The data shown in
@@ -898,38 +785,35 @@ are common in GUI applications, and Wildcard therefore meets MacLean et
 al's goal: some one-click customizations are as easy as using the
 original application.
 
-One aspect of directness which we have chosen not to maintain in
-Wildcard is enabling customization in the context of the original user
-interface, as explored by some other tools like Scotty
-\citep{eagan2011}. We have found that augmenting the original UI with an
-additional structured representation has numerous benefits. It provides
-a consistent experience across all applications, and clearly shows the
-user what structured data is available to work with.
+One aspect of directness that we have chosen not to maintain in Wildcard
+is enabling customization in the context of the original user interface,
+as explored by tools like Scotty \citep{eagan2011}. We have found that
+augmenting the original UI with a distinct, additional representation
+provides a consistent experience across all applications, and clearly
+shows the user what structured data is available to work with.
 
 Ainsworth et al provide a helpful taxonomy of the value of multiple
 representations \citep{ainsworth1999}. In their terms, Wildcard plays a
-\emph{complementary role} by supporting a different set of tasks from
-the original application, while displaying \emph{shared information}. We
-also suspect that Wildcard helps \emph{constructs deeper understanding}
-by \emph{subtraction}. By stripping away details and only showing the
-essential data in an interface, Wildcard helps users think of new ways
-of using that data, outside the specific constraints of the original
-application.
+complementary role by supporting a different set of tasks from the
+original application, while displaying shared information. Wildcard may
+also help construct deeper understanding by subtraction. By stripping
+away details and only showing the essential data in an interface,
+Wildcard helps users think of new ways of using that data, outside the
+specific constraints of the original application.
 
 It is important to note that there are many specific customizations that
 can be achieved in systems like Chickenfoot \citep{bolin2005} that
 cannot be reproduced in Wildcard. We consider this an acceptable
-tradeoff in exchange for achieving a gentler slope of customization, and
-we show in Section~\ref{sec:examples} and Section~\ref{sec:evaluation}
-that our model can still implement many useful customizations in
-practice. Also, there is sometimes a way to reframe an imperative script
-in terms of our direct manipulation model; for example, a script that
-iterates through rows in a page adding some additional information could
-be reproduced using a formula in Wildcard.
+tradeoff in exchange for a gentler slope in customization, and we show
+in Section~\ref{sec:examples} and Section~\ref{sec:evaluation} that our
+model can still implement many useful customizations in practice. Also,
+there is sometimes a way to reframe an imperative script in terms of our
+direct manipulation model; for example, a script that iterates through
+rows in a page adding some additional information can be reproduced
+using a formula in Wildcard.
 
-\hypertarget{wrapping-applications-for-customization}{%
-\subsection{Wrapping applications for
-customization}\label{wrapping-applications-for-customization}}
+\hypertarget{semantic-wrappers}{%
+\subsection{Semantic wrappers}\label{semantic-wrappers}}
 
 Software customization tools typically fall into one of two categories:
 third-party, or semantic.
@@ -954,6 +838,8 @@ in the application domain---``create a new calendar event'' rather than
 easier to build and more robust. However, this style limits the range of
 extensions that can be built to those that the official plugin API
 supports.
+
+\emph{todo: copy over more content from gdoc}
 
 With Wildcard, we use a hybrid approach that aims to provide the best of
 both worlds. Programmers implement an API wrapper that is internally
@@ -1003,8 +889,8 @@ manipulation interfaces.
 \subsection{Customization tools}\label{customization-tools}}
 
 Table-driven customization is most closely related to other tools that
-aim to empower end users to customize software without doing any
-programming.
+aim to empower end users to customize software without traditional
+coding.
 
 This lineage goes back at least to the Buttons system by MacLean et al
 \citep{maclean1990}, where Xerox Lisp users could share buttons that
@@ -1022,66 +908,67 @@ Some recent web customization tools aim to enable end users to modify
 web interfaces without programming.
 
 Sifter \citep{huynh2006} enables end users to sort and filter lists of
-data based on web scraping, much like Wildcard's sorting features. The
-main difference between the systems is that table-driven customization
-has many other use cases besides sorting and filtering. Also, Sifter
-involves end users in a semi-automated data extraction process, rather
-than having programmers create wrappers. This provides coverage of more
-websites, but at the expense of complicating the end user experience. We
-might explore such techniques in Wildcard in the future, but we think
-that it's valuable for end users to have a customization experience free
-of web scraping details on supported websites. Finally Sifter implements
-scraping across multiple pages, a valuable feature for sorting and
-filtering which isn't present in Wildcard.
+data obtained by web scraping, much like Wildcard's sorting features.
+The main difference between the systems is that table-driven
+customization has many other use cases besides sorting and filtering.
+Also, Sifter involves end users in a semi-automated data extraction
+process, rather than having programmers create wrappers. This provides
+coverage of more websites, but at the expense of complicating the end
+user experience. We might explore such techniques in Wildcard in the
+future, but we think that it's valuable for end users to have a
+customization experience decoupled from the challenge of web scraping
+the underlying data. Sifter implements scraping across multiple pages, a
+valuable feature for sorting and filtering that isn't present in
+Wildcard.
 
-Thresher \citep{hogue2005} enables end users to create wrappers which
-map website content to Semantic Web schemas, making customizations
-available using the schema information. We share the general idea of
-wrappers with Thresher, but we have chosen to map to a single generic
-data type, rather than more specific schemas, which increases the range
-of websites and data supported by the system.
+Thresher \citep{hogue2005} helps end users create wrappers that map
+website content to Semantic Web schemas, making customizations available
+using the schema information. Wildcard shares the general idea of
+wrappers with Thresher, but maps to a single generic data type, rather
+than more specific schemas, increasing the range of websites and data
+that Wildcard is able to support.
 
-There are many software customization tools that offer simplified
-versions of programming for end users. Chickenfoot \citep{bolin2005} and
-Coscripter \citep{leshed2008} offer friendly syntax for writing web
-automation scripts; Applescript \citep{cook2007} attempts a similar goal
-for desktop customization. There are visual programming environments for
-customization which don't involve writing any text: as a few examples,
+There are many software customization tools that offer simplified forms
+of programming for end users. Chickenfoot \citep{bolin2005} and
+Coscripter \citep{leshed2008} offer user friendly syntax for writing web
+automation scripts; Applescript \citep{cook2007} has a similar goal for
+desktop customization. There are visual programming environments for
+customization that don't involve writing any text:
 \href{https://support.apple.com/guide/automator/welcome/mac}{Automator}
 for Mac and
 \href{https://apps.apple.com/us/app/shortcuts/id915249334}{Shortcuts}
 for iOS are modern options for customizing Apple products, and
 \href{https://zapier.com/}{Zapier} enables users to connect different
 web applications together visually. As mentioned previously, these tools
-all require writing imperative programs in some form; we take a
-fundamentally different approach in table-driven customization.
+all require writing imperative programs in some form, in contrast to the
+more declarative and direct approach of table-driven customization.
 
 \hypertarget{direct-manipulation-programming-interfaces.}{%
 \subsection{Direct manipulation programming
 interfaces.}\label{direct-manipulation-programming-interfaces.}}
 
-Another relevant area of literature is direct manipulation interfaces
-for interacting with structured data. We take much inspiration from
-these tools in our work, but apply them in a different domain:
-customizing existing software applications, rather than interacting with
-databases or constructing software from scratch.
+Another relevant area involves direct manipulation interfaces for
+interacting with structured data. We take inspiration from these tools
+in our work, but apply them in a different domain: customizing existing
+software applications, rather than interacting with databases or
+constructing software from scratch.
 
 The most closely related work is in systems that offer spreadsheet-like
 querying of relational data, as proposed by Liu and Jagadish
 \citep{liu2009}. SIEUFERD by Bakke and Karger \citep{bakke2016} is an
-example; their paper presents a survey of various other similar tools.
-Our work is particularly influenced by the authors' observation that
-direct manipulation requires that the user manipulate the \emph{results}
-of a database query rather than the query itself, and that the user must
-see intermediate results at every step of constructing a computation.
-SIEUFERD's interface supports a far wider range of possible queries than
-Wildcard, but the basic ideas of the user interface are similar.
+example; their paper presents a survey of other similar tools. Our work
+is particularly influenced by the authors' observation that direct
+manipulation requires that the user manipulate the results of a database
+query rather than the query itself, and that the user must see
+intermediate results at every step of constructing the query. SIEUFERD's
+interface supports a far wider range of queries than Wildcard, but the
+basic ideas of the user interface are similar.
 
 \href{https://airtable.com/}{Airtable} is another example of a modern
 commercial product that offers spreadsheet-like interaction with a
 relational database.
 
-Our work is also inspired by the many projects which have explored using
+Our work is also inspired by the many projects that have explored using
 spreadsheets as a foundation for building software applications,
 including Object Spreadsheets \citep{mccutchen2016}, Quilt
 \citep{benson2014}, Gneiss \citep{chang2014}, Marmite \citep{wong2007},
@@ -1092,11 +979,12 @@ software customization, rather than building software from scratch.
 
 Another system in this space is ScrAPIr, by Alrashed et
 al.~\citep{alrashed2020}, which enables end users to access backend web
-APIs without programming. ScrAPIr shares a high level goal of end user
-empowerment, and also shares the idea of wrappers, by creating a shared
-library of wrappers around existing web APIs. However, unlike Wildcard,
-ScrAPIr targets explicit APIs exposed by developers, and also doesn't
-aim to extend the frontend interfaces of web applications.
+APIs without programming. ScrAPIr shares our high level goal of end user
+empowerment, as well as the idea of wrappers, by creating a shared
+library of wrappers around existing web APIs. Unlike Wildcard, however,
+ScrAPIr targets explicit APIs exposed by developers. It also focused on
+backend services and doesn't aim to extend the frontend interfaces of
+web applications.
 
 \hypertarget{conclusion}{%
 \section{Conclusion}\label{conclusion}}

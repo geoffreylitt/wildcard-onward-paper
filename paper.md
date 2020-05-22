@@ -11,7 +11,7 @@ secPrefix:
   - "Section"
   - "Sections"
 abstract: |
-  In this paper we show how the behavior of a software application can be extended and adapted  by direct manipulation, using  table-driven customization, a new paradigm that allows end users to customize applications without writing traditional code.
+  In this paper we show how the behavior of a software application can be extended and adapted by direct manipulation, using table-driven customization, a new paradigm that allows end users to customize applications without writing traditional code.
 
   Instead, users directly manipulate a tabular view of the structured data inside the application—rather than writing imperative scripts (as in most customization tools). This simple model also accommodates a spreadsheet formula language and custom data editing widgets, which provide sufficient expressivity to implement many useful customizations.
 
@@ -29,7 +29,7 @@ We have known for decades about an alternate approach: _direct manipulation_ [@s
 
 In this paper we present a technique called _table-driven customization_, which applies ideas from visual query interfaces in the context of software customization. An application’s UI is augmented with a table view, where the user can see and manipulate the application’s internal data . Changes in the table view result in immediate corresponding changes to the original user interface of the application, enabling the user to customize an application with live feedback.
 
-We have developed a browser extension called Wildcard which uses web scraping techniques to implement table-driven customization for existing Web applications. In [@sec:examples], we introduce the key ideas of table-driven customization by presenting several examples of real customizations implemented in Wildcard.
+We have developed a browser extension called Wildcard which uses web scraping techniques to implement table-driven customization for existing Web applications. In [@sec:examples], we introduce the key ideas of table-driven customization through an example scenario.
 
 In [@sec:architecture], we explain the architecture of table-driven customization. We focus on the _table adapter_ abstraction, which allows many different types of underlying data to be bidirectionally mapped to a table. We describe several types of table adapters we’ve built in Wildcard, and also describe future adapters that are supported by the general paradigm.
 
@@ -42,93 +42,67 @@ In [@sec:themes], we discuss some key themes from our work:
 
 Table-driven customization relates to existing work in many areas. In particular, our goals overlap with many software customization tools, and our methods overlap with direct manipulation interfaces for working with structured data, including visual database query systems and spreadsheets. We explore these connections and more in [@sec:related-work].
 
-# Examples {#sec:examples}
+# Example Scenario {#sec:examples}
 
-_todo: maybe redo this as a separate example to avoid self plagiarism?_
-
-To concretely illustrate the end user experience of table-driven customization, here are several real examples of using the Wildcard browser extension to customize websites.
+To concretely illustrate the end user experience of table-driven customization, here is a real example of using the Wildcard browser extension to customize Hacker News, a tech news aggregator.
 
 <div class="html-only">
-![Using Wildcard to augment the Airbnb search page for booking accommodations](media/airbnb-demo-300dpi.png){#fig:airbnb-demo}
+![Customizing Hacker News by interacting with a table view](media/hacker-news.png){#fig:table-adapter}
 </div>
 <div class="pdf-only">
 ```{=latex}
 \begin{figure*}
-\hypertarget{fig:airbnb-demo}{%
+\hypertarget{fig:hacker-news}{%
 \centering
-\includegraphics{media/airbnb-demo-300dpi.png}
-\caption{Using Wildcard to augment the Airbnb search page for booking
-accommodations}\label{fig:airbnb-demo}
+\includegraphics[width=\textwidth]{media/hacker-news.png}
+\caption{Customizing Hacker News by interacting with a table view}\label{fig:hacker-news}
 }
 \end{figure*}
 ```
-</div>
 
-## Augmenting search results
+When the user navigates to Hacker News, they see a table at the bottom of the page, listing information about each link on the site: its title, URL, number of upvote points, etc. ([@fig:hacker-news], Note A) The end user didn't need to do any work to produce this table; Wildcard contains a library of adapters created by programmers for extracting data from websites.
 
-In 2012, the travel site Airbnb removed the ability to sort accommodation searches by price. Users could still filter by price range, but could no longer view the cheapest listings first. Many users complained that the change seemed hostile to users. "It's so frustrating! What is the logic behind not having this function?" said one user on the [Airbnb support forum](https://community.withairbnb.com/t5/Hosting/Sorting-listing-by-price/td-p/559404). Alas, the feature remains missing to this day.
+The user's first goal is to change the ranking of the links on the homepage.
+Normally, Hacker News uses a ranking algorithm where the position of an article
+depends not only on its number of points, but also on how long it has been
+on the site. If the user isn't frequently checking Hacker News, it's
+it easy for them to miss a popular article if it has fallen down the page.
+Sorting the page solely by number of points would achieve a more
+stable ranking, with the most upvoted articles remaining at the top of the list
+until they are no longer the home page.
 
-Using Wildcard, the user can fix this omission, while leaving the page's design and the rest of its functionality unchanged.<span class="pdf-only"> [@fig:airbnb-demo] shows an overview of augmenting the Airbnb site.</span> First, the user opens up the Wildcard panel, which shows a table corresponding to the search results in the page. As they click around in the table, the corresponding row in the page is highlighted to indicate the mapping between the views.
+To achieve this sort order, the user sipmly clicks on the "points"
+column header in the table. This sorts the table view by points,
+and the website UI also becomes sorted in the same order. ([@fig:hacker-news], Note B)
+This sort order persists across page loads, so every time the user loads
+Hacker News, they can see articles with this stable ordering.
 
-Then, the user clicks on the price column header to sort the spreadsheet and the Airbnb UI by price<span class="pdf-only"> ([@fig:airbnb-demo], Note A)</span>. They also filter to listings with a user rating above 4.5 (another feature missing in the original Airbnb UI).
+Next, the user decides to attempt a more substantial customization:
+they want to show estimated read times next to each article,
+as additional context when deciding what to read.
+The table contains additional columns to the right of the original
+attributes for each link, where the user can enter spreadsheet-style formulas
+to compute derived values. The user enters a formula: `=ReadTimeInSeconds(link)` ([@fig:hacker-news], Note C).
+This calls a built-in function which takes a URL as an argument,
+and makes a request to a public API which returns an estimated read time
+for the contents of that link.
 
-After manipulating the data, the user closes the table view and continues using the website. Because the application's UI usually has a nicer visual design than a spreadsheet, Wildcard does not aim to replace it—at any time, the user can use either the UI, the spreadsheet, or both together.
+The result from that formula is simply a numerical value in seconds,
+which is not a particularly legible format. The user enters another formula
+in the next column: `=Concat(Round(user1/60), "min read")` ([@fig:hacker-news], Note D).
+This converts seconds to minutes by dividing by 60 and rounding to the nearest integer,
+and then concatenating a label after the number. Now, the user chooses to show the results of this new
+column in the original page ([@fig:hacker-news], Note E). Each article on the page
+shows an annotation with the estimated read time in minutes.
 
-Many websites that show lists of data also offer actions on rows in the table, like adding an item to a shopping cart. Wildcard has the ability to make these "row actions" available in the data table through the site adapter. In the Airbnb UI, saving multiple listings to a Favorites list requires tediously clicking through them one by one. Using Wildcard row actions, the user can select multiple rows and favorite all of them with a single click<span class="pdf-only"> ([@fig:airbnb-demo], Note B)</span>. Similarly, the user can open the detailed pages for many listings at once.
+The user can also manually add notes to the table without using formulas.
+In this case, the user jots down a few notes
+about articles they might want to read, and the notes appear in the page as well.
 
-Next, the user wants to jot down some notes about each listing. To do this, they type some notes into an additional column in each row, and the notes appear inside the listings in the original UI<span class="pdf-only"> ([@fig:airbnb-demo], Note C)</span>. The annotations are saved in the browser and associated with the backend ID of the listing, so they will appear in future browser sessions that display the same listing.
-
-Wildcard also includes a formula language that enables more sophisticated customizations. When traveling without a car, it's useful to evaluate potential places to stay based on how walkable the surroundings are. Using a formula, the user can integrate Airbnb with Walkscore, an API that rates the walkability of any location on a 1-100 scale. When the user calls the `walkscore` formula with the listing's latitude and longitude as arguments, it returns the walk score for that location and shows it as the cell value. Because the cell's contents are injected into the page, the score also appears in the UI<span class="pdf-only"> ([@fig:airbnb-demo], Note D)</span>.
-
-## Snoozing todos
-
-<div class="html-only">
-![Using Wildcard to add a "snooze" feature to the TodoMVC todo list app](media/todomvc-demo-300dpi.png){#fig:todomvc-demo}
-</div>
-<div class="pdf-only">
-```{=latex}
-\begin{figure*}
-\hypertarget{fig:airbnb-demo}{%
-\centering
-\includegraphics{media/todomvc-demo-300dpi.png}
-\caption{Using Wildcard to add a "snooze" feature to the TodoMVC todo list app}\label{fig:todomvc-demo}
-}
-\end{figure*}
-```
-</div>
-
-In addition to fetching data from other sources, Wildcard formulas can also perform computations. In this example, the user would like to augment the TodoMVC todo list app with a "snooze" feature, which will temporarily hide a todo from the list until a certain date.<span class="pdf-only"> [@fig:todomvc-demo] shows an overview of this customization.</span>
-
-The user opens the table view, which shows the text and completed status of each todo. They start the customization by adding a new column to store the snooze date for each todo<span class="pdf-only"> ([@fig:todomvc-demo], Note A)</span>.
-
-The next step is to hide snoozed todos. The user creates a `snoozed?` column, which uses a formula to compute whether a todo is snoozed—i.e., whether it has a snooze date in the future<span class="pdf-only"> ([@fig:todomvc-demo], Note B)</span>. Then, they simply filter the table to hide the snoozed todos<span class="pdf-only"> ([@fig:todomvc-demo], Note C)</span>.
-
-Because the built-in `NOW()` function always returns the current datetime, snoozed todos will automatically appear once their snooze date arrives.
-
-Because this implementation of snoozing was built on the spreadsheet abstraction, it is completely decoupled from this particular todo list app. We envision that users could share these types of customizations as generic browser extensions, which could be applied to any site supported by Wildcard with no additional effort.
-
-## Adding a custom datepicker
-
-<div class="html-only">
-![Using Wildcard to augment the Expedia page for booking a flight](media/expedia-demo-300dpi.png){#fig:expedia-demo}
-</div>
-<div class="pdf-only">
-```{=latex}
-\begin{figure*}
-\hypertarget{fig:airbnb-demo}{%
-\centering
-\includegraphics{media/expedia-demo-300dpi.png}
-\caption{Using Wildcard to augment the Expedia page for booking a flight}\label{fig:expedia-demo}
-}
-\end{figure*}
-```
-</div>
-
-It might seem that Wildcard is only useful on websites that display lists of tabular data, but the table metaphor is flexible enough to represent many types of data. For example, a flight search form on Expedia can be represented as a single row, with a column corresponding to each input<span class="pdf-only"> ([@fig:expedia-demo], Note A)</span>.
-
-In some of the previous examples, the table cells were read-only (because users can't, for example, change the name or price of an Airbnb listing). In this case, the cells are writable, which means that changes in the table are reflected in the form inputs. This becomes especially useful when combined with GUI widgets that can edit the value of a table cell.
-
-Filling in dates for a flight search often requires a cumbersome workflow: open up a separate calendar app, find the dates for the trip, and then carefully copy them into the form. In Wildcard, the user can avoid this by using a datepicker widget that shows the user's personal calendar events<span class="pdf-only"> ([@fig:expedia-demo], Note B)</span>. The user can directly click on the correct date, and it gets inserted into both the spreadsheet and the original form.n
+The capabilities presented in this scenario are capable of creating
+a broad range of other customizations. [@sec:evaluation] explains
+many of those other use cases, but first we explain
+how the system works internally.
 
 # System architecture {#sec:architecture}
 
