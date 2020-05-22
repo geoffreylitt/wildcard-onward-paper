@@ -498,6 +498,4 @@ What formulas prove most helpful?
 
 Another area for future work is exploring whether it is possible to express a broader range of customizations by extending our table-editing paradigm. Are there ways to offer an increase in power and functional complexity, while retaining a programming model that is simpler for end users than conventional coding?
 
-_other platforms?_
-
 As computing plays an ever greater role in our lives, it is increasingly important that end users have agency over the behavior of their software, rather than having every detail be dictated by companies whose incentives are not always aligned with the user’s interests. We hope that table-driven customization can serve as one point, and maybe a guidepost, on our path from normal use to deep modification, in support of a more adaptable experience for all computer users.
