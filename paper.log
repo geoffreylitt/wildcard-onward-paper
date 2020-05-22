@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  22 MAY 2020 11:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  22 MAY 2020 14:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -33,6 +33,7 @@ Package acmart Info: Explicitly selecting natbib mode on input line 122.
 Package acmart Info: Not using anonymous mode on input line 130.
 Package acmart Info: Not using timestamp mode on input line 138.
 Package acmart Info: Not using authordraft mode on input line 148.
+Package acmart Info: Using screen mode on input line 157.
 Package acmart Info: Using anonymous mode on input line 157.
 Package acmart Info: Using review mode on input line 157.
 Class acmart Info: Using format sigplan, number 6 on input line 157.
@@ -762,13 +763,14 @@ nuxLibertineT-TLF.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 10.0pt on input line 2831.
 )
+Package hyperref Info: Option `colorlinks' set `true' on input line 63.
 Package hyperref Info: Option `pdfdisplaydoctitle' set `true' on input line 63.
 
 \c@theorem=\count144
 (/usr/local/texlive/2019/texmf-dist/tex/latex/preprint/balance.sty
 Package: balance 1999/02/23 4.3 (PWD)
 \oldvsize=\dimen156
-) Excluding comment 'screenonly' Include comment 'printonly' Excluding comment 
+) Include comment 'screenonly' Excluding comment 'printonly' Excluding comment 
 'anonsuppress' Excluding comment 'acks' (./paper.aux)
 \openout1 = `paper.aux'.
 
@@ -875,7 +877,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box36
-Package hyperref Info: Link coloring OFF on input line 63.
+Package hyperref Info: Link coloring ON on input line 63.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -1178,10 +1180,10 @@ Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: 0F7CAFD9EA4B102B1FB1FEE31D096CA4;2898.
  ) 
 Here is how much of TeX's memory you used:
- 18446 strings out of 492616
- 280422 string characters out of 6129482
- 404153 words of memory out of 5000000
- 21399 multiletter control sequences out of 15000+600000
+ 18447 strings out of 492616
+ 280436 string characters out of 6129482
+ 404109 words of memory out of 5000000
+ 21400 multiletter control sequences out of 15000+600000
  173388 words of font info for 349 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
  60i,16n,94p,796b,620s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1200,7 +1202,7 @@ bertineTB.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/
 LinLibertineTBI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libe
 rtine/LinLibertineTI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public
 /newtx/txsys.pfb>
-Output written on paper.pdf (11 pages, 1271141 bytes).
+Output written on paper.pdf (11 pages, 1271543 bytes).
 PDF statistics:
  366 PDF objects out of 1000 (max. 8388607)
  319 compressed objects within 4 object streams

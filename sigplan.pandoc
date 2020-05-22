@@ -22,7 +22,7 @@
 %% in the same archive or directory.)
 %%
 %% The first command in your LaTeX source must be the \documentclass command.
-\documentclass[sigplan,10pt,anonymous,review]{acmart}
+\documentclass[sigplan,screen,10pt,anonymous,review]{acmart}
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -89,6 +89,22 @@
   \country{USA}
 }
 \email{dnj@csail.mit.edu}
+
+\author{Tyler Millis}
+\affiliation{%
+  \institution{Massachusetts Institute of Technology}
+  \city{Cambridge, MA}
+  \country{USA}
+}
+\email{tmillis@mit.edu}
+
+\author{Jessica Quaye}
+\affiliation{%
+  \institution{Massachusetts Institute of Technology}
+  \city{Cambridge, MA}
+  \country{USA}
+}
+\email{jquaye@mit.edu}
 
 %%
 %% By default, the full list of authors will be used in the page

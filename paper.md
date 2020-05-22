@@ -11,12 +11,9 @@ secPrefix:
   - "Section"
   - "Sections"
 abstract: |
-  In this paper we show how the behavior of a software application can be extended and adapted by direct manipulation, using table-driven customization, a new paradigm that allows end users to customize applications without writing traditional code.
+  In this paper we show how the behavior of a software application can be extended and adapted by direct manipulation. We introduce _table-driven customization_, a new paradigm where end users directly manipulate a table view of the structured data inside an application, rather than writing imperative scripts (as in most customization tools). This simple model also accommodates a spreadsheet formula language and custom data editing widgets, which provide sufficient expressivity to implement many useful customizations.
 
-  Instead, users directly manipulate a tabular view of the structured data inside the application—rather than writing imperative scripts (as in most customization tools). This simple model also accommodates a spreadsheet formula language and custom data editing widgets, which provide sufficient expressivity to implement many useful customizations.
-
-  We illustrate the approach with Wildcard, a browser extension that implements table-driven customization in the context of web applications. Through concrete examples, we show that our paradigm can be used to create useful customizations for real applications. We share reflections from experience using the Wildcard system, on both its strengths and limitations relative to other customization approaches. Finally, we explore how this paradigm might lead to new software architectures that encourage this form of customization.
-
+  We illustrate the approach with Wildcard, a browser extension that implements table-driven customization in the context of existing web applications. Through concrete examples, we show that this paradigm can support useful customizations for real websites. We share reflections from our experiences using the Wildcard system, on both its strengths and limitations relative to other customization approaches. Finally, we explore how this paradigm might lead to new software architectures that encourage this form of customization.
 ---
 
 # Introduction
@@ -25,30 +22,30 @@ Many applications don't meet the precise needs of their users.
 End user customization systems can help improve the situation, by
 empowering non-programmers to modify their software in the way they would like.
 
-Most end user customization systems offer a simplified version of programming. Some scripting languages [@bolin2005;@cook2007] have a friendly syntax that resembles natural language. Some visual customization tools eliminate text syntax entirely. Macro recorders [@cook2007;@chasins2018;@anupam2000] remove some of the initial programming burden by letting a user start with concrete demonstrations.
+Most end user customization systems offer a simplified version of programming. Some scripting languages [@bolin2005;@cook2007] have a friendly syntax that resembles natural language. Other visual customization tools eliminate text syntax entirely. Macro recorders [@cook2007;@chasins2018;@anupam2000] remove some of the initial programming burden by letting a user start with concrete demonstrations. Despite their many differences, these approaches all share something in common: an imperative programming model, with statement sequencing, mutable variables and loops.
 
-Despite their many differences, these approaches all share something in common: an imperative programming model, with statement sequencing, mutable variables and loops. End users express their ideas in scripts made up of sequences of commands.
+We have known for decades about an alternate approach: _direct manipulation_ [@shneiderman1983], where "visibility of the object of interest" replaces "complex command language syntax". Direct manipulation is the _de facto_ standard in GUIs today, but when it comes to customizing those GUIs, it is rarely to be found. As a result, switching from using software to customizing it poses a learning barrier for users not familiar with programming, and requires an abrupt shift in mental model.
 
-We have known for decades about an alternate approach: _direct manipulation_ [@shneiderman1983], where "visibility of the object of interest" replaces "complex command language syntax". Direct manipulation is the _de facto_ standard in GUIs today, but when it comes to customizing software, it is rarely to be found. In this work, we ask: what would it look like to build a software customization interface that relies on direct manipulation? We take inspiration from spreadsheets and visual database query interfaces [@2020a; @bakke2016], which have successfully enabled end users to run queries and computations through direct manipulation of data.
+In this work, we ask: what would it look like to build a software customization interface that relies more on direct manipulation to lower the threshold of difficulty? We take inspiration from spreadsheets and visual database query interfaces [@bakke2016; @2020a], which have successfully enabled millions of end users to compute with data through direct manipulation.
 
-In this paper we present a technique called _table-driven customization_, which applies ideas from visual query interfaces in the context of software customization. An application’s UI is augmented with a table view, where the user can see and manipulate the application’s internal data . Changes in the table view result in immediate corresponding changes to the original user interface of the application, enabling the user to customize an application with live feedback.
+In this paper we present a technique called _table-driven customization_ inspired by those tools. An application’s UI is augmented with a table view, where the user can see and manipulate the application’s internal data. Changes in the table view result in immediate corresponding changes to the original user interface, enabling the user to customize an application with live feedback.
 
-We have developed a browser extension called Wildcard which uses web scraping techniques to implement table-driven customization for existing Web applications. In [@sec:example], we introduce the key ideas of table-driven customization through an example scenario.
+We have developed a browser extension called Wildcard which uses web scraping techniques to implement table-driven customization for existing Web applications. In [@sec:example], we illustrate the end user experience of table-driven customization through an example scenario using Wildcard.
 
-In [@sec:architecture], we explain the architecture of table-driven customization. We focus on the _table adapter_ abstraction, which allows many different types of underlying data to be bidirectionally mapped to a table. We describe several types of table adapters we’ve built in Wildcard, and also describe future adapters that are supported by the general paradigm.
+In [@sec:architecture], we explain the system architecture of table-driven customization. We focus on the _table adapter_ abstraction, which allows many different types of underlying data to be bidirectionally mapped to a table. We describe several types of table adapters we’ve built in Wildcard, and also describe future adapters supported by the general paradigm.
 
-We have used Wildcard to build real customizations for 11 different websites. In [@sec:evaluation], we present reflections from this process, outlining the kinds of customizations we were able to build, limitations we encountered, and reflections on the ease of integrating scraping logic with real websites.
+We have successfully used Wildcard to build customizations for 11 different websites. In [@sec:evaluation], we present reflections from this process, outlining the kinds of customizations we were able to build, limitations we encountered, and the challenges of integrating scraping logic with websites.
 
 In [@sec:themes], we discuss some key themes from our work:
 
-* *Customization by direct manipulation*: End users should be able to customize an application by directly examining and modifying its data, rather than by writing imperative scripts.
+* *Customization by direct manipulation*: We agree with MacLean et al [@maclean1990] that customization should follow a "gentle slope", where users can gradually invest in more complex techniques to achieve deeper customizations. We believe an important point on this slope is the ability to customize an application by directly seeing and changing its internal structured data, rather than by writing imperative scripts.
 * *Wrapping applications for customization*: Typically, tools that don't rely on official extension APIs resort to offering low-level APIs for customization. Instead, we propose a community-maintained library of semantic wrappers around existing applications, enabling end users to work with domain objects rather than low-level representations.
 
 Table-driven customization relates to existing work in many areas. In particular, our goals overlap with many software customization tools, and our methods overlap with direct manipulation interfaces for working with structured data, including visual database query systems and spreadsheets. We explore these connections and more in [@sec:related-work].
 
 # Example Scenario {#sec:example}
 
-To illustrate the end user experience of table-driven customization, we consider a real example of using the Wildcard browser extension to customize Hacker News, a tech news aggregator. Figure 1 shows accompanying screenshots.
+To illustrate the end user experience of table-driven customization, we consider an example scenario of customizing Hacker News, a tech news aggregator. [@fig:hacker-news] shows accompanying screenshots.
 
 <div class="html-only">
 ![Customizing Hacker News by interacting with a table view](media/hacker-news.png){#fig:hacker-news}
@@ -63,34 +60,58 @@ To illustrate the end user experience of table-driven customization, we consider
 }
 \end{figure*}
 ```
+**Opening the table**: When the user opens Hacker News in a browser equipped with the Wildcard extension, they see a table at the bottom of the page. It contains a row for each link on the homepage, listing information like the title, URL, submitter username, number of points, and number of comments ([@fig:hacker-news], Note A). The end user didn't need to do any work to create this table, because a programmer previously created an adapter to extract data from this particular website, and included the adapter in a shared library integrated into Wildcard.
 
-When the user opens Hacker News in a browser equipped with the Wildcard extension, they see a table at the bottom of the page, listing information about each link on the site: its title, URL, number of upvote points, etc. ([@fig:hacker-news], Note A) The end user didn't need to do any work to produce this table; Wildcard contains a library of adapters created by programmers for extracting data from websites.
+**Sorting by points**: First, the user decides to change the ranking of links on the homepage. Hacker News itself uses a ranking algorithm in which the position of an article depends not only on its point count (a measure of popularity), but also on how long it has been on the site. If the user hasn’t been checking the site frequently, it’s easy to miss a popular article that has fallen lower on the list. Sorting the page just by points would achieve a more stable ranking.
 
-The user’s first goal might be to change the ranking of links on the homepage. Hacker News itself uses a ranking algorithm in which the position of an article depends not only on its point count (a measure of popularity), but also on how long it has been on the site. If the user hasn’t been checking the site frequently, it’seasy to miss a popular article that has fallen down the page. Sorting the page solely by number of points would achieve a more stable ranking, with the most upvoted articles remaining at the top of the list until they are no longer on the home page.
+To achieve this ordering, the user simply clicks on the “points” column header in the table. This sorts the table view by points, and the website UI also becomes sorted in the same order ([@fig:hacker-news], Note B). This sort order persists across page loads—every time the user loads Hacker News, the latest list of articles gets sorted by points.
 
-To achieve this sort order, the user simply clicks on the “points” column header in the table. This sorts the table view by points, and the website UI also becomes sorted in the same order ([@fig:hacker-news], Note B).
-This sort order persists across page loads, so every time the user loads Hacker News, they will see articles with this stable ordering.
+**Adding estimated read times**: Next, the user decides to attempt a more substantial customization: to add estimated read times to articles on Hacker News.
 
-Next, the user might decide to attempt a more substantial customization: to show estimated read times next to each article, as additional context when deciding what to read. The table contains additional columns to the right of the original attributes for each link, where the user can enter spreadsheet-style formulas to compute derived values. The user enters a formula ([@fig:hacker-news], Note C):
+The table contains additional columns to the right of the original attributes for each row, where the user can enter spreadsheet-style formulas to compute derived values. As in spreadsheets, we provide generic names for these extra columns by default, so users don't need to choose column names themselves.
+
+The user enters a formula into the `user1` column: ([@fig:hacker-news], Note C):
 
 ```
 =ReadTimeInSeconds(link)
 ```
 
-This calls a built-in function that takes a URL as an argument and makes a request to a public web service that returns an estimated read time for the contents of that link. The result of evaluating the formula is simply a numerical value in seconds, which is not a particularly legible format. The user enters another formula
-in the next column ([@fig:hacker-news], Note D):
+This calls a built-in function that takes a URL as an argument and uses a public web API to compute an estimated read time for the link's contents. The argument `link` refers to a column name in the table; for each row, the formula is evaluated with the link for that particular row.
+
+The result of evaluating this formula is a numerical value in seconds. The user clicks
+the `user1` column header to sort the articles on the page in descending order of estimated read time,
+helping them prioritize reading deeper content.
+
+It would be helpful to show these values in the page too. Before doing that, the user enters a formula in the next column `user2` to make the time estimate more readable ([@fig:hacker-news], Note D):
 
 ```
 =Concat(Round(user1/60), "min read")
 ```
 
-This converts seconds to minutes by dividing by 60 and rounding to the nearest integer, and then concatenates a label to the number. Finally, the user chooses to show the results of this new column in the original page ([@fig:hacker-news], Note E). Each article on the page now shows an annotation with the estimated read time in minutes.
+This formula converts seconds to minutes by dividing by 60 and rounding to the nearest integer, and then concatenates a label to the number, producing results like "21 min read".
 
-The user might also manually add notes to the table without using formulas. In this case, the user jots down a few notes about articles they might want to read, and the notes appear in the page as well.
+Finally, the user chooses to show the results of this new column in the original page ([@fig:hacker-news], Note E). Each article on the page now shows an annotation with the estimated read time in minutes.
 
-The features presented in this scenario can support
-a broad range of other customizations. [@sec:evaluation] explains
-many other use cases, but first we explain how the system works internally.
+**Adding notes to links**: The user can also manually add notes to the table, by simply entering values into the table without using formulas. In this case, the user jots down a few notes in another column about articles they might want to read, and the notes appear in the page ([@fig:hacker-news], Note E).
+
+**Filtering out visited links**: Another way to use formulas to customize Hacker News is to filter out articles the user has already read. (We omit this example from the figure for brevity.) The user can call a built-in function that returns a boolean depending on whether a URL is in the browser's history:
+
+```
+=Visited(link)
+```
+
+They can then filter the table to only contain rows where this formula column contains `false`;
+visited rows are hidden both from the table view and the original page.
+
+This is an example of a customization that the original website could not implement,
+since websites don't have access to the browser history for privacy reasons.
+But using Wildcard, the user can implement the customization locally,
+without needing to upload their browser history to the Hacker News site.
+
+This scenario represents just one example of how table-driven customizations
+can help a user improve their experience of using a website.
+[@sec:evaluation] explains many other use cases,
+but first we explain how the system works internally.
 
 # System architecture {#sec:architecture}
 
@@ -145,7 +166,7 @@ as the user manipulates the table view.
 
 **Sorting/filtering**: When the user sorts or filters the query view, an ordered list of
 visible IDs is sent to each table adapter. The DOM scraping adapter uses this information
-to modify the list of visible rows in the web page.
+to change the list of rows shown in the web page.
 
 **Information from other tables**: The query engine sends each table adapter the entire combined table of data being rendered to the user. The DOM scraping adapter uses this to add annotations to the page by looking for additional data columns joined to scraped rows, and rendering them in the page. (_todo: explain joined_)
 
