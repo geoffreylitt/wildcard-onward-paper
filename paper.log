@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  22 MAY 2020 18:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  22 MAY 2020 18:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1156,43 +1156,33 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (1.35764pt too wide) in paragraph at lines 1086--1092
-\T1/LinuxLibertineT-TLF/m/n/10 (-20) web-site con-tent to Se-man-tic Web schema
-s, mak-ing cus-tomiza-
- []
-
-
-Overfull \hbox (2.46594pt too wide) in paragraph at lines 1086--1092
-\T1/LinuxLibertineT-TLF/m/n/10 (-20) tions avail-able us-ing the schema in-for-
-ma-tion. Wild-card shares
- []
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[10.10] (./paper.bbl
+[10.10]
+Underfull \vbox (badness 1558) has occurred while \output is active []
+
+(./paper.bbl
 LaTeX Info: Redefining \tempurl on input line 70.
 LaTeX Info: Redefining \tempurl on input line 87.
 LaTeX Info: Redefining \tempurl on input line 104.
 LaTeX Info: Redefining \tempurl on input line 122.
 LaTeX Info: Redefining \tempurl on input line 140.
 LaTeX Info: Redefining \tempurl on input line 156.
+LaTeX Info: Redefining \tempurl on input line 174.
 
-Underfull \vbox (badness 4279) has occurred while \output is active []
+Underfull \vbox (badness 2698) has occurred while \output is active []
 
 [11.11]
-LaTeX Info: Redefining \tempurl on input line 174.
 LaTeX Info: Redefining \tempurl on input line 189.
 LaTeX Info: Redefining \tempurl on input line 207.
 LaTeX Info: Redefining \tempurl on input line 223.
 LaTeX Info: Redefining \tempurl on input line 253.
 LaTeX Info: Redefining \tempurl on input line 272.
 LaTeX Info: Redefining \tempurl on input line 288.
-LaTeX Info: Redefining \tempurl on input line 303.
-LaTeX Info: Redefining \tempurl on input line 321.
-LaTeX Info: Redefining \tempurl on input line 341.
-LaTeX Info: Redefining \tempurl on input line 357.
-LaTeX Info: Redefining \tempurl on input line 373.
+LaTeX Info: Redefining \tempurl on input line 306.
+LaTeX Info: Redefining \tempurl on input line 326.
+LaTeX Info: Redefining \tempurl on input line 342.
+LaTeX Info: Redefining \tempurl on input line 358.
 )
 
 Class acmart Warning: Some images may lack descriptions.
@@ -1201,23 +1191,23 @@ Class acmart Warning: Some images may lack descriptions.
 Overfull \vbox (1.90399pt too high) has occurred while \output is active []
 
 [12.12]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1187.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1187.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1183.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1183.
 (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1187.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1187.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1183.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1183.
 
 Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: 8BB767506C41CA4B74ED7425E72CE75E;2932.
  ) 
 Here is how much of TeX's memory you used:
- 18453 strings out of 492616
- 280671 string characters out of 6129482
- 407165 words of memory out of 5000000
- 21400 multiletter control sequences out of 15000+600000
- 173759 words of font info for 351 fonts, out of 8000000 for 9000
+ 18446 strings out of 492616
+ 280542 string characters out of 6129482
+ 405113 words of memory out of 5000000
+ 21397 multiletter control sequences out of 15000+600000
+ 173486 words of font info for 349 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,17n,94p,796b,604s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,17n,94p,796b,606s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-4.enc}{
 /usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/
 usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/u
@@ -1233,10 +1223,10 @@ bertineTB.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/
 LinLibertineTBI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libe
 rtine/LinLibertineTI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public
 /newtx/txsys.pfb>
-Output written on paper.pdf (12 pages, 1368463 bytes).
+Output written on paper.pdf (12 pages, 1367809 bytes).
 PDF statistics:
- 400 PDF objects out of 1000 (max. 8388607)
- 340 compressed objects within 4 object streams
- 93 named destinations out of 1000 (max. 500000)
+ 396 PDF objects out of 1000 (max. 8388607)
+ 336 compressed objects within 4 object streams
+ 92 named destinations out of 1000 (max. 500000)
  51884 words of extra memory for PDF output out of 61914 (max. 10000000)
 

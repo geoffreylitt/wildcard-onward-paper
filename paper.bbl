@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{20}
+\begin{thebibliography}{19}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -286,21 +286,6 @@
 \newblock
 \urldef\tempurl%
 \url{https://doi.org/10.1145/3397537.3397541}
-\showDOI{\tempurl}
-
-
-\bibitem[\protect\citeauthoryear{Liu and Jagadish}{Liu and Jagadish}{2009}]%
-        {liu2009}
-\bibfield{author}{\bibinfo{person}{Bin Liu} {and} \bibinfo{person}{H.~V.
-  Jagadish}.} \bibinfo{year}{2009}\natexlab{}.
-\newblock \showarticletitle{A {{Spreadsheet Algebra}} for a {{Direct Data
-  Manipulation Query Interface}}}. In \bibinfo{booktitle}{\emph{2009 {{IEEE}}
-  25th {{International Conference}} on {{Data Engineering}}}}.
-  \bibinfo{pages}{417--428}.
-\newblock
-\showISSN{2375-026X}
-\urldef\tempurl%
-\url{https://doi.org/10.1109/ICDE.2009.34}
 \showDOI{\tempurl}
 
 

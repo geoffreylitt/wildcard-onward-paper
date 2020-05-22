@@ -1076,19 +1076,19 @@ customization has many other use cases besides sorting and filtering.
 Also, Sifter involves end users in a semi-automated data extraction
 process, rather than having programmers create wrappers. This provides
 coverage of more websites, but at the expense of complicating the end
-user experience. We might explore such techniques in Wildcard in the
-future, but we think that it's valuable for end users to have a
-customization experience decoupled from the challenge of web scraping
-the underlying data. Sifter implements scraping across multiple pages, a
-valuable feature for sorting and filtering that isn't present in
-Wildcard.
+user experience. We could integrate end user scraping techniques in
+Wildcard in the future, but we believe that when possible it's valuable
+for end users to have a customization experience decoupled from the
+challenge of web scraping the underlying data. Sifter also implements
+scraping across multiple pages, a valuable feature for sorting and
+filtering that isn't present in Wildcard.
 
 Thresher \citep{hogue2005} helps end users create wrappers that map
-website content to Semantic Web schemas, making customizations available
-using the schema information. Wildcard shares the general idea of
-wrappers with Thresher, but maps to a single generic data type, rather
-than more specific schemas, increasing the range of websites and data
-that Wildcard is able to support.
+website content to Semantic Web schemas like ``Movie'' or ``Director,''
+and augments websites with new functionality by exploiting that schema
+information. Wildcard shares the general idea of wrappers, but maps to a
+generic table data type rather than more specific schemas, increasing
+the range of supported data and allowing for a simpler mapping process.
 
 There are many software customization tools that offer simplified forms
 of programming for end users. Chickenfoot \citep{bolin2005} and
@@ -1102,44 +1102,40 @@ for Mac and
 for iOS are modern options for customizing Apple products, and
 \href{https://zapier.com/}{Zapier} enables users to connect different
 web applications together visually. As mentioned previously, these tools
-all require writing imperative programs in some form, in contrast to the
-more declarative and direct approach of table-driven customization.
+all require writing imperative programs, in contrast to the more
+declarative and direct approach of table-driven customization.
 
 \hypertarget{direct-manipulation-programming-interfaces.}{%
 \subsection{Direct manipulation programming
 interfaces.}\label{direct-manipulation-programming-interfaces.}}
 
-Another relevant area involves direct manipulation interfaces for
-interacting with structured data. We take inspiration from these tools
-in our work, but apply them in a different domain: customizing existing
-software applications, rather than interacting with databases or
-constructing software from scratch.
+Another relevant area involves spreadsheets and visual query systems. We
+take inspiration from these tools in our work, but apply them in a
+different domain: customizing existing software applications, rather
+than interacting with databases or constructing software from scratch.
 
 The most closely related work is in systems that offer spreadsheet-like
-querying of relational data, as proposed by Liu and Jagadish
-\citep{liu2009}. SIEUFERD by Bakke and Karger \citep{bakke2016} is an
-example; their paper presents a survey of other similar tools. Our work
-is particularly influenced by the authors' observation that direct
-manipulation requires that the user manipulate the results of a database
-query rather than the query itself, and that the user must see
-intermediate results at every step of constructing the query. SIEUFERD's
-interface supports a far wider range of queries than Wildcard, but the
-basic ideas of the user interface are similar.
-
-\href{https://airtable.com/}{Airtable} is another example of a modern
-commercial product that offers spreadsheet-like interaction with a
-relational database.
+querying of relational data. SIEUFERD by Bakke and Karger
+\citep{bakke2016} is one such recent system, and their paper presents a
+survey of many other similar tools. Our work is particularly influenced
+by the authors' observation that direct manipulation requires that the
+user manipulate the results of a database query rather than the query
+itself, and that the user must see intermediate results at every step of
+constructing the query. SIEUFERD's interface supports a far wider range
+of queries than Wildcard, but the fundamental principles of the user
+interface are similar. \href{https://airtable.com/}{Airtable} is another
+example of a modern commercial product that offers spreadsheet-like
+interaction with a relational database.
 
 Our work is also inspired by the many projects that have explored using
 spreadsheets as a foundation for building software applications,
 including Object Spreadsheets \citep{mccutchen2016}, Quilt
 \citep{benson2014}, Gneiss \citep{chang2014}, Marmite \citep{wong2007},
-\href{https://www.glideapps.com/}{Glide}. These projects share the idea
-that a spreadsheet is a convenient interface for editing the data
-underlying a GUI application. We share that idea, but apply it to
-software customization, rather than building software from scratch.
+\href{https://www.glideapps.com/}{Glide}. We share the core idea of
+connecting a spreadsheet view to a GUI, but apply it to software
+customization, rather than building software from scratch.
 
-Another system in this space is ScrAPIr, by Alrashed et
+Another related system is ScrAPIr, by Alrashed et
 al.~\citep{alrashed2020}, which enables end users to access backend web
 APIs without programming. ScrAPIr shares our high level goal of end user
 empowerment, as well as the idea of wrappers, by creating a shared
