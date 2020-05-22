@@ -24,11 +24,25 @@ empowering non-programmers to modify their software in the way they would like.
 
 Most end user customization systems offer a simplified version of programming. Some scripting languages [@bolin2005;@cook2007] have a friendly syntax that resembles natural language. Other visual customization tools eliminate text syntax entirely. Macro recorders [@cook2007;@chasins2018;@anupam2000] remove some of the initial programming burden by letting a user start with concrete demonstrations. Despite their many differences, these approaches all share something in common: an imperative programming model, with statement sequencing, mutable variables and loops.
 
-We have known for decades about an alternate approach: _direct manipulation_ [@shneiderman1983], where "visibility of the object of interest" replaces "complex command language syntax". Direct manipulation is the _de facto_ standard in GUIs today, but when it comes to customizing those GUIs, it is rarely to be found. As a result, switching from using software to customizing it poses a learning barrier for users not familiar with programming, and requires an abrupt shift in mental model.
+We have known for decades about an alternate approach: _direct manipulation_ [@shneiderman1983], where "visibility of the object of interest" replaces "complex command language syntax". Direct manipulation is the _de facto_ standard in GUIs today, but when it comes to customizing those GUIs, it is rarely to be found. As a result, switching from using software to customizing it poses a learning barrier for users not familiar with programming, and requires an abrupt shift in mental model even for those familiar with scripting.
 
-In this work, we ask: what would it look like to build a software customization interface that relies more on direct manipulation to lower the threshold of difficulty? We take inspiration from spreadsheets and visual database query interfaces [@bakke2016; @2020a], which have successfully enabled millions of end users to compute with data through direct manipulation.
+In this work, we ask: what would it look like to build a direct maniulation interface that lowers the threshold for starting to customize software? We take inspiration from spreadsheets and visual database query interfaces [@bakke2016; @2020a], which have successfully enabled millions of end users to compute with data through direct manipulation.
 
 In this paper we present a technique called _table-driven customization_ inspired by those tools. An application’s UI is augmented with a table view, where the user can see and manipulate the application’s internal data. Changes in the table view result in immediate corresponding changes to the original user interface, enabling the user to customize an application with live feedback.
+
+<div class="html-only">
+![An overview of table-driven customization](media/overview.png){#fig:overview}
+</div>
+<div class="pdf-only">
+```{=latex}
+\begin{figure*}
+\hypertarget{fig:overview}{%
+\centering
+\includegraphics[width=\textwidth]{media/overview.eps}
+\caption{An overview of table-driven customization}\label{fig:overview}
+}
+\end{figure*}
+```
 
 We have developed a browser extension called Wildcard which uses web scraping techniques to implement table-driven customization for existing Web applications. In [@sec:example], we illustrate the end user experience of table-driven customization through an example scenario using Wildcard.
 
@@ -60,39 +74,33 @@ To illustrate the end user experience of table-driven customization, we consider
 }
 \end{figure*}
 ```
-**Opening the table**: When the user opens Hacker News in a browser equipped with the Wildcard extension, they see a table at the bottom of the page. It contains a row for each link on the homepage, listing information like the title, URL, submitter username, number of points, and number of comments ([@fig:hacker-news], Note A). The end user didn't need to do any work to create this table, because a programmer previously created an adapter to extract data from this particular website, and included the adapter in a shared library integrated into Wildcard.
+**Opening the table**: When the user opens Hacker News in a browser equipped with the Wildcard extension, they see a table at the bottom of the page. It contains a row for each link on the homepage, listing information like the title, URL, submitter username, number of points, and number of comments ([@fig:hacker-news], Note A). The end user didn't need to do any work to create this table, because a programmer previously created an adapter to extract data from this particular website, and contributed it to a shared library of adapters integrated into Wildcard.
 
 **Sorting by points**: First, the user decides to change the ranking of links on the homepage. Hacker News itself uses a ranking algorithm in which the position of an article depends not only on its point count (a measure of popularity), but also on how long it has been on the site. If the user hasn’t been checking the site frequently, it’s easy to miss a popular article that has fallen lower on the list. Sorting the page just by points would achieve a more stable ranking.
 
-To achieve this ordering, the user simply clicks on the “points” column header in the table. This sorts the table view by points, and the website UI also becomes sorted in the same order ([@fig:hacker-news], Note B). This sort order persists across page loads—every time the user loads Hacker News, the latest list of articles gets sorted by points.
+To achieve this ordering, the user simply clicks on the “points” column header in the table. This sorts the table view by points, and the website UI also becomes sorted in the same order ([@fig:hacker-news], Note B)—Wildcard has manipulated the website's DOM to synchronize it with the sort order of the table. This sort order is also persisted in the browser and reapplied automatically the next time the user loads the page, so they can always browse the latest set of links using this sort order.
 
 **Adding estimated read times**: Next, the user decides to attempt a more substantial customization: to add estimated read times to articles on Hacker News.
 
-The table contains additional columns to the right of the original attributes for each row, where the user can enter spreadsheet-style formulas to compute derived values. As in spreadsheets, we provide generic names for these extra columns by default, so users don't need to choose column names themselves.
-
-The user enters a formula into the `user1` column: ([@fig:hacker-news], Note C):
+The table contains additional columns to the right of the original attributes for each row, where the user can enter spreadsheet-style formulas to compute derived values. We provide generic names for these columns by default as spreadsheets do, so that users don't need to choose column names themselves. The user enters a formula into the `user1` column: ([@fig:hacker-news], Note C):
 
 ```
 =ReadTimeInSeconds(link)
 ```
 
-This calls a built-in function that takes a URL as an argument and uses a public web API to compute an estimated read time for the link's contents. The argument `link` refers to a column name in the table; for each row, the formula is evaluated with the link for that particular row.
+This calls a built-in function that takes a URL as an argument and uses a public web API to compute an estimated read time for the link's contents. The argument `link` refers to a column name in the table; for each row, the formula is evaluated with the link for that particular row. The result of evaluating this formula is a numerical value in seconds for each article.
 
-The result of evaluating this formula is a numerical value in seconds. The user clicks
-the `user1` column header to sort the articles on the page in descending order of estimated read time,
-helping them prioritize reading deeper content.
-
-It would be helpful to show these values in the page too. Before doing that, the user enters a formula in the next column `user2` to make the time estimate more readable ([@fig:hacker-news], Note D):
+The user clicks the `user1` column header to sort the articles on the page in descending order of estimated read time, helping to prioritize reading deeper content. It would be useful to show these read times in the page too, but before doing that, the user wants to make the time estimates more readable. They enter another formula in the next column, `user2`:
 
 ```
 =Concat(Round(user1/60), "min read")
 ```
 
-This formula converts seconds to minutes by dividing by 60 and rounding to the nearest integer, and then concatenates a label to the number, producing results like "21 min read".
+This formula converts seconds to minutes by dividing by 60 and rounding to the nearest integer, and then concatenates a label to the number, producing strings like "21 min read".
 
-Finally, the user chooses to show the results of this new column in the original page ([@fig:hacker-news], Note E). Each article on the page now shows an annotation with the estimated read time in minutes.
+Finally, the user clicks a menu option in the table header to display the contents of this new column in the original page ([@fig:hacker-news], Note D). Each article on the page now shows an annotation with the estimated read time in minutes. (The format of how annotations appear for each item was determined by the programmer who created the Wildcard adapter for Hacker News.)
 
-**Adding notes to links**: The user can also manually add notes to the table, by simply entering values into the table without using formulas. In this case, the user jots down a few notes in another column about articles they might want to read, and the notes appear in the page ([@fig:hacker-news], Note E).
+**Adding notes to links**: The user can also manually add notes to the table, by simply entering values into the table without using formulas. In this case, the user jots down a few notes in another column about articles they might want to read, and the notes appear in the page next to the read times ([@fig:hacker-news], Note D).
 
 **Filtering out visited links**: Another way to use formulas to customize Hacker News is to filter out articles the user has already read. (We omit this example from the figure for brevity.) The user can call a built-in function that returns a boolean depending on whether a URL is in the browser's history:
 
@@ -101,15 +109,13 @@ Finally, the user chooses to show the results of this new column in the original
 ```
 
 They can then filter the table to only contain rows where this formula column contains `false`;
-visited rows are hidden both from the table view and the original page.
-
-This is an example of a customization that the original website could not implement,
+visited rows are hidden both from the table view and the original page. This is an example of a customization that the original website could not implement,
 since websites don't have access to the browser history for privacy reasons.
-But using Wildcard, the user can implement the customization locally,
-without needing to upload their browser history to the Hacker News site.
+But by using Wildcard, the user can implement the customization locally,
+without needing to expose their entire browser history to Hacker News.
 
-This scenario represents just one example of how table-driven customizations
-can help a user improve their experience of using a website.
+This scenario has shown a few examples of how table-driven customizations
+can help a user improve their experience of a website.
 [@sec:evaluation] explains many other use cases,
 but first we explain how the system works internally.
 
@@ -131,21 +137,27 @@ but first we explain how the system works internally.
 </div>
 
 [@fig:table-adapter] summarizes the overall architecture of
-table-driven customization, using a simplified version of the Airbnb
-example above. (_todo: change this figure to hacker news_) In this example, the name of each listing
-is scraped from the web page DOM, the latitude and longitude of each listing
-is scraped from AJAX responses, and user annotations are loaded
+table-driven customization, using a simplified illustration of the Hacker News
+example scenario. In this example, the name and points value for each article
+is scraped from the web page DOM, and user annotations are loaded
 from the brower's local storage.
 
-First, the three different data sources are each
-bidirectionally mapped to a table interface by a **table adapter**.
-The table adapter defines how to map a particular type of data to a table,
-and what effects edits should have on the original data source.
-In some cases, the mapping logic is straightforward: the local
-storage adapter stores a table of data, so the mapping
-to the table abstraction is trivial. In other cases, the mapping is more involved: the DOM scraping adapter implements web scraping logic to produce a table of data from the web page, and turns edits to the table into DOM manipulations like reordering rows of data on the page.
+First, the web page and the browser storage are each
+wrapped by a **table adapter**, which defines a bidirectional mapping
+between some underlying data source and a table.
 
-The three separate tables are then combined into a single table for the end user to view and edit. The **query engine** is responsible for creating this combined view, and routing the user’s edits back to the individual table adapters. In this example, the query engine has joined the three tables together by a shared ID column, and sorted the result by the name column.
+In addition to a _read_ mapping for how the underlying data should be
+represented as a table, it also defines a _write_ mapping for
+what effects edits should have on the original data source.
+In this case, the local storage adapter has a trivial mapping:
+it loads a table of data stored in the browser, and persists
+edits to that persisted state.
+The mapping logic of the DOM scraping adapter is much more involved.
+It implements web scraping logic to produce a table of data from the web page,
+and turns edits into DOM manipulations, such as reordering rows of data on the page.
+
+The two tables are then combined into a single table for the end user to view and edit.
+The **query engine** is responsible for creating this combined view, and routing the user’s edits back to the individual table adapters. In this example, the query engine has joined the two tables together by a shared ID column, and sorted the result by the points column.
 
 We now examine each component of the system in more detail.
 
