@@ -196,7 +196,7 @@ Because each website has unique content, we rely on programmers to create a DOM 
 After specifying basic metadata like which URLs the adapter should apply to,
 the programmer only needs to implement a single Javascript function
 that scrapes relevant elements from the page. They are free to use any
-scraping techniques; in practice simple CSS selectors and DOM APIs usually suffice. he generic adapter then wraps this scraping function to implement the table adapter interface. For example, when the table view is sorted, the generic adapter takes the DOM elements corresponding to the rows in the table, removes all of them from the page, and then reinserts them in the new order.
+scraping techniques; in practice simple CSS selectors and DOM APIs usually suffice. The generic adapter then wraps this scraping function to implement the table adapter interface. For example, when the table view is sorted, the generic adapter takes the DOM elements corresponding to the rows in the table, removes all of them from the page, and then reinserts them in the new order.
 
 The programmer can optionally override other default behavior of the generic DOM scraping adapter,
 including the logic for when to re-run the scraping function in response to page changes,
@@ -238,18 +238,28 @@ Customizability is sometimes a key selling point for software. An integrated web
 
 The query engine is responsible for coordinating across multiple table adapters. It joins data across multiple tables and creates a single result table which is shown to the user through the editor. It also handles all user interactions and routes appropriate messages to each table adapter.
 
-Queries are processed in three steps. First, the query invokes a primary DOM scraping table adapter that associates records in the result with elements in the application’s user interface. At minimum, the primary table adapter needs to return record IDs and have the ability to manipulate the application’s UI. It can also optionally return data about each record. Next, additional tables (AJAX data, local storage data) are left-joined by ID. Finally, the result table can be sorted and filtered by any column.
+Queries are processed in three steps. First, the query invokes a primary DOM scraping adapter that associates table rows with elements in the application’s user interface. Next, additional tables (AJAX data, local storage data) are left-joined by ID. Finally, the result table is sorted and filtered according to user-specified predicates.
 
-This query model can be viewed as a tiny (and rather constrained) subset of the SQL query model. Despite its simplicity, this simple model has proven sufficient for meeting the needs of customization in practice, and minimizes the complexity of supporting more general and arbitrary queries. But because it fits into the general paradigm of relational queries, it could theoretically be extended to support a wider range of queries.
+One way to view this query model is as a tiny subset of the SQL query model. Despite its simplicity, this  model has proven sufficient for meeting the needs of customization in practice, and minimizes the complexity of supporting arbitrary queries. But because it fits into the general paradigm of relational queries, it could theoretically be extended to support a wider range of queries.
 
-The query engine is also responsible for executing formulas. We have built a small formula language resembling the ones used in visual query tools like SIEUFERD. As in those tools, and unlike in spreadsheets, formulas automatically apply across an entire column of data, and reference other column names instead of values on specific rows. For example, the user would write `=price * 2` to create a column with a value derived from a price attribute. This is more convenient than needing to copy-paste a formula across an entire column as in spreadsheets, and none of our customization use cases have uncovered a need for writing different formulas on different rows of the table.
-
+The query engine is also responsible for executing formulas. We have built a small formula language resembling a spreadsheet formula language, except that formulas automatically apply across an entire column of data, and reference other column names instead of values in specific rows. This is more convenient than needing to copy-paste a formula across an entire column as in spreadsheets, and has worked for all of the customizations we have built.
 
 ## Table editor
 
-In Wildcard we provide a basic table editor as the user interface on top of the query engine. It is built with the Handsontable Javascript library, which provides UI elements for viewing and editing a table, as well as basic query operations like sorting and filtering.
+We provide a basic table editor as the user interface on top of the query engine. Our table editor is built with the Handsontable Javascript library, which provides UI elements for viewing, editing, sorting, and filtering a table.
 
-_todo: other table instruments_
+In addition to the basic table editing operations, we also provide _cell editors_: UI widgets that expose a custom editing UI for a single cell of the table view. A programmer building a cell editor need only integrate it with the table viewer; propagating values into the website UI is handled by the site-specific DOM adapter. In [@sec:evaluation] we provide some examples of using cell editors.
+
+The table editor only serves as a shallow interface layer over the query engine,
+relaying user commands to the query engine and rendering the resulting data table.
+Because of this architectural split, it would be straightforward to develop
+additional table editor interfaces on top of the Wildcard system. One intruiging
+future possibility is to apply the idea of cell editors to the entire table,
+by developing table editors which don't look like a table. For example,
+we could provide a calendar view for displaying a table containing a date column.
+
+
+# Evaluation {#sec:evaluation}
 
 <div class="pdf-only">
 ```{=latex}
@@ -274,8 +284,6 @@ Youtube          & Videos               & 80                                    
 \end{table*}
 ```
 </div>
-
-# Evaluation {#sec:evaluation}
 
 <div class="html-only">
   todo: fill in this table
@@ -328,10 +336,6 @@ manipulating the results of a formula expression with arithmetic
 or concatenating string labels, as shown in the example in [@sec:example]. (_todo: this makes sense iff we switch the examples sectino to HN_)
 
 ### Cell editors
-
-(_note: written with the assumption that Expedia gets cut from the Examples section_)
-
-Cell editors are UI widgets that expose a custom editing UI for a single cell of the table view. A programmer building a cell editor need only integrate it with the table viewer; propagating values into the website UI is handled by the site-specific DOM adapter. As a result, creating a new cell editor can be as easy as just writing some glue code between the table editor and an existing UI widget library.
 
 An important benefit of cell editors is that they allow users to incorporate their personal information within the web UI but without uploading their personal data to the web server. To explore this idea, we created a cell editor based on the FullCalendar Javascript plugin, which can load data from a Google Calendar. This makes it convenient to enter dates into a website based on the user’s personal calendar information.
 

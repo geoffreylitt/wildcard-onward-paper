@@ -455,7 +455,7 @@ response to changes in the underlying state (e.g., a DOM scraping
 adapter can update the table when the page body changes). When data
 changes, the query view is reactively updated in response.
 
-\emph{Making edits}: The query engine can issue a request to a table
+\emph{Handling edits}: The query engine can issue a request to a table
 adapter to make an edit to a record. The meaning of making an edit can
 vary depending on the adapter: in the local storage adapter, an
 annotation may be persisted into local storage; in the DOM scraping
@@ -504,10 +504,10 @@ After specifying basic metadata like which URLs the adapter should apply
 to, the programmer only needs to implement a single Javascript function
 that scrapes relevant elements from the page. They are free to use any
 scraping techniques; in practice simple CSS selectors and DOM APIs
-usually suffice. he generic adapter then wraps this scraping function to
-implement the table adapter interface. For example, when the table view
-is sorted, the generic adapter takes the DOM elements corresponding to
-the rows in the table, removes all of them from the page, and then
+usually suffice. The generic adapter then wraps this scraping function
+to implement the table adapter interface. For example, when the table
+view is sorted, the generic adapter takes the DOM elements corresponding
+to the rows in the table, removes all of them from the page, and then
 reinserts them in the new order.
 
 The programmer can optionally override other default behavior of the
@@ -586,19 +586,18 @@ programmer only needs to make a few small changes to their app:
   as annotations.
 \end{itemize}
 
-In certain types of software, customizability is often touted as a key
-selling point. An integrated website adapter would provide a way for
-developers to integrate with an existing ecosystem of formulas and
-customization tools, without needing to build all that functionality
-from scratch.
+Customizability is sometimes a key selling point for software. An
+integrated website adapter would provide a way for developers to
+integrate with an ecosystem of formulas and customization tools without
+needing to build all that functionality from scratch.
 
 \textbf{Shared storage adapter}: It would be useful to share user
 annotations among users and across devices---for example,
 collaboratively taking notes with friends on options for places to stay
-on Airbnb. The existing Local Storage Adapter could be extended to share
-live synchronized data with other users. This could be achieved through
-a centralized web server, or through P2P connections that might provide
-stronger privacy guarantees.
+together on a trip. The existing local storage adapter could be extended
+to share live synchronized data with other users. This could be achieved
+through a centralized web server, or through P2P connections that might
+provide stronger privacy guarantees.
 
 \hypertarget{query-engine}{%
 \subsection{Query engine}\label{query-engine}}
@@ -610,42 +609,53 @@ handles all user interactions and routes appropriate messages to each
 table adapter.
 
 Queries are processed in three steps. First, the query invokes a primary
-DOM scraping table adapter that associates records in the result with
-elements in the application's user interface. At minimum, the primary
-table adapter needs to return record IDs and have the ability to
-manipulate the application's UI. It can also optionally return data
-about each record. Next, additional tables (AJAX data, local storage
-data) are left-joined by ID. Finally, the result table can be sorted and
-filtered by any column.
+DOM scraping adapter that associates table rows with elements in the
+application's user interface. Next, additional tables (AJAX data, local
+storage data) are left-joined by ID. Finally, the result table is sorted
+and filtered according to user-specified predicates.
 
-This query model can be viewed as a tiny (and rather constrained) subset
-of the SQL query model. Despite its simplicity, this simple model has
-proven sufficient for meeting the needs of customization in practice,
-and minimizes the complexity of supporting more general and arbitrary
-queries. But because it fits into the general paradigm of relational
-queries, it could theoretically be extended to support a wider range of
-queries.
+One way to view this query model is as a tiny subset of the SQL query
+model. Despite its simplicity, this model has proven sufficient for
+meeting the needs of customization in practice, and minimizes the
+complexity of supporting arbitrary queries. But because it fits into the
+general paradigm of relational queries, it could theoretically be
+extended to support a wider range of queries.
 
 The query engine is also responsible for executing formulas. We have
-built a small formula language resembling the ones used in visual query
-tools like SIEUFERD. As in those tools, and unlike in spreadsheets,
-formulas automatically apply across an entire column of data, and
-reference other column names instead of values on specific rows. For
-example, the user would write \texttt{=price\ *\ 2} to create a column
-with a value derived from a price attribute. This is more convenient
-than needing to copy-paste a formula across an entire column as in
-spreadsheets, and none of our customization use cases have uncovered a
-need for writing different formulas on different rows of the table.
+built a small formula language resembling a spreadsheet formula
+language, except that formulas automatically apply across an entire
+column of data, and reference other column names instead of values in
+specific rows. This is more convenient than needing to copy-paste a
+formula across an entire column as in spreadsheets, and has worked for
+all of the customizations we have built.
 
 \hypertarget{table-editor}{%
 \subsection{Table editor}\label{table-editor}}
 
-In Wildcard we provide a basic table editor as the user interface on top
-of the query engine. It is built with the Handsontable Javascript
-library, which provides UI elements for viewing and editing a table, as
-well as basic query operations like sorting and filtering.
+We provide a basic table editor as the user interface on top of the
+query engine. Our table editor is built with the Handsontable Javascript
+library, which provides UI elements for viewing, editing, sorting, and
+filtering a table.
 
-\emph{todo: other table instruments}
+In addition to the basic table editing operations, we also provide
+\emph{cell editors}: UI widgets that expose a custom editing UI for a
+single cell of the table view. A programmer building a cell editor need
+only integrate it with the table viewer; propagating values into the
+website UI is handled by the site-specific DOM adapter. In
+Section~\ref{sec:evaluation} we provide some examples of using cell
+editors.
+
+The table editor only serves as a shallow interface layer over the query
+engine, relaying user commands to the query engine and rendering the
+resulting data table. Because of this architectural split, it would be
+straightforward to develop additional table editor interfaces on top of
+the Wildcard system. One intruiging future possibility is to apply the
+idea of cell editors to the entire table, by developing table editors
+which don't look like a table. For example, we could provide a calendar
+view for displaying a table containing a date column.
+
+\hypertarget{sec:evaluation}{%
+\section{Evaluation}\label{sec:evaluation}}
 
 \begin{table*}[]
 \begin{tabular}{llrl}
@@ -666,9 +676,6 @@ Youtube          & Videos               & 80                                    
 \caption{A list of table-driven customizations that we have implemented using Wildcard.}
 \label{tab:websites}
 \end{table*}
-
-\hypertarget{sec:evaluation}{%
-\section{Evaluation}\label{sec:evaluation}}
 
 To evaluate table-driven customization in practice, we built the
 Wildcard browser extension, which implements table-driven customization
@@ -770,16 +777,6 @@ string labels, as shown in the example in Section~\ref{sec:example}.
 
 \hypertarget{cell-editors}{%
 \subsubsection{Cell editors}\label{cell-editors}}
-
-(\emph{note: written with the assumption that Expedia gets cut from the
-Examples section})
-
-Cell editors are UI widgets that expose a custom editing UI for a single
-cell of the table view. A programmer building a cell editor need only
-integrate it with the table viewer; propagating values into the website
-UI is handled by the site-specific DOM adapter. As a result, creating a
-new cell editor can be as easy as just writing some glue code between
-the table editor and an existing UI widget library.
 
 An important benefit of cell editors is that they allow users to
 incorporate their personal information within the web UI but without
