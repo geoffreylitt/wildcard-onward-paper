@@ -239,7 +239,7 @@ adapters we've built in Wildcard, and also describe future adapters
 supported by the general paradigm.
 
 We have successfully used Wildcard to build customizations for 11
-different websites. In Section~\ref{sec:evaluation}, we present
+different websites. In Section~\ref{sec:reflections}, we present
 reflections from this process, outlining the kinds of customizations we
 were able to build, limitations we encountered, and the challenges of
 integrating scraping logic with websites.
@@ -386,8 +386,8 @@ needing to expose their entire browser history to Hacker News.
 
 This scenario has shown a few examples of how table-driven
 customizations can help a user improve their experience of a website.
-Section~\ref{sec:evaluation} explains many other use cases, but first we
-explain how the system works internally.
+Section~\ref{sec:reflections} explains many other use cases, but first
+we explain how the system works internally.
 
 \hypertarget{sec:architecture}{%
 \section{System architecture}\label{sec:architecture}}
@@ -485,8 +485,8 @@ original UI.
 \hypertarget{types-of-table-adapters}{%
 \subsubsection{Types of table adapters}\label{types-of-table-adapters}}
 
-In Wildcard, we have built three specific types of table adapters so
-far.
+We have built three specific types of table adapters so far, to enable
+web customization using Wildcard.
 
 \textbf{DOM scraping adapters} are the essential component that enables
 Wildcard to interface with an existing website UI. In addition to the
@@ -546,8 +546,7 @@ can be loaded into the table on future pageloads.
 \subsubsection{Future Adapters}\label{future-adapters}}
 
 We have designed the table adapter API to be general enough to support
-other types of useful adapters in the future. Here are two such
-possibilities:
+other types of useful adapters in the future. Here are two examples:
 
 \textbf{Integrated website adapters}: A key benefit of the table adapter
 abstraction is that Wildcard is not coupled to web scraping as the only
@@ -642,7 +641,7 @@ In addition to the basic table editing operations, we also provide
 single cell of the table view. A programmer building a cell editor need
 only integrate it with the table viewer; propagating values into the
 website UI is handled by the site-specific DOM adapter. In
-Section~\ref{sec:evaluation} we provide some examples of using cell
+Section~\ref{sec:reflections} we provide some examples of using cell
 editors.
 
 The table editor only serves as a shallow interface layer over the query
@@ -654,8 +653,8 @@ idea of cell editors to the entire table, by developing table editors
 which don't look like a table. For example, we could provide a calendar
 view for displaying a table containing a date column.
 
-\hypertarget{sec:evaluation}{%
-\section{Evaluation}\label{sec:evaluation}}
+\hypertarget{sec:reflections}{%
+\section{Reflections on Usage}\label{sec:reflections}}
 
 \begin{table*}[]
 \begin{tabular}{llrl}
@@ -682,10 +681,11 @@ Wildcard browser extension, which implements table-driven customization
 in the context of existing websites. It is implemented in Typescript,
 and works across three major browsers: Chrome, Firefox, and Edge.
 
-We have used Wildcard to customize 11 websites, including transactional
+We built Wildcard integrations for 11 websites, including transactional
 sites like Amazon and Uber Eats, and media consumption sites like Hacker
-News and Youtube. Table 1 summarizes these customizations, showing the
-number of lines of code in the adapter configuration for each site.
+News and Youtube. Table 1 summarizes these integrations, showing the
+number of lines of code in the adapter configuration for each site, and
+some example customizations we were able to perform for each site.
 
 So far, most usage of Wildcard has come from members of the project
 team. Here we offer our reflections on using the system, focused on two
@@ -704,7 +704,7 @@ key questions:
 
 We have found that table-driven customization can serve a broad range of
 useful purposes. Here we expand on some archetypal examples that
-illuminate various aspects of using the system in practice.
+illuminate aspects of using the system in practice.
 
 \hypertarget{sortingfiltering}{%
 \subsubsection{Sorting/filtering}\label{sortingfiltering}}
@@ -713,39 +713,31 @@ It might seem that most websites already have adequate sorting and
 filtering functionality, but we have found it surprisingly helpful to
 add new sorting/filtering functionality to websites using Wildcard.
 
-Sometimes, websites have opaque algorithms which they use to rank
-results, which presumably maximize profit but don't offer much control
-to the user. For example, Airbnb doesn't allow users to sort listings by
-price, and Youtube doesn't allow users to sort the homepage by watch
-time. Wildcard enables users to take back some control over this
-process.
-
-In other cases we have found that a lack of sorting options seems less
-intentional, and simply represents a missing feature. For example, the
-Instacart grocery delivery service doesn't allow users to sort their
-grocery cart by price or category. Our guess is that they simply haven't
-gotten around to implementing the feature yet.
+Sometimes, websites have opaque ranking algorithms which presumably
+maximize profit but don't offer much control to the user. For example,
+Airbnb previously allowed users to sort listings by price, but removed
+that feature in 2012. We have found other sites where a lack of sorting
+options seems more like merely an omission; for example, the Instacart
+grocery delivery service has a spartan UI for viewing a pending order,
+which doesn't allow for sorting by price or category. In both of these
+cases, Wildcard enables users to take back some control.
 
 In the current implementation of Wildcard, users can only sort and
 filter entries that are shown on the current page, which means that
 users are not entirely liberated from the suggestions of the opaque
-algorithm. We could work around this restriction in the future by
-fetching content across multiple pages, but we've also found that
-sorting/filtering a single page of a paginated list is often an
-acceptable outcome (and sometimes even a preferable one). For example,
-it's more useful to sort (by length, say) 30 recommended Youtube videos
-than to try to sort all videos on Youtube, or to sort (by read time,
-say) the articles on the Hacker News front page than to sort all
-non-archived articles.
+algorithm. This restriction could be overcome in the future by scraping
+content across multiple pages, or by using an integrated adapter built
+in to the application. However, we've also found that sorting/filtering
+a single page of a paginated list is often an acceptable outcome (and
+sometimes even a preferable one). It's more useful, for example, to sort
+30 recommended Youtube videos than to try to sort all videos on Youtube.
 
 \hypertarget{annotating}{%
 \subsubsection{Annotating}\label{annotating}}
 
-Many other web annotation systems focus on annotating text or arbitrary
+Many web annotation systems focus on annotating text or arbitrary
 webpage content, but Wildcard limits annotations to structured objects
-extracted by an adapter, resulting in quite a different set of use
-cases.
-
+extracted by an adapter, resulting in a different set of use cases.
 Annotating with Wildcard has proven most useful when taking notes on a
 list of possible options (e.g., evaluating possible Airbnb locations to
 rent). We have also used it with Instacart's online grocery cart, for
@@ -756,70 +748,78 @@ jotting down notes like ``should we get more milk?''
 
 Formulas are the most powerful part of the Wildcard system. So far, our
 language supports only a small number of predefined functions. Adding
-more will allow a very broad range of useful computations, as shown by
-the success of spreadsheets.
+more should allow a broad range of useful computations, as shown by the
+success of spreadsheets.
 
 Formulas are especially useful for fetching data from Web APIs. We've
 used them to augment Airbnb listings with walkability scores, and to
 augment Hacker News articles with estimated read times. One challenge of
 the current language design is that supporting a new web API requires
-writing conventional code to add a new function to the language, because
+writing Javascript code to add a new function to the language, because
 web APIs typically return complex JSON data structures that can't be
-easily displayed in a single table cell. Adding functions for handling
-JSON data to the formula language might make it possible to access new
-APIs without requiring an entire new function in the formula system.
+easily displayed in a single table cell. In the future we would like to
+make it possible to call new APIs without adding a dedicated function,
+which might require adding functions to the formula language that can
+manipulate JSON data.
 
-We have also found instances where simple data manipulation is useful:
-adding together different subtotals into a total price, or manipulating
-the results of a formula expression with arithmetic or concatenating
-string labels, as shown in the example in Section~\ref{sec:example}.
-(\emph{todo: this makes sense iff we switch the examples sectino to HN})
+We have also found instances where simple data manipulation is useful,
+e.g.~transforming the results of an API call with basic arithmetic and
+string operations, as shown in Section~\ref{sec:example}.
 
 \hypertarget{cell-editors}{%
 \subsubsection{Cell editors}\label{cell-editors}}
 
+We developed two cell editors to explore different benefits of adding
+custom UI for editing the table.
+
 An important benefit of cell editors is that they allow users to
-incorporate their personal information within the web UI but without
-uploading their personal data to the web server. To explore this idea,
-we created a cell editor based on the FullCalendar Javascript plugin,
-which can load data from a Google Calendar. This makes it convenient to
-enter dates into a website based on the user's personal calendar
-information.
+incorporate their private information into a web UI without uploading it
+to a website. To explore this idea, we created a datepicker based on the
+\href{https://fullcalendar.io/}{FullCalendar} plugin, which can load
+data from a Google Calendar. This makes it convenient to enter dates
+into a website based on the user's personal calendar information.
 
 Another benefit of cell editors is that a user can choose their
-preferred widget for editing some type of information. We built a cell
-editor based on the CKEditor rich text editor, and demonstrated its use
-by integrating it with Google's Blogger website and using it to edit
-blog posts, in place of Blogger's built-in editor.
+preferred widget for editing some type of information. We built a text
+editor based on the \href{https://ckeditor.com/}{CKEditor} rich text
+editor, and demonstrated its use by integrating it with Google's Blogger
+website and using it to edit blog post content.
 
 \hypertarget{limitations}{%
 \subsubsection{Limitations}\label{limitations}}
 
-There are many useful customizations that are not currently possible in
-the table-driven customization paradigm. Wildcard can only make
-customizations that use the available data exposed in the table. UI
-modifications are limited in scope; deleting arbitrary buttons isn't
-possible, for example. At one point, we wanted to build an automation to
-repeatedly load a grocery delivery website to check for open delivery
-slots, but it wasn't clear how to achieve this. Some of these
-limitations are specific to the current implementation of the Wildcard
-extension, but some are more fundamental to the entire idea of
-table-driven customization.
+There are many customizations that are not possible to implement with
+table-driven customization. Some of the limitations are specific to the
+current implementation of the Wildcard extension, but many are more
+fundamental to the general paradigm.
 
-We consider this an acceptable outcome; our goal is to make many useful
-customizations available to end users with a low threshold, and not to
-span all possible customizations. Section 5.1 discusses this point
-further.
+One limitation is that Wildcard can only make customizations that use
+the available data exposed in the table. If the adapter doesn't expose
+some piece of data, the user can't use it in their customization. The
+table data format also rules out customizing certain sites that don't
+have a way to map to a table. The UI modifications available in Wildcard
+are also limited in scope; deleting arbitrary buttons isn't possible,
+for example. There is no facility for running automations when the user
+isn't actively viewing a page---at one point, we wanted to build an
+automation to repeatedly load a grocery delivery website to check for
+open delivery slots, but it didn't seem possible to achieve this in
+Wildcard.
 
-One benefit of Wildcard is predictability: once we built a site adapter
-for a website, it was generally obvious to us what types of
-customizations were and weren't possible, and the UI guided us towards
-building customizations that matched the system's model. If data is not
-available in the table, for example, then it's abundantly clear that
-customizations relying on that data will not be expressible.
+Despite these limitations, we found that Wildcard does offer
+predictability: once we built a site adapter for a website, it was
+generally obvious what customizations were possible, and the UI guided
+us towards building customizations that matched the system's model. If
+data is not available in the table, for example, then it's abundantly
+clear that customizations relying on that data will not be expressible.
 
-\hypertarget{viability-of-dom-scraping}{%
-\subsection{Viability of DOM scraping}\label{viability-of-dom-scraping}}
+We consider all of these limitations to be an acceptable outcome. Our
+goal is to support as many useful customizations as possible with a low
+threshold of difficulty, and not to span all possible customizations. If
+users want to implement more sophisticated customizations, they have the
+option of graduating to more advanced customization tools.
+
+\hypertarget{viability-of-scraping}{%
+\subsection{Viability of scraping}\label{viability-of-scraping}}
 
 Our second evaluation area relates less to the conceptual approach of
 table-driven customization, and more to the specific implementation of
@@ -827,37 +827,40 @@ customizing existing web applications. In order for third-party
 customization through Wildcard to succeed, it is important that creating
 usable adapters for existing websites takes minimal effort.
 
-Most of our DOM scraping adapters were created by members of our team.
-However, an external developer unaffiliated with the project contributed
-one adapter, designed to sort the Github page listing a user's
-repositories. They described the experience as ``very straightforward.''
+Nearly all of our DOM scraping adapters were created by members of our
+team. However, an external developer unaffiliated with the project
+contributed one adapter, designed to sort the Github page listing a
+user's repositories, and they described the experience as ``very
+straightforward.''
 
 The adapters for our test sites ranged from 36 to 117 lines of code,
-averaging 68 lines; Table 1 shows the full lines of code for each
-adapter.
+averaging 68 lines; Table 1 shows the number of lines of code for each
+adapter. Most of the code in the adapters is simply using DOM APIs and
+CSS selectors to implement conventional web scraping logic.
 
 Some of the challenges of writing a DOM scraping adapter are the same
 ones as with writing normal web scraping code, but the more interactive
-nature of Wildcard introduces additional challenges. rve changes, but it
-may prove challenging to observe changes on some sites only through the
-DOM. One challenge is triggering updates to the spreadsheet data in
-response to UI changes that happen after initial page load. Site
-adapters are responsible for recognizing these changes by observing the
-DOM. So far, we have been able to use event listeners and the
-MutationObserver API to successfully obse
-
-Another challenge is persisting updates to the DOM---some websites use
-virtual DOM frameworks that can occasionally overwrite changes made by
-Wildcard.
-
-So far, we've managed to work around these issues for all the websites
-we've tried, but we don't claim that any website can be customized
-through DOM scraping. As web frontend code gets increasingly complex
-(and starts to move beyond the DOM to other technologies like Shadow DOM
-or even WebGL for rendering), it may become increasingly difficult to
+nature of Wildcard introduces additional challenges. One challenge is
+registering appropriate event handlers to update the table data in
+response to UI changes that happen after initial page load. Another
+challenge is persisting updates to the DOM---some websites use virtual
+DOM frameworks that can occasionally overwrite changes made by Wildcard.
+So far, in practice we've managed to work around these issues for all of
+the websites we've tried, but we don't claim that any website can be
+customized through DOM scraping. As web frontend code gets increasingly
+complex (and starts to move beyond the DOM to other technologies like
+Shadow DOM or even WebGL), it may become increasingly difficult to
 customize websites from the outside without first-party support.
 
-\emph{todo: mention ajax scraping} \emph{todo: mention privacy benefits}
+AJAX scraping proved highly useful in several cases. The Uber Eats
+website was challenging to scrape because it has a complex DOM structure
+with machine-generated CSS classes, but the site also generates AJAX
+requests which contain all the relevant data in a structured form that
+is much easier to extract. We also found examples where relevant
+information wasn't present in the DOM at all. On the grocery delivery
+site Instacart, we used AJAX scraping to augment grocery items with
+their categorization in the store, enabling use cases like viewing all
+the vegetables in an order together.
 
 \hypertarget{sec:themes}{%
 \section{Key themes}\label{sec:themes}}
@@ -944,7 +947,7 @@ It is important to note that there are many specific customizations that
 can be achieved in systems like Chickenfoot \citep{bolin2005} that
 cannot be reproduced in Wildcard. We consider this an acceptable
 tradeoff in exchange for a gentler slope in customization, and we show
-in Section~\ref{sec:example} and Section~\ref{sec:evaluation} that our
+in Section~\ref{sec:example} and Section~\ref{sec:reflections} that our
 model can still implement many useful customizations in practice. Also,
 there is sometimes a way to reframe an imperative script in terms of our
 direct manipulation model; for example, a script that iterates through
@@ -1144,6 +1147,8 @@ express a broader range of customizations by extending our table-editing
 paradigm. Are there ways to offer an increase in power and functional
 complexity, while retaining a programming model that is simpler for end
 users than conventional coding?
+
+\emph{other platforms?}
 
 As computing plays an ever greater role in our lives, it is increasingly
 important that end users have agency over the behavior of their
