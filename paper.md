@@ -26,7 +26,7 @@ Most end user customization systems offer a simplified version of programming. S
 
 We have known for decades about an alternate approach: _direct manipulation_ [@shneiderman1983], where "visibility of the object of interest" replaces "complex command language syntax". Direct manipulation is the _de facto_ standard in GUIs today, but when it comes to customizing those GUIs, it is rarely to be found. As a result, switching from using software to customizing it poses a learning barrier for users not familiar with programming, and requires an abrupt shift in mental model even for those familiar with scripting.
 
-In this work, we ask: what would it look like to build a direct maniulation interface that lowers the threshold for starting to customize software? We take inspiration from spreadsheets and visual database query interfaces [@bakke2016; @2020a], which have successfully enabled millions of end users to compute with data through direct manipulation.
+In this work, we ask: what would it look like to build a direct maniulation interface that lowers the threshold for starting to customize software? We take inspiration from spreadsheets and visual database query interfaces, which have successfully enabled millions of end users to compute with data through direct manipulation.
 
 In this paper we present a technique called _table-driven customization_ inspired by those tools. An application’s UI is augmented with a table view, where the user can see and manipulate the application’s internal data. Changes in the table view result in immediate corresponding changes to the original user interface, enabling the user to customize an application with live feedback.
 
@@ -344,9 +344,9 @@ There are many customizations that are not possible to implement with table-driv
 
 One limitation is that Wildcard can only make customizations that use the available data exposed in the table. If the adapter doesn't expose some piece of data, the user can't use it in their customization. The table data format also rules out customizing certain sites that don't have a way to map to a table. The UI modifications available in Wildcard are also limited in scope; deleting arbitrary buttons isn’t possible, for example. There is no facility for running automations when the user isn't actively viewing a page—at one point, we wanted to build an automation to repeatedly load a grocery delivery website to check for open delivery slots, but it didn't seem possible to achieve this in Wildcard.
 
-Despite these limitations, we found that Wildcard does offer predictability: once we built a site adapter for a website, it was generally obvious what customizations were possible, and the UI guided us towards building customizations that matched the system’s model. If data is not available in the table, for example, then it’s abundantly clear that customizations relying on that data will not be expressible.
+We consider these limitations to be an acceptable outcome. Our goal is to support as many useful customizations as possible with a low threshold of difficulty, and not to span all possible customizations. If users want to implement more sophisticated customizations, they have the option of graduating to more advanced customization tools like scripting languages.
 
-We consider all of these limitations to be an acceptable outcome. Our goal is to support as many useful customizations as possible with a low threshold of difficulty, and not to span all possible customizations. If users want to implement more sophisticated customizations, they have the option of graduating to more advanced customization tools.
+We have found that one benefit of showing structured data is predictability: once we build an adapter for a website, it is clear what data is available or unavailable for use in customizations. Also, there is sometimes a way to reframe an imperative script in terms of our direct manipulation model. For example, a script that iterates through rows in a page adding some additional information to each row can be reproduced using a single formula in Wildcard.
 
 ## Viability of scraping
 
@@ -374,10 +374,13 @@ viewing all the vegetables in an order together.
 
 # Key themes {#sec:themes}
 
+Here we discuss some themes that we've explored with this work,
+which go beyond our specific approach and address issues in software
+customization more broadly.
+
 ## Customization by direct manipulation {#sec:dm}
 
 Hutchins, Hollan and Norman [@hutchins1985] define a direct manipulation interface as one that uses a model-world metaphor rather than a conversation metaphor. Instead of presenting an “assumed” but not directly visible  world that the user converses with, “the world is explicitly represented” and the user can “[act] upon the objects of the task domain themselves.”
-
 
 Although most GUIs today employ direct manipulation, software customization tools typically use an imperative programming model, which implements the conversational metaphor rather than direct manipulation. Here, for example,  is how a user retrieves a list of of calendar names from the Calendar application in Applescript [@cook2007], the scripting language for customizing Mac OS applications:
 
@@ -388,45 +391,50 @@ end tell
 ```
 
 Some customization environments like Mac Automator and Zapier forego textual syntax and let the user connect programs and construct automations by dragging and dropping icons representing commands. These environments still do not constitute direct manipulation, though: the objects being manipulated are in the domain of programming, not in the domain of the task at hand.
-Imperative programming is a reasonable choice as the model for building customizations. Turing-complete programming provides a high ceiling for possible customizations, and a sequence of commands is a natural fit for automations that simulate a series of steps taken by the user.
 
-Imperative programming is a reasonable choice as the model
-for building customizations. Turing-complete programming
-provides a high ceiling for possible customizations, and a
-sequence of commands is a natural fit for automations which
-simulate a series of steps taken by the user.
+Imperative programming is a reasonable choice as the model for building customizations. Turing-complete programming provides a high ceiling for possible customizations, and a sequence of commands is a natural fit for automations that simulate a series of steps taken by the user. There is, however, a serious drawback to this approach. MacLean et al [@maclean1990] describe an ideal for user-tailorable systems: a “gentle slope” from using to customizing, where small incremental increases in skill lead to corresponding increments of customization power. Requiring users wanting to customize their applications  to learn programming creates an abrupt “cliff,” exacting a significant investment in learning even to implement the simplest customizations. Another goal of MacLean et al is to make it “as easy to change the environment as it is to use it”—at least for some subset of changes. But in scripting languages, the experience of customization does not remotely resemble the experience of use.
 
-There is, however, a serious drawback to this approach. MacLean et al [@maclean1990] describe an ideal for user-tailorable systems: a “gentle slope” from using to customizing, where small incremental increases in skill lead to corresponding increments of customization power. Requiring users wanting to customize their applications  to learn programming creates an abrupt “cliff,” exacting a significant investment in learning even to implement the simplest customizations. Another goal of MacLean et al is to make it “as easy to change the environment as it is to use it”—at least for some subset of changes. But in scripting languages, even user-friendly ones like Applescript or Chickenfoot, the experience of customization does not remotely resemble the experience of use, so these systems can’t meet this goal.
+With table-driven customization we aim to provide a gentler slope, by using direct manipulation for software customization. The data shown in the table view is the domain data from the original application. The user makes changes to the data by selecting areas of interest in the table, e.g. sorting/filtering by clicking the relevant column header, or adding annotations by clicking on the relevant row. These interactions are common in GUI applications, and Wildcard therefore meets MacLean et al’s goal: some one-click customizations are as easy as using the original application. Formulas introduce some additional complexity, but the pure functional semantics and the intermediate visibility of results make the task still easier than imperative programming.
 
-With table-driven customization we aim to provide a gentler slope, by using direct manipulation for software customization. The data shown in the table view is the domain data from the original application. The user makes changes to the data by selecting areas of interest in the table, e.g. sorting/filtering by clicking the relevant column header, or adding annotation by clicking on the relevant row. These interactions are common in GUI applications, and Wildcard therefore meets MacLean et al’s goal: some one-click customizations are as easy as using the original application.
+One aspect of directness that we have chosen not to maintain in Wildcard is enabling customization in closer proximity to the original user interface elements, as explored by tools like Scotty [@eagan2011]. We have found that augmenting the original UI with a distinct, additional representation provides a more consistent experience across all applications, and clearly shows the user what structured data is available to work with.
 
-One aspect of directness that we have chosen not to maintain in Wildcard is enabling customization in the context of the original user interface, as explored by tools like Scotty [@eagan2011]. We have found that augmenting the original UI with a distinct, additional representation provides a consistent experience across all applications, and clearly shows the user what structured data is available to work with.
+Ainsworth et al provide a helpful taxonomy of the value of multiple representations [@ainsworth1999]. In their terms, Wildcard plays a _complementary role_ by supporting a _different set of tasks_ from the original application, while displaying _shared information_. Wildcard may also help construct _deeper understanding by subtraction_. By stripping away details and only showing the essential data in an interface, Wildcard helps users think of new ways of using that data, outside the specific constraints of the original application.
 
-Ainsworth et al provide a helpful taxonomy of the value of multiple representations [@ainsworth1999]. In their terms, Wildcard plays a complementary role by supporting a different set of tasks from the original application, while displaying shared information. Wildcard may also help construct deeper understanding by subtraction. By stripping away details and only showing the essential data in an interface, Wildcard helps users think of new ways of using that data, outside the specific constraints of the original application.
-
-It is important to note that there are many specific customizations that can be achieved in systems like Chickenfoot [@bolin2005] that cannot be reproduced in Wildcard. We consider this an acceptable tradeoff in exchange for a gentler slope in customization, and we show in [@sec:example] and [@sec:reflections] that our model can still implement many useful customizations in practice. Also, there is sometimes a way to reframe an imperative script in terms of our direct manipulation model; for example, a script that iterates through rows in a page adding some additional information can be reproduced using a formula in Wildcard.
+As noted in [@sec:reflections], there are many customizations that can be achieved in scripting languages that cannot be implemented in Wildcard. We consider this an acceptable tradeoff in exchange for a gentler slope in customization, and we show in [@sec:example] and [@sec:reflections] that our model can still implement many useful customizations.
 
 ## Semantic wrappers
 
-Software customization tools typically fall into one of two categories: ad hoc, or semantic.
+_Ad hoc customization tools_ enable customization without using official extension APIs, enabling a broader range of customizations on top of more applications. For example, web browser extensions have demonstrated the utility of customizing websites through manipulating the DOM, without websites needing to provide explicit extension APIs. However, ad hoc customization comes with a cost: these tools typically operate at a low level of abstraction, e.g. manipulating user interface elements, rather than in a meaningful domain model. This makes it harder for end users to write scripts, and makes the resulting scripts more brittle as the specifics of a user interface change.
 
-_Ad hoc customization tools_ enable customization without using official extension APIs, enabling a broader range of customizations on top of more applications. For example, web browser extensions have demonstrated the utility of customizing websites through manipulating the DOM, without needing explicit extension APIs to be built in. However, ad hoc customization comes with a corresponding cost: these tools can typically only operate at a low level of abstraction, e.g. manipulating user interface elements. This makes it harder for end users to write scripts, and makes the resulting scripts more brittle.
+_Anticipated customization tools_, in contrast, use explicit extension APIs provided by the application developer. Examples of this include accessing a backend web API, or writing a customization in Applescript for an application that exposes its domain model to the scripting language. The main benefit of this style is that it allows the extension author to work with meaningful concepts in the application domain—“create a new calendar event” rather than “click the button that contains the text 'new event'.”—which makes customizations easier to build and more robust. However, the plugin API limits the types of customizations that can be built, and many applications don't have an extension system at all.
 
-_Anticipated customization tools_, in contrast, use explicit extension APIs provided by the application developer. Examples of this include accessing a backend web API, or writing a customization in Applescript that uses an application-specific API. The main benefit is that this allows the extension author to work with meaningful concepts in the application domain—“create a new calendar event” rather than “click the button that says new event.”—which makes customizations easier to build and more robust. However, this style limits the range of extensions that can be built to those that the official plugin API supports.
-
-_todo: copy over more content from gdoc_
-
-With Wildcard, we use a hybrid approach that aims to provide the best of both worlds. Programmers implement an API wrapper that is internally implemented as an ad hoc customization, but externally provides a high-level interface to the application, abstracting away the details of the user interface. These wrappers are added to a shared repository, available to all users of the system. When an end user is using a site that already has an adapter, they get a semantic customization experience that avoids low-level details.
+With Wildcard, we use a hybrid approach that aims to provide the best of both worlds. Programmers implement site-specific adapters that are internally implemented ad hoc customizations, but externally provide a high-level interface to the application, abstracting away the details of the user interface. These wrappers are added to a shared repository, available to all users of the system. When an end user is using a site that already has an adapter implemented, they benefit from a semantic customization experience that avoids low-level details.
 
 One way to view this approach is as introducing a new abstraction barrier into third-party extension. Typically, a third party customization script combines two responsibilities: 1) mapping the low-level details of a user interface to semantic constructs (e.g., using CSS selectors to find certain page elements), and 2) handling the actual logic of the specific customization. Even though the mapping logic is often more generic than the specific customization, the intertwining of these two responsibilities in a single script makes it very difficult to share the mapping logic across scripts.
 
-With Wildcard we propose a decoupling of these two layers: a repository of shared wrappers maintained by programmers, and a separate repository of specific customizations built on top of these wrappers. This general architecture has been successfully demonstrated by projects like Gmail.js, an open source project that creates a convenient API for browser extensions to interface with the Gmail web email client.
+With Wildcard we propose a decoupling of these two layers: a repository of shared wrappers maintained by programmers, and a separate repository of specific customizations built on top of these wrappers. This general architecture has been successfully demonstrated by projects like [Gmail.js](https://github.com/KartikTalwar/gmail.js/), an open source project that creates a convenient API for browser extensions to interface with the Gmail web email client.
 
-(_todo: mention automated wrapper induction here or somewhere else?_)
+The success of semantic wrappers depends on a key hypothesis: that
+a single wrapper created by a programmer can be used for many different
+purposes by end users. Although we've validated that a single generic adapter
+can support many customizations, so far the people making the adapters
+have largely been the same people building customizations on top of them.
+One helpful future addition would be to allow end users to create wrappers themselves, or at least to modify existing ones. There are many existing projects exploring end-user web scraping (such as Helena [@chasins2018]) which might prove helpful for this.
+
+The distribution mechanism for semantic wrappers is also important. Currently, the distribution mechanism is simply merging the code for all adapters into the main Wildcard codebase.
+This is the simplest workable solution, but has its downsides: contributing involves a
+fairly high barrier of creating a pull request on Github, and using newly contributed wrappers
+requires installing a new version of the extension. In the future we might explore
+other mechanisms, like an online repository that the extension
+pulls from dynamically. Security is also a consideration—DOM scraping
+adapters can execute arbitrary Javascript code, which opens up the possibility
+of malicious adapters being contributed. Currently we plan to solve this challenge
+with centralized code review, but another approach we are considering is
+using or inventing a more restricted domain-specific language for specifying scraping logic.
 
 # Related Work {#sec:related-work}
 
-This paper extends work reported in a workshop paper by Litt and Jackson [@litt2020] which presented an early prototype version of Wildcard. We have substantially extended their work in this paper by creating the table adapter abstraction and reimplementing the system around that abstraction, evaluating the system more fully on many more websites, and by characterizing the design of the system in more detail.
+This paper extends work reported in a workshop paper by Litt and Jackson [@litt2020] which presented an earlier version of the Wildcard extension. We have substantially extended their work in this paper by creating the table adapter abstarction, reimplementing the internals of Wildcard around that abstraction, evaluating the system on many more websites, and by characterizing the design of the system in much more detail than in their workshop paper.
 
 Table-driven customization relates to two broad areas of related work. Our problem statement is related to software customization tools, and our solution approach is related to spreadsheets and other direct manipulation interfaces.
 
@@ -448,34 +456,32 @@ where end user customization is supported by programmer-created building blocks.
 Some recent web customization tools aim to enable end users
 to modify web interfaces without programming.
 
-Sifter [@huynh2006] enables end users to sort and filter lists of data obtained by web scraping, much like Wildcard’s sorting features. The main difference between the systems is that table-driven customization has many other use cases besides sorting and filtering. Also, Sifter involves end users in a semi-automated data extraction process, rather than having programmers create wrappers. This provides coverage of more websites, but at the expense of complicating the end user experience. We might explore such techniques in Wildcard in the future, but we think that it’s valuable for end users to have a customization experience decoupled from the challenge of web scraping the underlying data. Sifter implements scraping across multiple pages, a valuable feature for sorting and filtering that isn’t present in Wildcard.
+Sifter [@huynh2006] enables end users to sort and filter lists of data obtained by web scraping, much like Wildcard’s sorting features. The main difference between the systems is that table-driven customization has many other use cases besides sorting and filtering. Also, Sifter involves end users in a semi-automated data extraction process, rather than having programmers create wrappers. This provides coverage of more websites, but at the expense of complicating the end user experience. We could integrate end user scraping techniques in Wildcard in the future, but we believe that when possible it’s valuable for end users to have a customization experience decoupled from the challenge of web scraping the underlying data. Sifter also implements scraping across multiple pages, a valuable feature for sorting and filtering that isn’t present in Wildcard.
 
-Thresher [@hogue2005] helps end users create wrappers that map website content to Semantic Web schemas, making customizations available using the schema information. Wildcard  shares the general idea of wrappers with Thresher, but maps to a single generic data type, rather than more specific schemas, increasing the range of websites and data that Wildcard is able to support.
+Thresher [@hogue2005] helps end users create wrappers that map website content to Semantic Web schemas like "Movie" or "Director," and augments websites with new functionality by exploiting that schema information. Wildcard shares the general idea of wrappers, but maps to a generic table data type rather than more specific schemas, increasing the range of supported data and allowing for a simpler mapping process.
 
 There are many software customization tools that offer simplified forms of programming for end users. Chickenfoot [@bolin2005] and Coscripter [@leshed2008] offer user friendly syntax for writing web automation scripts; Applescript [@cook2007] has a similar goal for desktop customization. There are visual programming environments for customization that don’t involve writing any text: [Automator](https://support.apple.com/guide/automator/welcome/mac) for Mac and [Shortcuts](https://apps.apple.com/us/app/shortcuts/id915249334) for iOS are modern options for customizing Apple products, and [Zapier](https://zapier.com/) enables users to
-connect different web applications together visually. As mentioned previously, these tools all require writing imperative programs in some form, in contrast to the more declarative and direct approach of table-driven customization.
+connect different web applications together visually. As mentioned previously, these tools all require writing imperative programs, in contrast to the more declarative and direct approach of table-driven customization.
 
 ## Direct manipulation programming interfaces.
 
-Another relevant area involves direct manipulation interfaces for interacting with structured data. We take inspiration from these tools in our work, but apply them in a different domain: customizing existing software applications, rather than interacting with databases or constructing software from scratch.
+Another relevant area involves spreadsheets and visual query systems. We take inspiration from these tools in our work, but apply them in a different domain: customizing existing software applications, rather than interacting with databases or constructing software from scratch.
 
 The most closely related work is in systems that offer spreadsheet-like
-querying of relational data, as proposed by Liu and Jagadish [@liu2009].
-SIEUFERD by Bakke and Karger [@bakke2016] is an example; their paper presents a survey of other similar tools. Our work is particularly influenced by the authors’ observation that direct manipulation requires that the user manipulate the results of a database query rather than the query itself, and that the user must see intermediate results at every step of constructing the query. SIEUFERD’s interface supports a far wider range of queries than Wildcard, but the basic ideas of the user interface are similar.
-
-[Airtable](https://airtable.com/) is another example of a modern
+querying of relational data. SIEUFERD by Bakke and Karger [@bakke2016] is
+one such recent system, and their paper presents a survey of many other similar tools.
+Our work is particularly influenced by the authors’ observation that direct manipulation requires that the user manipulate the results of a database query rather than the query itself, and that the user must see intermediate results at every step of constructing the query. SIEUFERD’s interface supports a far wider range of queries than Wildcard, but the fundamental principles of the user interface are similar. [Airtable](https://airtable.com/) is another example of a modern
 commercial product that offers spreadsheet-like interaction
 with a relational database.
 
 Our work is also inspired by the many projects that have explored using
 spreadsheets as a foundation for building software applications, including
 Object Spreadsheets [@mccutchen2016], Quilt [@benson2014], Gneiss [@chang2014],
-Marmite [@wong2007], [Glide](https://www.glideapps.com/). These projects
-share the idea that a spreadsheet is a convenient interface for
-editing the data underlying a GUI application. We share that idea, but
+Marmite [@wong2007], [Glide](https://www.glideapps.com/). We share the core
+idea of connecting a spreadsheet view to a GUI, but
 apply it to software customization, rather than building software from scratch.
 
-Another system in this space is ScrAPIr, by Alrashed et al. [@alrashed2020], which enables end users to access backend web APIs without programming. ScrAPIr shares our high level goal of end user empowerment, as well as the idea of wrappers, by creating a shared library of wrappers around existing web APIs. Unlike Wildcard, however, ScrAPIr targets explicit APIs exposed by developers. It also focused on backend services and doesn’t aim to extend the frontend interfaces of web applications.
+Another related system is ScrAPIr, by Alrashed et al. [@alrashed2020], which enables end users to access backend web APIs without programming. ScrAPIr shares our high level goal of end user empowerment, as well as the idea of wrappers, by creating a shared library of wrappers around existing web APIs. Unlike Wildcard, however, ScrAPIr targets explicit APIs exposed by developers. It also focused on backend services and doesn’t aim to extend the frontend interfaces of web applications.
 
 
 # Conclusion and Future Work {#sec:conclusion}

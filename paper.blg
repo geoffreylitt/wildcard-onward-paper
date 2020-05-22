@@ -7,61 +7,53 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Database file #1: wildcard-onward-bibtex.bib
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Warning--no key, author in 2020a
-Warning--no author, editor, organization, or key in 2020a
-Warning--to sort, need author or key in 2020a
 Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
 Reallocated global_strs (elt_size=20001) to 20 items from 10.
 Reallocated glb_str_end (elt_size=4) to 20 items from 10.
-Warning--no key, author in 2020a
-Warning--no key, author in 2020a
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Warning--no key, author in 2020a
-Warning--no author, editor, organization, or key in 2020a
-Warning--empty author in 2020a
 Warning--no journal in hutchins1985
 Warning--no number and no volume in hutchins1985
 Warning--empty publisher in liu2009
 Warning--empty address in liu2009
-You've used 21 entries,
+You've used 20 entries,
             5945 wiz_defined-function locations,
-            1498 strings with 20036 characters,
-and the built_in function-call counts, 25698 in all, are:
-= -- 2946
+            1495 strings with 20003 characters,
+and the built_in function-call counts, 24996 in all, are:
+= -- 2876
 > -- 805
 < -- 0
-+ -- 265
++ -- 264
 - -- 276
-* -- 1818
-:= -- 2478
-add.period$ -- 104
-call.type$ -- 21
-change.case$ -- 138
-chr.to.int$ -- 21
-cite$ -- 37
-duplicate$ -- 2463
-empty$ -- 1706
+* -- 1773
+:= -- 2437
+add.period$ -- 100
+call.type$ -- 20
+change.case$ -- 134
+chr.to.int$ -- 20
+cite$ -- 24
+duplicate$ -- 2378
+empty$ -- 1643
 format.name$ -- 344
-if$ -- 6082
+if$ -- 5910
 int.to.chr$ -- 2
 int.to.str$ -- 1
 missing$ -- 96
-newline$ -- 266
+newline$ -- 258
 num.names$ -- 160
-pop$ -- 916
+pop$ -- 873
 preamble$ -- 1
-purify$ -- 327
+purify$ -- 314
 quote$ -- 0
-skip$ -- 910
+skip$ -- 882
 stack$ -- 0
-substring$ -- 1997
-swap$ -- 284
+substring$ -- 1946
+swap$ -- 279
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 574
-warning$ -- 12
+type$ -- 544
+warning$ -- 4
 while$ -- 163
 width$ -- 0
-write$ -- 485
-(There were 12 warnings)
+write$ -- 469
+(There were 4 warnings)
