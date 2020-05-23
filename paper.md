@@ -427,6 +427,20 @@ An important benefit of cell editors is that they allow users to incorporate the
 
 Another benefit of cell editors is that a user can choose their preferred widget for editing some type of information. We built a text editor based on the [CKEditor](https://ckeditor.com/) rich text editor, and demonstrated its use by integrating it with Google’s Blogger website and using it to edit blog post content.
 
+<div class="html-only">
+![Using a custom text editor widget to edit a blog post on Blogger. The text is synchronized with the Blogger editor through a table cell.](media/blogger.png){#fig:blogger}
+</div>
+<div class="pdf-only">
+```{=latex}
+\begin{figure}
+\hypertarget{fig:blogger}{%
+\centering
+\includegraphics[width=\columnwidth]{media/blogger.png}
+\caption{Using a custom text editor widget to edit a blog post on Blogger. The text is synchronized with the Blogger editor through a table cell.}\label{fig:blogger}
+}
+\end{figure}
+```
+
 ### Limitations
 
 There are many customizations that are not possible to implement with table-driven customization. Some of the limitations are specific to the current implementation of the Wildcard extension, but many are more fundamental to the general paradigm.
