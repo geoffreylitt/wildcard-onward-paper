@@ -267,7 +267,7 @@ In Section~\ref{sec:themes}, we discuss some key themes from our work:
   extension APIs resort to offering low-level APIs for customization.
   Instead, we propose a community-maintained library of semantic
   wrappers around existing applications, enabling end users to work with
-  domain objects rather than low-level representations.
+  domain data rather than low-level representations.
 \end{itemize}
 
 Table-driven customization relates to existing work in many areas. Our
@@ -1030,7 +1030,10 @@ the original UI. While closer proximity might be helpful, we have found
 that augmenting the original UI with a distinct, additional
 representation provides a more consistent experience across all
 applications, and clearly shows what structured data is available to
-work with.
+work with. We also emphasize the mapping between the representations by
+highlighting content in the original page, similiar to the way that
+browser developer tools highlight the currently selected element in the
+DOM inspector in the original page.
 
 Ainsworth et al provide a helpful taxonomy of the value of multiple
 representations \citep{ainsworth1999}. In their terms, Wildcard plays a
@@ -1140,12 +1143,12 @@ domain-specific language for specifying scraping logic.
 \section{Related Work}\label{sec:related-work}}
 
 This paper extends work reported in a workshop paper by Litt and Jackson
-\citep{litt2020} which presented an earlier version of the Wildcard
+\citep{litt2020} which presented an early version of the Wildcard
 extension. We have substantially extended their work in this paper by
-creating the table adapter abstarction, reimplementing the internals of
+creating the table adapter abstraction, reimplementing the internals of
 Wildcard around that abstraction, evaluating the system on many more
-websites, and by characterizing the design of the system in much more
-detail than in their workshop paper.
+websites and use cases, and by characterizing the design of the system
+in much more detail than in their workshop paper.
 
 Table-driven customization relates to two broad areas of related work.
 Our problem statement is related to software customization tools, and
@@ -1172,21 +1175,20 @@ of labor corresponds to our idea of semantic wrappers, where end user
 customization is supported by programmer-created building blocks.
 
 More recently, web customization tools have aimed to enable end users to
-modify web interfaces without programming.
-
-Sifter \citep{huynh2006} enables end users to sort and filter lists of
-data obtained by web scraping, much like Wildcard's sorting features.
-The main difference between the systems is that table-driven
-customization has many other use cases besides sorting and filtering.
-Also, Sifter involves end users in a semi-automated data extraction
-process, rather than having programmers create wrappers. This provides
-coverage of more websites, but at the expense of complicating the end
-user experience. We could integrate end user scraping techniques in
-Wildcard in the future, but we believe that when possible it's valuable
-for end users to have a customization experience decoupled from the
-challenge of web scraping the underlying data. Sifter also implements
-scraping across multiple pages, a valuable feature for sorting and
-filtering that isn't present in Wildcard.
+modify web interfaces without programming. Sifter \citep{huynh2006}
+enables end users to sort and filter lists of data obtained by web
+scraping, much like Wildcard's sorting features. The main difference
+between the systems is that table-driven customization has many other
+use cases besides sorting and filtering. Also, Sifter involves end users
+in a semi-automated data extraction process, rather than having
+programmers create wrappers. This provides coverage of more websites,
+but at the expense of complicating the end user experience. We could
+integrate end user scraping techniques in Wildcard in the future, but we
+believe that when possible it's valuable for end users to have a
+customization experience decoupled from the challenge of web scraping
+the underlying data. Sifter also implements scraping across multiple
+pages, a valuable feature for sorting and filtering that isn't present
+in Wildcard.
 
 Thresher \citep{hogue2005} helps end users create wrappers that map
 website content to Semantic Web schemas like ``Movie'' or ``Director,''
@@ -1210,12 +1212,12 @@ web applications together visually. As mentioned previously, these tools
 all require writing imperative programs, in contrast to the more
 declarative and direct approach of table-driven customization.
 
-\hypertarget{direct-manipulation-programming-interfaces.}{%
-\subsection{Direct manipulation programming
-interfaces.}\label{direct-manipulation-programming-interfaces.}}
+\hypertarget{spreadsheets-and-visual-query-interfaces}{%
+\subsection{Spreadsheets and visual query
+interfaces}\label{spreadsheets-and-visual-query-interfaces}}
 
-Another relevant area involves spreadsheets and visual query systems. We
-take inspiration from these tools in our work, but apply them in a
+Another relevant area involves spreadsheets and visual query interfaces.
+We take inspiration from these tools in our work, but apply them in a
 different domain: customizing existing software applications, rather
 than interacting with databases or constructing software from scratch.
 
@@ -1223,14 +1225,13 @@ The most closely related work is in systems that offer spreadsheet-like
 querying of relational data. SIEUFERD by Bakke and Karger
 \citep{bakke2016} is one such recent system, and their paper presents a
 survey of many other similar tools. Our work is particularly influenced
-by the authors' observation that direct manipulation requires that the
-user manipulate the results of a database query rather than the query
-itself, and that the user must see intermediate results at every step of
-constructing the query. SIEUFERD's interface supports a far wider range
-of queries than Wildcard, but the core principles of the user interface
-are similar. \href{https://airtable.com/}{Airtable} is another example
-of a modern commercial product that offers spreadsheet-like interaction
-with a relational database.
+by the authors' observation that a user should be able to modify queries
+by interacting with the results of the query rather than some
+representation of the query itself. SIEUFERD's interface supports a far
+more general range of queries than Wildcard, but the core principles of
+the user interface are the same. \href{https://airtable.com/}{Airtable}
+is another example of a modern commercial product that offers
+spreadsheet-like interaction with a relational database.
 
 Our work is also inspired by the many projects that have explored using
 spreadsheets as a foundation for building software applications,
