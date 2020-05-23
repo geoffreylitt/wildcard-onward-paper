@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  23 MAY 2020 16:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  23 MAY 2020 17:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1038,44 +1038,44 @@ Package epstopdf Info: Source file: <media/overview.eps>
 (epstopdf)                    size: 31530 bytes
 (epstopdf)             Command: <repstopdf --outfile=media/overview-eps-convert
 ed-to.pdf media/overview.eps>
-(epstopdf)             \includegraphics on input line 233.
+(epstopdf)             \includegraphics on input line 232.
 Package epstopdf Info: Output file is already uptodate.
 <media/overview-eps-converted-to.pdf, id=88, 1806.75pt x 459.7175pt>
 File: media/overview-eps-converted-to.pdf Graphic file (type pdf)
 <use media/overview-eps-converted-to.pdf>
 Package pdftex.def Info: media/overview-eps-converted-to.pdf  used on input lin
-e 233.
+e 232.
 (pdftex.def)             Requested size: 505.89pt x 128.72002pt.
 
-Class acmart Warning: A possible image without description on input line 234.
+Class acmart Warning: A possible image without description on input line 233.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 248.
+(Font)              scaled to size 7.0pt on input line 247.
 [1.1{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 261.
+(Font)              scaled to size 10.0pt on input line 260.
 <media/hacker-news.png, id=119, 1228.59pt x 1589.94pt>
 File: media/hacker-news.png Graphic file (type png)
 <use media/hacker-news.png>
-Package pdftex.def Info: media/hacker-news.png  used on input line 296.
+Package pdftex.def Info: media/hacker-news.png  used on input line 295.
 (pdftex.def)             Requested size: 505.89pt x 654.69385pt.
 
-Class acmart Warning: A possible image without description on input line 297.
+Class acmart Warning: A possible image without description on input line 296.
 
 
-LaTeX Warning: Float too large for page by 32.69385pt on input line 297.
+LaTeX Warning: Float too large for page by 32.69385pt on input line 296.
 
-LaTeX Font Info:    Try loading font information for T1+zi4 on input line 332.
+LaTeX Font Info:    Try loading font information for T1+zi4 on input line 331.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/inconsolata/t1zi4.fd
 File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
 )
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 10.0pt on input line 332.
+(Font)              scaled to size 10.0pt on input line 331.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zi4' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
@@ -1087,9 +1087,9 @@ Package microtype Info: Character `textemdash ' is missing
 (microtype)             in font `T1/zi4/m/n/10'.
 (microtype)             Ignoring protrusion settings for this character.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 345.
+(Font)              scaled to size 10.0pt on input line 344.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 345.
+(Font)              scaled to size 7.0pt on input line 344.
 [2.2 <./media/overview-eps-converted-to.pdf>] [3.3 <./media/hacker-news.png>]
 Package epstopdf Info: Source file: <media/table-adapter.eps>
 (epstopdf)                    date: 2020-05-22 16:57:04
@@ -1099,22 +1099,22 @@ Package epstopdf Info: Source file: <media/table-adapter.eps>
 (epstopdf)                    size: 48498 bytes
 (epstopdf)             Command: <repstopdf --outfile=media/table-adapter-eps-co
 nverted-to.pdf media/table-adapter.eps>
-(epstopdf)             \includegraphics on input line 406.
+(epstopdf)             \includegraphics on input line 405.
 Package epstopdf Info: Output file is already uptodate.
 <media/table-adapter-eps-converted-to.pdf, id=159, 401.5pt x 556.0775pt>
 File: media/table-adapter-eps-converted-to.pdf Graphic file (type pdf)
 <use media/table-adapter-eps-converted-to.pdf>
 Package pdftex.def Info: media/table-adapter-eps-converted-to.pdf  used on inpu
-t line 406.
+t line 405.
 (pdftex.def)             Requested size: 240.94499pt x 333.71695pt.
 
-Class acmart Warning: A possible image without description on input line 407.
+Class acmart Warning: A possible image without description on input line 406.
 
 
 Underfull \vbox (badness 2460) has occurred while \output is active []
 
 [4.4 <./media/table-adapter-eps-converted-to.pdf>]
-Overfull \hbox (6.32816pt too wide) in paragraph at lines 483--487
+Overfull \hbox (6.32816pt too wide) in paragraph at lines 482--486
 \T1/LinuxLibertineT-TLF/m/n/10 (-20) The DOM scrap-ing adapter uses this for in
 -ject-ing annotations---
  []
@@ -1128,63 +1128,72 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 6.2pt on input line 587.
 
-Underfull \vbox (badness 3679) has occurred while \output is active []
+Underfull \vbox (badness 1609) has occurred while \output is active []
 
 
-Underfull \vbox (badness 6396) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [6.6]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 725.
+               Default added (so using `tbp') on input line 705.
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 3460) has occurred while \output is active []
 
-<media/amazon.png, id=223, 975.645pt x 726.715pt>
+<media/amazon.png, id=224, 975.645pt x 726.715pt>
 File: media/amazon.png Graphic file (type png)
 <use media/amazon.png>
-Package pdftex.def Info: media/amazon.png  used on input line 803.
+Package pdftex.def Info: media/amazon.png  used on input line 783.
 (pdftex.def)             Requested size: 240.94499pt x 179.46054pt.
 
-Class acmart Warning: A possible image without description on input line 804.
+Class acmart Warning: A possible image without description on input line 784.
 
-<media/ubereats.png, id=224, 1027.84pt x 614.295pt>
+<media/ubereats.png, id=225, 1027.84pt x 614.295pt>
 File: media/ubereats.png Graphic file (type png)
 <use media/ubereats.png>
-Package pdftex.def Info: media/ubereats.png  used on input line 811.
+Package pdftex.def Info: media/ubereats.png  used on input line 791.
 (pdftex.def)             Requested size: 240.94499pt x 144.00314pt.
 
-Class acmart Warning: A possible image without description on input line 812.
+Class acmart Warning: A possible image without description on input line 792.
 
-[7.7]
-<media/instacart.png, id=241, 1027.84pt x 686.565pt>
+
+Underfull \vbox (badness 2846) has occurred while \output is active []
+
+[7.7 <./media/amazon.png>]
+<media/instacart.png, id=244, 1027.84pt x 686.565pt>
 File: media/instacart.png Graphic file (type png)
 <use media/instacart.png>
-Package pdftex.def Info: media/instacart.png  used on input line 854.
+Package pdftex.def Info: media/instacart.png  used on input line 834.
 (pdftex.def)             Requested size: 240.94499pt x 160.9447pt.
 
-Class acmart Warning: A possible image without description on input line 855.
+Class acmart Warning: A possible image without description on input line 835.
 
-[8.8 <./media/amazon.png> <./media/ubereats.png>]
-<media/blogger.png, id=261, 843.15pt x 531.9875pt>
+
+Underfull \vbox (badness 1189) has occurred while \output is active []
+
+[8.8 <./media/ubereats.png> <./media/instacart.png>]
+<media/blogger.png, id=264, 843.15pt x 531.9875pt>
 File: media/blogger.png Graphic file (type png)
 <use media/blogger.png>
-Package pdftex.def Info: media/blogger.png  used on input line 885.
+Package pdftex.def Info: media/blogger.png  used on input line 865.
 (pdftex.def)             Requested size: 240.94499pt x 152.02388pt.
 
-Class acmart Warning: A possible image without description on input line 886.
+Class acmart Warning: A possible image without description on input line 866.
 
 
+Underfull \vbox (badness 1552) has occurred while \output is active []
+
+[9.9 <./media/blogger.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[9.9 <./media/instacart.png> <./media/blogger.png>] [10.10]
+[10.10]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [11.11]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [12.12] (./paper.bbl
@@ -1196,11 +1205,11 @@ LaTeX Info: Redefining \tempurl on input line 139.
 LaTeX Info: Redefining \tempurl on input line 157.
 LaTeX Info: Redefining \tempurl on input line 172.
 LaTeX Info: Redefining \tempurl on input line 190.
+LaTeX Info: Redefining \tempurl on input line 206.
+LaTeX Info: Redefining \tempurl on input line 236.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \tempurl on input line 206.
-LaTeX Info: Redefining \tempurl on input line 236.
 LaTeX Info: Redefining \tempurl on input line 255.
 LaTeX Info: Redefining \tempurl on input line 271.
 LaTeX Info: Redefining \tempurl on input line 289.
@@ -1216,21 +1225,21 @@ Package balance Warning: You have called \balance in second column
 (balance)                Columns might not be balanced.
 
 [13.13]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1300.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1300.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1291.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1291.
 (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1300.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1300.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1291.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1291.
 
 Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: D70C69B465DBCF8061AE97495E2B3D75;2932.
  ) 
 Here is how much of TeX's memory you used:
- 18493 strings out of 492616
- 281479 string characters out of 6129482
+ 18490 strings out of 492616
+ 281404 string characters out of 6129482
  405763 words of memory out of 5000000
  21417 multiletter control sequences out of 15000+600000
- 174695 words of font info for 355 fonts, out of 8000000 for 9000
+ 174324 words of font info for 353 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
  60i,17n,94p,796b,494s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-4.enc}{
@@ -1248,10 +1257,10 @@ bertineTB.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/
 LinLibertineTBI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libe
 rtine/LinLibertineTI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public
 /newtx/txsys.pfb>
-Output written on paper.pdf (13 pages, 2344637 bytes).
+Output written on paper.pdf (13 pages, 2343615 bytes).
 PDF statistics:
- 429 PDF objects out of 1000 (max. 8388607)
- 360 compressed objects within 4 object streams
+ 430 PDF objects out of 1000 (max. 8388607)
+ 361 compressed objects within 4 object streams
  106 named destinations out of 1000 (max. 500000)
  51904 words of extra memory for PDF output out of 61914 (max. 10000000)
 
