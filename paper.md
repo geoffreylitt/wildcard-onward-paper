@@ -55,7 +55,7 @@ We have successfully used Wildcard to build customizations for 11 different webs
 In [@sec:themes], we discuss some key themes from our work:
 
 * *Customization by direct manipulation*: We discuss further how table-driven customization relates to a gentle slope of customization. We suggest that an important point on this slope is the ability to customize an application by directly seeing and changing its data, rather than by writing imperative scripts.
-* *Semantic wrappers*: Typically, tools that don't rely on official extension APIs resort to offering low-level APIs for customization. Instead, we propose a community-maintained library of semantic wrappers around existing applications, enabling end users to work with domain objects rather than low-level representations.
+* *Semantic wrappers*: Typically, tools that don't rely on official extension APIs resort to offering low-level APIs for customization. Instead, we propose a community-maintained library of semantic wrappers around existing applications, enabling end users to work with domain data rather than low-level representations.
 
 Table-driven customization relates to existing work in many areas. Our goals overlap with many software customization tools, and our methods overlap with direct manipulation interfaces for working with structured data, including visual database query systems and spreadsheets. We explore these connections in [@sec:related-work].
 
