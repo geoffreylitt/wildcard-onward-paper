@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  22 MAY 2020 18:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  23 MAY 2020 14:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -965,15 +965,15 @@ Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Excluding 'CCSXML' comment.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 20.74pt on input line 178.
+(Font)              scaled to size 20.74pt on input line 177.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 20.74pt on input line 178.
+(Font)              scaled to size 20.74pt on input line 177.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 178.
+(Font)              scaled to size 12.0pt on input line 177.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 8.0pt on input line 178.
+(Font)              scaled to size 8.0pt on input line 177.
 LaTeX Font Info:    Try loading font information for TS1+LinuxLibertineT-TLF on
- input line 178.
+ input line 177.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/libertine/TS1LinuxLibertineT-TLF.
 fd
@@ -981,50 +981,50 @@ File: TS1LinuxLibertineT-TLF.fd 2017/03/20 (autoinst) Font definitions for TS1/
 LinuxLibertineT-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 178.
+(Font)              scaled to size 8.0pt on input line 177.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LinuxLibertineT-TLF' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Try loading font information for T1+LinuxBiolinumT-TLF on i
-nput line 178.
+nput line 177.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/libertine/T1LinuxBiolinumT-TLF.fd
 File: T1LinuxBiolinumT-TLF.fd 2017/03/20 (autoinst) Font definitions for T1/Lin
 uxBiolinumT-TLF.
 )
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 178.
+(Font)              scaled to size 8.0pt on input line 177.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LinuxBiolinumT-TLF' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 10.0pt on input line 178.
+(Font)              scaled to size 10.0pt on input line 177.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 178.
+(Font)              scaled to size 12.0pt on input line 177.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 178.
+(Font)              scaled to size 10.0pt on input line 177.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/it' will be
-(Font)              scaled to size 10.0pt on input line 178.
+(Font)              scaled to size 10.0pt on input line 177.
 LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 178.
+(Font)              scaled to size 10.0pt on input line 177.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 178.
+(Font)              scaled to size 9.0pt on input line 177.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 9.0pt on input line 178.
+(Font)              scaled to size 9.0pt on input line 177.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 9.0pt on input line 178.
+(Font)              scaled to size 9.0pt on input line 177.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 178.
+(Font)              scaled to size 9.0pt on input line 177.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 178.
+(Font)              scaled to size 9.0pt on input line 177.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LinuxLibertineT-TLF' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 178.
+(Font)              scaled to size 7.3pt on input line 177.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msb.cfg
@@ -1038,53 +1038,50 @@ Package epstopdf Info: Source file: <media/overview.eps>
 (epstopdf)                    size: 31530 bytes
 (epstopdf)             Command: <repstopdf --outfile=media/overview-eps-convert
 ed-to.pdf media/overview.eps>
-(epstopdf)             \includegraphics on input line 224.
+(epstopdf)             \includegraphics on input line 230.
 Package epstopdf Info: Output file is already uptodate.
 <media/overview-eps-converted-to.pdf, id=88, 1806.75pt x 459.7175pt>
 File: media/overview-eps-converted-to.pdf Graphic file (type pdf)
 <use media/overview-eps-converted-to.pdf>
 Package pdftex.def Info: media/overview-eps-converted-to.pdf  used on input lin
-e 224.
+e 230.
 (pdftex.def)             Requested size: 505.89pt x 128.72002pt.
 
-Class acmart Warning: A possible image without description on input line 225.
+Class acmart Warning: A possible image without description on input line 231.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 251.
+(Font)              scaled to size 7.0pt on input line 245.
 [1.1{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 251.
+(Font)              scaled to size 10.0pt on input line 258.
 
-Overfull \hbox (3.2758pt too wide) in paragraph at lines 259--265
+Overfull \hbox (3.2758pt too wide) in paragraph at lines 266--272
 []\T1/LinuxLibertineT-TLF/m/it/10 (-20) Wrapping ap-pli-ca-tions for cus-tomiza
 -tion\T1/LinuxLibertineT-TLF/m/n/10 (-20) : Typ-i-cally, tools
  []
 
-<media/hacker-news.png, id=118, 1228.59pt x 1589.94pt>
+<media/hacker-news.png, id=120, 1228.59pt x 1589.94pt>
 File: media/hacker-news.png Graphic file (type png)
 <use media/hacker-news.png>
-Package pdftex.def Info: media/hacker-news.png  used on input line 286.
+Package pdftex.def Info: media/hacker-news.png  used on input line 294.
 (pdftex.def)             Requested size: 505.89pt x 654.69385pt.
 
-Class acmart Warning: A possible image without description on input line 287.
+Class acmart Warning: A possible image without description on input line 295.
 
 
-LaTeX Warning: Float too large for page by 32.69385pt on input line 287.
+LaTeX Warning: Float too large for page by 32.69385pt on input line 295.
 
-
-Underfull \vbox (badness 2478) has occurred while \output is active []
-
-LaTeX Font Info:    Try loading font information for T1+zi4 on input line 325.
+LaTeX Font Info:    Try loading font information for T1+zi4 on input line 328.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/inconsolata/t1zi4.fd
 File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
 )
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 10.0pt on input line 325.
+(Font)              scaled to size 10.0pt on input line 328.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zi4' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
@@ -1095,10 +1092,17 @@ Package microtype Info: Character `textendash ' is missing
 Package microtype Info: Character `textemdash ' is missing
 (microtype)             in font `T1/zi4/m/n/10'.
 (microtype)             Ignoring protrusion settings for this character.
+
+Overfull \hbox (4.81918pt too wide) in paragraph at lines 328--332
+[]\T1/LinuxLibertineT-TLF/m/n/10 (-20) The ta-ble con-tains ad-di-tional empty 
+columns (\T1/zi4/m/n/10 user1\T1/LinuxLibertineT-TLF/m/n/10 (-20) , \T1/zi4/m/n
+/10 user2\T1/LinuxLibertineT-TLF/m/n/10 (-20) ,
+ []
+
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 344.
+(Font)              scaled to size 10.0pt on input line 349.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 344.
+(Font)              scaled to size 7.0pt on input line 349.
 [2.2 <./media/overview-eps-converted-to.pdf>] [3.3 <./media/hacker-news.png>]
 Package epstopdf Info: Source file: <media/table-adapter.eps>
 (epstopdf)                    date: 2020-05-22 16:57:04
@@ -1108,19 +1112,22 @@ Package epstopdf Info: Source file: <media/table-adapter.eps>
 (epstopdf)                    size: 48498 bytes
 (epstopdf)             Command: <repstopdf --outfile=media/table-adapter-eps-co
 nverted-to.pdf media/table-adapter.eps>
-(epstopdf)             \includegraphics on input line 399.
+(epstopdf)             \includegraphics on input line 404.
 Package epstopdf Info: Output file is already uptodate.
-<media/table-adapter-eps-converted-to.pdf, id=159, 401.5pt x 556.0775pt>
+<media/table-adapter-eps-converted-to.pdf, id=160, 401.5pt x 556.0775pt>
 File: media/table-adapter-eps-converted-to.pdf Graphic file (type pdf)
 <use media/table-adapter-eps-converted-to.pdf>
 Package pdftex.def Info: media/table-adapter-eps-converted-to.pdf  used on inpu
-t line 399.
+t line 404.
 (pdftex.def)             Requested size: 240.94499pt x 333.71695pt.
 
-Class acmart Warning: A possible image without description on input line 400.
+Class acmart Warning: A possible image without description on input line 405.
+
+
+Underfull \vbox (badness 2460) has occurred while \output is active []
 
 [4.4 <./media/table-adapter-eps-converted-to.pdf>]
-Overfull \hbox (6.32816pt too wide) in paragraph at lines 471--475
+Overfull \hbox (6.32816pt too wide) in paragraph at lines 484--488
 \T1/LinuxLibertineT-TLF/m/n/10 (-20) The DOM scrap-ing adapter uses this for in
 -ject-ing annotations---
  []
@@ -1129,60 +1136,78 @@ Overfull \hbox (6.32816pt too wide) in paragraph at lines 471--475
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (4.55556pt too wide) in paragraph at lines 502--511
-[]\T1/LinuxLibertineT-TLF/m/n/10 (-20) After spec-i-fy-ing ba-sic meta-data lik
-e which URLs the adapter
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 527.
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.2pt on input line 531.
 [5.5]
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 7.3pt on input line 582.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 6.2pt on input line 586.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[6.6]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 658.
+               Default added (so using `tbp') on input line 721.
 
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+<media/amazon.png, id=222, 1098.1025pt x 778.91pt>
+File: media/amazon.png Graphic file (type png)
+<use media/amazon.png>
+Package pdftex.def Info: media/amazon.png  used on input line 802.
+(pdftex.def)             Requested size: 240.94499pt x 170.8972pt.
+
+Class acmart Warning: A possible image without description on input line 803.
+
+<media/ubereats.png, id=223, 1098.1025pt x 726.715pt>
+File: media/ubereats.png Graphic file (type png)
+<use media/ubereats.png>
+Package pdftex.def Info: media/ubereats.png  used on input line 810.
+(pdftex.def)             Requested size: 240.94499pt x 159.44533pt.
+
+Class acmart Warning: A possible image without description on input line 811.
+
+[7.7]
+Underfull \vbox (badness 1132) has occurred while \output is active []
+
+<media/instacart.png, id=237, 1098.1025pt x 726.715pt>
+File: media/instacart.png Graphic file (type png)
+<use media/instacart.png>
+Package pdftex.def Info: media/instacart.png  used on input line 852.
+(pdftex.def)             Requested size: 240.94499pt x 159.44533pt.
+
+Class acmart Warning: A possible image without description on input line 853.
+
+[8.8 <./media/amazon.png> <./media/ubereats.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[9.9 <./media/instacart.png>] [10.10]
 Underfull \vbox (badness 1558) has occurred while \output is active []
 
-[6.6] [7.7]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[8.8]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[9.9]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[10.10]
-Underfull \vbox (badness 1558) has occurred while \output is active []
-
-(./paper.bbl
+[11.11] (./paper.bbl
 LaTeX Info: Redefining \tempurl on input line 70.
 LaTeX Info: Redefining \tempurl on input line 87.
-LaTeX Info: Redefining \tempurl on input line 104.
-LaTeX Info: Redefining \tempurl on input line 122.
-LaTeX Info: Redefining \tempurl on input line 140.
-LaTeX Info: Redefining \tempurl on input line 156.
-LaTeX Info: Redefining \tempurl on input line 174.
+LaTeX Info: Redefining \tempurl on input line 105.
+LaTeX Info: Redefining \tempurl on input line 123.
+LaTeX Info: Redefining \tempurl on input line 139.
+LaTeX Info: Redefining \tempurl on input line 157.
 
-Underfull \vbox (badness 6396) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[11.11]
-LaTeX Info: Redefining \tempurl on input line 189.
-LaTeX Info: Redefining \tempurl on input line 207.
-LaTeX Info: Redefining \tempurl on input line 223.
-LaTeX Info: Redefining \tempurl on input line 253.
-LaTeX Info: Redefining \tempurl on input line 272.
-LaTeX Info: Redefining \tempurl on input line 288.
-LaTeX Info: Redefining \tempurl on input line 306.
-LaTeX Info: Redefining \tempurl on input line 326.
-LaTeX Info: Redefining \tempurl on input line 342.
-LaTeX Info: Redefining \tempurl on input line 358.
+[12.12]
+LaTeX Info: Redefining \tempurl on input line 172.
+LaTeX Info: Redefining \tempurl on input line 190.
+LaTeX Info: Redefining \tempurl on input line 206.
+LaTeX Info: Redefining \tempurl on input line 236.
+LaTeX Info: Redefining \tempurl on input line 255.
+LaTeX Info: Redefining \tempurl on input line 271.
+LaTeX Info: Redefining \tempurl on input line 289.
+LaTeX Info: Redefining \tempurl on input line 309.
+LaTeX Info: Redefining \tempurl on input line 325.
+LaTeX Info: Redefining \tempurl on input line 341.
 )
 
 Class acmart Warning: Some images may lack descriptions.
@@ -1190,24 +1215,24 @@ Class acmart Warning: Some images may lack descriptions.
 
 Overfull \vbox (1.90399pt too high) has occurred while \output is active []
 
-[12.12]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1181.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1181.
+[13.13]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1268.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1268.
 (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1181.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1181.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1268.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1268.
 
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: 8BB767506C41CA4B74ED7425E72CE75E;2932.
+(rerunfilecheck)             Checksum: 0FFBFA9C33B749161CDDA9DE687657E6;2932.
  ) 
 Here is how much of TeX's memory you used:
- 18446 strings out of 492616
- 280542 string characters out of 6129482
- 405113 words of memory out of 5000000
- 21397 multiletter control sequences out of 15000+600000
- 173486 words of font info for 349 fonts, out of 8000000 for 9000
+ 18471 strings out of 492616
+ 280987 string characters out of 6129482
+ 406492 words of memory out of 5000000
+ 21412 multiletter control sequences out of 15000+600000
+ 173152 words of font info for 346 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,17n,94p,796b,606s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,16n,94p,796b,606s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-4.enc}{
 /usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/
 usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/u
@@ -1223,10 +1248,10 @@ bertineTB.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/
 LinLibertineTBI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libe
 rtine/LinLibertineTI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public
 /newtx/txsys.pfb>
-Output written on paper.pdf (12 pages, 1367779 bytes).
+Output written on paper.pdf (13 pages, 2305535 bytes).
 PDF statistics:
- 396 PDF objects out of 1000 (max. 8388607)
- 336 compressed objects within 4 object streams
- 92 named destinations out of 1000 (max. 500000)
- 51884 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 421 PDF objects out of 1000 (max. 8388607)
+ 354 compressed objects within 4 object streams
+ 104 named destinations out of 1000 (max. 500000)
+ 51899 words of extra memory for PDF output out of 61914 (max. 10000000)
 

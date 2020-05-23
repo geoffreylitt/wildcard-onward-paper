@@ -1,5 +1,5 @@
 ---
-title: "Customizing Software by Direct Manipulation of Tabular Data"
+title: "End-User Customization by Direct Manipulation of Tabular Data"
 bibliography: wildcard-onward-biblatex.bib
 link-citations: true
 csl: acm.csl
@@ -11,24 +11,27 @@ secPrefix:
   - "Section"
   - "Sections"
 abstract: |
-  In this paper we show how the behavior of a software application can be extended and adapted by direct manipulation. We introduce _table-driven customization_, a new paradigm where end users directly manipulate a table view of the structured data inside an application, rather than writing imperative scripts (as in most customization tools). This simple model also accommodates a spreadsheet formula language and custom data editing widgets, which provide sufficient expressivity to implement many useful customizations.
+  In this paper we introduce _table-driven customization_, a new way for end users to customize software. We augment a user interface with a table view showing the structured data inside the application. When users edit the table, their changes are reflected in the original UI. This simple model also accommodates a spreadsheet formula language and custom data editing widgets, providing enough power to implement a variety of useful extensions.
 
-  We illustrate the approach with Wildcard, a browser extension that implements table-driven customization in the context of existing web applications. Through concrete examples, we show that this paradigm can support useful customizations for real websites. We share reflections from our experiences using the Wildcard system, on both its strengths and limitations relative to other customization approaches. Finally, we explore how this paradigm might lead to new software architectures that encourage this form of customization.
+  We illustrate the approach with Wildcard, a browser extension that implements table-driven customization for existing applications using web scraping. Through concrete examples, we show that this paradigm can support extensions to many real websites, ranging from sorting and filtering existing data to adding entire new features. We share reflections from our experiences using Wildcard, on both its strengths and limitations relative to other customization approaches. Finally, we explore how this paradigm might lead to new software architectures that encourage this form of end-user customization.
 ---
 
 # Introduction
 
-Many applications don't meet the precise needs of their users.
-End user customization systems can help improve the situation, by
-empowering non-programmers to modify their software in the way they would like.
+Many applications don't meet the precise needs of their users,
+and it is impossible for developers to anticipate everyone's unique requirements.
+End user customization systems can help close this gap, by empowering non-programmers
+to modify their software to satisfy their personal goals.
 
-Most end user customization systems offer a simplified version of programming. Some scripting languages [@bolin2005;@cook2007] have a friendly syntax that resembles natural language. Other visual customization tools eliminate text syntax entirely. Macro recorders [@cook2007;@chasins2018;@anupam2000] remove some of the initial programming burden by letting a user start with concrete demonstrations. Despite their many differences, these approaches all share something in common: an imperative programming model, with statement sequencing, mutable variables and loops.
+Many end user customization systems [@cook2007; @bolin2005; @leshed2008; @chasins2018] offer a scripting model. They use various strategies to make programming more approachable:
+friendly syntax, a visual programming environment, or macro recording to bootstrap from concrete demonstrations. But all these techniques build on the same fundamental foundation: an imperative programming model, with statement sequencing, mutable variables, and loops.
 
-We have known for decades about an alternate approach: _direct manipulation_ [@shneiderman1983], where "visibility of the object of interest" replaces "complex command language syntax". Direct manipulation is the _de facto_ standard in GUIs today, but when it comes to customizing those GUIs, it is rarely to be found. As a result, switching from using software to customizing it poses a learning barrier for users not familiar with programming, and requires an abrupt shift in mental model even for those familiar with scripting.
+We have known for decades about an alternative: _direct manipulation_ [@shneiderman1983], where "visibility of the object of interest" replaces "complex command language syntax". Direct manipulation is the _de facto_ standard in GUIs today, but when it comes to customizing those GUIs, it is rarely to be found. Switching from using an interface to customizing it via scripting requires an abrupt shift in interaction model, and can pose a steep learning barrier for users not familiar with programming. We subscribe to MacLean et al's vision of a "gentle slope" [@maclean1990], where users should only
+need to make minimal and incremental investments in skill to achieve their desired customizations.
 
-In this work, we ask: what would it look like to build a direct maniulation interface that lowers the threshold for starting to customize software? We take inspiration from spreadsheets and visual database query interfaces, which have successfully enabled millions of end users to compute with data through direct manipulation.
+We seek to add a point to this gentle slope by proposing a new method for customizing software via direct manipulation, which requires less skill than scripting but still supports powerful customizations. We take inspiration from visual database query interfaces and spreadsheets, which have successfully enabled millions of end users to compute with data through direct manipulation.
 
-In this paper we present a technique called _table-driven customization_ inspired by those tools. An application’s UI is augmented with a table view, where the user can see and manipulate the application’s internal data. Changes in the table view result in immediate corresponding changes to the original user interface, enabling the user to customize an application with live feedback.
+In this paper, we present a paradigm called _table-driven customization_. An application’s UI is augmented with a table view where the user can see and manipulate the application’s internal data, just as in a familiar spreadsheet. These changes don't just apply to the table; they also result in immediate changes to the application's original user interface. The user can sort/filter data in the UI, inject annotations into the UI, pull in related information from other web services, and more, all using the table as a mediating interface.
 
 <div class="html-only">
 ![An overview of table-driven customization](media/overview.png){#fig:overview}
@@ -44,11 +47,11 @@ In this paper we present a technique called _table-driven customization_ inspire
 \end{figure*}
 ```
 
-We have developed a browser extension called Wildcard which uses web scraping techniques to implement table-driven customization for existing Web applications. In [@sec:example], we illustrate the end user experience of table-driven customization through an example scenario using Wildcard.
+We have developed a browser extension called Wildcard which uses web scraping techniques to implement table-driven customization for existing Web applications. In [@sec:example], we illustrate the end user experience of table-driven customization through an example scenario, using Wildcard to add features to Hacker News.
 
 In [@sec:architecture], we explain the system architecture of table-driven customization. We focus on the _table adapter_ abstraction, which allows many different types of underlying data to be bidirectionally mapped to a table. We describe several types of table adapters we’ve built in Wildcard, and also describe future adapters supported by the general paradigm.
 
-We have successfully used Wildcard to build customizations for 11 different websites. In [@sec:reflections], we present reflections from this process, outlining the kinds of customizations we were able to build, limitations we encountered, and the challenges of integrating scraping logic with websites.
+We have successfully used Wildcard to build customizations for 11 different websites which serve our own personal needs. In [@sec:reflections], we present reflections from this process. We outline the kinds of customizations we were able to build, limitations we encountered, and some of the challenges of writing scraping logic.
 
 In [@sec:themes], we discuss some key themes from our work:
 
@@ -59,7 +62,7 @@ Table-driven customization relates to existing work in many areas. In particular
 
 # Example Scenario {#sec:example}
 
-To illustrate the end user experience of table-driven customization, we consider an example scenario of customizing Hacker News, a tech news aggregator. [@fig:hacker-news] shows accompanying screenshots.
+To illustrate the end user experience of table-driven customization, we consider an example scenario of customizing [Hacker News](https://news.ycombinator.com/), a tech news aggregator. [@fig:hacker-news] shows accompanying screenshots.
 
 <div class="html-only">
 ![Customizing Hacker News by interacting with a table view](media/hacker-news.png){#fig:hacker-news}
@@ -82,13 +85,13 @@ To achieve this ordering, the user simply clicks on the “points” column head
 
 **Adding estimated read times**: Next, the user decides to attempt a more substantial customization: to add estimated read times to articles on Hacker News.
 
-The table contains additional columns to the right of the original attributes for each row, where the user can enter spreadsheet-style formulas to compute derived values. We provide generic names for these columns by default as spreadsheets do, so that users don't need to choose column names themselves. The user enters a formula into the `user1` column: ([@fig:hacker-news], Note C):
+The table contains additional empty columns (`user1`, `user2`, ...), where the user can enter spreadsheet-like formulas to compute derived values. The user enters a formula into the first column: ([@fig:hacker-news], Note C):
 
 ```
 =ReadTimeInSeconds(link)
 ```
 
-This calls a built-in function that takes a URL as an argument and uses a public web API to compute an estimated read time for the link's contents. The argument `link` refers to a column name in the table; for each row, the formula is evaluated with the link for that particular row. The result of evaluating this formula is a numerical value in seconds for each article.
+This calls a built-in function that takes a URL as an argument and uses a public web API to compute an estimated read time for the link's contents. The `link` argument refers to a column name in the table; the formula is automatically evaluated across all rows in the table, using the value of `link` for each row.
 
 The user clicks the `user1` column header to sort the articles on the page in descending order of estimated read time, helping to prioritize reading deeper content. It would be useful to show these read times in the page too, but before doing that, the user wants to make the time estimates more readable. They enter another formula in the next column, `user2`:
 
@@ -166,9 +169,14 @@ We now examine each component of the system in more detail.
 
 A key idea in table-driven customization is that a wide variety of data sources can be mapped to a generic table abstraction. In a relational database, the table matches the underlying storage format, but in table-driven customization, the table is merely an _interface layer_. The data shown in the table is a projection of some underlying state, and edits to the table can have complex effects on the underlying state.
 
+Here we describe the abstract interface fulfilled by a table adapter, and then
+describe specific types of table adapters we've built so far in the Wildcard system.
+
+### Abstract interface
+
 The first two parts of the table adapter interface resemble a typical database table:
 
-_Returning a table_: A table adapter exposes a table of data: an ordered list of records. Each record carries a unique identifier and  associates named attributes with values. Tables have a typed schema, so the same attributes are shared across all records. The columns also carry some additional metadata in addition to their type, such as whether or not they are read-only or editable.
+_Returning a table_: A table adapter exposes a table of data: an ordered list of records. Each record carries a unique identifier and  associates named attributes with values. Tables have a typed schema, so the same attributes are shared across all records. We currently support strings, numeric values, booleans, and datetimes as types. The columns also carry some additional metadata, such as whether or not they are read-only or editable.
 
 A table adapter can update the contents of a table at any time in response to changes in the underlying state (e.g., a DOM scraping adapter can update the table when the page body changes). When data changes, the query view is reactively updated in response.
 
@@ -185,24 +193,57 @@ _Data from other tables_: The query engine provides each table adapter with the 
 
 _Currently selected record_: As the user clicks in different parts of the table view, the query engine communicates the record currently selected by the user. The DOM scraping adapter uses this information to highlight the row in the page that corresponds to the selected row in the table (and scroll to the row if it's not currently showing on the page), which helps clarify the connection between the table and the original UI.
 
-### Types of table adapters
+### DOM scraping adapters
 
-We have built three specific types of table adapters so far, to enable web customization using Wildcard.
-
-**DOM scraping adapters** are the essential component that enables Wildcard to interface with an existing website UI. In addition to the standard web scraping problem of extracting a table of data from the DOM, a scraping adapter must also manipulate the DOM to reorder rows, edit form entries, and inject annotations as the table is edited.
+DOM scraping adapters are the essential component that enables Wildcard to interface with an existing website UI. In addition to the standard web scraping problem of extracting a table of data from the DOM, a scraping adapter must also manipulate the DOM to reorder rows, edit form entries, and inject annotations as the table is edited.
 
 Because each website has unique content, we rely on programmers to create a DOM scraping adapter for each individual website to make it available for customization in Wildcard. To make this approach viable, we have built a generic DOM scraping adapter which a programmer can configure with the minimal site-specific parts.
 
-After specifying basic metadata like which URLs the adapter should apply to,
-the programmer only needs to implement a single Javascript function
-that scrapes relevant elements from the page. They are free to use any
-scraping techniques; in practice simple CSS selectors and DOM APIs usually suffice. The generic adapter then wraps this scraping function to implement the table adapter interface. For example, when the table view is sorted, the generic adapter takes the DOM elements corresponding to the rows in the table, removes all of them from the page, and then reinserts them in the new order.
+_Specifying scraping logic_: First, the adapter author specifies basic metadata like which URLs the adapter should apply to,
+and a list of columns and their types. Then, implement a single Javascript function
+that extracts relevant elements from the page using web scraping technqiues. The generic adapter then wraps this scraping function to implement the table adapter interface. For example, when the user sorts the table view, the generic adapter removes the DOM elements corresponding to the rows in the table, and reinserts them back into the page in the correct order.
 
-The programmer can optionally override other default behavior of the generic DOM scraping adapter,
-including the logic for when to re-run the scraping function in response to page changes,
+For each scraped row of data, the programmer must return a unique identifier,
+and a value for each column in the table.
+
+_Choosing an ID_: When possible, we recommend choosing a server-side identifier
+that will remain stable across pageloads. This enables user annotations
+persisted in local storage to be associated with the same records on
+subsequent pageloads. We have found that it's usually possible to find such an
+identifier; for example, each item in a page often contains a link to a
+page with more details, where the URL contains a unique identifier.
+
+_Types of scraped values_: For each individual value within a row, there are two options for what type
+of data can be returned by the programmer-specified scraping function.
+
+The default option is to return a DOM element, in which case the generic adapter
+extracts the text contents of the DOM element and casts them to the type of the column.
+For example, if the relevant column is a numeric column and the returned value is a `<div>` containing
+the string "1.23", the generic adapter extracts the number 1.23.
+The advantage of this approach is that the field becomes _writable_ in the table, if the
+adapter author chooses to mark it as writable. When the user edits the value in the table,
+the generic adapter can overwrite the inner contents of the DOM element to reflect the change.
+In practice, this is most useful for editing the value of form input fields.
+It's possible to enable the editing of other fields (e.g., editing the title of a post on Hacker News)
+but we haven't found many use cases for editing those types of fields.
+
+Another option is to directly return a value, rather than returning a DOM element.
+The advantage of this approach is that the adapter author can perform arbitrary
+computations to derive the returned value—for example, they can use a regular expression
+to extract a substring. The disadvantage is that the field is no longer writable,
+because the computation used to derive the value isn't reversible.
+
+_Other site-specific customization_: The programmer can optionally override other behavior of the generic DOM scraping adapter,
+including logic for when to re-run the scraping function in response to page changes,
 how to style injected annotations, and how to style the currently selected row in the table.
+We've chosen sensible defaults that generally result in a workable adapter without needing to change
+these options, but they can improve the experience on a specific website. For example,
+by default we highlight the currently selected row with a blue border, but
+on some sites this is hard to see or breaks the layout, so setting a background color works better.
 
-An **AJAX scraping adapter** intercepts AJAX requests made by a web page, and extracts information from those requests to add to the table. When available, this tends to be a helpful technique because the data is already in a structured form so it is easier to scrape, and it often includes valuable information not shown in the UI.
+### AJAX scraping adapters
+
+An AJAX scraping adapter intercepts AJAX requests made by a web page, and extracts information from those requests to add to the table. When available, this tends to be a helpful technique because the data is already in a structured form so it is easier to scrape, and it often includes valuable information not shown in the UI.
 
 As with DOM scraping adapters, we have made it easy for programmers to create site-specific AJAX scraping adapters. A programmer writes a function that specifies how to extract data from an AJAX request, and the framework handles the details of intercepting requests and calling the programmer-defined function.^[So far we have only implemented AJAX scraping in the Firefox version of Wildcard, since Firefox has convenient APIs for intercepting requests. It appears possible to implement in Chrome as well, but we have not finished our implementation.]
 
@@ -212,10 +253,16 @@ Often there is a server-defined ID present both in the DOM and in AJAX responses
 if not, the programmer can use some set of overlapping data (e.g. an item name)
 as a shared ID.
 
-The **local storage adapter** simply stores a table of data in the browser.
-This is currently only used to persist annotations: the user makes edits
-in the table, they are stored privately in the browser,
-and can be loaded into the table on future pageloads.
+### Local storage adapters
+
+The local storage adapter simply stores a table of data in the browser.
+This is currently only used to persist annotations.
+
+The table view is initialized with empty columns such as `user1` which serve as
+the user's "scratch space," as shown in [@sec:example]. When the user
+makes edits to these columns, new rows are created in the local storage table.
+The rows contain the record ID from the DOM scraping adapter,
+which enables them to be re-associated with the same records on subsequent pageloads.
 
 ### Future Adapters
 
@@ -268,11 +315,11 @@ we could provide a calendar view for displaying a table containing a date column
 \hline
 \textbf{Website} & \textbf{Description} & \textbf{LOC} & \textbf{Example customizations}                                                              \\ \hline
 Airbnb           & Travel               & 73                                       & Add Walkability Scores to listings. Sort listings by price.                           \\
-Amazon           & Online shopping      & 99                                       & Sort used book sellers by total price, including delivery fees                                \\
-Blogger          & Blogging             & 36                                       & Use alternate text editor to edit blog posts                                                 \\
-Expedia          & Travel               & 41                                       & Use alternate datepicker to enter travel dates                                               \\
-Flux             & Data portal          & 67                                       & Use Wildcard as a faster table editor for editing lab results                                \\
-Github           & Code repository      & 62                                       & Sort a user's code repositories by stars to find popular work                                \\
+Amazon           & Online shopping      & 99                                       & Sort third party sellers by total price, including fees.                                \\
+Blogger          & Blogging             & 36                                       & Use alternate text editor to edit blog posts.                                                 \\
+Expedia          & Travel               & 41                                       & Use alternate datepicker to enter travel dates.                                               \\
+Flux             & Data portal          & 67                                       & Use Wildcard as a faster table editor for editing lab results.                                \\
+Github           & Code repository      & 62                                       & Sort a user's code repositories by stars to find popular work.                                \\
 Hacker News      & News                 & 69                                       & Add read times to links. Filter out links that have been read. \\
 Instacart        & Grocery delivery     & 48                                       & Sort groceries by price and category. Take notes on items.                                   \\
 Uber Eats        & Food delivery        & 117                                      & Sort/filter restaurants by estimated delivery ETA and price.                                 \\
@@ -294,7 +341,7 @@ browser extension, which implements table-driven customization in the context of
 existing websites. It is implemented in Typescript, and works across
 three major browsers: Chrome, Firefox, and Edge.
 
-We built Wildcard integrations for 11 websites, including transactional sites like Amazon and Uber Eats, and media consumption sites like Hacker News and Youtube. Table 1 summarizes these integrations, showing the number of lines of code in the adapter configuration for each site, and some example customizations we were able to perform for each site.
+We built Wildcard integrations for 11 websites, including transactional sites like Amazon and Uber Eats, and media consumption sites like Youtube and Hacker News. Table 1 summarizes these integrations, showing the number of lines of code in the adapter configuration for each site, and some example customizations we were able to perform for each site.
 
 So far, most usage of Wildcard has come from members of the project team. Here we offer our reflections on using the system, focused on two key questions:
 
@@ -315,19 +362,61 @@ Sometimes, websites have opaque ranking algorithms which presumably maximize pro
 
 In the current implementation of Wildcard, users can only sort and filter entries that are shown on the current page, which means that users are not entirely liberated from the suggestions of the opaque algorithm. This restriction could be overcome in the future by scraping content across multiple pages, or by using an integrated adapter built in to the application. However, we’ve also found that sorting/filtering a single page of a paginated list is often an acceptable outcome (and sometimes even a preferable one). It’s more useful, for example, to sort 30 recommended Youtube videos than to try to sort all videos on Youtube.
 
+<div class="html-only">
+![Sorting the used sellers page on Amazon by total price](media/amazon.png){#fig:amazon}
+</div>
+<div class="pdf-only">
+```{=latex}
+\begin{figure}
+\hypertarget{fig:amazon}{%
+\centering
+\includegraphics[width=\columnwidth]{media/amazon.png}
+\caption{Sorting the used sellers page on Amazon by total price}\label{fig:amazon}
+}
+\end{figure}
+```
+
+<div class="html-only">
+![Organizing takeout restaurants on Uber Eats by ETA and price](media/ubereats.png){#fig:ubereats}
+</div>
+<div class="pdf-only">
+```{=latex}
+\begin{figure}
+\hypertarget{fig:ubereats}{%
+\centering
+\includegraphics[width=\columnwidth]{media/ubereats.png}
+\caption{Organizing takeout restaurants on Uber Eats by ETA and price}\label{fig:ubereats}
+}
+\end{figure}
+```
+
 ### Annotating
 
-Many web annotation systems focus on annotating text or arbitrary webpage content, but Wildcard limits annotations to structured objects extracted by an adapter, resulting in a different set of use cases. Annotating with Wildcard has proven most useful when taking notes on a list of possible options (e.g., evaluating possible Airbnb locations to rent). We have also used it with Instacart’s online grocery cart, for jotting down notes like “should we get more milk?”
+Many web annotation systems focus on annotating text or arbitrary webpage content, but Wildcard limits annotations to structured objects extracted by an adapter, resulting in a different set of use cases. Annotating with Wildcard has proven most useful when taking notes on a list of possible options (e.g., evaluating possible Airbnb locations to rent). We have also used it with Instacart’s online grocery cart, for jotting down notes like "do we need more eggs?”
 
 ### Formulas
 
 Formulas are the most powerful part of the Wildcard system. So far, our language supports only a small number of predefined functions. Adding more should allow a broad range of useful computations, as shown by the success of spreadsheets.
 
-Formulas are especially useful for fetching data from Web APIs. We’ve used them to augment Airbnb listings with walkability scores, and to augment Hacker News articles with estimated read times. One challenge of the current language design is that supporting a new web API requires writing Javascript code to add a new function to the language, because web APIs typically return complex JSON data structures that can’t be easily displayed in a single table cell. In the future we would like to make it possible to call new APIs without adding a dedicated function, which might require adding functions to the formula language that can manipulate JSON data.
+Formulas are especially useful for fetching data from Web APIs. We’ve used them to augment Airbnb listings with walkability scores, and to augment Hacker News articles with estimated read times as shown in [@sec:example]. One challenge of the current language design is that supporting a new web API requires writing Javascript code to add a new function to the language, because web APIs typically return complex JSON data structures that can’t be easily displayed in a single table cell. In the future we would like to make it possible to call new APIs without adding a dedicated function, which might require adding functions to the formula language that can manipulate JSON data.
 
 We have also found instances where simple data manipulation is useful,
 e.g. transforming the results of an API call with basic
 arithmetic and string operations, as shown in [@sec:example].
+
+<div class="html-only">
+![Taking notes on Instacart grocery items, after sorting them by price](media/instacart.png){#fig:instacart}
+</div>
+<div class="pdf-only">
+```{=latex}
+\begin{figure}
+\hypertarget{fig:instacart}{%
+\centering
+\includegraphics[width=\columnwidth]{media/instacart.png}
+\caption{Taking notes on Instacart grocery items, after sorting them by price}\label{fig:instacart}
+}
+\end{figure}
+```
 
 ### Cell editors
 
@@ -365,12 +454,12 @@ Some of the challenges of writing a DOM scraping adapter are the same ones as wi
 
 AJAX scraping proved highly useful in several cases. The Uber Eats website was
 challenging to scrape because it has a complex DOM structure with machine-generated
-CSS classes, but the site also generates AJAX requests which contain all the
+CSS classes, but the site also use AJAX requests which contain all the
 relevant data in a structured form that is much easier to extract.
 We also found examples where relevant information wasn't present in the DOM at all.
-On the grocery delivery site Instacart, we used AJAX scraping to augment
-grocery items with their categorization in the store, enabling use cases like
-viewing all the vegetables in an order together.
+On the grocery delivery site Instacart, we found that AJAX requests contained
+additional data not shown in the UI, enabling us to do things like
+sort grocery items in an order by category.
 
 # Key themes {#sec:themes}
 

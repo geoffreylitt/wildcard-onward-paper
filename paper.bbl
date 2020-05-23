@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{19}
+\begin{thebibliography}{18}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -68,23 +68,6 @@
 \showISBNx{978-1-4503-6708-0}
 \urldef\tempurl%
 \url{https://doi.org/10.1145/3313831.3376691}
-\showDOI{\tempurl}
-
-
-\bibitem[\protect\citeauthoryear{Anupam, Freire, Kumar, and Lieuwen}{Anupam
-  et~al\mbox{.}}{2000}]%
-        {anupam2000}
-\bibfield{author}{\bibinfo{person}{Vinod Anupam}, \bibinfo{person}{Juliana
-  Freire}, \bibinfo{person}{Bharat Kumar}, {and} \bibinfo{person}{Daniel
-  Lieuwen}.} \bibinfo{year}{2000}\natexlab{}.
-\newblock \showarticletitle{Automating {{Web}} Navigation with the {{WebVCR}}}.
-\newblock \bibinfo{journal}{\emph{Computer Networks}} \bibinfo{volume}{33},
-  \bibinfo{number}{1} (\bibinfo{date}{June} \bibinfo{year}{2000}),
-  \bibinfo{pages}{503--517}.
-\newblock
-\showISSN{1389-1286}
-\urldef\tempurl%
-\url{https://doi.org/10.1016/S1389-1286(00)00073-6}
 \showDOI{\tempurl}
 
 
