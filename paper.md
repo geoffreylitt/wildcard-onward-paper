@@ -28,7 +28,7 @@ friendly syntax, a visual programming environment, or macro recording to bootstr
 
 We have known for decades about an alternative: _direct manipulation_ [@shneiderman1983], where "visibility of the object of interest" replaces "complex command language syntax." Direct manipulation is the _de facto_ standard in GUIs today, but when it comes to customizing those GUIs, it is rarely to be found. Switching from using an application to customizing it via scripting requires an abrupt shift in interaction model, and can pose a steep learning barrier for users not familiar with programming.
 
-We subscribe to MacLean et al.'s vision of a "gentle slope" [@maclean1990] free of such "cliffs," where users should only need to make minimal and incremental investments in skill to achieve their desired customizations. We seek to contribute to this gentle slope with a new method for customizing software via direct manipulation, which requires less skill than scripting but still supports powerful customizations. We take inspiration from visual database query interfaces and spreadsheets, which have successfully enabled millions of end users to compute with data through direct manipulation.
+We subscribe to MacLean et al.'s vision of a "gentle slope" [@maclean1990] free of such "cliffs," where users should only need to make minimal and incremental investments in skill to achieve their desired customizations. We seek to contribute to this gentle slope with a new method for customizing software via direct manipulation, taking inspiration from visual database query interfaces and spreadsheets, which have successfully enabled millions of end users to compute with data through direct manipulation.
 
 In our proposed paradigm, _table-driven customization_, an application’s UI is augmented with a table view where the user can see and manipulate the application’s internal data. These changes don't just apply to the table; they also result in immediate changes to the application's original user interface. The user can sort/filter data in the UI, inject annotations, pull in related information from other web services, and more, all using the table as a mediating interface. Interacting with the table view resembles interacting with a familiar spreadsheet, but results in customizing an existing application.
 
@@ -46,7 +46,7 @@ In our proposed paradigm, _table-driven customization_, an application’s UI is
 \end{figure*}
 ```
 
-We have developed a browser extension called Wildcard which uses web scraping techniques to implement table-driven customization for existing Web applications. In [@sec:example], we illustrate the end user experience of table-driven customization through an example scenario, using Wildcard to add features to Hacker News.
+We have developed a browser extension called Wildcard which uses web scraping techniques to implement table-driven customization for existing Web applications. In [@sec:example], we concretely demonstrate the end user experience of using Wildcard to add features to a news website.
 
 In [@sec:architecture], we explain the system architecture of table-driven customization. We focus on the _table adapter_ abstraction, which allows many different types of underlying data to be bidirectionally mapped to a table. We describe several types of table adapters we’ve built in Wildcard, and also describe future adapters supported by the general paradigm.
 
@@ -63,7 +63,7 @@ Finally, in [@sec:conclusion], we conclude and describe opportunities for future
 
 # Example Scenario {#sec:example}
 
-To illustrate the end user experience of table-driven customization, we consider an example scenario of customizing [Hacker News](https://news.ycombinator.com/), a popular tech news aggregator. [@fig:hacker-news] shows accompanying screenshots.
+To concretely illustrate the user experience of table-driven customization, we present a scenario of customizing [Hacker News](https://news.ycombinator.com/), a popular tech news aggregator. [@fig:hacker-news] shows accompanying screenshots.
 
 <div class="html-only">
 ![Customizing Hacker News by interacting with a table view](media/hacker-news.png){#fig:hacker-news}
@@ -121,7 +121,7 @@ without needing to expose their browser history to Hacker News.
 
 This scenario has shown a few examples of how table-driven customizations
 can help a user improve their experience of a website.
-[@sec:reflections] explains many other use cases,
+[@sec:reflections] explains many other use cases and contexts where the technique applies,
 but first we explain how the system works internally.
 
 # System architecture {#sec:architecture}

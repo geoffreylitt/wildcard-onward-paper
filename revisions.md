@@ -6,8 +6,10 @@ These are revisions requested by the reviewers. Checked off if they've been addr
 
 
 - [ ]  INTRODUCTION
-- [ ]  @87 requiring less "skill" is questionable: advanced end-user programming, such as spreadsheets, or Splunk's table UI + formula language can get pretty complicated
-- [ ]  @107 the example at first does not sound compelling: Hacker News is, by today's standards, an unusually simple website
+- [x]  @87 requiring less "skill" is questionable: advanced end-user programming, such as spreadsheets, or Splunk's table UI + formula language can get pretty complicated
+  - removed that claim from the intro, since it seemed like an unnecessary sentence anyway. Later parts of the paper (esp Section 5.1) discuss the claim in more detail
+- [x]  @107 the example at first does not sound compelling: Hacker News is, by today's standards, an unusually simple website
+  - removed specific mention of HN from the intro, tried to emphasize later that it's just one example of many
 - [ ]  @136 scraping logic is outside of the work's main focus (accidental complexity)
 - [ ]  EXAMPLE SCENARIO
 - [ ]  @206 Sorting by points - limitation of the scraping model becomes clear: this sorts by points only the items on page 1, right? => answered in @759
