@@ -11,9 +11,9 @@ secPrefix:
   - "Section"
   - "Sections"
 abstract: |
-  In this paper we introduce _table-driven customization_, a new way for end users to extend software by direct manipulation without doing traditional programming. We augment existing user interfaces with a table view showing the structured data inside the application. When users edit the table, their changes are reflected in the original UI. This simple model accommodates a spreadsheet formula language and custom data editing widgets, providing enough power to implement a variety of useful extensions.
+  In this paper we introduce _data-driven customization_, a new way for end users to extend software by direct manipulation without doing traditional programming. We augment existing user interfaces with a table view showing the structured data inside the application. When users edit the table, their changes are reflected in the original UI. This simple model accommodates a spreadsheet formula language and custom data editing widgets, providing enough power to implement a variety of useful extensions.
 
-  We illustrate the approach with Wildcard, a browser extension that implements table-driven customization for existing applications using web scraping. Through concrete examples, we show that this paradigm can support extensions to many real websites, ranging from sorting and filtering existing data to adding entire new features. We share reflections from our experiences using Wildcard, on both its strengths and limitations relative to other customization approaches. Finally, we explore how this paradigm might lead to new software architectures that encourage this form of end-user customization.
+  We illustrate the approach with Wildcard, a browser extension that implements data-driven customization for existing applications using web scraping. Through concrete examples, we show that this paradigm can support extensions to many real websites, ranging from sorting and filtering existing data to adding entire new features. We share reflections from our experiences using Wildcard, on both its strengths and limitations relative to other customization approaches. Finally, we explore how this paradigm might lead to new software architectures that encourage this form of end-user customization.
 ---
 
 # Introduction
@@ -30,10 +30,10 @@ We have known for decades about an alternative: _direct manipulation_ [@shneider
 
 We subscribe to MacLean et al.'s vision of a "gentle slope" [@maclean1990] free of such "cliffs," where users should only need to make minimal and incremental investments in skill to achieve their desired customizations. We seek to contribute to this gentle slope with a new method for customizing software via direct manipulation, taking inspiration from visual database query interfaces and spreadsheets, which have successfully enabled millions of end users to compute with data through direct manipulation.
 
-In our proposed paradigm, _table-driven customization_, an application’s UI is augmented with a table view where the user can see and manipulate the application’s internal data. These changes don't just apply to the table; they also result in immediate changes to the application's original user interface. The user can sort/filter data in the UI, inject annotations, pull in related information from other web services, and more, all using the table as a mediating interface. Interacting with the table view resembles interacting with a familiar spreadsheet, but results in customizing an existing application.
+In our proposed paradigm, _data-driven customization_, an application’s UI is augmented with a table view where the user can see and manipulate the application’s internal data. These changes don't just apply to the table; they also result in immediate changes to the application's original user interface. The user can sort/filter data in the UI, inject annotations, pull in related information from other web services, and more, all using the table as a mediating interface. Interacting with the table view resembles interacting with a familiar spreadsheet, but results in customizing an existing application.
 
 <div class="html-only">
-![An overview of table-driven customization](media/overview.png){#fig:overview}
+![An overview of data-driven customization](media/overview.png){#fig:overview}
 </div>
 <div class="pdf-only">
 ```{=latex}
@@ -41,29 +41,29 @@ In our proposed paradigm, _table-driven customization_, an application’s UI is
 \hypertarget{fig:overview}{%
 \centering
 \includegraphics[width=\textwidth]{media/overview.eps}
-\caption{An overview of table-driven customization}\label{fig:overview}
+\caption{An overview of data-driven customization}\label{fig:overview}
 }
 \end{figure*}
 ```
 
-We have developed a browser extension called Wildcard which uses web scraping techniques to implement table-driven customization for existing Web applications. In [@sec:example], we concretely demonstrate the end user experience of using Wildcard to add features to a news website.
+We have developed a browser extension called Wildcard which uses web scraping techniques to implement data-driven customization for existing Web applications. In [@sec:example], we concretely demonstrate the end user experience of using Wildcard to add features to a news website.
 
-In [@sec:architecture], we explain the system architecture of table-driven customization. We focus on the _table adapter_ abstraction, which allows many different types of underlying data to be bidirectionally mapped to a table. We describe several types of table adapters we’ve built in Wildcard, and also describe future adapters supported by the general paradigm.
+In [@sec:architecture], we explain the system architecture of data-driven customization. We focus on the _table adapter_ abstraction, which allows many different types of underlying data to be bidirectionally mapped to a table. We describe several types of table adapters we’ve built in Wildcard, and also describe future adapters supported by the general paradigm.
 
 We have successfully used Wildcard to build customizations for 11 different websites that serve our own personal needs. In [@sec:reflections], we present reflections from this process. We outline the kinds of customizations we were able to build, limitations we encountered, and some of the challenges of writing scraping logic.
 
 In [@sec:themes], we discuss some key themes from our work:
 
-* *Customization by direct manipulation*: We discuss further how table-driven customization relates to a gentle slope of customization. We suggest that an important point on this slope is the ability to customize an application by directly seeing and changing its data, rather than by writing imperative scripts.
-* *Semantic wrappers*: Typically, tools that don't rely on official extension APIs resort to offering low-level APIs for customization. Instead, we propose a community-maintained library of semantic wrappers around existing applications, enabling end users to work with domain data rather than low-level representations.
+- _Customization by direct manipulation_: We discuss further how data-driven customization relates to a gentle slope of customization. We suggest that an important point on this slope is the ability to customize an application by directly seeing and changing its data, rather than by writing imperative scripts.
+- _Semantic wrappers_: Typically, tools that don't rely on official extension APIs resort to offering low-level APIs for customization. Instead, we propose a community-maintained library of semantic wrappers around existing applications, enabling end users to work with domain data rather than low-level representations.
 
-Table-driven customization relates to existing work in many areas. Our goals overlap with many software customization tools, and our methods overlap with direct manipulation interfaces for working with structured data, including visual database query systems and spreadsheets. We explore these connections in [@sec:related-work].
+data-driven customization relates to existing work in many areas. Our goals overlap with many software customization tools, and our methods overlap with direct manipulation interfaces for working with structured data, including visual database query systems and spreadsheets. We explore these connections in [@sec:related-work].
 
 Finally, in [@sec:conclusion], we conclude and describe opportunities for future work.
 
 # Example Scenario {#sec:example}
 
-To concretely illustrate the user experience of table-driven customization, we present a scenario of customizing [Hacker News](https://news.ycombinator.com/), a popular tech news aggregator. [@fig:hacker-news] shows accompanying screenshots.
+To concretely illustrate the user experience of data-driven customization, we present a scenario of customizing [Hacker News](https://news.ycombinator.com/), a popular tech news aggregator. [@fig:hacker-news] shows accompanying screenshots.
 
 <div class="html-only">
 ![Customizing Hacker News by interacting with a table view](media/hacker-news.png){#fig:hacker-news}
@@ -119,7 +119,7 @@ since websites don't have access to the browser history for privacy reasons.
 But by using Wildcard, the user was able to implement the customization locally,
 without needing to expose their browser history to Hacker News.
 
-This scenario has shown a few examples of how table-driven customizations
+This scenario has shown a few examples of how data-driven customizations
 can help a user improve their experience of a website.
 [@sec:reflections] explains many other use cases and contexts where the technique applies,
 but first we explain how the system works internally.
@@ -142,7 +142,7 @@ but first we explain how the system works internally.
 </div>
 
 [@fig:table-adapter] summarizes the overall architecture of
-table-driven customization, using a simplified illustration of the Hacker News
+data-driven customization, using a simplified illustration of the Hacker News
 example scenario. The name and points value for each article
 is scraped from the web page DOM, and user annotations are loaded
 from the brower's local storage.
@@ -167,14 +167,14 @@ We now examine each component of the system in more detail.
 
 ## Table adapters
 
-A key idea in table-driven customization is that a wide variety of data sources can be mapped to a generic table abstraction. In a relational database, the table matches the underlying storage format, but in table-driven customization, the table is merely an _interface layer_. The data shown in the table is a projection of some underlying state, and edits to the table can have complex effects on the underlying state.
+A key idea in data-driven customization is that a wide variety of data sources can be mapped to a generic table abstraction. In a relational database, the table matches the underlying storage format, but in data-driven customization, the table is merely an _interface layer_. The data shown in the table is a projection of some underlying state, and edits to the table can have complex effects on the underlying state.
 
 Here we describe the abstract interface fulfilled by a table adapter, and then
 describe specific types of table adapters we've built so far in the Wildcard system.
 
 ### Abstract interface
 
-_Returning a table_: A table adapter exposes a table of data: an ordered list of records. Each record carries a unique identifier and  associates named attributes with values. Tables have a typed schema, so the same attributes are shared across all records. We currently support strings, numeric values, booleans, and datetimes as types. The columns also carry some additional metadata, such as whether or not they are read-only or editable.
+_Returning a table_: A table adapter exposes a table of data: an ordered list of records. Each record carries a unique identifier and associates named attributes with values. Tables have a typed schema, so the same attributes are shared across all records. We currently support strings, numeric values, booleans, and datetimes as types. The columns also carry some additional metadata, such as whether or not they are read-only or editable.
 
 A table adapter can update the contents of a table at any time in response to changes in the underlying state (e.g., a DOM scraping adapter can update the table when the page body changes). When data changes, the query view is reactively updated in response.
 
@@ -187,7 +187,7 @@ _Sorting/filtering_: When the user sorts or filters the query view, an ordered l
 visible IDs is sent to each table adapter. The DOM scraping adapter uses this information
 to change the list of rows shown in the web page.
 
-_Data from other tables_: The query engine provides each table adapter with the entire combined table  shown to the user. The DOM scraping adapter uses this for injecting annotations—values from other tables are added to the original web page.
+_Data from other tables_: The query engine provides each table adapter with the entire combined table shown to the user. The DOM scraping adapter uses this for injecting annotations—values from other tables are added to the original web page.
 
 _Currently selected record_: As the user clicks around the table view, the query engine broadcasts the record currently selected by the user to each table adapter. The DOM scraping adapter uses this information to highlight the row in the page that corresponds to the selected row in the table, which helps the user understand the mapping between the table and the original UI.
 
@@ -216,7 +216,7 @@ of data can be returned by the programmer-specified scraping function.
 
 The default option is to return a DOM element, in which case the generic adapter
 extracts the text contents of the DOM element and casts them to the type of the column.
-For example, if the scraping function returns  a `<div>` containing
+For example, if the scraping function returns a `<div>` containing
 the string "1.23", and the column has a numeric type,
 the generic adapter extracts the number 1.23.
 The advantage of returning a DOM element is that the value is editable—when the user changes the value in the table, the generic adapter can simply overwrite the inner contents of the DOM element.
@@ -278,7 +278,7 @@ The query engine is responsible for coordinating across multiple table adapters.
 
 Queries are processed in three steps. First, the query invokes a primary DOM scraping adapter that associates table rows with elements in the application’s user interface. Next, additional tables (AJAX data, local storage data) are left-joined by ID. Finally, the result table is sorted and filtered according to user-specified predicates.
 
-One way to view this query model is as a tiny subset of the SQL query model. Despite its simplicity, this  model has proven sufficient for meeting our customization needs, and minimizes the complexity of supporting arbitrary queries. But because it fits into the general paradigm of relational queries, it could theoretically be extended to support a wider range of queries.
+One way to view this query model is as a tiny subset of the SQL query model. Despite its simplicity, this model has proven sufficient for meeting our customization needs, and minimizes the complexity of supporting arbitrary queries. But because it fits into the general paradigm of relational queries, it could theoretically be extended to support a wider range of queries.
 
 The query engine is also responsible for executing formulas. We have built a small formula language resembling a spreadsheet formula language. As in visual database query tools like SIEUFERD [@bakke2016] and [Airtable](https://airtable.com/), formulas automatically apply across an entire column of data, and reference other column names instead of values in specific rows. This is more convenient than needing to copy-paste a formula across an entire column as in spreadsheets, and has worked for all of the customizations we have built.
 
@@ -293,7 +293,6 @@ relaying user commands to the query engine and rendering the resulting data tabl
 Because of this architectural split, it would be straightforward to develop
 additional table editor interfaces on top of the Wildcard system. For example,
 we could provide a calendar view for displaying a table containing a date column.
-
 
 # Reflections on Usage {#sec:reflections}
 
@@ -315,7 +314,7 @@ Uber Eats        & Food delivery        & 117                                   
 Weather.com  & Weather              & 51                                       & Sort/filter hourly weather to find nice times of day.                                        \\
 Youtube          & Videos               & 80                                       & Sort/filter videos by length, to find short videos to watch.                                 \\ \hline
 \end{tabular}
-\caption{A list of table-driven customizations that we have implemented using Wildcard.}
+\caption{A list of data-driven customizations that we have implemented using Wildcard.}
 \label{tab:websites}
 \end{table*}
 ```
@@ -325,19 +324,19 @@ Youtube          & Videos               & 80                                    
   todo: fill in this table
 </div>
 
-To evaluate table-driven customization in practice, we built the Wildcard
-browser extension, which implements table-driven customization in the context of
+To evaluate data-driven customization in practice, we built the Wildcard
+browser extension, which implements data-driven customization in the context of
 existing websites. It is implemented in Typescript, and works across
 three major browsers: Chrome, Firefox, and Edge.
 
 We developed site-specific adapters for 11 websites that we personally use frequently, and then built customizations for those websites using the Wildcard table view. Table 1 summarizes these results, showing the number of lines of code in the adapter for each site, and some example customizations we created. Here we offer our reflections from these experiences using the system, focused on two key questions:
 
-* How broad is the range of possible customizations in this paradigm?
-* How feasible is it to build DOM scraping adapters for real websites?
+- How broad is the range of possible customizations in this paradigm?
+- How feasible is it to build DOM scraping adapters for real websites?
 
 ## Range of customizations
 
-We have found that table-driven customization can serve a broad range of useful purposes.
+We have found that data-driven customization can serve a broad range of useful purposes.
 Here we expand on some archetypal examples that illuminate aspects of
 using the system in practice.
 
@@ -430,7 +429,7 @@ Another benefit is that a user can choose a preferred widget for editing informa
 
 ### Limitations
 
-There are many customizations that are not possible to implement with table-driven customization. Some of the limitations are specific to the current implementation of the Wildcard extension, but others are more fundamental to the general paradigm.
+There are many customizations that are not possible to implement with data-driven customization. Some of the limitations are specific to the current implementation of the Wildcard extension, but others are more fundamental to the general paradigm.
 
 One limitation is that Wildcard can only make customizations that use the available data exposed in the table. If the adapter doesn't expose some piece of data, the user can't use it in their customization. The table data format also rules out customizing certain sites that don't have a way to map to a table. The UI modifications available in Wildcard are also limited in scope; deleting arbitrary buttons isn’t possible, for example. There is no facility for running automations when the user isn't actively viewing a page—at one point, we wanted to build an automation to repeatedly load a grocery delivery website to check for open delivery slots, but it didn't seem possible to achieve this in Wildcard.
 
@@ -441,7 +440,7 @@ We have found that one benefit of showing structured data is predictability: onc
 ## Viability of scraping
 
 Our second evaluation area relates less to the conceptual approach of
-table-driven customization, and more to the specific implementation
+data-driven customization, and more to the specific implementation
 of customizing existing web applications.
 In order for third-party customization through Wildcard to succeed,
 it is important that creating usable adapters for existing websites takes minimal effort.
@@ -476,9 +475,9 @@ customization.
 
 ## Customization by direct manipulation {#sec:dm}
 
-Hutchins, Hollan and Norman [@hutchins1985] define a direct manipulation interface as one that uses a model-world metaphor rather than a conversation metaphor. Instead of presenting an “assumed” but not directly visible  world that the user converses with, “the world is explicitly represented” and the user can “[act] upon the objects of the task domain themselves.”
+Hutchins, Hollan and Norman [@hutchins1985] define a direct manipulation interface as one that uses a model-world metaphor rather than a conversation metaphor. Instead of presenting an “assumed” but not directly visible world that the user converses with, “the world is explicitly represented” and the user can “[act] upon the objects of the task domain themselves.”
 
-Although most GUIs today employ direct manipulation, software customization tools typically use an imperative programming model, which implements the conversational metaphor rather than direct manipulation. Here, for example,  is how a user retrieves a list of of calendar names from the Calendar application in Applescript [@cook2007], the scripting language for customizing Mac OS applications:
+Although most GUIs today employ direct manipulation, software customization tools typically use an imperative programming model, which implements the conversational metaphor rather than direct manipulation. Here, for example, is how a user retrieves a list of of calendar names from the Calendar application in Applescript [@cook2007], the scripting language for customizing Mac OS applications:
 
 ```
 tell application "Calendar"
@@ -488,9 +487,9 @@ end tell
 
 Some customization environments like Mac Automator and Zapier forego textual syntax and let the user connect programs and construct automations by dragging and dropping icons representing commands. These environments still do not constitute direct manipulation, though: the objects being manipulated are in the domain of programming, not in the domain of the task at hand.
 
-Imperative programming is a reasonable choice as the model for building customizations. Turing-complete programming provides a high ceiling for possible customizations, and a sequence of commands is a natural fit for automations that simulate a series of steps taken by the user. There is, however, a serious drawback to this approach. MacLean et al. [@maclean1990] describe an ideal for user-tailorable systems: a “gentle slope” from using to customizing, where small incremental increases in skill lead to corresponding increments of customization power. Requiring users wanting to customize their applications  to learn programming creates an abrupt “cliff,” exacting a significant investment in learning even to implement the simplest customizations. Another goal of MacLean et al. is to make it “as easy to change the environment as it is to use it”—at least for some subset of changes. But in scripting languages, the experience of customization does not remotely resemble the experience of use.
+Imperative programming is a reasonable choice as the model for building customizations. Turing-complete programming provides a high ceiling for possible customizations, and a sequence of commands is a natural fit for automations that simulate a series of steps taken by the user. There is, however, a serious drawback to this approach. MacLean et al. [@maclean1990] describe an ideal for user-tailorable systems: a “gentle slope” from using to customizing, where small incremental increases in skill lead to corresponding increments of customization power. Requiring users wanting to customize their applications to learn programming creates an abrupt “cliff,” exacting a significant investment in learning even to implement the simplest customizations. Another goal of MacLean et al. is to make it “as easy to change the environment as it is to use it”—at least for some subset of changes. But in scripting languages, the experience of customization does not remotely resemble the experience of use.
 
-With table-driven customization we aim to provide a gentler slope, by using direct manipulation for software customization. The data shown in the table view is the domain data from the original application. The user makes changes to the data by selecting areas of interest in the table, e.g. sorting/filtering by clicking the relevant column header, or adding annotations by clicking and typing on the relevant row. At every step, the user receives intermediate feedback, not only in the table view, but also in the original application, so it's clear whether they are making progress towards their desired result. These types of interactions are common in GUI applications, and Wildcard therefore seems to meet MacLean et al.’s goal: some one-click customizations are as easy as using the original application. Formulas introduce some additional complexity, but spreadsheets have demonstrated that formula programming is still accessible to many users, helped by the pure functional semantics and the visibility of intermediate results.
+With data-driven customization we aim to provide a gentler slope, by using direct manipulation for software customization. The data shown in the table view is the domain data from the original application. The user makes changes to the data by selecting areas of interest in the table, e.g. sorting/filtering by clicking the relevant column header, or adding annotations by clicking and typing on the relevant row. At every step, the user receives intermediate feedback, not only in the table view, but also in the original application, so it's clear whether they are making progress towards their desired result. These types of interactions are common in GUI applications, and Wildcard therefore seems to meet MacLean et al.’s goal: some one-click customizations are as easy as using the original application. Formulas introduce some additional complexity, but spreadsheets have demonstrated that formula programming is still accessible to many users, helped by the pure functional semantics and the visibility of intermediate results.
 
 One aspect of directness that we have chosen not to pursue in Wildcard is enabling customization in closer proximity to the original user interface elements, as explored by tools like Scotty [@eagan2011]—all customization occurs in a separate panel next to the original UI.
 While closer proximity might be helpful, we have found that augmenting the original UI with a distinct, additional representation provides a more consistent experience across all applications, and clearly shows what structured data is available to work with. We also emphasize the mapping between the representations by highlighting content in the original page, similiar to the way that browser developer tools highlight the currently selected element in the DOM inspector in the original page.
@@ -536,17 +535,17 @@ using or inventing a more restricted domain-specific language for specifying scr
 
 This paper extends work reported in a workshop paper by Litt and Jackson [@litt2020] which presented an early version of the Wildcard extension. We have substantially extended their work in this paper by creating the table adapter abstraction, reimplementing the internals of Wildcard around that abstraction, evaluating the system on many more websites and use cases, and by characterizing the design of the system in much more detail than in their workshop paper.
 
-Table-driven customization relates to two broad areas of related work. Our problem statement is related to software customization tools, and our solution approach is related to spreadsheets and other direct manipulation interfaces.
+data-driven customization relates to two broad areas of related work. Our problem statement is related to software customization tools, and our solution approach is related to spreadsheets and other direct manipulation interfaces.
 
 ## Customization tools
 
-Table-driven customization is most closely related to other tools that aim
+data-driven customization is most closely related to other tools that aim
 to empower end users to customize software without traditional coding.
 
 This lineage goes back at least to the Buttons system by MacLean et al. [@maclean1990], where
 Xerox Lisp users could share buttons that performed various "tailoring" actions
 on the system. The authors proposed the "gentle slope" idea which has
-greatly influenced our approach to table-driven customization (as discussed in [@sec:dm]).
+greatly influenced our approach to data-driven customization (as discussed in [@sec:dm]).
 The authors also point out the importance of a "tailoring culture"
 where people with different skillsets collaborate to produce useful customizations;
 in their system, Lisp programmers create buttons that others can use, modify,
@@ -554,12 +553,12 @@ and rearrange. This division of labor corresponds to our idea of semantic wrappe
 where end user customization is supported by programmer-created building blocks.
 
 More recently, web customization tools have aimed to enable end users
-to modify web interfaces without programming. Sifter [@huynh2006] enables end users to sort and filter lists of data obtained by web scraping, much like Wildcard’s sorting features. The main difference between the systems is that table-driven customization has many other use cases besides sorting and filtering. Also, Sifter involves end users in a semi-automated data extraction process, rather than having programmers create wrappers. This provides coverage of more websites, but at the expense of complicating the end user experience. We could integrate end user scraping techniques in Wildcard in the future, but we believe that when possible it’s valuable for end users to have a customization experience decoupled from the challenge of web scraping the underlying data. Sifter also implements scraping across multiple pages, a valuable feature for sorting and filtering that isn’t present in Wildcard.
+to modify web interfaces without programming. Sifter [@huynh2006] enables end users to sort and filter lists of data obtained by web scraping, much like Wildcard’s sorting features. The main difference between the systems is that data-driven customization has many other use cases besides sorting and filtering. Also, Sifter involves end users in a semi-automated data extraction process, rather than having programmers create wrappers. This provides coverage of more websites, but at the expense of complicating the end user experience. We could integrate end user scraping techniques in Wildcard in the future, but we believe that when possible it’s valuable for end users to have a customization experience decoupled from the challenge of web scraping the underlying data. Sifter also implements scraping across multiple pages, a valuable feature for sorting and filtering that isn’t present in Wildcard.
 
 Thresher [@hogue2005] helps end users create wrappers that map website content to Semantic Web schemas like "Movie" or "Director," and augments websites with new functionality by exploiting that schema information. Wildcard shares the general idea of wrappers, but maps to a generic table data type rather than more specific schemas, increasing the range of supported data and allowing for a simpler mapping process.
 
 There are many software customization tools that offer simplified forms of programming for end users. Chickenfoot [@bolin2005] and Coscripter [@leshed2008] offer user friendly syntax for writing web automation scripts; Applescript [@cook2007] has a similar goal for desktop customization. There are visual programming environments for customization that don’t involve writing any text: [Automator](https://support.apple.com/guide/automator/welcome/mac) for Mac and [Shortcuts](https://apps.apple.com/us/app/shortcuts/id915249334) for iOS are modern options for customizing Apple products, and [Zapier](https://zapier.com/) enables users to
-connect different web applications together visually. As mentioned previously, these tools all require writing imperative programs, in contrast to the more declarative and direct approach of table-driven customization.
+connect different web applications together visually. As mentioned previously, these tools all require writing imperative programs, in contrast to the more declarative and direct approach of data-driven customization.
 
 ## Spreadsheets and visual query interfaces
 
@@ -579,10 +578,9 @@ apply it to software customization, rather than building software from scratch.
 
 Another related system is ScrAPIr, by Alrashed et al. [@alrashed2020], which enables end users to access backend web APIs without programming. ScrAPIr shares our high level goal of end user empowerment, as well as the idea of wrappers, by creating a shared library of wrappers around existing web APIs. Unlike Wildcard, however, ScrAPIr targets explicit APIs exposed by developers. It also focuses on backend services and doesn’t aim to extend the frontend interfaces of web applications.
 
-
 # Conclusion and Future Work {#sec:conclusion}
 
-In this paper, we have presented table-driven customization, a new paradigm for
+In this paper, we have presented data-driven customization, a new paradigm for
 customizing software by direct manipulation of the underlying structured data.
 We have demonstrated the paradigm using the Wildcard browser extension,
 and have used it to create useful customizations for a variety of websites.
@@ -597,4 +595,4 @@ of a community-maintained library of site-specific adapters.
 Another area for future work is exploring whether it's possible to express a broader range of customizations by extending the table-editing paradigm. Are there ways to offer an increase in power and functional complexity, while retaining a programming model that is simpler for end users than conventional coding? For example, one possibility would be to enable users
 to set up triggers to perform actions like sending notifications when certain conditions are met in the table view.
 
-As computing plays an ever greater role in our lives, it is increasingly important that end users have agency over the behavior of their software, rather than having every detail be dictated by companies whose incentives are not always aligned with the user’s interests. We hope that table-driven customization can serve as a point on the path from normal use to deep modification, in support of a more adaptable experience for all computer users.
+As computing plays an ever greater role in our lives, it is increasingly important that end users have agency over the behavior of their software, rather than having every detail be dictated by companies whose incentives are not always aligned with the user’s interests. We hope that data-driven customization can serve as a point on the path from normal use to deep modification, in support of a more adaptable experience for all computer users.
