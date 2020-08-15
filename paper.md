@@ -1,5 +1,5 @@
 ---
-title: "Data-Driven Customization of Web Applications"
+title: "End-User Software Customization by Direct Manipulation of Tabular Data"
 bibliography: wildcard-onward-biblatex.bib
 link-citations: true
 csl: acm.csl
@@ -11,7 +11,7 @@ secPrefix:
   - "Section"
   - "Sections"
 abstract: |
-  Customizing software should be as easy as using it. But most customization methods require a dramatic shift, from using a GUI to writing scripts in a programming language.
+  Customizing software should be as easy as using it. But most customization methods require a dramatic shift from using a GUI to writing customization scripts in a programming language.
 
   We introduce _data-driven customization_, a new way for end users to extend software by direct manipulation without doing traditional programming. We augment existing user interfaces with a table view showing the structured data inside the application. When users edit the table, their changes are reflected in the original UI. This simple model accommodates a spreadsheet formula language and custom data editing widgets, providing enough power to implement a variety of useful extensions.
 

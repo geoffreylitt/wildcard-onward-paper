@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  15 AUG 2020 16:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  15 AUG 2020 16:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -10,18 +10,15 @@ Document Class: acmart 2019/03/29 v1.59 Typesetting articles for the Associatio
 n for Computing Machinery
 (/usr/local/texlive/2019/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
-
-(/usr/local/texlive/2019/texmf-dist/tex/generic/xkeyval/xkeyval.tex
-(/usr/local/texlive/2019/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(/usr/local/texlive/2019/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/local
+/texlive/2019/texmf-dist/tex/generic/xkeyval/xkvutils.tex
 \XKV@toks=\toks14
 \XKV@tempa@toks=\toks15
-
 (/usr/local/texlive/2019/texmf-dist/tex/generic/xkeyval/keyval.tex))
 \XKV@depth=\count80
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-))
-(/usr/local/texlive/2019/texmf-dist/tex/generic/xstring/xstring.sty
-(/usr/local/texlive/2019/texmf-dist/tex/generic/xstring/xstring.tex
+)) (/usr/local/texlive/2019/texmf-dist/tex/generic/xstring/xstring.sty (/usr/lo
+cal/texlive/2019/texmf-dist/tex/generic/xstring/xstring.tex
 \integerpart=\count81
 \decimalpart=\count82
 )
@@ -41,7 +38,6 @@ Package acmart Info: Using anonymous mode on input line 157.
 Package acmart Info: Using review mode on input line 157.
 Class acmart Info: Using format sigplan, number 6 on input line 157.
 Class acmart Info: Using fontsize 10pt on input line 221.
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amscls/amsart.cls
 Document Class: amsart 2017/10/31 v2.20.4
 \linespacing=\dimen102
@@ -50,21 +46,17 @@ Document Class: amsart 2017/10/31 v2.20.4
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2018/12/01 v2.17b AMS math features
 \@mathmargin=\skip42
-
 For additional information on amsmath, use the `?' option.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks16
 \ex@=\dimen104
-))
-(/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsbsy.sty
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen105
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsopn.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count83
@@ -106,11 +98,9 @@ LaTeX Info: Redefining \[ on input line 2844.
 LaTeX Info: Redefining \] on input line 2845.
 )
 LaTeX Font Info:    Try loading font information for U+msa on input line 398.
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
@@ -140,8 +130,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 \thm@postskip=\skip49
 \thm@headsep=\skip50
 \dth@everypar=\toks26
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/microtype.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/microtype.sty
 Package: microtype 2019/02/28 v2.7b Micro-typographical refinements (RS)
 \MT@toks=\toks27
 \MT@count=\count103
@@ -149,7 +138,6 @@ LaTeX Info: Redefining \textls on input line 790.
 \MT@outer@kern=\dimen114
 LaTeX Info: Redefining \textmicrotypecontext on input line 1336.
 \MT@listname@count=\count104
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/microtype-pdftex.def
 File: microtype-pdftex.def 2019/02/28 v2.7b Definitions specific to pdftex (RS)
 
@@ -158,15 +146,12 @@ LaTeX Info: Redefining \lslig on input line 914.
 \MT@outer@space=\skip51
 )
 Package microtype Info: Loading configuration file microtype.cfg.
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/microtype.cfg
 File: microtype.cfg 2019/02/28 v2.7b microtype main configuration file (RS)
-))
-(/usr/local/texlive/2019/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count105
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/booktabs/booktabs.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2016/04/27 v1.618033 publication quality tables
 \heavyrulewidth=\dimen115
 \lightrulewidth=\dimen116
@@ -185,44 +170,32 @@ Package: booktabs 2016/04/27 v1.618033 publication quality tables
 \@thisruleclass=\count108
 \@lastruleclass=\count109
 \@thisrulewidth=\dimen127
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/refcount.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/refcount.sty
 Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
-
 (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
-))
-(/usr/local/texlive/2019/texmf-dist/tex/latex/totpages/totpages.sty
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/totpages/totpages.sty
 Package: totpages 2005/09/19 v2.00 Totpages Package (muewi)
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/ms/everyshi.sty
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
-))
-(/usr/local/texlive/2019/texmf-dist/tex/latex/environ/environ.sty
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/environ/environ.sty
 Package: environ 2014/05/04 v0.3 A new way to define environments
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
-))
-(/usr/local/texlive/2019/texmf-dist/tex/latex/textcase/textcase.sty
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/textcase/textcase.sty
 Package: textcase 2004/10/07 v0.07 Text only upper/lower case changing (DPC)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/natbib/natbib.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip52
 \bibsep=\skip53
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count110
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/hyperref.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2018/11/30 v6.88e Hypertext links for LaTeX
-
 (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
 Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
-
 
 (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
 Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
@@ -258,34 +231,28 @@ Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
 Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
 Package hobsub Info: Skipping package `refcount' (already loaded).
 Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/auxhook.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/auxhook.sty
 Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
 \@linkdim=\dimen128
 \Hy@linkcounter=\count111
 \Hy@pagecounter=\count112
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2018/11/30 v6.88e Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
 \Hy@SavedSpaceFactor=\count113
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 4393
 .
 Package hyperref Info: Option `unicode' set `true' on input line 4393.
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2018/11/30 v6.88e Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
@@ -299,7 +266,6 @@ Package hyperref Info: Backreferencing OFF on input line 4539.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4772.
 \c@Hy@tempcnt=\count114
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
@@ -323,42 +289,33 @@ LaTeX Info: Redefining \pageref on input line 6454.
 \c@Hfootnote=\count118
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2018/11/30 v6.88e Hyperref driver for pdfTeX
 \Fld@listcount=\count119
 \c@bookmark@seq@number=\count120
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip54
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/graphicx.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen132
 \Gin@req@width=\dimen133
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/xcolor/xcolor.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
@@ -372,8 +329,7 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/geometry/geometry.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2018/04/16 v5.8 Page Geometry
 \Gm@cnth=\count121
 \Gm@cntv=\count122
@@ -387,10 +343,8 @@ Package: geometry 2018/04/16 v5.8 Page Geometry
 \Gm@layouthoffset=\dimen140
 \Gm@layoutvoffset=\dimen141
 \Gm@dimlist=\toks28
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/ncctools/manyfoot.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/ncctools/manyfoot.sty
 Package: manyfoot 2005/09/11 v1.10 Many Footnote Levels Package (NCC)
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/ncctools/nccfoots.sty
 Package: nccfoots 2005/02/03 v1.2 NCC Footnotes Package (NCC)
 )
@@ -400,26 +354,21 @@ Package: nccfoots 2005/02/03 v1.2 NCC Footnotes Package (NCC)
 \c@footnoteauthorsaddresses=\count124
 \footinscopyrightpermission=\insert197
 \c@footnotecopyrightpermission=\count125
-
 (/usr/local/texlive/2019/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2013/04/04 v0.2 Provides if(tex) conditional for PDFTeX, XeTeX, 
 and LuaTeX
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pdftex/glyphtounicode.tex)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/cmap/cmap.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/generic/pdftex/glyphtounicode.tex) (/
+usr/local/texlive/2019/texmf-dist/tex/latex/cmap/cmap.sty
 Package: cmap 2008/03/06 v1.0h CMap support: searchable PDF
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/base/fontenc.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2018/08/11 v2.0j Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
-)<<t1.cmap>>)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/libertine/libertine.sty
+)<<t1.cmap>>) (/usr/local/texlive/2019/texmf-dist/tex/latex/libertine/libertine
+.sty
 Package: libertine 2019/02/27 (Bob Tennent) Supports Libertine and Biolinum fon
 ts for all LaTeX engines.
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2018/08/11 v2.0j Standard LaTeX package
 Package textcomp Info: Sub-encoding information:
@@ -434,12 +383,10 @@ Package textcomp Info: Sub-encoding information:
 (textcomp)             Family '?' is the default used for unknown fonts.
 (textcomp)             See the documentation for details.
 Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1enc.def
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 Now handling font encoding TS1 ...
 ... processing UTF-8 mapping file for font encoding TS1
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1enc.dfu
 File: ts1enc.dfu 2018/10/05 v1.2f UTF-8 support for inputenc
    defining Unicode char U+00A2 (decimal 162)
@@ -576,8 +523,7 @@ Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
 Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/mweights/mweights.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/mweights/mweights.sty
 Package: mweights 2017/03/30 (Bob Tennent) Support package for multiple-weight 
 font packages. 
 LaTeX Info: Redefining \bfseries on input line 22.
@@ -585,11 +531,9 @@ LaTeX Info: Redefining \mdseries on input line 30.
 LaTeX Info: Redefining \rmfamily on input line 38.
 LaTeX Info: Redefining \sffamily on input line 66.
 LaTeX Info: Redefining \ttfamily on input line 94.
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/base/fontenc.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/fontaxes/fontaxes.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/fontaxes/fontaxes.sty
 Package: fontaxes 2014/03/23 v1.0d Font selection axes
 LaTeX Info: Redefining \upshape on input line 29.
 LaTeX Info: Redefining \itshape on input line 31.
@@ -597,15 +541,12 @@ LaTeX Info: Redefining \slshape on input line 33.
 LaTeX Info: Redefining \scshape on input line 37.
 )
 LaTeX Info: Redefining \oldstylenums on input line 489.
-
-(/usr/local/texlive/2019/texmf-dist/tex/latex/libertine/LinLibertine_I.tex))
-(/usr/local/texlive/2019/texmf-dist/tex/latex/inconsolata/zi4.sty
+(/usr/local/texlive/2019/texmf-dist/tex/latex/libertine/LinLibertine_I.tex)) (/
+usr/local/texlive/2019/texmf-dist/tex/latex/inconsolata/zi4.sty
 Package: zi4 2017/01/04 v1.112
-
 `inconsolata-zi4' v1.112, 2017/01/04 Text macros for Inconsolata (msharpe)
 \zifour@ocount=\count126
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/newtx/newtxmath.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/newtx/newtxmath.sty
 Package: newtxmath 2018/05/15 v1.553
 
 `newtxmath' v1.553, 2018/05/15 Math macros based originally on txfonts (msharpe
@@ -613,7 +554,6 @@ Package: newtxmath 2018/05/15 v1.553
 Package: centernot 2016/05/16 v1.4 Centers the not symbol horizontally (HO)
 )
 \tx@cntz=\count127
-
 (/usr/local/texlive/2019/texmf-dist/tex/generic/kastrup/binhex.tex)
 \tx@Isdigit=\count128
 \tx@IsAlNum=\count129
@@ -744,10 +684,8 @@ LaTeX Font Info:    Redeclaring math symbol \m@thbbch@rA on input line 1929.
 LaTeX Info: Redefining \not on input line 2322.
 LaTeX Info: Redefining \textsquare on input line 2352.
 LaTeX Info: Redefining \openbox on input line 2354.
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/caption/caption.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2018/10/06 v3.3-154 Customizing captions (AR)
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2018/09/12 v1.8c caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 64.
@@ -763,8 +701,7 @@ Package caption Info: AMS or SMF document class.
 \c@caption@flags=\count136
 \c@ContinuedFloat=\count137
 Package caption Info: hyperref package is loaded.
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/float/float.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count138
 \float@exts=\toks29
@@ -786,10 +723,8 @@ Class acmart Info: Printing CCS on input line 1378.
 Class acmart Info: Printing bibformat on input line 1378.
 Class acmart Info: Suppressing folios on input line 1385.
 Class acmart Info: Setting authorsperrow to 0 on input line 1388.
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/comment/comment.sty
 \CommentStream=\write3
-
 Excluding comment 'comment') Excluding comment 'CCSXML'
 \c@@concepts=\count142
 \mktitle@bx=\box32
@@ -797,7 +732,6 @@ Excluding comment 'comment') Excluding comment 'CCSXML'
 \author@bx=\box34
 \author@bx@wd=\dimen152
 \author@bx@sep=\skip59
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footer
 s
@@ -817,7 +751,6 @@ s
 \@folio@wd=\dimen153
 \@folio@ht=\dimen154
 \@folio@voffset=\dimen155
-
 Special comment 'acks'
 LaTeX Font Info:    Try loading font information for T1+LinuxLibertineT-TLF on 
 input line 2831.
@@ -842,21 +775,17 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 \lst@newlines=\count148
 \lst@lineno=\count149
 \lst@maxwidth=\dimen159
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2019/02/27 1.8b (Carsten Heinz)
 \c@lstnumber=\count150
 \lst@skipnumbers=\count151
 \lst@framebox=\box37
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/listings/listings.cfg
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2019/02/27 1.8b listings configuration
 ))
 Package: listings 2019/02/27 1.8b (Carsten Heinz)
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Package: fancyvrb 2019/01/15
-
 Style option: `fancyvrb' v3.2a <2019/01/15> (tvz)
 \FV@CodeLineNo=\count152
 \FV@InFile=\read1
@@ -864,8 +793,7 @@ Style option: `fancyvrb' v3.2a <2019/01/15> (tvz)
 \c@FancyVerbLine=\count153
 \FV@StepNumber=\count154
 \FV@OutFile=\write4
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/ulem/ulem.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/generic/ulem/ulem.sty
 \UL@box=\box39
 \UL@hyphenbox=\box40
 \UL@skip=\skip70
@@ -881,19 +809,16 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 147.
 Package hyperref Info: Option `pdfdisplaydoctitle' set `true' on input line 147
 .
 \c@theorem=\count156
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/preprint/balance.sty
 Package: balance 1999/02/23 4.3 (PWD)
 \oldvsize=\dimen163
-)
-Include comment 'screenonly' Excluding comment 'printonly'
-Excluding comment 'anonsuppress' Excluding comment 'acks' (./diff.aux)
+) Include comment 'screenonly' Excluding comment 'printonly' Excluding comment 
+'anonsuppress' Excluding comment 'acks' (./diff.aux)
 \openout1 = `diff.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/nxlmi/m/it on input line 147.
 LaTeX Font Info:    Try loading font information for OML+nxlmi on input line 14
 7.
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/newtx/omlnxlmi.fd
 File: omlnxlmi.fd 2013/11/19 Fontinst v1.933 font definitions for OML/nxlmi.
 )
@@ -909,7 +834,6 @@ LaTeX Font Info:    ... okay on input line 147.
 LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 147.
 LaTeX Font Info:    Try loading font information for U+ntxexa on input line 147
 .
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/newtx/untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
@@ -921,7 +845,6 @@ LaTeX Font Info:    ... okay on input line 147.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 147.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 147.
 
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
@@ -929,7 +852,6 @@ LaTeX Font Info:    ... okay on input line 147.
 LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 147.
 LaTeX Font Info:    Try loading font information for LMS+ntxsy on input line 14
 7.
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/newtx/lmsntxsy.fd
 File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
 )
@@ -937,7 +859,6 @@ LaTeX Font Info:    ... okay on input line 147.
 LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 147.
 LaTeX Font Info:    Try loading font information for LMX+ntxexx on input line 1
 47.
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/newtx/lmxntxexx.fd
 File: lmxntxexx.fd 2016/07/03 Fontinst v1.933 font definitions for LMX/ntxexx.
 )
@@ -961,30 +882,25 @@ LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 5.5pt on input line 147.
 <<oml.cmap>>
 LaTeX Font Info:    Try loading font information for U+msa on input line 147.
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 147.
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for U+ntxmia on input line 147
 .
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/newtx/untxmia.fd
 File: untxmia.fd 2018/04/14 Fontinst v1.933 font definitions for U/ntxmia.
 )
 LaTeX Font Info:    Try loading font information for U+ntxsym on input line 147
 .
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/newtx/untxsym.fd
 File: untxsym.fd 2015/03/20 Fontinst v1.933 font definitions for U/ntxsym.
 )
 LaTeX Font Info:    Try loading font information for U+ntxsyc on input line 147
 .
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/newtx/untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
@@ -1002,14 +918,11 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LinuxLibertineT-TLF' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box42
 Package hyperref Info: Link coloring ON on input line 147.
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
-
 (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
@@ -1018,11 +931,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 147.
 LaTeX Info: Redefining \pageref on input line 147.
 LaTeX Info: Redefining \nameref on input line 147.
-
 (./diff.out) (./diff.out)
 \@outlinefile=\write5
 \openout5 = `diff.out'.
-
 
 (/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1039,7 +950,6 @@ LaTeX Info: Redefining \nameref on input line 147.
 \everyMPtoPDFconversion=\toks35
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 )
@@ -1049,7 +959,6 @@ Package grfext Info: Graphics extension search list:
 (grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
@@ -1099,18 +1008,17 @@ Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count166
-
 Excluding 'CCSXML' comment.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 20.74pt on input line 268.
+(Font)              scaled to size 20.74pt on input line 273.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 20.74pt on input line 268.
+(Font)              scaled to size 20.74pt on input line 273.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 268.
+(Font)              scaled to size 12.0pt on input line 273.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 8.0pt on input line 268.
+(Font)              scaled to size 8.0pt on input line 273.
 LaTeX Font Info:    Try loading font information for TS1+LinuxLibertineT-TLF on
- input line 268.
+ input line 273.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/libertine/TS1LinuxLibertineT-TLF.
 fd
@@ -1118,120 +1026,773 @@ File: TS1LinuxLibertineT-TLF.fd 2017/03/20 (autoinst) Font definitions for TS1/
 LinuxLibertineT-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 268.
+(Font)              scaled to size 8.0pt on input line 273.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LinuxLibertineT-TLF' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Try loading font information for T1+LinuxBiolinumT-TLF on i
-nput line 268.
+nput line 273.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/libertine/T1LinuxBiolinumT-TLF.fd
 File: T1LinuxBiolinumT-TLF.fd 2017/03/20 (autoinst) Font definitions for T1/Lin
 uxBiolinumT-TLF.
 )
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 268.
+(Font)              scaled to size 8.0pt on input line 273.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LinuxBiolinumT-TLF' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 10.0pt on input line 268.
+(Font)              scaled to size 10.0pt on input line 273.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 268.
+(Font)              scaled to size 12.0pt on input line 273.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 268.
+(Font)              scaled to size 10.0pt on input line 273.
 
-Overfull \hbox (6.7816pt too wide) in paragraph at lines 268--268
-|   []   |   []   |   []   |   []   |   []   |   []   |   []
+Overfull \hbox (2.77563pt too wide) in paragraph at lines 273--273
+[]|   []   |   []   [][]|   []   [][]|   []   []\T1/LinuxLibertineT-TLF/m/it/10
+ (-20) cus-tomiza-tion\T1/LinuxLibertineT-TLF/m/n/10 (-20) , a new
  []
 
 
-Overfull \hbox (18.20135pt too wide) in paragraph at lines 268--268
-[]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [
-]
- []
-
-
-Overfull \hbox (33.38652pt too wide) in paragraph at lines 268--268
-|   []   |   []   |   []   |   []   |   []   |   []   |   []
- []
-
-
-Overfull \hbox (15.95755pt too wide) in paragraph at lines 268--268
+Overfull \hbox (2.33455pt too wide) in paragraph at lines 273--273
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
-  |   []
- []
-
-
-Overfull \hbox (7.82542pt too wide) in paragraph at lines 268--268
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+  |   []   |   []
  []
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/it' will be
-(Font)              scaled to size 10.0pt on input line 268.
+(Font)              scaled to size 10.0pt on input line 273.
 LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 268.
+(Font)              scaled to size 10.0pt on input line 273.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 268.
+(Font)              scaled to size 9.0pt on input line 273.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 9.0pt on input line 268.
+(Font)              scaled to size 9.0pt on input line 273.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 9.0pt on input line 268.
-
-LaTeX Warning: Reference `TotPages' on page 1 undefined on input line 268.
-
+(Font)              scaled to size 9.0pt on input line 273.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 268.
+(Font)              scaled to size 9.0pt on input line 273.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 268.
+(Font)              scaled to size 9.0pt on input line 273.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LinuxLibertineT-TLF' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 268.
+(Font)              scaled to size 7.3pt on input line 273.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msb.cfg
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-! Argument of \UL@word has an extra }.
-<inserted text> 
-                \par 
-l.268 \maketitle
-                
-? 
-Runaway argument?
-\@empty 
-! Paragraph ended before \UL@word was complete.
-<to be read again> 
-                   \par 
-l.268 \maketitle
-                
-? 
-! Argument of \UL@word has an extra }.
-<inserted text> 
-                \par 
-l.268 \maketitle
-                
-? 
-! Emergency stop.
-<inserted text> 
-                \par 
-l.268 \maketitle
-                
-End of file on the terminal!
+Package epstopdf Info: Source file: <media/overview.eps>
+(epstopdf)                    date: 2020-05-22 15:30:27
+(epstopdf)                    size: 130213 bytes
+(epstopdf)             Output file: <media/overview-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-05-22 15:32:44
+(epstopdf)                    size: 31530 bytes
+(epstopdf)             Command: <repstopdf --outfile=media/overview-eps-convert
+ed-to.pdf media/overview.eps>
+(epstopdf)             \includegraphics on input line 332.
+Package epstopdf Info: Output file is already uptodate.
+<media/overview-eps-converted-to.pdf, id=96, 1806.75pt x 459.7175pt>
+File: media/overview-eps-converted-to.pdf Graphic file (type pdf)
+<use media/overview-eps-converted-to.pdf>
+Package pdftex.def Info: media/overview-eps-converted-to.pdf  used on input lin
+e 332.
+(pdftex.def)             Requested size: 505.89pt x 128.72002pt.
 
- 
+Class acmart Warning: A possible image without description on input line 333.
+
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 7.0pt on input line 333.
+[1.1{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+]
+Overfull \hbox (6.06834pt too wide) in paragraph at lines 335--340
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Overfull \hbox (19.17833pt too wide) in paragraph at lines 343--352
+[]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [
+]   |   []
+ []
+
+
+Overfull \hbox (8.56363pt too wide) in paragraph at lines 354--362
+[]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (16.14842pt too wide) in paragraph at lines 354--362
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Overfull \hbox (1.06917pt too wide) in paragraph at lines 354--362
+|   []   []\T1/LinuxLibertineT-TLF/m/n/10 (-20) [[]|   []   |   []   |   []   |
+   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (4.90346pt too wide) in paragraph at lines 364--370
+|   []   |   []   |   []   |   []   |   []   [][]|   []   |   []   |   []   |  
+ []   |   []
+ []
+
+
+Overfull \hbox (3.58434pt too wide) in paragraph at lines 364--370
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+LaTeX Warning: Reference `sec:themes' on page 2 undefined on input line 372.
+
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 10.0pt on input line 378.
+
+Overfull \hbox (2.73619pt too wide) in paragraph at lines 378--385
+[][]|   []   |   []   |   []   |   [][][]|   []   |   []   |   []   |   []   | 
+  []
+ []
+
+
+Overfull \hbox (5.34068pt too wide) in paragraph at lines 378--385
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (3.28152pt too wide) in paragraph at lines 378--385
+|   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (6.52687pt too wide) in paragraph at lines 385--392
+[]\T1/LinuxLibertineT-TLF/m/it/10 (-20) Customization by di-rect ma-nip-u-la-ti
+on\T1/LinuxLibertineT-TLF/m/n/10 (-20) : We dis-cuss []|   []
+ []
+
+
+Overfull \hbox (18.1165pt too wide) in paragraph at lines 385--392
+|   []   |   []   |   []   |   []   |   []   [][]|   []   |   []
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (7.66658pt too wide) in paragraph at lines 399--407
+[]|   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+<media/hacker-news.png, id=132, 1228.59pt x 1589.94pt>
+File: media/hacker-news.png Graphic file (type png)
+<use media/hacker-news.png>
+Package pdftex.def Info: media/hacker-news.png  used on input line 424.
+(pdftex.def)             Requested size: 505.89pt x 654.69385pt.
+
+Class acmart Warning: A possible image without description on input line 425.
+
+
+LaTeX Warning: Float too large for page by 32.69385pt on input line 425.
+
+LaTeX Font Info:    Try loading font information for T1+zi4 on input line 460.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/inconsolata/t1zi4.fd
+File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
+)
+LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
+(Font)              scaled to size 10.0pt on input line 460.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `zi4' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+Package microtype Info: Character `textendash ' is missing
+(microtype)             in font `T1/zi4/m/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `textemdash ' is missing
+(microtype)             in font `T1/zi4/m/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
+(Font)              scaled to size 10.0pt on input line 463.
+LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
+(Font)              scaled to size 7.0pt on input line 463.
+[2.2]
+Overfull \hbox (6.47136pt too wide) in paragraph at lines 523--529
+[]\T1/LinuxLibertineT-TLF/m/n/10 (-20) This sce-nario has shown a few ex-am-ple
+s of how []|   []
+ []
+
+Package epstopdf Info: Source file: <media/table-adapter.eps>
+(epstopdf)                    date: 2020-05-22 16:57:04
+(epstopdf)                    size: 222051 bytes
+(epstopdf)             Output file: <media/table-adapter-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-05-22 16:59:26
+(epstopdf)                    size: 48498 bytes
+(epstopdf)             Command: <repstopdf --outfile=media/table-adapter-eps-co
+nverted-to.pdf media/table-adapter.eps>
+(epstopdf)             \includegraphics on input line 538.
+Package epstopdf Info: Output file is already uptodate.
+<media/table-adapter-eps-converted-to.pdf, id=147, 401.5pt x 556.0775pt>
+File: media/table-adapter-eps-converted-to.pdf Graphic file (type pdf)
+<use media/table-adapter-eps-converted-to.pdf>
+Package pdftex.def Info: media/table-adapter-eps-converted-to.pdf  used on inpu
+t line 538.
+(pdftex.def)             Requested size: 240.94499pt x 333.71695pt.
+
+Class acmart Warning: A possible image without description on input line 539.
+
+[3.3 <./media/overview-eps-converted-to.pdf>] [4.4 <./media/hacker-news.png>]
+Overfull \hbox (8.08987pt too wide) in paragraph at lines 581--584
+|   []   |   []   |   []   |   []   |   []   [][]|   []   []\T1/LinuxLibertineT
+-TLF/m/n/10 (-20) types of ta-ble adapters
+ []
+
+
+Overfull \hbox (13.3394pt too wide) in paragraph at lines 590--598
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []   |   []
+ []
+
+
+Overfull \hbox (12.69339pt too wide) in paragraph at lines 605--606
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Overfull \hbox (23.81448pt too wide) in paragraph at lines 608--617
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []   |   []
+ []
+
+
+Overfull \hbox (19.67145pt too wide) in paragraph at lines 620--621
+[]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [
+]
+ []
+
+
+Overfull \hbox (3.45935pt too wide) in paragraph at lines 623--629
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (59.0817pt too wide) in paragraph at lines 631--637
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Overfull \hbox (8.53836pt too wide) in paragraph at lines 652--660
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Overfull \hbox (12.12447pt too wide) in paragraph at lines 652--660
+|   []   |   []   |   []   |   [][][]|   []   |   []   |   []   |   []   |   []
+   |   []   |   []   |   []
+ []
+
+[5.5 <./media/table-adapter-eps-converted-to.pdf>]
+Overfull \hbox (2.56754pt too wide) in paragraph at lines 672--686
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Overfull \hbox (3.2836pt too wide) in paragraph at lines 672--686
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (9.95757pt too wide) in paragraph at lines 672--686
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Overfull \hbox (21.17316pt too wide) in paragraph at lines 687--694
+[][]|   []   |   []   |   [][][]|   []   |   []   |   []   |   []   |   []   | 
+  []   |   []
+ []
+
+
+Overfull \hbox (24.95047pt too wide) in paragraph at lines 697--711
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (46.37352pt too wide) in paragraph at lines 697--711
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (1.89671pt too wide) in paragraph at lines 697--711
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Overfull \hbox (4.56964pt too wide) in paragraph at lines 697--711
+[][]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |  
+ []
+ []
+
+LaTeX Font Info:    Font shape `T1/zi4/bx/n' in size <10> not available
+(Font)              Font shape `T1/zi4/b/n' tried instead on input line 720.
+LaTeX Font Info:    Font shape `T1/zi4/b/n' will be
+(Font)              scaled to size 10.0pt on input line 720.
+Package microtype Info: Character `textendash ' is missing
+(microtype)             in font `T1/zi4/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `textemdash ' is missing
+(microtype)             in font `T1/zi4/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+
+LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
+(Font)              using `T1/zi4/m/n' instead on input line 730.
+
+LaTeX Font Info:    Font shape `T1/zi4/m/it' will be
+(Font)              scaled to size 10.0pt on input line 740.
+Package microtype Info: Character `textendash ' is missing
+(microtype)             in font `T1/zi4/m/it/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `textemdash ' is missing
+(microtype)             in font `T1/zi4/m/it/10'.
+(microtype)             Ignoring protrusion settings for this character.
+
+Class acmart Warning: A possible image without description on input line 779.
+
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 7.3pt on input line 790.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 6.2pt on input line 794.
+
+Overfull \hbox (3.37709pt too wide) in paragraph at lines 789--796
+[][]|   [][][]|   []   |   []   |   []   |   []   |   []   |   []   |   []   | 
+  []
+ []
+
+
+Overfull \hbox (3.47926pt too wide) in paragraph at lines 799--802
+[][]|   [][][]|   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (39.86484pt too wide) in paragraph at lines 846--853
+[][]|   []   |   []   |   [][][]|   []   |   [][]\T1/LinuxLibertineT-TLF/m/n/10
+ (-20) : []|   []   |   []
+ []
+
+
+Overfull \hbox (1.52061pt too wide) in paragraph at lines 846--853
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (14.6561pt too wide) in paragraph at lines 857--861
+\T1/LinuxLibertineT-TLF/m/n/10 (-20) sponse to []|   []   |   []   |   []   |  
+ []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (3.09816pt too wide) in paragraph at lines 864--865
+|   []   |   []   []\T1/LinuxLibertineT-TLF/m/n/10 (-20) row in the []|   []   
+|   []   |   []   [][]|   []
+ []
+
+
+Overfull \hbox (21.97539pt too wide) in paragraph at lines 867--875
+|   []   |   []   |   []   |   [][][]|   []   |   []   |   []   |   []   |   []
+   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (15.7635pt too wide) in paragraph at lines 867--875
+|   []   |   []   |   [][][]|   []   |   []   |   []   |   []   |   []   |   []
+
+ []
+
+[6.6]
+Overfull \hbox (4.03458pt too wide) in paragraph at lines 921--922
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []   |   []
+ []
+
+
+Overfull \hbox (2.73141pt too wide) in paragraph at lines 924--933
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (14.87544pt too wide) in paragraph at lines 924--933
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (33.19838pt too wide) in paragraph at lines 924--933
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Overfull \hbox (13.20131pt too wide) in paragraph at lines 941--948
+[]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [
+]
+ []
+
+
+Overfull \hbox (8.72752pt too wide) in paragraph at lines 941--948
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Overfull \hbox (16.52922pt too wide) in paragraph at lines 941--948
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (12.42061pt too wide) in paragraph at lines 954--955
+[]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [
+]
+ []
+
+
+Overfull \hbox (23.9274pt too wide) in paragraph at lines 954--955
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Overfull \hbox (5.13065pt too wide) in paragraph at lines 954--955
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (5.8406pt too wide) in paragraph at lines 957--966
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (8.09244pt too wide) in paragraph at lines 957--966
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Overfull \hbox (14.84975pt too wide) in paragraph at lines 957--966
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[7.7]
+Underfull \vbox (badness 2698) has occurred while \output is active []
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 1026.
+
+<media/amazon.png, id=244, 975.645pt x 726.715pt>
+File: media/amazon.png Graphic file (type png)
+<use media/amazon.png>
+Package pdftex.def Info: media/amazon.png  used on input line 1104.
+(pdftex.def)             Requested size: 240.94499pt x 179.46054pt.
+
+Class acmart Warning: A possible image without description on input line 1105.
+
+<media/ubereats.png, id=245, 1027.84pt x 614.295pt>
+File: media/ubereats.png Graphic file (type png)
+<use media/ubereats.png>
+Package pdftex.def Info: media/ubereats.png  used on input line 1112.
+(pdftex.def)             Requested size: 240.94499pt x 144.00314pt.
+
+Class acmart Warning: A possible image without description on input line 1113.
+
+[8.8]
+<media/instacart.png, id=261, 1027.84pt x 686.565pt>
+File: media/instacart.png Graphic file (type png)
+<use media/instacart.png>
+Package pdftex.def Info: media/instacart.png  used on input line 1155.
+(pdftex.def)             Requested size: 240.94499pt x 160.9447pt.
+
+Class acmart Warning: A possible image without description on input line 1156.
+
+
+Underfull \vbox (badness 6157) has occurred while \output is active []
+
+[9.9 <./media/amazon.png> <./media/ubereats.png>]
+<media/blogger.png, id=282, 843.15pt x 531.9875pt>
+File: media/blogger.png Graphic file (type png)
+<use media/blogger.png>
+Package pdftex.def Info: media/blogger.png  used on input line 1186.
+(pdftex.def)             Requested size: 240.94499pt x 152.02388pt.
+
+Class acmart Warning: A possible image without description on input line 1187.
+
+
+Underfull \vbox (badness 3108) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[10.10 <./media/instacart.png> <./media/blogger.png>]
+Overfull \hbox (20.42648pt too wide) in paragraph at lines 1287--1293
+|   []   |   []   |   []   |   []   |   [][][]|   []   |   []   |   []
+ []
+
+
+Overfull \hbox (13.95834pt too wide) in paragraph at lines 1287--1293
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Overfull \hbox (10.39757pt too wide) in paragraph at lines 1306--1307
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Underfull \vbox (badness 1558) has occurred while \output is active []
+
+
+Overfull \hbox (7.87773pt too wide) in paragraph at lines 1312--1318
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (7.16441pt too wide) in paragraph at lines 1312--1318
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   [][][][]|   []
+ []
+
+
+Overfull \hbox (1.13762pt too wide) in paragraph at lines 1312--1318
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Overfull \hbox (1.19458pt too wide) in paragraph at lines 1324--1331
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []   |   []
+ []
+
+
+Overfull \hbox (1.60738pt too wide) in paragraph at lines 1324--1331
+|   []   |   []   |   []   [][][][]|   []   |   [][][][] []|   []   |   []
+ []
+
+
+Overfull \hbox (9.94658pt too wide) in paragraph at lines 1324--1331
+|   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (36.89648pt too wide) in paragraph at lines 1324--1331
+|   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (23.91351pt too wide) in paragraph at lines 1346--1347
+[]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (35.27147pt too wide) in paragraph at lines 1346--1347
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (47.25641pt too wide) in paragraph at lines 1346--1347
+|   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (4.4527pt too wide) in paragraph at lines 1346--1347
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (15.16852pt too wide) in paragraph at lines 1346--1347
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (11.6944pt too wide) in paragraph at lines 1346--1347
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (9.90546pt too wide) in paragraph at lines 1365--1366
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (8.66167pt too wide) in paragraph at lines 1365--1366
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Overfull \hbox (12.0105pt too wide) in paragraph at lines 1365--1366
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (7.53131pt too wide) in paragraph at lines 1365--1366
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (22.91734pt too wide) in paragraph at lines 1372--1380
+[]|   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (11.2675pt too wide) in paragraph at lines 1372--1380
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Overfull \hbox (22.38248pt too wide) in paragraph at lines 1372--1380
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+[11.11]
+Overfull \hbox (9.26761pt too wide) in paragraph at lines 1381--1386
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Overfull \hbox (7.95444pt too wide) in paragraph at lines 1400--1401
+[]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (1.84755pt too wide) in paragraph at lines 1400--1401
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Underfull \vbox (badness 3250) has occurred while \output is active []
+
+[12.12]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (5.22694pt too wide) in paragraph at lines 1596--1597
+[]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+[13.13]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[14.14] (./diff.bbl
+LaTeX Info: Redefining \tempurl on input line 70.
+LaTeX Info: Redefining \tempurl on input line 87.
+LaTeX Info: Redefining \tempurl on input line 105.
+
+Underfull \hbox (badness 6944) in paragraph at lines 111--117
+[]\T1/LinuxLibertineT-TLF/m/n/8 (+20) Tim Berners-Lee. 2019.  One Small Step fo
+r the Web....
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 111--117
+\T1/LinuxLibertineT-TLF/m/n/8 (+20) https://medium.com/@timberners_lee/one-smal
+l-step-for-the-
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \tempurl on input line 133.
+LaTeX Info: Redefining \tempurl on input line 149.
+LaTeX Info: Redefining \tempurl on input line 167.
+LaTeX Info: Redefining \tempurl on input line 182.
+LaTeX Info: Redefining \tempurl on input line 200.
+LaTeX Info: Redefining \tempurl on input line 216.
+LaTeX Info: Redefining \tempurl on input line 246.
+LaTeX Info: Redefining \tempurl on input line 265.
+LaTeX Info: Redefining \tempurl on input line 284.
+LaTeX Info: Redefining \tempurl on input line 300.
+LaTeX Info: Redefining \tempurl on input line 318.
+LaTeX Info: Redefining \tempurl on input line 338.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[15.15]
+LaTeX Info: Redefining \tempurl on input line 354.
+LaTeX Info: Redefining \tempurl on input line 370.
+)
+
+Class acmart Warning: Some images may lack descriptions.
+
+[16.16]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1763.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1763.
+(./diff.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1763.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1763.
+
+Package rerunfilecheck Info: File `diff.out' has not changed.
+(rerunfilecheck)             Checksum: EA27F5A2A5865A87650FFE64C8ACC01D;3354.
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 19594 strings out of 492616
- 291983 string characters out of 6129482
- 430009 words of memory out of 5000000
- 22985 multiletter control sequences out of 15000+600000
- 104260 words of font info for 101 fonts, out of 8000000 for 9000
+ 20321 strings out of 492616
+ 307398 string characters out of 6129482
+ 542642 words of memory out of 5000000
+ 23229 multiletter control sequences out of 15000+600000
+ 173250 words of font info for 347 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,5n,94p,795b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
-!  ==> Fatal error occurred, no output PDF file produced!
+ 60i,16n,94p,795b,632s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-4.enc}{
+/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/
+usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/u
+sr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_ki75ao.enc}{/us
+r/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{/usr
+/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/
+local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}</usr/l
+ocal/texlive/2019/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4b.pf
+b></usr/local/texlive/2019/texmf-dist/fonts/type1/public/inconsolata/Inconsolat
+a-zi4r.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/Lin
+BiolinumT.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/
+LinLibertineT.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libert
+ine/LinLibertineTB.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/l
+ibertine/LinLibertineTBI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/pu
+blic/libertine/LinLibertineTI.pfb></usr/local/texlive/2019/texmf-dist/fonts/typ
+e1/public/amsfonts/latxfont/lasy6.pfb></usr/local/texlive/2019/texmf-dist/fonts
+/type1/public/newtx/txsys.pfb>
+Output written on diff.pdf (16 pages, 2430482 bytes).
+PDF statistics:
+ 481 PDF objects out of 1000 (max. 8388607)
+ 404 compressed objects within 5 object streams
+ 113 named destinations out of 1000 (max. 500000)
+ 52432 words of extra memory for PDF output out of 61914 (max. 10000000)
+
