@@ -1,7 +1,7 @@
 %%
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL initial-submission.tex   Sun Aug  9 12:56:33 2020
-%DIF ADD paper.tex                Sat Aug 15 15:16:29 2020
+%DIF ADD paper.tex                Sat Aug 15 16:07:06 2020
 %% This is file `sample-sigconf.tex',
 %% generated with the docstrip utility.
 %%
@@ -149,8 +149,8 @@
 %%
 %% The "title" command has an optional parameter,
 %% allowing the author to define a "short title" to be used in page headers.
-\title{End-User Software Customization by Direct Manipulation of Tabular
-Data}
+\title{\DIFdelbegin \DIFdel{End-User Software }\DIFdelend \DIFaddbegin \DIFadd{Data-Driven }\DIFaddend Customization \DIFdelbegin \DIFdel{by Direct Manipulation }\DIFdelend of \DIFdelbegin \DIFdel{Tabular
+Data}\DIFdelend \DIFaddbegin \DIFadd{Web Applications}\DIFaddend }
 
 %%
 %% The "author" command and its associated commands are used to define
@@ -203,24 +203,34 @@ Data}
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
-  In this paper we introduce \emph{\DIFdelbegin \DIFdel{table-driven }\DIFdelend \DIFaddbegin \DIFadd{data-driven }\DIFaddend customization}, a new way
-  for end users to extend software by direct manipulation without doing
-  traditional programming. We augment existing user interfaces with a
-  table view showing the structured data inside the application. When
-  users edit the table, their changes are reflected in the original UI.
-  This simple model accommodates a spreadsheet formula language and
-  custom data editing widgets, providing enough power to implement a
-  variety of useful extensions.
+  \DIFdelbegin \DIFdel{In this paper we introduce }\DIFdelend \DIFaddbegin \DIFadd{Customizing software should be as easy as using it. But most
+  customization methods require a dramatic shift, from using a GUI to
+  writing scripts in a programming language.
+}
+
+  \DIFadd{We introduce }\DIFaddend \emph{\DIFdelbegin \DIFdel{table-driven }\DIFdelend \DIFaddbegin \DIFadd{data-driven }\DIFaddend customization}, a new way for end users
+  to extend software by direct manipulation without doing traditional
+  programming. We augment existing user interfaces with a table view
+  showing the structured data inside the application. When users edit
+  the table, their changes are reflected in the original UI. This simple
+  model accommodates a spreadsheet formula language and custom data
+  editing widgets, providing enough power to implement a variety of
+  useful extensions.
 
   We illustrate the approach with Wildcard, a browser extension that
-  implements \DIFdelbegin \DIFdel{table-driven }\DIFdelend \DIFaddbegin \DIFadd{data-driven }\DIFaddend customization for existing applications using
-  web scraping. Through concrete examples, we show that this paradigm
-  can support extensions to many real websites, ranging from sorting and
-  filtering existing data to adding entire new features. We share
-  reflections from our experiences using Wildcard, on both its strengths
-  and limitations relative to other customization approaches. Finally,
-  we explore how this paradigm might lead to new software architectures
-  that encourage this form of end-user customization.
+  implements \DIFdelbegin \DIFdel{table-driven customization for existing applications }\DIFdelend \DIFaddbegin \DIFadd{data-driven customization on the web }\DIFaddend using web scraping.
+  Through concrete examples, we show that this paradigm can support
+  \DIFaddbegin \DIFadd{useful }\DIFaddend extensions to many real websites, \DIFdelbegin \DIFdel{ranging from sorting and filtering existing data to adding entire new features. We }\DIFdelend \DIFaddbegin \DIFadd{and we }\DIFaddend share reflections from
+  our experiences using Wildcard\DIFdelbegin \DIFdel{, on both its strengths
+  and limitations relative to other customization approaches.
+}\DIFdelend \DIFaddbegin \DIFadd{.
+}
+
+  \DIFaddend Finally, we \DIFdelbegin \DIFdel{explore how this paradigm might lead to new software architectures
+  that encourage this form of end-user customization}\DIFdelend \DIFaddbegin \DIFadd{share our broader vision for a future where end users have
+  greater access to the data in their applications, and better tools for
+  taking advantage of that data in the context of everyday software
+  usage}\DIFaddend .
 \end{abstract}
 
 %%
@@ -322,35 +332,60 @@ spreadsheet, but results in customizing an existing application.
 }
 \DIFaddendFL \end{figure*}
 
-We have developed a browser extension called Wildcard which uses web
-scraping techniques to implement \DIFdelbegin \DIFdel{table-driven }\DIFdelend \DIFaddbegin \DIFadd{data-driven }\DIFaddend customization for existing
-Web applications. In Section~\ref{sec:example}, we \DIFdelbegin \DIFdel{illustrate }\DIFdelend \DIFaddbegin \DIFadd{concretely
-demonstrate }\DIFaddend the end user experience of \DIFdelbegin \DIFdel{table-driven customization through an example
-scenario, }\DIFdelend using Wildcard to add features to
-\DIFdelbegin \DIFdel{Hacker News}\DIFdelend \DIFaddbegin \DIFadd{a news website}\DIFaddend .
+\DIFdelbegin \DIFdel{We }\DIFdelend \DIFaddbegin \DIFadd{To explore this idea in a real context, we }\DIFaddend have developed a browser
+extension called Wildcard \DIFdelbegin \DIFdel{which }\DIFdelend \DIFaddbegin \DIFadd{that }\DIFaddend uses web scraping techniques to implement
+\DIFdelbegin \DIFdel{table-driven }\DIFdelend \DIFaddbegin \DIFadd{data-driven }\DIFaddend customization for existing Web applications. \DIFdelbegin \DIFdel{In Section~\ref{sec:example}, we illustrate the end
+user experience of table-driven customization through an example scenario, using Wildcard to add features to Hacker News .
+}%DIFDELCMD < 
 
-In Section~\ref{sec:architecture}, we explain the system architecture of
-\DIFdelbegin \DIFdel{table-driven }\DIFdelend \DIFaddbegin \DIFadd{data-driven }\DIFaddend customization. We focus on the \emph{table adapter}
-abstraction, which allows many different types of underlying data to be
+%DIFDELCMD < %%%
+\DIFdel{In Section~\ref{sec:architecture}, we explain the system architecture of
+table-driven customization. We focus on the }\emph{\DIFdel{table adapter}}
+%DIFAUXCMD
+\DIFdel{abstraction, which allows many different types of underlying data to be
 bidirectionally mapped to a table. We describe several types of table
-adapters we've built in Wildcard, and also describe future adapters
-supported by the general paradigm.
+adapters we
+'ve built in Wildcard , and also describe future adapters
+supported by
+the general paradigm.
+}%DIFDELCMD < 
 
-We have successfully used Wildcard to build customizations for 11
-different websites that serve our own personal needs. In
-Section~\ref{sec:reflections}, we present reflections from this process.
-We outline the kinds of customizations we were able to build,
-limitations we encountered, and some of the challenges of writing
-scraping logic.
+%DIFDELCMD < %%%
+\DIFdel{We have successfully used Wildcard to build customizations for }\DIFdelend \DIFaddbegin \DIFadd{We introduce
+the tool with an example customization of Hacker News in
+Section~\ref{sec:example}, and then describe the implementation in
+}{[}\DIFadd{Section~\ref{sec:architecture}. In Section~\ref{sec:reflections}, we
+present evidence that Wildcard can produce useful customizations, by
+sharing reflections from customizing }\DIFaddend 11 different websites \DIFdelbegin \DIFdel{that serve }\DIFdelend \DIFaddbegin \DIFadd{in ways that
+met }\DIFaddend our own personal needs.
+\DIFaddbegin 
 
-In Section~\DIFdelbegin \DIFdel{\ref{sec:themes}}\DIFdelend \DIFaddbegin \DIFadd{\ref{sec:visions}}\DIFaddend , we discuss some key themes from our work:
+\DIFadd{Wildcard is just an initial proof of concept of data-driven
+customization. }\DIFaddend In Section~\DIFdelbegin \DIFdel{\ref{sec:reflections}, we present reflections from this process.
+We outline the kinds of customizations we were able to build, limitations we encountered, and some of the challenges of writing
+scraping logic. }\DIFdelend \DIFaddbegin \DIFadd{\ref{sec:visions}, we discuss our broader
+vision for how this style of customization could change the relationship
+between users and creators of software, focusing on three ideas:
+}\DIFaddend 
 
-\begin{itemize}
+\DIFdelbegin \DIFdel{In Section~\ref{sec:themes}, we discuss some key themes from our work:
+}%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdelend \begin{itemize}
 \tightlist
 \item
-  \emph{Customization by direct manipulation}: We discuss further how
-  \DIFdelbegin \DIFdel{table-driven }\DIFdelend \DIFaddbegin \DIFadd{data-driven }\DIFaddend customization relates to a gentle slope of customization.
-  We suggest that an important point on this slope is the ability to
+  \DIFaddbegin \emph{\DIFadd{Decoupling data from applications}}\DIFadd{: On the modern Web, data is
+  often stored in proprietary silos, limiting the agency of users to
+  choose their applications and flexibly work with data. We propose
+  data-driven customization as an incremental step towards a more
+  decentralized architecture, where users gain more control over the
+  storage, processing and display of information from web services.
+}\item
+  \DIFaddend \emph{Customization by direct manipulation}: We discuss \DIFdelbegin \DIFdel{further how
+  table-driven customization relates to }\DIFdelend \DIFaddbegin \DIFadd{how
+  data-driven customization promotes }\DIFaddend a gentle slope of customization. We
+  \DIFdelbegin \DIFdel{suggest }\DIFdelend \DIFaddbegin \DIFadd{propose }\DIFaddend that an important point on this slope is the ability to
   customize an application by directly seeing and changing its data,
   rather than by writing imperative scripts.
 \item
@@ -361,11 +396,14 @@ In Section~\DIFdelbegin \DIFdel{\ref{sec:themes}}\DIFdelend \DIFaddbegin \DIFadd
   domain data rather than low-level representations.
 \end{itemize}
 
-\DIFdelbegin \DIFdel{Table-driven }\DIFdelend \DIFaddbegin \DIFadd{data-driven }\DIFaddend customization relates to existing work in many areas. Our
-goals overlap with many software customization tools, and our methods
-overlap with direct manipulation interfaces for working with structured
-data, including visual database query systems and spreadsheets. We
+\DIFdelbegin \DIFdel{Table-driven customization relates to existing workin many areas}\DIFdelend \DIFaddbegin \DIFadd{In Section~\ref{sec:related-work} we discuss connections to related
+work}\DIFaddend . Our goals overlap with \DIFdelbegin \DIFdel{many }\DIFdelend software customization tools, and our
+methods overlap with direct manipulation interfaces for working with
+structured data, including visual database query systems and
+spreadsheets.
+\DIFdelbegin \DIFdel{We
 explore these connections in Section~\ref{sec:related-work}.
+}\DIFdelend 
 
 Finally, in Section~\ref{sec:conclusion}, we conclude and describe
 opportunities for future work.
@@ -1253,9 +1291,9 @@ their specific needs. Here we explore some of the deeper ideas
 underlying our work, and future possibilities beyond the Wildcard tool.
 }
 
-\hypertarget{decouple-data-from-applications}{%
-\subsection{Decouple data from
-applications}\label{decouple-data-from-applications}}
+\hypertarget{decoupling-data-from-applications}{%
+\subsection{Decoupling data from
+applications}\label{decoupling-data-from-applications}}
 
 \DIFadd{When data is freely available outside the context of a specific
 application, users have more freedom to choose a suitable application

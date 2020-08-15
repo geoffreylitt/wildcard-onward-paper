@@ -107,7 +107,7 @@
 %%
 %% The "title" command has an optional parameter,
 %% allowing the author to define a "short title" to be used in page headers.
-\title{Data-Driven Customization}
+\title{Data-Driven Customization of Web Applications}
 
 %%
 %% The "author" command and its associated commands are used to define
@@ -277,34 +277,34 @@ spreadsheet, but results in customizing an existing application.
 }
 \end{figure*}
 
-We have developed a browser extension called Wildcard which uses web
-scraping techniques to implement data-driven customization for existing
-Web applications. In Section~\ref{sec:example}, we concretely
-demonstrate the end user experience of using Wildcard to add features to
-a news website.
+To explore this idea in a real context, we have developed a browser
+extension called Wildcard that uses web scraping techniques to implement
+data-driven customization for existing Web applications. We introduce
+the tool with an example customization of Hacker News in
+Section~\ref{sec:example}, and then describe the implementation in
+{[}Section~\ref{sec:architecture}. In Section~\ref{sec:reflections}, we
+present evidence that Wildcard can produce useful customizations, by
+sharing reflections from customizing 11 different websites in ways that
+met our own personal needs.
 
-In Section~\ref{sec:architecture}, we explain the system architecture of
-data-driven customization. We focus on the \emph{table adapter}
-abstraction, which allows many different types of underlying data to be
-bidirectionally mapped to a table. We describe several types of table
-adapters we've built in Wildcard, and also describe future adapters
-supported by the general paradigm.
-
-We have successfully used Wildcard to build customizations for 11
-different websites that serve our own personal needs. In
-Section~\ref{sec:reflections}, we present reflections from this process.
-We outline the kinds of customizations we were able to build,
-limitations we encountered, and some of the challenges of writing
-scraping logic.
-
-In Section~\ref{sec:visions}, we discuss some key themes from our work:
+Wildcard is just an initial proof of concept of data-driven
+customization. In Section~\ref{sec:visions}, we discuss our broader
+vision for how this style of customization could change the relationship
+between users and creators of software, focusing on three ideas:
 
 \begin{itemize}
 \tightlist
 \item
-  \emph{Customization by direct manipulation}: We discuss further how
-  data-driven customization relates to a gentle slope of customization.
-  We suggest that an important point on this slope is the ability to
+  \emph{Decoupling data from applications}: On the modern Web, data is
+  often stored in proprietary silos, limiting the agency of users to
+  choose their applications and flexibly work with data. We propose
+  data-driven customization as an incremental step towards a more
+  decentralized architecture, where users gain more control over the
+  storage, processing and display of information from web services.
+\item
+  \emph{Customization by direct manipulation}: We discuss how
+  data-driven customization promotes a gentle slope of customization. We
+  propose that an important point on this slope is the ability to
   customize an application by directly seeing and changing its data,
   rather than by writing imperative scripts.
 \item
@@ -315,11 +315,11 @@ In Section~\ref{sec:visions}, we discuss some key themes from our work:
   domain data rather than low-level representations.
 \end{itemize}
 
-Data-driven customization relates to existing work in many areas. Our
-goals overlap with many software customization tools, and our methods
-overlap with direct manipulation interfaces for working with structured
-data, including visual database query systems and spreadsheets. We
-explore these connections in Section~\ref{sec:related-work}.
+In Section~\ref{sec:related-work} we discuss connections to related
+work. Our goals overlap with software customization tools, and our
+methods overlap with direct manipulation interfaces for working with
+structured data, including visual database query systems and
+spreadsheets.
 
 Finally, in Section~\ref{sec:conclusion}, we conclude and describe
 opportunities for future work.
@@ -1023,9 +1023,9 @@ in new software architectures that empower end users to mold software to
 their specific needs. Here we explore some of the deeper ideas
 underlying our work, and future possibilities beyond the Wildcard tool.
 
-\hypertarget{decouple-data-from-applications}{%
-\subsection{Decouple data from
-applications}\label{decouple-data-from-applications}}
+\hypertarget{decoupling-data-from-applications}{%
+\subsection{Decoupling data from
+applications}\label{decoupling-data-from-applications}}
 
 When data is freely available outside the context of a specific
 application, users have more freedom to choose a suitable application
