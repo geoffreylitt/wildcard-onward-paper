@@ -52,7 +52,7 @@ In [@sec:architecture], we explain the system architecture of data-driven custom
 
 We have successfully used Wildcard to build customizations for 11 different websites that serve our own personal needs. In [@sec:reflections], we present reflections from this process. We outline the kinds of customizations we were able to build, limitations we encountered, and some of the challenges of writing scraping logic.
 
-In [@sec:themes], we discuss some key themes from our work:
+In [@sec:visions], we discuss some key themes from our work:
 
 - _Customization by direct manipulation_: We discuss further how data-driven customization relates to a gentle slope of customization. We suggest that an important point on this slope is the ability to customize an application by directly seeing and changing its data, rather than by writing imperative scripts.
 - _Semantic wrappers_: Typically, tools that don't rely on official extension APIs resort to offering low-level APIs for customization. Instead, we propose a community-maintained library of semantic wrappers around existing applications, enabling end users to work with domain data rather than low-level representations.
@@ -193,9 +193,75 @@ _Currently selected record_: As the user clicks around the table view, the query
 
 ### DOM scraping adapters
 
-DOM scraping adapters are the essential component that enables Wildcard to interface with an existing website UI. In addition to the standard web scraping problem of extracting a table of data from the DOM, a scraping adapter must also manipulate the DOM to reorder rows, edit form entries, and inject annotations as the table is edited.
+DOM scraping adapters enable Wildcard to interface with an existing website UI. A DOM scraping adapter performs the standard web scraping task of extracting a table of data from the DOM, but it must also handle the reverse direction: manipulating the DOM to reflect edits to the table.
 
-Because every website has unique content, we rely on programmers to create a DOM scraping adapter for each individual website to make it available for customization in Wildcard. To make this approach viable, we have built a generic DOM scraping adapter which a programmer can configure with the minimal site-specific parts.
+Currently, DOM scraping adapters are programmed manually for each website using Javascript code. Once an adapter is defined for a website, it is added to a shared repository where it can be used by non-programmer users for customization.
+
+To make the adapter definition process as easy as possible, Wildcard provides a scraping framework which a programmer can configure with the minimal site-specific parts. [@fig:scraper-code] shows an example of the scraper code used for the Hacker News example. It contains the following parts:
+
+<div class="pdf-only">
+```{=latex}
+\begin{figure*}
+```
+
+```javascript
+const HNAdapter = createDomScrapingAdapter({
+  name: "Hacker News",
+
+  // Specify when the adapter should be enabled, based on current URL
+  enabled() {
+    return (
+      urlExact("news.ycombinator.com/") ||
+      urlContains("news.ycombinator.com/news") ||
+      urlContains("news.ycombinator.com/newest")
+    );
+  },
+
+  // Define the name and type of each column in the table
+  attributes: [
+    { name: "id", type: "text", hidden: true },
+    { name: "rank", type: "numeric" },
+    { name: "title", type: "text" },
+    { name: "link", type: "text" },
+    // ... other columns omitted for brevity
+  ],
+
+  // Iterate over DOM elements, returning information about each row
+  scrapePage() {
+    return Array.from(document.querySelectorAll("tr.athing")).map((el) => {
+      let detailsRow = el.nextElementSibling;
+      let spacerRow = detailsRow.nextElementSibling;
+
+      return {
+        // Return a unique ID for each row
+        id: String(el.getAttribute("id")),
+
+        // Return DOM elements corresponding to this row
+        // (this enables moving/hiding the elements for sorting/filtering)
+        rowElements: [el, detailsRow, spacerRow],
+
+        // Return data for each column
+        dataValues: {
+          rank: el.querySelector("span.rank"),
+          title: el.querySelector("a.storylink"),
+          link: el.querySelector("a.storylink").getAttribute("href"),
+          // ... other columns omitted for brevity
+        },
+
+        // Specify where annotations should be injected, and what they should look like
+        annotationContainer: detailsRow.querySelector("td.subtext") as HTMLElement,
+        annotationTemplate: `| <span style="color: #f60;">$annotation</span>`,
+      };
+    });
+  },
+});
+```
+
+```{=latex}
+\caption{Source code for the Hacker News scraper. Some details removed for brevity.}\label{fig:scraper-code}
+\end{figure*}
+```
+</div>
 
 _Basic metadata_: The programmer specifies URL patterns that the adapter should activate on, and a set of column names and types to return in the table.
 
@@ -317,7 +383,8 @@ Youtube          & Videos               & 80                                    
 \caption{A list of data-driven customizations that we have implemented using Wildcard.}
 \label{tab:websites}
 \end{table*}
-```
+````
+
 </div>
 
 <div class="html-only">
@@ -467,11 +534,12 @@ On the grocery delivery site Instacart, we found that AJAX requests contained
 additional data not shown in the UI, enabling us to do things like
 sort grocery items by category.
 
-# Key themes {#sec:themes}
+# Vision {#sec:visions}
 
-Here we discuss some themes that we've explored with this work,
-which go beyond our specific approach and address broader issues in software
-customization.
+- Wildcard just one instance of a broader data-driven customization
+  - particular view: table
+  - particular context: web
+- here we share some of the underlying ideas. go beyond Wildcard, room to grow
 
 ## Customization by direct manipulation {#sec:dm}
 
@@ -492,7 +560,7 @@ Imperative programming is a reasonable choice as the model for building customiz
 With data-driven customization we aim to provide a gentler slope, by using direct manipulation for software customization. The data shown in the table view is the domain data from the original application. The user makes changes to the data by selecting areas of interest in the table, e.g. sorting/filtering by clicking the relevant column header, or adding annotations by clicking and typing on the relevant row. At every step, the user receives intermediate feedback, not only in the table view, but also in the original application, so it's clear whether they are making progress towards their desired result. These types of interactions are common in GUI applications, and Wildcard therefore seems to meet MacLean et al.’s goal: some one-click customizations are as easy as using the original application. Formulas introduce some additional complexity, but spreadsheets have demonstrated that formula programming is still accessible to many users, helped by the pure functional semantics and the visibility of intermediate results.
 
 One aspect of directness that we have chosen not to pursue in Wildcard is enabling customization in closer proximity to the original user interface elements, as explored by tools like Scotty [@eagan2011]—all customization occurs in a separate panel next to the original UI.
-While closer proximity might be helpful, we have found that augmenting the original UI with a distinct, additional representation provides a more consistent experience across all applications, and clearly shows what structured data is available to work with. We also emphasize the mapping between the representations by highlighting content in the original page, similiar to the way that browser developer tools highlight the currently selected element in the DOM inspector in the original page.
+While closer proximity might be helpful, we have found that augmenting the original UI with a distinct, additional representation provides a more consistent experience across all applications, and clearly shows what structured data is available to work with. We also emphasize the map ping between the representations by highlighting content in the original page, similiar to the way that browser developer tools highlight the currently selected element in the DOM inspector in the original page.
 
 Ainsworth et al. provide a helpful taxonomy of the value of multiple representations [@ainsworth1999]. In their terms, Wildcard plays a _complementary role_ by supporting a _different set of tasks_ from the original application, while displaying _shared information_. Wildcard may also help construct _deeper understanding by subtraction_—by stripping away details and only showing the essential data in an interface, Wildcard encourages thinking of an application in terms of its core information,
 rather than the specific capabilities provided by the current user interface. In our anecdotal experience, we've often found that looking at a site's data in table format tends to spur new ideas for
@@ -530,6 +598,38 @@ adapters can execute arbitrary Javascript code, which opens up the possibility
 of malicious adapters being contributed. Currently we plan to solve this challenge
 with centralized code review, but another approach we are considering is
 using or inventing a more restricted domain-specific language for specifying scraping logic.
+
+## Generic data interfaces
+
+- what makes a UI good for customization?
+
+  - generic: can show data from many apps
+  - neutral: doesn't prioritize a particular use case, leaves the imagination open
+  - good affordances for performing common actions
+
+- could be others besides a table
+  - tree?
+  - text box?
+  - compose these?
+
+## Decouple data from application logic
+
+- thin client architecture of web has promoted a coupling of data + app
+
+  - only way user can view the data is in the first-party tool
+  - APIs provide some flexibility in picking a client. but, APIs aren't meant for end user consumption. and, there are limits (eg, Twitter API restrictions)
+  - limited user agency over how they use their data
+  - compare to, say, opening a file locally
+
+- Some people aiming towards ambitious rearchitectures in this space...
+  - cite local-first
+  - TBL Solid
+- Data-driven customization: an iterative approach towards this vision; complementary to more radical rearchitecting.
+
+- Start with third party extraction
+- Integrate across apps
+- open the data in a different UI
+- Then move to first party data providing in the client (could drive wildcard from existing apis??)
 
 # Related Work {#sec:related-work}
 

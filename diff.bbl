@@ -1,0 +1,345 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{18}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[\protect\citeauthoryear{Ainsworth}{Ainsworth}{1999}]%
+        {ainsworth1999}
+\bibfield{author}{\bibinfo{person}{Shaaron Ainsworth}.}
+  \bibinfo{year}{1999}\natexlab{}.
+\newblock \showarticletitle{The Functions of Multiple Representations}.
+\newblock \bibinfo{journal}{\emph{Computers \& Education}}
+  \bibinfo{volume}{33}, \bibinfo{number}{2-3} (\bibinfo{date}{Sept.}
+  \bibinfo{year}{1999}), \bibinfo{pages}{131--152}.
+\newblock
+\showISSN{03601315}
+\urldef\tempurl%
+\url{https://doi.org/10.1016/S0360-1315(99)00029-9}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Alrashed, Almahmoud, Zhang, and
+  Karger}{Alrashed et~al\mbox{.}}{2020}]%
+        {alrashed2020}
+\bibfield{author}{\bibinfo{person}{Tarfah Alrashed}, \bibinfo{person}{Jumana
+  Almahmoud}, \bibinfo{person}{Amy~X. Zhang}, {and} \bibinfo{person}{David~R.
+  Karger}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{{{ScrAPIr}}: {{Making Web Data APIs Accessible}} to
+  {{End Users}}}. In \bibinfo{booktitle}{\emph{Proceedings of the 2020 {{CHI
+  Conference}} on {{Human Factors}} in {{Computing Systems}}}}
+  \emph{(\bibinfo{series}{{{CHI}} '20})}. \bibinfo{publisher}{{Association for
+  Computing Machinery}}, \bibinfo{address}{{Honolulu, HI, USA}},
+  \bibinfo{pages}{1--12}.
+\newblock
+\showISBNx{978-1-4503-6708-0}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/3313831.3376691}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Bakke and Karger}{Bakke and Karger}{2016}]%
+        {bakke2016}
+\bibfield{author}{\bibinfo{person}{Eirik Bakke} {and} \bibinfo{person}{David~R.
+  Karger}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Expressive {{Query Construction}} through {{Direct
+  Manipulation}} of {{Nested Relational Results}}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 2016 {{International
+  Conference}} on {{Management}} of {{Data}} - {{SIGMOD}} '16}}.
+  \bibinfo{publisher}{{ACM Press}}, \bibinfo{address}{{San Francisco,
+  California, USA}}, \bibinfo{pages}{1377--1392}.
+\newblock
+\showISBNx{978-1-4503-3531-7}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/2882903.2915210}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Benson, Zhang, and Karger}{Benson
+  et~al\mbox{.}}{2014}]%
+        {benson2014}
+\bibfield{author}{\bibinfo{person}{Edward Benson}, \bibinfo{person}{Amy~X.
+  Zhang}, {and} \bibinfo{person}{David~R. Karger}.}
+  \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Spreadsheet Driven Web Applications}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 27th Annual {{ACM}} Symposium on
+  {{User}} Interface Software and Technology - {{UIST}} '14}}.
+  \bibinfo{publisher}{{ACM Press}}, \bibinfo{address}{{Honolulu, Hawaii, USA}},
+  \bibinfo{pages}{97--106}.
+\newblock
+\showISBNx{978-1-4503-3069-5}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/2642918.2647387}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Bolin, Webber, Rha, Wilson, and Miller}{Bolin
+  et~al\mbox{.}}{2005}]%
+        {bolin2005}
+\bibfield{author}{\bibinfo{person}{Michael Bolin}, \bibinfo{person}{Matthew
+  Webber}, \bibinfo{person}{Philip Rha}, \bibinfo{person}{Tom Wilson}, {and}
+  \bibinfo{person}{Robert~C. Miller}.} \bibinfo{year}{2005}\natexlab{}.
+\newblock \showarticletitle{Automation and Customization of Rendered Web
+  Pages}. In \bibinfo{booktitle}{\emph{Proceedings of the 18th Annual {{ACM}}
+  Symposium on {{User}} Interface Software and Technology - {{UIST}} '05}}.
+  \bibinfo{publisher}{{ACM Press}}, \bibinfo{address}{{Seattle, WA, USA}},
+  \bibinfo{pages}{163}.
+\newblock
+\showISBNx{978-1-59593-271-6}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/1095034.1095062}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Chang and Myers}{Chang and Myers}{2014}]%
+        {chang2014}
+\bibfield{author}{\bibinfo{person}{Kerry Shih-Ping Chang} {and}
+  \bibinfo{person}{Brad~A. Myers}.} \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Creating Interactive Web Data Applications with
+  Spreadsheets}. In \bibinfo{booktitle}{\emph{Proceedings of the 27th Annual
+  {{ACM}} Symposium on {{User}} Interface Software and Technology - {{UIST}}
+  '14}}. \bibinfo{publisher}{{ACM Press}}, \bibinfo{address}{{Honolulu, Hawaii,
+  USA}}, \bibinfo{pages}{87--96}.
+\newblock
+\showISBNx{978-1-4503-3069-5}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/2642918.2647371}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Chasins, Mueller, and Bodik}{Chasins
+  et~al\mbox{.}}{2018}]%
+        {chasins2018}
+\bibfield{author}{\bibinfo{person}{Sarah~E. Chasins}, \bibinfo{person}{Maria
+  Mueller}, {and} \bibinfo{person}{Rastislav Bodik}.}
+  \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Rousillon: {{Scraping Distributed Hierarchical Web
+  Data}}}. In \bibinfo{booktitle}{\emph{The 31st {{Annual ACM Symposium}} on
+  {{User Interface Software}} and {{Technology}} - {{UIST}} '18}}.
+  \bibinfo{publisher}{{ACM Press}}, \bibinfo{address}{{Berlin, Germany}},
+  \bibinfo{pages}{963--975}.
+\newblock
+\showISBNx{978-1-4503-5948-1}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/3242587.3242661}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Cook}{Cook}{2007}]%
+        {cook2007}
+\bibfield{author}{\bibinfo{person}{William~R. Cook}.}
+  \bibinfo{year}{2007}\natexlab{}.
+\newblock \showarticletitle{{{AppleScript}}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the Third {{ACM SIGPLAN}} Conference
+  on {{History}} of Programming Languages - {{HOPL III}}}}.
+  \bibinfo{publisher}{{ACM Press}}, \bibinfo{address}{{San Diego, California}},
+  \bibinfo{pages}{1--1--1--21}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1145/1238844.1238845}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Eagan, {Beaudouin-Lafon}, and Mackay}{Eagan
+  et~al\mbox{.}}{2011}]%
+        {eagan2011}
+\bibfield{author}{\bibinfo{person}{James~R. Eagan}, \bibinfo{person}{Michel
+  {Beaudouin-Lafon}}, {and} \bibinfo{person}{Wendy~E. Mackay}.}
+  \bibinfo{year}{2011}\natexlab{}.
+\newblock \showarticletitle{Cracking the Cocoa Nut: User Interface Programming
+  at Runtime}. In \bibinfo{booktitle}{\emph{Proceedings of the 24th Annual
+  {{ACM}} Symposium on {{User}} Interface Software and Technology - {{UIST}}
+  '11}}. \bibinfo{publisher}{{ACM Press}}, \bibinfo{address}{{Santa Barbara,
+  California, USA}}, \bibinfo{pages}{225}.
+\newblock
+\showISBNx{978-1-4503-0716-1}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/2047196.2047226}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Hogue and Karger}{Hogue and Karger}{2005}]%
+        {hogue2005}
+\bibfield{author}{\bibinfo{person}{Andrew Hogue} {and} \bibinfo{person}{David
+  Karger}.} \bibinfo{year}{2005}\natexlab{}.
+\newblock \showarticletitle{Thresher: Automating the Unwrapping of Semantic
+  Content from the {{World Wide Web}}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 14th International Conference on
+  {{World Wide Web}} - {{WWW}} '05}}. \bibinfo{publisher}{{ACM Press}},
+  \bibinfo{address}{{Chiba, Japan}}, \bibinfo{pages}{86}.
+\newblock
+\showISBNx{978-1-59593-046-0}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/1060745.1060762}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Hutchins, Hollan, and Norman}{Hutchins
+  et~al\mbox{.}}{1985}]%
+        {hutchins1985}
+\bibfield{author}{\bibinfo{person}{Edwin~L Hutchins}, \bibinfo{person}{James~D
+  Hollan}, {and} \bibinfo{person}{Donald~A Norman}.}
+  \bibinfo{year}{1985}\natexlab{}.
+\newblock \showarticletitle{Direct {{Manipulation Interfaces}}}.
+\newblock  (\bibinfo{year}{1985}), \bibinfo{pages}{28}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Huynh, Miller, and Karger}{Huynh
+  et~al\mbox{.}}{2006}]%
+        {huynh2006}
+\bibfield{author}{\bibinfo{person}{David~F. Huynh}, \bibinfo{person}{Robert~C.
+  Miller}, {and} \bibinfo{person}{David~R. Karger}.}
+  \bibinfo{year}{2006}\natexlab{}.
+\newblock \showarticletitle{Enabling Web Browsers to Augment Web Sites'
+  Filtering and Sorting Functionalities}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 19th Annual {{ACM}} Symposium on
+  {{User}} Interface Software and Technology - {{UIST}} '06}}.
+  \bibinfo{publisher}{{ACM Press}}, \bibinfo{address}{{Montreux, Switzerland}},
+  \bibinfo{pages}{125}.
+\newblock
+\showISBNx{978-1-59593-313-3}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/1166253.1166274}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Leshed, Haber, Matthews, and Lau}{Leshed
+  et~al\mbox{.}}{2008}]%
+        {leshed2008}
+\bibfield{author}{\bibinfo{person}{Gilly Leshed}, \bibinfo{person}{Eben~M.
+  Haber}, \bibinfo{person}{Tara Matthews}, {and} \bibinfo{person}{Tessa Lau}.}
+  \bibinfo{year}{2008}\natexlab{}.
+\newblock \showarticletitle{{{CoScripter}}: {{Automating}} \& {{Sharing
+  How}}-to {{Knowledge}} in the {{Enterprise}}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the {{SIGCHI Conference}} on {{Human
+  Factors}} in {{Computing Systems}}}} \emph{(\bibinfo{series}{{{CHI}} '08})}.
+  \bibinfo{publisher}{{ACM}}, \bibinfo{address}{{New York, NY, USA}},
+  \bibinfo{pages}{1719--1728}.
+\newblock
+\showISBNx{978-1-60558-011-1}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/1357054.1357323}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Litt and Jackson}{Litt and Jackson}{2020}]%
+        {litt2020}
+\bibfield{author}{\bibinfo{person}{Geoffrey Litt} {and} \bibinfo{person}{Daniel
+  Jackson}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Wildcard: {{Spreadsheet}}-{{Driven Customization}}
+  of {{Web Applications}}}. In \bibinfo{booktitle}{\emph{Companion
+  {{Proceedings}} of the 4th {{In}}- Ternational {{Conference}} on the {{Art}},
+  {{Science}}, and {{Engineering}} of {{Programming}}}}.
+  \bibinfo{publisher}{{Association for Computing Machinery}},
+  \bibinfo{address}{{Porto, Portugal.}}, \bibinfo{pages}{10}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1145/3397537.3397541}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{MacLean, Carter, L{\"o}vstrand, and
+  Moran}{MacLean et~al\mbox{.}}{1990}]%
+        {maclean1990}
+\bibfield{author}{\bibinfo{person}{Allan MacLean}, \bibinfo{person}{Kathleen
+  Carter}, \bibinfo{person}{Lennart L{\"o}vstrand}, {and}
+  \bibinfo{person}{Thomas Moran}.} \bibinfo{year}{1990}\natexlab{}.
+\newblock \showarticletitle{User-Tailorable Systems: Pressing the Issues with
+  Buttons}. In \bibinfo{booktitle}{\emph{Proceedings of the {{SIGCHI}}
+  Conference on {{Human}} Factors in Computing Systems {{Empowering}} People -
+  {{CHI}} '90}}. \bibinfo{publisher}{{ACM Press}}, \bibinfo{address}{{Seattle,
+  Washington, United States}}, \bibinfo{pages}{175--182}.
+\newblock
+\showISBNx{978-0-201-50932-8}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/97243.97271}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{McCutchen, Itzhaky, and Jackson}{McCutchen
+  et~al\mbox{.}}{2016}]%
+        {mccutchen2016}
+\bibfield{author}{\bibinfo{person}{Matt McCutchen}, \bibinfo{person}{Shachar
+  Itzhaky}, {and} \bibinfo{person}{Daniel Jackson}.}
+  \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Object Spreadsheets: A New Computational Model for
+  End-User Development of Data-Centric Web Applications}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 2016 {{ACM International
+  Symposium}} on {{New Ideas}}, {{New Paradigms}}, and {{Reflections}} on
+  {{Programming}} and {{Software}} - {{Onward}}! 2016}}.
+  \bibinfo{publisher}{{ACM Press}}, \bibinfo{address}{{Amsterdam,
+  Netherlands}}, \bibinfo{pages}{112--127}.
+\newblock
+\showISBNx{978-1-4503-4076-2}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/2986012.2986018}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Shneiderman}{Shneiderman}{1983}]%
+        {shneiderman1983}
+\bibfield{author}{\bibinfo{person}{B. Shneiderman}.}
+  \bibinfo{year}{1983}\natexlab{}.
+\newblock \showarticletitle{Direct {{Manipulation}}: {{A Step Beyond
+  Programming Languages}}}.
+\newblock \bibinfo{journal}{\emph{Computer}} \bibinfo{volume}{16},
+  \bibinfo{number}{8} (\bibinfo{date}{Aug.} \bibinfo{year}{1983}),
+  \bibinfo{pages}{57--69}.
+\newblock
+\showISSN{0018-9162}
+\urldef\tempurl%
+\url{https://doi.org/10.1109/MC.1983.1654471}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Wong and Hong}{Wong and Hong}{2007}]%
+        {wong2007}
+\bibfield{author}{\bibinfo{person}{Jeffrey Wong} {and}
+  \bibinfo{person}{Jason~I. Hong}.} \bibinfo{year}{2007}\natexlab{}.
+\newblock \showarticletitle{Making Mashups with Marmite: Towards End-User
+  Programming for the Web}. In \bibinfo{booktitle}{\emph{Proceedings of the
+  {{SIGCHI Conference}} on {{Human Factors}} in {{Computing Systems}} - {{CHI}}
+  '07}}. \bibinfo{publisher}{{ACM Press}}, \bibinfo{address}{{San Jose,
+  California, USA}}, \bibinfo{pages}{1435--1444}.
+\newblock
+\showISBNx{978-1-59593-593-9}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/1240624.1240842}
+\showDOI{\tempurl}
+
+
+\end{thebibliography}
