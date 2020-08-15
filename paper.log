@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  15 AUG 2020 16:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  15 AUG 2020 16:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1074,7 +1074,7 @@ Package epstopdf Info: Source file: <media/overview.eps>
 ed-to.pdf media/overview.eps>
 (epstopdf)             \includegraphics on input line 278.
 Package epstopdf Info: Output file is already uptodate.
-<media/overview-eps-converted-to.pdf, id=96, 1806.75pt x 459.7175pt>
+<media/overview-eps-converted-to.pdf, id=92, 1806.75pt x 459.7175pt>
 File: media/overview-eps-converted-to.pdf Graphic file (type pdf)
 <use media/overview-eps-converted-to.pdf>
 Package pdftex.def Info: media/overview-eps-converted-to.pdf  used on input lin
@@ -1096,7 +1096,7 @@ LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<media/hacker-news.png, id=127, 1228.59pt x 1589.94pt>
+<media/hacker-news.png, id=123, 1228.59pt x 1589.94pt>
 File: media/hacker-news.png Graphic file (type png)
 <use media/hacker-news.png>
 Package pdftex.def Info: media/hacker-news.png  used on input line 341.
@@ -1141,7 +1141,7 @@ Package epstopdf Info: Source file: <media/table-adapter.eps>
 nverted-to.pdf media/table-adapter.eps>
 (epstopdf)             \includegraphics on input line 453.
 Package epstopdf Info: Output file is already uptodate.
-<media/table-adapter-eps-converted-to.pdf, id=168, 401.5pt x 556.0775pt>
+<media/table-adapter-eps-converted-to.pdf, id=164, 401.5pt x 556.0775pt>
 File: media/table-adapter-eps-converted-to.pdf Graphic file (type pdf)
 <use media/table-adapter-eps-converted-to.pdf>
 Package pdftex.def Info: media/table-adapter-eps-converted-to.pdf  used on inpu
@@ -1200,7 +1200,7 @@ LaTeX Warning: No positions in optional float specifier.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [7.7]
-<media/amazon.png, id=245, 975.645pt x 726.715pt>
+<media/amazon.png, id=241, 975.645pt x 726.715pt>
 File: media/amazon.png Graphic file (type png)
 <use media/amazon.png>
 Package pdftex.def Info: media/amazon.png  used on input line 845.
@@ -1208,7 +1208,7 @@ Package pdftex.def Info: media/amazon.png  used on input line 845.
 
 Class acmart Warning: A possible image without description on input line 846.
 
-<media/ubereats.png, id=246, 1027.84pt x 614.295pt>
+<media/ubereats.png, id=242, 1027.84pt x 614.295pt>
 File: media/ubereats.png Graphic file (type png)
 <use media/ubereats.png>
 Package pdftex.def Info: media/ubereats.png  used on input line 853.
@@ -1217,7 +1217,7 @@ Package pdftex.def Info: media/ubereats.png  used on input line 853.
 Class acmart Warning: A possible image without description on input line 854.
 
 [8.8 <./media/amazon.png> <./media/ubereats.png>]
-<media/instacart.png, id=265, 1027.84pt x 686.565pt>
+<media/instacart.png, id=261, 1027.84pt x 686.565pt>
 File: media/instacart.png Graphic file (type png)
 <use media/instacart.png>
 Package pdftex.def Info: media/instacart.png  used on input line 896.
@@ -1225,7 +1225,7 @@ Package pdftex.def Info: media/instacart.png  used on input line 896.
 
 Class acmart Warning: A possible image without description on input line 897.
 
-<media/blogger.png, id=269, 843.15pt x 531.9875pt>
+<media/blogger.png, id=265, 843.15pt x 531.9875pt>
 File: media/blogger.png Graphic file (type png)
 <use media/blogger.png>
 Package pdftex.def Info: media/blogger.png  used on input line 927.
@@ -1246,16 +1246,13 @@ Overfull \hbox (3.65454pt too wide) in paragraph at lines 1091--1103
  []
 
 [11.11] [12.12]
-Overfull \hbox (1.19472pt too wide) in paragraph at lines 1313--1316
-[]\T1/LinuxLibertineT-TLF/m/n/10 (-20) neutral: doesn't pri-or-i-tize a par-tic
--u-lar use case, leaves
- []
+Underfull \vbox (badness 1558) has occurred while \output is active []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [13.13]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 1558) has occurred while \output is active []
 
 (./paper.bbl
 LaTeX Info: Redefining \tempurl on input line 70.
@@ -1278,11 +1275,11 @@ LaTeX Info: Redefining \tempurl on input line 149.
 LaTeX Info: Redefining \tempurl on input line 167.
 LaTeX Info: Redefining \tempurl on input line 182.
 LaTeX Info: Redefining \tempurl on input line 200.
-LaTeX Info: Redefining \tempurl on input line 216.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [14.14]
+LaTeX Info: Redefining \tempurl on input line 216.
 LaTeX Info: Redefining \tempurl on input line 246.
 LaTeX Info: Redefining \tempurl on input line 265.
 LaTeX Info: Redefining \tempurl on input line 284.
@@ -1299,26 +1296,26 @@ Class acmart Warning: Some images may lack descriptions.
 Overfull \vbox (1.90399pt too high) has occurred while \output is active []
 
 [15.15]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1481.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1481.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1475.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1475.
 (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1481.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1481.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1475.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1475.
 
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: EA27F5A2A5865A87650FFE64C8ACC01D;3354.
+(rerunfilecheck)             Checksum: EE99BE84C5613C43F7787D46CB699B3A;3152.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 20237 strings out of 492616
- 306768 string characters out of 6129482
- 437464 words of memory out of 5000000
- 23144 multiletter control sequences out of 15000+600000
+ 20236 strings out of 492616
+ 306793 string characters out of 6129482
+ 437489 words of memory out of 5000000
+ 23143 multiletter control sequences out of 15000+600000
  173804 words of font info for 349 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,17n,94p,796b,622s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,17n,94p,796b,618s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/
 usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-4.enc}{/usr
 /local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/
@@ -1336,10 +1333,10 @@ LinLibertineTB.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/liber
 tine/LinLibertineTBI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public
 /libertine/LinLibertineTI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/p
 ublic/newtx/txsys.pfb>
-Output written on paper.pdf (15 pages, 2371290 bytes).
+Output written on paper.pdf (15 pages, 2371717 bytes).
 PDF statistics:
- 470 PDF objects out of 1000 (max. 8388607)
- 396 compressed objects within 4 object streams
+ 467 PDF objects out of 1000 (max. 8388607)
+ 393 compressed objects within 4 object streams
  112 named destinations out of 1000 (max. 500000)
- 52944 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 52936 words of extra memory for PDF output out of 61914 (max. 10000000)
 

@@ -1,7 +1,7 @@
 %%
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL initial-submission.tex   Sun Aug  9 12:56:33 2020
-%DIF ADD paper.tex                Sat Aug 15 16:16:10 2020
+%DIF ADD paper.tex                Sat Aug 15 16:36:16 2020
 %% This is file `sample-sigconf.tex',
 %% generated with the docstrip utility.
 %%
@@ -1554,62 +1554,81 @@ adapter can support many customizations, so far the people making the
 adapters have largely been the same people building customizations on
 top of them, so more work is needed to fully test this hypothesis.
 
-A helpful future addition would be to allow end users to create wrappers
+\DIFdelbegin \DIFdel{A helpful future addition would be to allow end users to create wrappers
 themselves, so that more people could contribute to the shared library.
 There are many existing projects exploring end-user web scraping (such
-as Helena \citep{chasins2018}) which might prove helpful; however,
+as Helena \mbox{%DIFAUXCMD
+\citep{chasins2018}}\hspace{0pt}%DIFAUXCMD
+) which might prove helpful; however,
 because the needs of a Wildcard adapter are slightly more complex than a
 traditional web scraper (as discussed in
 Section~\ref{sec:architecture}), further work might be needed to enable
 end-user wrapper creation.
+}%DIFDELCMD < 
 
-The distribution mechanism for semantic wrappers is also important for
+%DIFDELCMD < %%%
+\DIFdelend The distribution mechanism for semantic wrappers is also important for
 encouraging an ecosystem of shared wrappers. Currently, the distribution
 mechanism is simply merging the code for all adapters into the main
-Wildcard codebase. This is the simplest workable solution, but has its
-downsides: contributing involves a fairly high barrier of creating a
-pull request on Github, and using newly contributed wrappers requires
-installing a new version of the extension. In the future we might
-explore other mechanisms, like an online repository that the extension
-pulls from dynamically. Security is also a consideration---DOM scraping
-adapters can execute arbitrary Javascript code, which opens up the
-possibility of malicious adapters being contributed. Currently we plan
-to solve this challenge with centralized code review, but another
-approach we are considering is using or inventing a more restricted
-domain-specific language for specifying scraping logic.
-
-\DIFaddbegin \hypertarget{generic-data-interfaces}{%
-\subsection{Generic data interfaces}\label{generic-data-interfaces}}
-
-\begin{itemize}
-\item
-  \DIFadd{what makes a UI good for customization?
+Wildcard codebase. This is \DIFdelbegin \DIFdel{the simplest workable }\DIFdelend \DIFaddbegin \DIFadd{a simple }\DIFaddend solution, but \DIFdelbegin \DIFdel{has its
+downsides: contributing involves a fairly
+high barrier of creating a
+pull request on Github, and using newly contributed wrappers }\DIFdelend \DIFaddbegin \DIFadd{makes it fairly
+difficult to contribute new wrappers and }\DIFaddend requires installing a new
+version of the extension \DIFaddbegin \DIFadd{to gain access to new warppers}\DIFaddend . In the future
+we might explore other mechanisms, like an online repository that the
+extension pulls from dynamically. Security is also a consideration---DOM
+scraping adapters can execute arbitrary Javascript code, which \DIFdelbegin \DIFdel{opens up the
+possibility of malicious adapters being contributed.
+Currently we plan
+to solve this challenge with }\DIFdelend \DIFaddbegin \DIFadd{means a
+malicious adapter could exfiltrate sensitive information from a page.
+Approaches to security could include }\DIFaddend centralized code review, \DIFdelbegin \DIFdel{but another
+approach we are considering is using or inventing a
+more restricted domain-specific language for specifying scraping logic}\DIFdelend \DIFaddbegin \DIFadd{using a
+restricted scraping DSL, or creating a sandboxed context for scrapers
+without access to networking APIs.
 }
 
-  \begin{itemize}
-  \tightlist
-  \item
-    \DIFadd{generic: can show data from many apps
-  }\item
-    \DIFadd{neutral: doesn't prioritize a particular use case, leaves the
-    imagination open
-  }\item
-    \DIFadd{good affordances for performing common actions
-  }\end{itemize}
-\item
-  \DIFadd{could be others besides a table
+\hypertarget{alternate-mechanisms-for-wrapper-creation}{%
+\subsubsection{Alternate mechanisms for wrapper
+creation}\label{alternate-mechanisms-for-wrapper-creation}}
+
+\DIFadd{Requiring programming to create wrappers has an obvious limitation. If
+an end user wants to customize a site and no programmer has contributed
+a wrapper for that site, then they have no means of customizing it.
+Although a sufficiently vibrant community of programmers could produce
+wrappers for many popular sites, it's unrealistic to imagine covering
+all websites that end users might want to customize. We envision two
+strategies for dealing with this problem:
 }
 
-  \begin{itemize}
-  \tightlist
-  \item
-    \DIFadd{tree?
-  }\item
-    \DIFadd{text box?
-  }\item
-    \DIFadd{compose these?
-  }\end{itemize}
-\end{itemize}
+\textbf{\DIFadd{End user wrapper creation:}} \DIFadd{If end users could create wrappers
+without programming, there would be fewer limitations on the sites they
+could customize. There are existing projects exploring end-user web
+scraping (such as Helena \mbox{%DIFAUXCMD
+\citep{chasins2018}}\hspace{0pt}%DIFAUXCMD
+) which might prove helpful;
+however, because the needs of a Wildcard adapter are slightly more
+complex than a traditional web scraper (as discussed in
+Section~\ref{sec:architecture}), further work might be needed to enable
+end-user wrapper creation}\DIFaddend .
+
+\DIFaddbegin \textbf{\DIFadd{First party wrapper creation:}} \DIFadd{An integrated adapter installed
+by the developer of an application could directly access internal state,
+providing the same functionality as a DOM scraping adapter but in a more
+robust way.
+}
+
+\DIFadd{With the advent of rich frontend web frameworks, structured application
+state is now often available in the web client. We suspect it is
+possible to create plugins for frontend frameworks that expose this
+state to Wildcard with only minimal effort from the application
+developers. Customizability is sometimes a key selling point for
+software. An integrated website adapter would provide a way for
+developers to integrate with an ecosystem of formulas and customization
+tools without needing to build all that functionality from scratch.
+}
 
 \DIFaddend \hypertarget{sec:related-work}{%
 \section{Related Work}\label{sec:related-work}}

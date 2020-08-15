@@ -1274,60 +1274,54 @@ adapter can support many customizations, so far the people making the
 adapters have largely been the same people building customizations on
 top of them, so more work is needed to fully test this hypothesis.
 
-A helpful future addition would be to allow end users to create wrappers
-themselves, so that more people could contribute to the shared library.
-There are many existing projects exploring end-user web scraping (such
-as Helena \citep{chasins2018}) which might prove helpful; however,
-because the needs of a Wildcard adapter are slightly more complex than a
-traditional web scraper (as discussed in
-Section~\ref{sec:architecture}), further work might be needed to enable
-end-user wrapper creation.
-
 The distribution mechanism for semantic wrappers is also important for
 encouraging an ecosystem of shared wrappers. Currently, the distribution
 mechanism is simply merging the code for all adapters into the main
-Wildcard codebase. This is the simplest workable solution, but has its
-downsides: contributing involves a fairly high barrier of creating a
-pull request on Github, and using newly contributed wrappers requires
-installing a new version of the extension. In the future we might
-explore other mechanisms, like an online repository that the extension
-pulls from dynamically. Security is also a consideration---DOM scraping
-adapters can execute arbitrary Javascript code, which opens up the
-possibility of malicious adapters being contributed. Currently we plan
-to solve this challenge with centralized code review, but another
-approach we are considering is using or inventing a more restricted
-domain-specific language for specifying scraping logic.
+Wildcard codebase. This is a simple solution, but makes it fairly
+difficult to contribute new wrappers and requires installing a new
+version of the extension to gain access to new warppers. In the future
+we might explore other mechanisms, like an online repository that the
+extension pulls from dynamically. Security is also a consideration---DOM
+scraping adapters can execute arbitrary Javascript code, which means a
+malicious adapter could exfiltrate sensitive information from a page.
+Approaches to security could include centralized code review, using a
+restricted scraping DSL, or creating a sandboxed context for scrapers
+without access to networking APIs.
 
-\hypertarget{generic-data-interfaces}{%
-\subsection{Generic data interfaces}\label{generic-data-interfaces}}
+\hypertarget{alternate-mechanisms-for-wrapper-creation}{%
+\subsubsection{Alternate mechanisms for wrapper
+creation}\label{alternate-mechanisms-for-wrapper-creation}}
 
-\begin{itemize}
-\item
-  what makes a UI good for customization?
+Requiring programming to create wrappers has an obvious limitation. If
+an end user wants to customize a site and no programmer has contributed
+a wrapper for that site, then they have no means of customizing it.
+Although a sufficiently vibrant community of programmers could produce
+wrappers for many popular sites, it's unrealistic to imagine covering
+all websites that end users might want to customize. We envision two
+strategies for dealing with this problem:
 
-  \begin{itemize}
-  \tightlist
-  \item
-    generic: can show data from many apps
-  \item
-    neutral: doesn't prioritize a particular use case, leaves the
-    imagination open
-  \item
-    good affordances for performing common actions
-  \end{itemize}
-\item
-  could be others besides a table
+\textbf{End user wrapper creation:} If end users could create wrappers
+without programming, there would be fewer limitations on the sites they
+could customize. There are existing projects exploring end-user web
+scraping (such as Helena \citep{chasins2018}) which might prove helpful;
+however, because the needs of a Wildcard adapter are slightly more
+complex than a traditional web scraper (as discussed in
+Section~\ref{sec:architecture}), further work might be needed to enable
+end-user wrapper creation.
 
-  \begin{itemize}
-  \tightlist
-  \item
-    tree?
-  \item
-    text box?
-  \item
-    compose these?
-  \end{itemize}
-\end{itemize}
+\textbf{First party wrapper creation:} An integrated adapter installed
+by the developer of an application could directly access internal state,
+providing the same functionality as a DOM scraping adapter but in a more
+robust way.
+
+With the advent of rich frontend web frameworks, structured application
+state is now often available in the web client. We suspect it is
+possible to create plugins for frontend frameworks that expose this
+state to Wildcard with only minimal effort from the application
+developers. Customizability is sometimes a key selling point for
+software. An integrated website adapter would provide a way for
+developers to integrate with an ecosystem of formulas and customization
+tools without needing to build all that functionality from scratch.
 
 \hypertarget{sec:related-work}{%
 \section{Related Work}\label{sec:related-work}}
