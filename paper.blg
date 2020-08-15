@@ -13,45 +13,45 @@ Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Warning--no journal in hutchins1985
 Warning--no number and no volume in hutchins1985
-You've used 18 entries,
+You've used 20 entries,
             5945 wiz_defined-function locations,
-            1479 strings with 19585 characters,
-and the built_in function-call counts, 22319 in all, are:
-= -- 2519
-> -- 715
+            1493 strings with 20142 characters,
+and the built_in function-call counts, 24426 in all, are:
+= -- 2750
+> -- 787
 < -- 0
-+ -- 232
-- -- 244
-* -- 1584
-:= -- 2181
-add.period$ -- 90
-call.type$ -- 18
-change.case$ -- 120
-chr.to.int$ -- 18
-cite$ -- 20
-duplicate$ -- 2145
-empty$ -- 1481
-format.name$ -- 304
-if$ -- 5256
++ -- 254
+- -- 268
+* -- 1729
+:= -- 2403
+add.period$ -- 100
+call.type$ -- 20
+change.case$ -- 133
+chr.to.int$ -- 20
+cite$ -- 22
+duplicate$ -- 2345
+empty$ -- 1620
+format.name$ -- 332
+if$ -- 5734
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 87
-newline$ -- 235
-num.names$ -- 144
-pop$ -- 793
+missing$ -- 92
+newline$ -- 254
+num.names$ -- 160
+pop$ -- 861
 preamble$ -- 1
-purify$ -- 282
+purify$ -- 313
 quote$ -- 0
-skip$ -- 796
+skip$ -- 873
 stack$ -- 0
-substring$ -- 1726
-swap$ -- 252
+substring$ -- 1892
+swap$ -- 273
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 498
+type$ -- 558
 warning$ -- 2
-while$ -- 145
+while$ -- 160
 width$ -- 0
-write$ -- 428
+write$ -- 467
 (There were 2 warnings)

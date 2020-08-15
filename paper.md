@@ -1,5 +1,5 @@
 ---
-title: "End-User Software Customization by Direct Manipulation of Tabular Data"
+title: "Data-Driven Customization of Web Applications"
 bibliography: wildcard-onward-biblatex.bib
 link-citations: true
 csl: acm.csl
@@ -11,9 +11,13 @@ secPrefix:
   - "Section"
   - "Sections"
 abstract: |
-  In this paper we introduce _data-driven customization_, a new way for end users to extend software by direct manipulation without doing traditional programming. We augment existing user interfaces with a table view showing the structured data inside the application. When users edit the table, their changes are reflected in the original UI. This simple model accommodates a spreadsheet formula language and custom data editing widgets, providing enough power to implement a variety of useful extensions.
+  Customizing software should be as easy as using it. But most customization methods require a dramatic shift, from using a GUI to writing scripts in a programming language.
 
-  We illustrate the approach with Wildcard, a browser extension that implements data-driven customization for existing applications using web scraping. Through concrete examples, we show that this paradigm can support extensions to many real websites, ranging from sorting and filtering existing data to adding entire new features. We share reflections from our experiences using Wildcard, on both its strengths and limitations relative to other customization approaches. Finally, we explore how this paradigm might lead to new software architectures that encourage this form of end-user customization.
+  We introduce _data-driven customization_, a new way for end users to extend software by direct manipulation without doing traditional programming. We augment existing user interfaces with a table view showing the structured data inside the application. When users edit the table, their changes are reflected in the original UI. This simple model accommodates a spreadsheet formula language and custom data editing widgets, providing enough power to implement a variety of useful extensions.
+
+  We illustrate the approach with Wildcard, a browser extension that implements data-driven customization on the web using web scraping. Through concrete examples, we show that this paradigm can support useful extensions to many real websites, and we share reflections from our experiences using Wildcard.
+
+  Finally, we share our broader vision for a future where end users have greater access to the data in their applications, and better tools for taking advantage of that data in the context of everyday software usage.
 ---
 
 # Introduction
@@ -46,18 +50,15 @@ In our proposed paradigm, _data-driven customization_, an application’s UI is 
 \end{figure*}
 ```
 
-We have developed a browser extension called Wildcard which uses web scraping techniques to implement data-driven customization for existing Web applications. In [@sec:example], we concretely demonstrate the end user experience of using Wildcard to add features to a news website.
+To explore this idea in a real context, we have developed a browser extension called Wildcard that uses web scraping techniques to implement data-driven customization for existing Web applications. We introduce the tool with an example customization of Hacker News in [@sec:example], and then describe the implementation in [@sec:architecture. In [@sec:reflections], we present evidence that Wildcard can produce useful customizations, by sharing reflections from customizing 11 different websites in ways that met our own personal needs.
 
-In [@sec:architecture], we explain the system architecture of data-driven customization. We focus on the _table adapter_ abstraction, which allows many different types of underlying data to be bidirectionally mapped to a table. We describe several types of table adapters we’ve built in Wildcard, and also describe future adapters supported by the general paradigm.
+Wildcard is just an initial proof of concept of data-driven customization.  In [@sec:visions], we discuss our broader vision for how this style of customization could change the relationship between users and creators of software, focusing on three ideas:
 
-We have successfully used Wildcard to build customizations for 11 different websites that serve our own personal needs. In [@sec:reflections], we present reflections from this process. We outline the kinds of customizations we were able to build, limitations we encountered, and some of the challenges of writing scraping logic.
-
-In [@sec:visions], we discuss some key themes from our work:
-
-- _Customization by direct manipulation_: We discuss further how data-driven customization relates to a gentle slope of customization. We suggest that an important point on this slope is the ability to customize an application by directly seeing and changing its data, rather than by writing imperative scripts.
+- _Decoupling data from applications_: On the modern Web, data is often stored in proprietary silos, limiting the agency of users to choose their applications and flexibly work with data. We propose data-driven customization as an incremental step towards a more decentralized architecture, where users gain more control over the storage, processing and display of information from web services.
+- _Customization by direct manipulation_: We discuss how data-driven customization promotes a gentle slope of customization. We propose that an important point on this slope is the ability to customize an application by directly seeing and changing its data, rather than by writing imperative scripts.
 - _Semantic wrappers_: Typically, tools that don't rely on official extension APIs resort to offering low-level APIs for customization. Instead, we propose a community-maintained library of semantic wrappers around existing applications, enabling end users to work with domain data rather than low-level representations.
 
-data-driven customization relates to existing work in many areas. Our goals overlap with many software customization tools, and our methods overlap with direct manipulation interfaces for working with structured data, including visual database query systems and spreadsheets. We explore these connections in [@sec:related-work].
+In [@sec:related-work] we discuss connections to related work. Our goals overlap with software customization tools, and our methods overlap with direct manipulation interfaces for working with structured data, including visual database query systems and spreadsheets.
 
 Finally, in [@sec:conclusion], we conclude and describe opportunities for future work.
 
@@ -500,10 +501,29 @@ sort grocery items by category.
 
 # Vision {#sec:visions}
 
-- Wildcard just one instance of a broader data-driven customization
-  - particular view: table
-  - particular context: web
-- here we share some of the underlying ideas. go beyond Wildcard, room to grow
+We envision data-driven customization as a broad paradigm that could extend well beyond the Wildcard proof-of-concept, and ultimately result in new software architectures that empower end users to mold software to their specific needs. Here we explore some of the deeper ideas underlying our work, and future possibilities beyond the Wildcard tool.
+
+## Decoupling data from applications
+
+When data is freely available outside the context of a specific application, users have more freedom to choose a suitable application for their needs. For example, an RSS feed can be consumed by many reader applications—a journalist can use a power tool optimized for skimming hundreds of news sources a day, while a casual reader can use a simple app to keep up with a few blogs. Motivated users can even create their own custom workflows for filtering and combining RSS feeds, either via traditional programming or in an end-user programming environment like [Yahoo Pipes](https://en.wikipedia.org/wiki/Yahoo!_Pipes).
+
+However, on the Web today, data is often siloed and only accessible through a single prescribed application. A Facebook feed can only be viewed through the Facebook application. Podcasts, originally served openly through RSS, are [beginning to become exclusive](https://stratechery.com/2019/spotifys-podcast-aggregation-play/) to specific platforms like Spotify. This coupling between data and applications leaves users at the mercy of using a single client optimized for specific purposes (e.g., maximizing engagement) that may not be aligned with users' individual desires.
+
+Some services provide APIs that mitigate these siloing effects, but APIs fail to provide a full solution to the problem. First, APIs often provide limited access, especially when an open client ecosystem would harm the economic incentives of a web service built on advertising in a first-party client—in 2012, Twitter infamously [imposed restrictions](https://www.theverge.com/2012/8/16/3248079/twitter-limits-app-developers-control) on third-party applications that mimicked the "mainstream Twitter consumer client experience." A second problem is that web APIs have a high barrier to entry—they tend to be designed more for programmers creating entire applications or heavy-duty automations than for end users casually modifying their own experience.
+
+There have been compelling suggestions for more decentralized architectures that would give users more control of their data. Local-first software [@kleppmann2019] suggests that productivity applications should run logic and store data locally, while retaining the benefits of realtime collaboration through peer-to-peer synchronization. The SOLID project [@berners-lee2019] envisions a decentralized future where users store data on their own servers, and choose to grant limited access to applications. We see data-driven customization as aligned with these decentralized visions, but complementary to them in two ways.
+
+**Incremental:** Rather than proposing that web services be totally rearchitected, data-driven customization suggests a more incremental path for adding user agency to existing software.
+
+Data-driven customization allows for lightly augmenting a centralized website with decentralized data storage. [@sec:example] demonstrated how a user's private annotations on a news site could be stored in their browser, without needing to upload the annotation to the website's server. A hybrid storage model is reasonable here: a centralized storage model makes sense for most of the information on Hacker News that is viewed by all users, but a user's private annotations can easily just be stored in their browser. This model could even be extended with peer-to-peer sharing—a column in a Wildcard table could be shared directly among friends, providing shared annotation of a common website without needing to use the website itself as a centralized intermediary.
+
+By using third-party data extraction, data-driven customization also works with existing websites that do not expose structured data to the user. Ultimately, in adversarial situations where websites are strongly incentivized to restrict access to their data, scraping is unlikely to be a sustainable solution. But we hypothesize that there are many more situations where websites are *neutral*: not opposed to the idea of end user customization, but also not sufficiently motivated to create and maintain a public API. We see these neutral situations as a context where this kind of incremental approach could succeed. Perhaps some of these websites might be more motivated to provide official extension hooks if they saw the value that users were getting from unofficial community-provided ones.
+
+**Focus on end user customization:** Having access to the data is a necessary but not sufficient condition for empowering end users to craft their own software experience.  Another key ingredient is providing usable tools and interfaces for working with the data.
+
+In data-driven customization, we focus heavily on this part of the solution. By showing raw data in the context of a user interface and allowing small tweaks to the original application's behavior, we provide a smooth path for people to move from using an application to tweaking it.
+
+In this sense, data-driven customization is a complementary approach to other projects that focus on getting users greater access to their data. In a decentralized future where data is stored locally rather than in cloud silos, interfaces like Wildcard would be one technique for actually making use of this data in service of greater end user flexibility.
 
 ## Customization by direct manipulation {#sec:dm}
 
@@ -576,34 +596,15 @@ using or inventing a more restricted domain-specific language for specifying scr
   - text box?
   - compose these?
 
-## Decouple data from application logic
-
-- thin client architecture of web has promoted a coupling of data + app
-
-  - only way user can view the data is in the first-party tool
-  - APIs provide some flexibility in picking a client. but, APIs aren't meant for end user consumption. and, there are limits (eg, Twitter API restrictions)
-  - limited user agency over how they use their data
-  - compare to, say, opening a file locally
-
-- Some people aiming towards ambitious rearchitectures in this space...
-  - cite local-first
-  - TBL Solid
-- Data-driven customization: an iterative approach towards this vision; complementary to more radical rearchitecting.
-
-- Start with third party extraction
-- Integrate across apps
-- open the data in a different UI
-- Then move to first party data providing in the client (could drive wildcard from existing apis??)
-
 # Related Work {#sec:related-work}
 
 This paper extends work reported in a workshop paper by Litt and Jackson [@litt2020] which presented an early version of the Wildcard extension. We have substantially extended their work in this paper by creating the table adapter abstraction, reimplementing the internals of Wildcard around that abstraction, evaluating the system on many more websites and use cases, and by characterizing the design of the system in much more detail than in their workshop paper.
 
-data-driven customization relates to two broad areas of related work. Our problem statement is related to software customization tools, and our solution approach is related to spreadsheets and other direct manipulation interfaces.
+Data-driven customization relates to two broad areas of related work. Our problem statement is related to software customization tools, and our solution approach is related to spreadsheets and other direct manipulation interfaces.
 
 ## Customization tools
 
-data-driven customization is most closely related to other tools that aim
+Data-driven customization is most closely related to other tools that aim
 to empower end users to customize software without traditional coding.
 
 This lineage goes back at least to the Buttons system by MacLean et al. [@maclean1990], where

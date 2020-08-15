@@ -107,8 +107,7 @@
 %%
 %% The "title" command has an optional parameter,
 %% allowing the author to define a "short title" to be used in page headers.
-\title{End-User Software Customization by Direct Manipulation of Tabular
-Data}
+\title{Data-Driven Customization}
 
 %%
 %% The "author" command and its associated commands are used to define
@@ -161,24 +160,29 @@ Data}
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
-  In this paper we introduce \emph{data-driven customization}, a new way
-  for end users to extend software by direct manipulation without doing
-  traditional programming. We augment existing user interfaces with a
-  table view showing the structured data inside the application. When
-  users edit the table, their changes are reflected in the original UI.
-  This simple model accommodates a spreadsheet formula language and
-  custom data editing widgets, providing enough power to implement a
-  variety of useful extensions.
+  Customizing software should be as easy as using it. But most
+  customization methods require a dramatic shift, from using a GUI to
+  writing scripts in a programming language.
+
+  We introduce \emph{data-driven customization}, a new way for end users
+  to extend software by direct manipulation without doing traditional
+  programming. We augment existing user interfaces with a table view
+  showing the structured data inside the application. When users edit
+  the table, their changes are reflected in the original UI. This simple
+  model accommodates a spreadsheet formula language and custom data
+  editing widgets, providing enough power to implement a variety of
+  useful extensions.
 
   We illustrate the approach with Wildcard, a browser extension that
-  implements data-driven customization for existing applications using
-  web scraping. Through concrete examples, we show that this paradigm
-  can support extensions to many real websites, ranging from sorting and
-  filtering existing data to adding entire new features. We share
-  reflections from our experiences using Wildcard, on both its strengths
-  and limitations relative to other customization approaches. Finally,
-  we explore how this paradigm might lead to new software architectures
-  that encourage this form of end-user customization.
+  implements data-driven customization on the web using web scraping.
+  Through concrete examples, we show that this paradigm can support
+  useful extensions to many real websites, and we share reflections from
+  our experiences using Wildcard.
+
+  Finally, we share our broader vision for a future where end users have
+  greater access to the data in their applications, and better tools for
+  taking advantage of that data in the context of everyday software
+  usage.
 \end{abstract}
 
 %%
@@ -311,7 +315,7 @@ In Section~\ref{sec:visions}, we discuss some key themes from our work:
   domain data rather than low-level representations.
 \end{itemize}
 
-data-driven customization relates to existing work in many areas. Our
+Data-driven customization relates to existing work in many areas. Our
 goals overlap with many software customization tools, and our methods
 overlap with direct manipulation interfaces for working with structured
 data, including visual database query systems and spreadsheets. We
@@ -1013,22 +1017,106 @@ category.
 \hypertarget{sec:visions}{%
 \section{Vision}\label{sec:visions}}
 
-\begin{itemize}
-\tightlist
-\item
-  Wildcard just one instance of a broader data-driven customization
+We envision data-driven customization as a broad paradigm that could
+extend well beyond the Wildcard proof-of-concept, and ultimately result
+in new software architectures that empower end users to mold software to
+their specific needs. Here we explore some of the deeper ideas
+underlying our work, and future possibilities beyond the Wildcard tool.
 
-  \begin{itemize}
-  \tightlist
-  \item
-    particular view: table
-  \item
-    particular context: web
-  \end{itemize}
-\item
-  here we share some of the underlying ideas. go beyond Wildcard, room
-  to grow
-\end{itemize}
+\hypertarget{decouple-data-from-applications}{%
+\subsection{Decouple data from
+applications}\label{decouple-data-from-applications}}
+
+When data is freely available outside the context of a specific
+application, users have more freedom to choose a suitable application
+for their needs. For example, an RSS feed can be consumed by many reader
+applications---a journalist can use a power tool optimized for skimming
+hundreds of news sources a day, while a casual reader can use a simple
+app to keep up with a few blogs. Motivated users can even create their
+own custom workflows for filtering and combining RSS feeds, either via
+traditional programming or in an end-user programming environment like
+\href{https://en.wikipedia.org/wiki/Yahoo!_Pipes}{Yahoo Pipes}.
+
+However, on the Web today, data is often siloed and only accessible
+through a single prescribed application. A Facebook feed can only be
+viewed through the Facebook application. Podcasts, originally served
+openly through RSS, are
+\href{https://stratechery.com/2019/spotifys-podcast-aggregation-play/}{beginning
+to become exclusive} to specific platforms like Spotify. This coupling
+between data and applications leaves users at the mercy of using a
+single client optimized for specific purposes (e.g., maximizing
+engagement) that may not be aligned with users' individual desires.
+
+Some services provide APIs that mitigate these siloing effects, but APIs
+fail to provide a full solution to the problem. First, APIs often
+provide limited access, especially when an open client ecosystem would
+harm the economic incentives of a web service built on advertising in a
+first-party client---in 2012, Twitter infamously
+\href{https://www.theverge.com/2012/8/16/3248079/twitter-limits-app-developers-control}{imposed
+restrictions} on third-party applications that mimicked the ``mainstream
+Twitter consumer client experience.'' A second problem is that web APIs
+have a high barrier to entry---they tend to be designed more for
+programmers creating entire applications or heavy-duty automations than
+for end users casually modifying their own experience.
+
+There have been compelling suggestions for more decentralized
+architectures that would give users more control of their data.
+Local-first software \citep{kleppmann2019} suggests that productivity
+applications should run logic and store data locally, while retaining
+the benefits of realtime collaboration through peer-to-peer
+synchronization. The SOLID project \citep{berners-lee2019} envisions a
+decentralized future where users store data on their own servers, and
+choose to grant limited access to applications. We see data-driven
+customization as aligned with these decentralized visions, but
+complementary to them in two ways.
+
+\textbf{Incremental:} Rather than proposing that web services be totally
+rearchitected, data-driven customization suggests a more incremental
+path for adding user agency to existing software.
+
+Data-driven customization allows for lightly augmenting a centralized
+website with decentralized data storage. Section~\ref{sec:example}
+demonstrated how a user's private annotations on a news site could be
+stored in their browser, without needing to upload the annotation to the
+website's server. A hybrid storage model is reasonable here: a
+centralized storage model makes sense for most of the information on
+Hacker News that is viewed by all users, but a user's private
+annotations can easily just be stored in their browser. This model could
+even be extended with peer-to-peer sharing---a column in a Wildcard
+table could be shared directly among friends, providing shared
+annotation of a common website without needing to use the website itself
+as a centralized intermediary.
+
+By using third-party data extraction, data-driven customization also
+works with existing websites that do not expose structured data to the
+user. Ultimately, in adversarial situations where websites are strongly
+incentivized to restrict access to their data, scraping is unlikely to
+be a sustainable solution. But we hypothesize that there are many more
+situations where websites are \emph{neutral}: not opposed to the idea of
+end user customization, but also not sufficiently motivated to create
+and maintain a public API. We see these neutral situations as a context
+where this kind of incremental approach could succeed. Perhaps some of
+these websites might be more motivated to provide official extension
+hooks if they saw the value that users were getting from unofficial
+community-provided ones.
+
+\textbf{Focus on end user customization:} Having access to the data is a
+necessary but not sufficient condition for empowering end users to craft
+their own software experience. Another key ingredient is providing
+usable tools and interfaces for working with the data.
+
+In data-driven customization, we focus heavily on this part of the
+solution. By showing raw data in the context of a user interface and
+allowing small tweaks to the original application's behavior, we provide
+a smooth path for people to move from using an application to tweaking
+it.
+
+In this sense, data-driven customization is a complementary approach to
+other projects that focus on getting users greater access to their data.
+In a decentralized future where data is stored locally rather than in
+cloud silos, interfaces like Wildcard would be one technique for
+actually making use of this data in service of greater end user
+flexibility.
 
 \hypertarget{sec:dm}{%
 \subsection{Customization by direct manipulation}\label{sec:dm}}
@@ -1240,52 +1328,6 @@ domain-specific language for specifying scraping logic.
   \end{itemize}
 \end{itemize}
 
-\hypertarget{decouple-data-from-application-logic}{%
-\subsection{Decouple data from application
-logic}\label{decouple-data-from-application-logic}}
-
-\begin{itemize}
-\item
-  thin client architecture of web has promoted a coupling of data + app
-
-  \begin{itemize}
-  \tightlist
-  \item
-    only way user can view the data is in the first-party tool
-  \item
-    APIs provide some flexibility in picking a client. but, APIs aren't
-    meant for end user consumption. and, there are limits (eg, Twitter
-    API restrictions)
-  \item
-    limited user agency over how they use their data
-  \item
-    compare to, say, opening a file locally
-  \end{itemize}
-\item
-  Some people aiming towards ambitious rearchitectures in this
-  space\ldots{}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    cite local-first
-  \item
-    TBL Solid
-  \end{itemize}
-\item
-  Data-driven customization: an iterative approach towards this vision;
-  complementary to more radical rearchitecting.
-\item
-  Start with third party extraction
-\item
-  Integrate across apps
-\item
-  open the data in a different UI
-\item
-  Then move to first party data providing in the client (could drive
-  wildcard from existing apis??)
-\end{itemize}
-
 \hypertarget{sec:related-work}{%
 \section{Related Work}\label{sec:related-work}}
 
@@ -1297,7 +1339,7 @@ Wildcard around that abstraction, evaluating the system on many more
 websites and use cases, and by characterizing the design of the system
 in much more detail than in their workshop paper.
 
-data-driven customization relates to two broad areas of related work.
+Data-driven customization relates to two broad areas of related work.
 Our problem statement is related to software customization tools, and
 our solution approach is related to spreadsheets and other direct
 manipulation interfaces.
@@ -1305,7 +1347,7 @@ manipulation interfaces.
 \hypertarget{customization-tools}{%
 \subsection{Customization tools}\label{customization-tools}}
 
-data-driven customization is most closely related to other tools that
+Data-driven customization is most closely related to other tools that
 aim to empower end users to customize software without traditional
 coding.
 
