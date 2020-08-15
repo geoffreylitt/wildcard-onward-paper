@@ -15,9 +15,9 @@ abstract: |
 
   We introduce _data-driven customization_, a new way for end users to extend software by direct manipulation without doing traditional programming. We augment existing user interfaces with a table view showing the structured data inside the application. When users edit the table, their changes are reflected in the original UI. This simple model accommodates a spreadsheet formula language and custom data editing widgets, providing enough power to implement a variety of useful extensions.
 
-  We illustrate the approach with Wildcard, a browser extension that implements data-driven customization on the web using web scraping. Through concrete examples, we show that this paradigm can support useful extensions to many real websites, and we share reflections from our experiences using Wildcard.
+  We illustrate the approach with Wildcard, a browser extension that implements data-driven customization on the web using web scraping. Through concrete examples, we show that this paradigm can support useful extensions to many real websites, and we share reflections from our experiences using the tool.
 
-  Finally, we share our broader vision for a future where end users have greater access to the data in their applications, and better tools for taking advantage of that data in the context of everyday software usage.
+  Finally, we share our broader vision for data-driven customization: a future where end users have greater access to the data inside their applications, and better tools for flexibly making use of that data in the context of everyday software usage.
 ---
 
 # Introduction
@@ -50,7 +50,7 @@ In our proposed paradigm, _data-driven customization_, an application’s UI is 
 \end{figure*}
 ```
 
-To explore this idea in a real context, we have developed a browser extension called Wildcard that uses web scraping techniques to implement data-driven customization for existing Web applications. We introduce the tool with an example customization of Hacker News in [@sec:example], and then describe the implementation in [@sec:architecture. In [@sec:reflections], we present evidence that Wildcard can produce useful customizations, by sharing reflections from customizing 11 different websites in ways that met our own personal needs.
+To explore this idea in a real context, we have developed a browser extension called Wildcard that uses web scraping techniques to implement data-driven customization for existing Web applications. We introduce the tool with an example customization of Hacker News in [@sec:example], and then describe the implementation in [@sec:architecture]. In [@sec:reflections], we present evidence that Wildcard can produce useful customizations, by sharing reflections from customizing 11 different websites in ways that met our own personal needs.
 
 Wildcard is just an initial proof of concept of data-driven customization.  In [@sec:visions], we discuss our broader vision for how this style of customization could change the relationship between users and creators of software, focusing on three ideas:
 
@@ -174,13 +174,13 @@ Here we describe the three types of table adapters we have built so far in Wildc
 
 ### DOM scraping adapters
 
-DOM scraping adapters enable Wildcard to interface with an existing website UI. A DOM scraping adapter fulfills the standard web scraping task of extracting a table of data from the DOM, but it must also handle the reverse direction: manipulating the DOM to reflect edits to the table.
+DOM scraping adapters enable Wildcard to interface with an existing website UI. A DOM scraping adapter fulfills the standard web scraping task of extracting a table of data from the DOM, but it also acts in the reverse direction: manipulating the DOM to reflect edits to the table.
 
-Currently, we require DOM scraping adapters to be programmed manually for each website using Javascript code. It might seem that this prohibits non-programmer users from using the system, but we solve this problem via a shared repository of adapters. Once an adapter is programmed for a website, it is added to a shared code repository, enabling any end user to perform customizations on that website.
+In Wildcard, DOM scraping adapters are programmed manually for each website using Javascript code. It might seem that this prohibits non-programmer users from using the system at all, but we solve this problem via a shared repository of adapters. Once an adapter is programmed for a website, it is added to the shared repository, enabling any end user to perform customizations on that website.
 
- There are other ways a DOM scraping adapter could be produced which would reduce this dependence on programmers: an end user could specify the scraping logic via demonstration, or the desired data table could be automatically inferred from the page. While we are interested in these techniques and discuss them later in [@sec:visions], we believe that a shared repository of manually programmed adapters is a pragmatic starting point; given that many users visit the same popular websites,a critical mass of adapters could serve the needs of many users.
+In the future, other strategies for producing DOM scraping adapters could reduce this dependence on programmers: an end user could specify the scraping logic via demonstration, or the desired data table could be automatically inferred from the page. While we are interested in these techniques and discuss them in [@sec:visions], we believe that a shared repository of manually programmed adapters is a pragmatic starting point; given that many users visit the same popular websites,a critical mass of adapters could serve the needs of many users.
 
-To ease the burden on programmers of creating these adapters, we have created a framework makes the process feel more like writing unidirectional scraping code than performing a complex bidirectional synchronization.  The key idea is this: programmers return pointers to DOM elements representing table rows and table cells; Wildcard extracts data from these DOM elements, but it also uses the pointers to synchronize table edits back into the page. For example, when the user sorts the table, the DOM elements representing the table rows are moved around in the DOM to reflect the new sorted order.
+To make it easier to create these adapters, Wildcard provides a framework that makes the process feel more like writing unidirectional scraping code than performing a complex bidirectional synchronization.  The key idea is this: programmers return pointers to DOM elements representing table rows and table cells; Wildcard extracts data from these DOM elements, but it also uses the pointers to synchronize table edits back into the page. For example, when the user sorts the table, the DOM elements representing the table rows are moved around in the DOM to reflect the new sorted order.
 
 <div class="pdf-only">
 ```{=latex}

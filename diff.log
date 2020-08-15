@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  15 AUG 2020 16:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  15 AUG 2020 17:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1057,9 +1057,8 @@ Overfull \hbox (2.77563pt too wide) in paragraph at lines 273--273
  []
 
 
-Overfull \hbox (2.33455pt too wide) in paragraph at lines 273--273
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
-  |   []   |   []
+Overfull \hbox (36.19647pt too wide) in paragraph at lines 273--273
+|   [][][]|   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/it' will be
@@ -1131,12 +1130,6 @@ Overfull \hbox (8.56363pt too wide) in paragraph at lines 354--362
 Overfull \hbox (16.14842pt too wide) in paragraph at lines 354--362
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
   |   []
- []
-
-
-Overfull \hbox (1.06917pt too wide) in paragraph at lines 354--362
-|   []   []\T1/LinuxLibertineT-TLF/m/n/10 (-20) [[]|   []   |   []   |   []   |
-   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
@@ -1292,66 +1285,49 @@ Overfull \hbox (59.0817pt too wide) in paragraph at lines 631--637
  []
 
 
-Overfull \hbox (8.53836pt too wide) in paragraph at lines 652--660
+Overfull \hbox (8.53836pt too wide) in paragraph at lines 652--659
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
   |   []
  []
 
 
-Overfull \hbox (12.12447pt too wide) in paragraph at lines 652--660
-|   []   |   []   |   []   |   [][][]|   []   |   []   |   []   |   []   |   []
-   |   []   |   []   |   []
+Overfull \hbox (7.91249pt too wide) in paragraph at lines 664--670
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
  []
 
 [5.5 <./media/table-adapter-eps-converted-to.pdf>]
-Overfull \hbox (2.56754pt too wide) in paragraph at lines 672--686
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
-  |   []
- []
-
-
-Overfull \hbox (3.2836pt too wide) in paragraph at lines 672--686
+Overfull \hbox (4.84273pt too wide) in paragraph at lines 671--681
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (9.95757pt too wide) in paragraph at lines 672--686
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
-  |   []
- []
-
-
-Overfull \hbox (21.17316pt too wide) in paragraph at lines 687--694
+Overfull \hbox (21.17316pt too wide) in paragraph at lines 682--695
 [][]|   []   |   []   |   [][][]|   []   |   []   |   []   |   []   |   []   | 
   []   |   []
  []
 
 
-Overfull \hbox (24.95047pt too wide) in paragraph at lines 697--711
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
- []
-
-
-Overfull \hbox (46.37352pt too wide) in paragraph at lines 697--711
+Overfull \hbox (36.8435pt too wide) in paragraph at lines 682--695
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (1.89671pt too wide) in paragraph at lines 697--711
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
-  |   []
+Overfull \hbox (2.17313pt too wide) in paragraph at lines 697--707
+\T1/LinuxLibertineT-TLF/m/n/10 (-20) the user sorts the ta-ble[]|   []   |   []
+   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (4.56964pt too wide) in paragraph at lines 697--711
-[][]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |  
- []
+Overfull \hbox (15.50868pt too wide) in paragraph at lines 697--707
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   [][]|  
+ []   |   []   |   []
  []
 
 LaTeX Font Info:    Font shape `T1/zi4/bx/n' in size <10> not available
-(Font)              Font shape `T1/zi4/b/n' tried instead on input line 720.
+(Font)              Font shape `T1/zi4/b/n' tried instead on input line 716.
 LaTeX Font Info:    Font shape `T1/zi4/b/n' will be
-(Font)              scaled to size 10.0pt on input line 720.
+(Font)              scaled to size 10.0pt on input line 716.
 Package microtype Info: Character `textendash ' is missing
 (microtype)             in font `T1/zi4/b/n/10'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -1360,10 +1336,10 @@ Package microtype Info: Character `textemdash ' is missing
 (microtype)             Ignoring protrusion settings for this character.
 
 LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
-(Font)              using `T1/zi4/m/n' instead on input line 730.
+(Font)              using `T1/zi4/m/n' instead on input line 726.
 
 LaTeX Font Info:    Font shape `T1/zi4/m/it' will be
-(Font)              scaled to size 10.0pt on input line 740.
+(Font)              scaled to size 10.0pt on input line 736.
 Package microtype Info: Character `textendash ' is missing
 (microtype)             in font `T1/zi4/m/it/10'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -1371,127 +1347,127 @@ Package microtype Info: Character `textemdash ' is missing
 (microtype)             in font `T1/zi4/m/it/10'.
 (microtype)             Ignoring protrusion settings for this character.
 
-Class acmart Warning: A possible image without description on input line 779.
+Class acmart Warning: A possible image without description on input line 775.
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 790.
+(Font)              scaled to size 7.3pt on input line 786.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.2pt on input line 794.
+(Font)              scaled to size 6.2pt on input line 790.
 
-Overfull \hbox (3.37709pt too wide) in paragraph at lines 789--796
+Overfull \hbox (3.37709pt too wide) in paragraph at lines 785--792
 [][]|   [][][]|   []   |   []   |   []   |   []   |   []   |   []   |   []   | 
   []
  []
 
 
-Overfull \hbox (3.47926pt too wide) in paragraph at lines 799--802
+Overfull \hbox (3.47926pt too wide) in paragraph at lines 795--798
 [][]|   [][][]|   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (39.86484pt too wide) in paragraph at lines 846--853
+Overfull \hbox (39.86484pt too wide) in paragraph at lines 842--849
 [][]|   []   |   []   |   [][][]|   []   |   [][]\T1/LinuxLibertineT-TLF/m/n/10
  (-20) : []|   []   |   []
  []
 
 
-Overfull \hbox (1.52061pt too wide) in paragraph at lines 846--853
+Overfull \hbox (1.52061pt too wide) in paragraph at lines 842--849
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (14.6561pt too wide) in paragraph at lines 857--861
+Overfull \hbox (14.6561pt too wide) in paragraph at lines 853--857
 \T1/LinuxLibertineT-TLF/m/n/10 (-20) sponse to []|   []   |   []   |   []   |  
  []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (3.09816pt too wide) in paragraph at lines 864--865
+Overfull \hbox (3.09816pt too wide) in paragraph at lines 860--861
 |   []   |   []   []\T1/LinuxLibertineT-TLF/m/n/10 (-20) row in the []|   []   
 |   []   |   []   [][]|   []
  []
 
 
-Overfull \hbox (21.97539pt too wide) in paragraph at lines 867--875
+Overfull \hbox (21.97539pt too wide) in paragraph at lines 863--871
 |   []   |   []   |   []   |   [][][]|   []   |   []   |   []   |   []   |   []
    |   []   |   []   |   []
  []
 
 
-Overfull \hbox (15.7635pt too wide) in paragraph at lines 867--875
+Overfull \hbox (15.7635pt too wide) in paragraph at lines 863--871
 |   []   |   []   |   [][][]|   []   |   []   |   []   |   []   |   []   |   []
 
  []
 
 [6.6]
-Overfull \hbox (4.03458pt too wide) in paragraph at lines 921--922
+Overfull \hbox (4.03458pt too wide) in paragraph at lines 917--918
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
   |   []   |   []
  []
 
 
-Overfull \hbox (2.73141pt too wide) in paragraph at lines 924--933
+Overfull \hbox (2.73141pt too wide) in paragraph at lines 920--929
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (14.87544pt too wide) in paragraph at lines 924--933
+Overfull \hbox (14.87544pt too wide) in paragraph at lines 920--929
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (33.19838pt too wide) in paragraph at lines 924--933
+Overfull \hbox (33.19838pt too wide) in paragraph at lines 920--929
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
   |   []
  []
 
 
-Overfull \hbox (13.20131pt too wide) in paragraph at lines 941--948
+Overfull \hbox (13.20131pt too wide) in paragraph at lines 937--944
 []|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [
 ]
  []
 
 
-Overfull \hbox (8.72752pt too wide) in paragraph at lines 941--948
+Overfull \hbox (8.72752pt too wide) in paragraph at lines 937--944
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
   |   []
  []
 
 
-Overfull \hbox (16.52922pt too wide) in paragraph at lines 941--948
+Overfull \hbox (16.52922pt too wide) in paragraph at lines 937--944
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (12.42061pt too wide) in paragraph at lines 954--955
+Overfull \hbox (12.42061pt too wide) in paragraph at lines 950--951
 []|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [
 ]
  []
 
 
-Overfull \hbox (23.9274pt too wide) in paragraph at lines 954--955
+Overfull \hbox (23.9274pt too wide) in paragraph at lines 950--951
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
   |   []
  []
 
 
-Overfull \hbox (5.13065pt too wide) in paragraph at lines 954--955
+Overfull \hbox (5.13065pt too wide) in paragraph at lines 950--951
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (5.8406pt too wide) in paragraph at lines 957--966
+Overfull \hbox (5.8406pt too wide) in paragraph at lines 953--962
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (8.09244pt too wide) in paragraph at lines 957--966
+Overfull \hbox (8.09244pt too wide) in paragraph at lines 953--962
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
   |   []
  []
 
 
-Overfull \hbox (14.84975pt too wide) in paragraph at lines 957--966
+Overfull \hbox (14.84975pt too wide) in paragraph at lines 953--962
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
@@ -1503,32 +1479,32 @@ Underfull \vbox (badness 2698) has occurred while \output is active []
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1026.
+               Default added (so using `tbp') on input line 1022.
 
 <media/amazon.png, id=240, 975.645pt x 726.715pt>
 File: media/amazon.png Graphic file (type png)
 <use media/amazon.png>
-Package pdftex.def Info: media/amazon.png  used on input line 1104.
+Package pdftex.def Info: media/amazon.png  used on input line 1100.
 (pdftex.def)             Requested size: 240.94499pt x 179.46054pt.
 
-Class acmart Warning: A possible image without description on input line 1105.
+Class acmart Warning: A possible image without description on input line 1101.
 
 <media/ubereats.png, id=241, 1027.84pt x 614.295pt>
 File: media/ubereats.png Graphic file (type png)
 <use media/ubereats.png>
-Package pdftex.def Info: media/ubereats.png  used on input line 1112.
+Package pdftex.def Info: media/ubereats.png  used on input line 1108.
 (pdftex.def)             Requested size: 240.94499pt x 144.00314pt.
 
-Class acmart Warning: A possible image without description on input line 1113.
+Class acmart Warning: A possible image without description on input line 1109.
 
 [8.8]
 <media/instacart.png, id=257, 1027.84pt x 686.565pt>
 File: media/instacart.png Graphic file (type png)
 <use media/instacart.png>
-Package pdftex.def Info: media/instacart.png  used on input line 1155.
+Package pdftex.def Info: media/instacart.png  used on input line 1151.
 (pdftex.def)             Requested size: 240.94499pt x 160.9447pt.
 
-Class acmart Warning: A possible image without description on input line 1156.
+Class acmart Warning: A possible image without description on input line 1152.
 
 
 Underfull \vbox (badness 6157) has occurred while \output is active []
@@ -1537,10 +1513,10 @@ Underfull \vbox (badness 6157) has occurred while \output is active []
 <media/blogger.png, id=278, 843.15pt x 531.9875pt>
 File: media/blogger.png Graphic file (type png)
 <use media/blogger.png>
-Package pdftex.def Info: media/blogger.png  used on input line 1186.
+Package pdftex.def Info: media/blogger.png  used on input line 1182.
 (pdftex.def)             Requested size: 240.94499pt x 152.02388pt.
 
-Class acmart Warning: A possible image without description on input line 1187.
+Class acmart Warning: A possible image without description on input line 1183.
 
 
 Underfull \vbox (badness 3108) has occurred while \output is active []
@@ -1549,18 +1525,18 @@ Underfull \vbox (badness 3108) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [10.10 <./media/instacart.png> <./media/blogger.png>]
-Overfull \hbox (20.42648pt too wide) in paragraph at lines 1287--1293
+Overfull \hbox (20.42648pt too wide) in paragraph at lines 1283--1289
 |   []   |   []   |   []   |   []   |   [][][]|   []   |   []   |   []
  []
 
 
-Overfull \hbox (13.95834pt too wide) in paragraph at lines 1287--1293
+Overfull \hbox (13.95834pt too wide) in paragraph at lines 1283--1289
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
   |   []
  []
 
 
-Overfull \hbox (10.39757pt too wide) in paragraph at lines 1306--1307
+Overfull \hbox (10.39757pt too wide) in paragraph at lines 1302--1303
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
   |   []
  []
@@ -1569,123 +1545,123 @@ Overfull \hbox (10.39757pt too wide) in paragraph at lines 1306--1307
 Underfull \vbox (badness 1558) has occurred while \output is active []
 
 
-Overfull \hbox (7.87773pt too wide) in paragraph at lines 1312--1318
+Overfull \hbox (7.87773pt too wide) in paragraph at lines 1308--1314
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (7.16441pt too wide) in paragraph at lines 1312--1318
+Overfull \hbox (7.16441pt too wide) in paragraph at lines 1308--1314
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   [][][][]|   []
  []
 
 
-Overfull \hbox (1.13762pt too wide) in paragraph at lines 1312--1318
+Overfull \hbox (1.13762pt too wide) in paragraph at lines 1308--1314
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
   |   []
  []
 
 
-Overfull \hbox (1.19458pt too wide) in paragraph at lines 1324--1331
+Overfull \hbox (1.19458pt too wide) in paragraph at lines 1320--1327
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
   |   []   |   []
  []
 
 
-Overfull \hbox (1.60738pt too wide) in paragraph at lines 1324--1331
+Overfull \hbox (1.60738pt too wide) in paragraph at lines 1320--1327
 |   []   |   []   |   []   [][][][]|   []   |   [][][][] []|   []   |   []
  []
 
 
-Overfull \hbox (9.94658pt too wide) in paragraph at lines 1324--1331
+Overfull \hbox (9.94658pt too wide) in paragraph at lines 1320--1327
 |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (36.89648pt too wide) in paragraph at lines 1324--1331
+Overfull \hbox (36.89648pt too wide) in paragraph at lines 1320--1327
 |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (23.91351pt too wide) in paragraph at lines 1346--1347
+Overfull \hbox (23.91351pt too wide) in paragraph at lines 1342--1343
 []|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (35.27147pt too wide) in paragraph at lines 1346--1347
+Overfull \hbox (35.27147pt too wide) in paragraph at lines 1342--1343
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (47.25641pt too wide) in paragraph at lines 1346--1347
+Overfull \hbox (47.25641pt too wide) in paragraph at lines 1342--1343
 |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (4.4527pt too wide) in paragraph at lines 1346--1347
+Overfull \hbox (4.4527pt too wide) in paragraph at lines 1342--1343
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (15.16852pt too wide) in paragraph at lines 1346--1347
+Overfull \hbox (15.16852pt too wide) in paragraph at lines 1342--1343
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (11.6944pt too wide) in paragraph at lines 1346--1347
+Overfull \hbox (11.6944pt too wide) in paragraph at lines 1342--1343
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (9.90546pt too wide) in paragraph at lines 1365--1366
+Overfull \hbox (9.90546pt too wide) in paragraph at lines 1361--1362
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (8.66167pt too wide) in paragraph at lines 1365--1366
+Overfull \hbox (8.66167pt too wide) in paragraph at lines 1361--1362
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
   |   []
  []
 
 
-Overfull \hbox (12.0105pt too wide) in paragraph at lines 1365--1366
+Overfull \hbox (12.0105pt too wide) in paragraph at lines 1361--1362
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (7.53131pt too wide) in paragraph at lines 1365--1366
+Overfull \hbox (7.53131pt too wide) in paragraph at lines 1361--1362
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (22.91734pt too wide) in paragraph at lines 1372--1380
+Overfull \hbox (22.91734pt too wide) in paragraph at lines 1368--1376
 []|   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (11.2675pt too wide) in paragraph at lines 1372--1380
+Overfull \hbox (11.2675pt too wide) in paragraph at lines 1368--1376
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
   |   []
  []
 
 
-Overfull \hbox (22.38248pt too wide) in paragraph at lines 1372--1380
+Overfull \hbox (22.38248pt too wide) in paragraph at lines 1368--1376
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
   |   []
  []
 
 [11.11]
-Overfull \hbox (9.26761pt too wide) in paragraph at lines 1381--1386
+Overfull \hbox (9.26761pt too wide) in paragraph at lines 1377--1382
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
   |   []
  []
 
 
-Overfull \hbox (7.95444pt too wide) in paragraph at lines 1400--1401
+Overfull \hbox (7.95444pt too wide) in paragraph at lines 1396--1397
 []|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (1.84755pt too wide) in paragraph at lines 1400--1401
+Overfull \hbox (1.84755pt too wide) in paragraph at lines 1396--1397
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
   |   []
  []
@@ -1697,36 +1673,36 @@ Underfull \vbox (badness 3250) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (21.16454pt too wide) in paragraph at lines 1567--1568
+Overfull \hbox (21.16454pt too wide) in paragraph at lines 1563--1564
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
   |   []   |   []
  []
 
 
-Overfull \hbox (8.30846pt too wide) in paragraph at lines 1570--1592
+Overfull \hbox (8.30846pt too wide) in paragraph at lines 1566--1588
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
   |   []
  []
 
 
-Overfull \hbox (1.85057pt too wide) in paragraph at lines 1570--1592
+Overfull \hbox (1.85057pt too wide) in paragraph at lines 1566--1588
 |   []   [][]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |  
  []
  []
 
 
-Overfull \hbox (8.56558pt too wide) in paragraph at lines 1570--1592
+Overfull \hbox (8.56558pt too wide) in paragraph at lines 1566--1588
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (18.73927pt too wide) in paragraph at lines 1570--1592
+Overfull \hbox (18.73927pt too wide) in paragraph at lines 1566--1588
 []\T1/LinuxLibertineT-TLF/m/n/10 (-20) cen-tral-ized code re-view, []|   []   |
    []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (15.19057pt too wide) in paragraph at lines 1570--1592
+Overfull \hbox (15.19057pt too wide) in paragraph at lines 1566--1588
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
@@ -1734,52 +1710,52 @@ Overfull \hbox (15.19057pt too wide) in paragraph at lines 1570--1592
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [13.13]
-Overfull \hbox (2.56268pt too wide) in paragraph at lines 1604--1605
+Overfull \hbox (2.56268pt too wide) in paragraph at lines 1600--1601
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
   |   []
  []
 
 
-Overfull \hbox (2.28658pt too wide) in paragraph at lines 1604--1605
+Overfull \hbox (2.28658pt too wide) in paragraph at lines 1600--1601
 |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (22.6043pt too wide) in paragraph at lines 1606--1616
+Overfull \hbox (22.6043pt too wide) in paragraph at lines 1602--1612
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (8.03995pt too wide) in paragraph at lines 1606--1616
+Overfull \hbox (8.03995pt too wide) in paragraph at lines 1602--1612
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
   |   []
  []
 
 
-Overfull \hbox (13.20131pt too wide) in paragraph at lines 1631--1632
+Overfull \hbox (13.20131pt too wide) in paragraph at lines 1627--1628
 []|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [
 ]
  []
 
 
-Overfull \hbox (8.72752pt too wide) in paragraph at lines 1631--1632
+Overfull \hbox (8.72752pt too wide) in paragraph at lines 1627--1628
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
   |   []
  []
 
 
-Overfull \hbox (7.9315pt too wide) in paragraph at lines 1631--1632
+Overfull \hbox (7.9315pt too wide) in paragraph at lines 1627--1628
 |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (6.7425pt too wide) in paragraph at lines 1631--1632
+Overfull \hbox (6.7425pt too wide) in paragraph at lines 1627--1628
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
   |   []
  []
 
 
-Overfull \hbox (14.64362pt too wide) in paragraph at lines 1631--1632
+Overfull \hbox (14.64362pt too wide) in paragraph at lines 1627--1628
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
@@ -1831,11 +1807,11 @@ Class acmart Warning: Some images may lack descriptions.
 Overfull \vbox (1.90399pt too high) has occurred while \output is active []
 
 [16.16]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1782.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1782.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1778.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1778.
 (./diff.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1782.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1782.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1778.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1778.
 
 Package rerunfilecheck Info: File `diff.out' has not changed.
 (rerunfilecheck)             Checksum: EE99BE84C5613C43F7787D46CB699B3A;3152.
@@ -1849,7 +1825,7 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  20320 strings out of 492616
  307423 string characters out of 6129482
- 542667 words of memory out of 5000000
+ 541712 words of memory out of 5000000
  23228 multiletter control sequences out of 15000+600000
  173250 words of font info for 347 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
@@ -1871,7 +1847,7 @@ ibertine/LinLibertineTBI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/pu
 blic/libertine/LinLibertineTI.pfb></usr/local/texlive/2019/texmf-dist/fonts/typ
 e1/public/amsfonts/latxfont/lasy6.pfb></usr/local/texlive/2019/texmf-dist/fonts
 /type1/public/newtx/txsys.pfb>
-Output written on diff.pdf (16 pages, 2436973 bytes).
+Output written on diff.pdf (16 pages, 2436839 bytes).
 PDF statistics:
  480 PDF objects out of 1000 (max. 8388607)
  403 compressed objects within 5 object streams

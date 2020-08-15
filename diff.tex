@@ -1,7 +1,7 @@
 %%
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL initial-submission.tex   Sun Aug  9 12:56:33 2020
-%DIF ADD paper.tex                Sat Aug 15 16:36:16 2020
+%DIF ADD paper.tex                Sat Aug 15 17:12:18 2020
 %% This is file `sample-sigconf.tex',
 %% generated with the docstrip utility.
 %%
@@ -221,16 +221,16 @@ Data}
   implements \DIFdelbegin \DIFdel{table-driven customization for existing applications }\DIFdelend \DIFaddbegin \DIFadd{data-driven customization on the web }\DIFaddend using web scraping.
   Through concrete examples, we show that this paradigm can support
   \DIFaddbegin \DIFadd{useful }\DIFaddend extensions to many real websites, \DIFdelbegin \DIFdel{ranging from sorting and filtering existing data to adding entire new features. We }\DIFdelend \DIFaddbegin \DIFadd{and we }\DIFaddend share reflections from
-  our experiences using Wildcard\DIFdelbegin \DIFdel{, on both its strengths
+  our experiences using \DIFdelbegin \DIFdel{Wildcard, on both its strengths
   and limitations relative to other customization approaches.
-}\DIFdelend \DIFaddbegin \DIFadd{.
+}\DIFdelend \DIFaddbegin \DIFadd{the tool.
 }
 
   \DIFaddend Finally, we \DIFdelbegin \DIFdel{explore how this paradigm might lead to new software architectures
-  that encourage this form of end-user customization}\DIFdelend \DIFaddbegin \DIFadd{share our broader vision for a future where end users have
-  greater access to the data in their applications, and better tools for
-  taking advantage of that data in the context of everyday software
-  usage}\DIFaddend .
+  that encourage this form of end-user customization}\DIFdelend \DIFaddbegin \DIFadd{share our broader vision for data-driven customization: a
+  future where end users have greater access to the data inside their
+  applications, and better tools for flexibly making use of that data in
+  the context of everyday software usage}\DIFaddend .
 \end{abstract}
 
 %%
@@ -354,7 +354,7 @@ the general paradigm.
 \DIFdel{We have successfully used Wildcard to build customizations for }\DIFdelend \DIFaddbegin \DIFadd{We introduce
 the tool with an example customization of Hacker News in
 Section~\ref{sec:example}, and then describe the implementation in
-}{[}\DIFadd{Section~\ref{sec:architecture}. In Section~\ref{sec:reflections}, we
+Section~\ref{sec:architecture}. In Section~\ref{sec:reflections}, we
 present evidence that Wildcard can produce useful customizations, by
 sharing reflections from customizing }\DIFaddend 11 different websites \DIFdelbegin \DIFdel{that serve }\DIFdelend \DIFaddbegin \DIFadd{in ways that
 met }\DIFaddend our own personal needs.
@@ -652,61 +652,57 @@ between the table and the original UI.
 DOM scraping adapters \DIFdelbegin \DIFdel{are the essential component that enables }\DIFdelend \DIFaddbegin \DIFadd{enable }\DIFaddend Wildcard to interface with an existing
 website UI. \DIFdelbegin \DIFdel{In addition to }\DIFdelend \DIFaddbegin \DIFadd{A DOM scraping adapter fulfills }\DIFaddend the standard web scraping
 \DIFdelbegin \DIFdel{problem }\DIFdelend \DIFaddbegin \DIFadd{task }\DIFaddend of extracting a table of data from the DOM, \DIFdelbegin \DIFdel{a
-scraping adapter must also manipulate the DOM to reorder rows, edit form
-entries, and inject annotations as the
-tableis edited}\DIFdelend \DIFaddbegin \DIFadd{but it must also handle
-the reverse direction: manipulating the DOM to reflect edits to the
-table}\DIFaddend .
+scraping adapter must also manipulate the
+DOM to reorder rows, edit form
+entries, and inject annotations as the tableis edited}\DIFdelend \DIFaddbegin \DIFadd{but it also acts in the
+reverse direction: manipulating the DOM to reflect edits to the table}\DIFaddend .
 
 \DIFdelbegin \DIFdel{Because every website has unique content, we rely on programmers to
-create a DOM scraping adapter for each individual website to make it
-available for customization in Wildcard. To make this
-approach viable, we have built a generic DOM scraping adapter which a programmer can
-configure with the minimal site-specific parts}\DIFdelend \DIFaddbegin \DIFadd{Currently, we require DOM scraping adapters to be programmed manually
-for each website using Javascript code. It might seem that this
-prohibits non-programmer users from using the system, but we solve this
+create a DOM scraping adapter for each
+individual website to make it
+available for customization in Wildcard. To make this approach viable, we have built a generic DOM scraping adapter which a programmer can
+configure with the minimal site-specific parts}\DIFdelend \DIFaddbegin \DIFadd{In Wildcard, DOM scraping adapters are programmed manually for each
+website using Javascript code. It might seem that this prohibits
+non-programmer users from using the system at all, but we solve this
 problem via a shared repository of adapters. Once an adapter is
-programmed for a website, it is added to a shared code repository,
-enabling any end user to perform customizations on that website}\DIFaddend .
+programmed for a website, it is added to the shared repository, enabling
+any end user to perform customizations on that website}\DIFaddend .
 
 \DIFdelbegin \emph{\DIFdel{Basic metadata}}%DIFAUXCMD
-\DIFdel{: The programmer specifies URL patterns that the
-adapter should activate on , and a set of column names and types to
-return in the table.
-}\DIFdelend \DIFaddbegin \DIFadd{There are other ways a DOM scraping adapter could be produced which
-would reduce this dependence on programmers: an end user could specify
+\DIFdel{: The programmer specifies URL patterns that the adapter should activate on , and a set of column names and types to
+return in the table}\DIFdelend \DIFaddbegin \DIFadd{In the future, other strategies for producing DOM scraping adapters
+could reduce this dependence on programmers: an end user could specify
 the scraping logic via demonstration, or the desired data table could be
 automatically inferred from the page. While we are interested in these
-techniques and discuss them later in Section~\ref{sec:visions}, we
-believe that a shared repository of manually programmed adapters is a
-pragmatic starting point; given that many users visit the same popular
-websites,a critical mass of adapters could serve the needs of many
-users.
-}\DIFaddend 
+techniques and discuss them in Section~\ref{sec:visions}, we believe
+that a shared repository of manually programmed adapters is a pragmatic
+starting point; given that many users visit the same popular websites,a
+critical mass of adapters could serve the needs of many users}\DIFaddend .
 
 \DIFdelbegin \emph{\DIFdel{Specifying scraping logic}}%DIFAUXCMD
 \DIFdel{: The main component of a site-specific
-adapter is a
-single Javascript function that extracts relevant elements
-from the page using web scraping technqiues.
-For each scraped row of data, the programmer must return a unique identifier, and values for
-each column in the table. }%DIFDELCMD < 
+adapter is a single Javascript function that extracts relevant elements
+from the page using web scraping technqiues. For each scraped row of
+data,the programmer must return a
+unique identifier, and values for
+each column in the table}\DIFdelend \DIFaddbegin \DIFadd{To make it easier to create these adapters, Wildcard provides a
+framework that makes the process feel more like writing unidirectional
+scraping code than performing a complex bidirectional synchronization.
+The key idea is this: programmers return pointers to DOM elements
+representing table rows and table cells; Wildcard extracts data from
+these DOM elements, but it also uses the pointers to synchronize table
+edits back into the page}\DIFaddend . \DIFdelbegin %DIFDELCMD < 
 
 %DIFDELCMD < %%%
-\DIFdel{The generic adapter then wraps thisscraping function to
-implement the table adapter interface}\DIFdelend \DIFaddbegin \DIFadd{To ease the burden on programmers of creating these adapters, we have
-created a framework makes the process feel more like writing
-unidirectional scraping code than performing a complex bidirectional
-synchronization. The key idea is this: programmers return pointers to
-DOM elements representing table rows and table cells; Wildcard extracts
-data from these DOM elements, but it also uses the pointers to
-synchronize table edits back into the page}\DIFaddend . For example, when the user
-sorts the table\DIFdelbegin \DIFdel{view, the generic adapter synchronizes the sort order to the DOM by
-removing the DOM elements corresponding to }\DIFdelend \DIFaddbegin \DIFadd{, }\DIFaddend the \DIFdelbegin \DIFdel{rows in the table and
+\DIFdel{The generic adapter then wraps thisscraping function to implement the table adapter interface. }\DIFdelend For example, when the user sorts the table\DIFdelbegin \DIFdel{view,
+the generic adapter synchronizes the sort order to the DOM
+by
+removing the DOM elements corresponding to }\DIFdelend \DIFaddbegin \DIFadd{,
+}\DIFaddend the \DIFdelbegin \DIFdel{rows in the table and
 reinserting them back into the page in the
   new order.
-}\DIFdelend \DIFaddbegin \DIFadd{DOM elements representing the table rows are moved
-around in the DOM to reflect the new sorted order.
+}\DIFdelend \DIFaddbegin \DIFadd{DOM elements representing the table rows are moved around in the DOM
+to reflect the new sorted order.
 }\DIFaddend 
 
 \DIFdelbegin \emph{\DIFdel{Choosing an ID}}%DIFAUXCMD
