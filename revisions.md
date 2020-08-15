@@ -54,3 +54,18 @@ These are revisions requested by the reviewers. Checked off if they've been addr
 - [x] I very much like the focus on the practical consideration around IDs, and the heuristic of equating them with URLs. On the web, this is an often occurrence. This is a concrete example of why I think you want to narrow your claims to the area of the web. It would strengthen your work.
 - [ ] About the idea of shared storage adapter: indeed, it can be interesting, but it is out of the scope of this paper. I believe removing this mentioning at this point will help focusing the paper on a single message.
 - [ ] I did not understand the point and mechanism exemplified in Figure 7 and section 4.1.4 about controlling the editing experience. Please rephrase.
+
+
+scraps
+
+### Future Adapters
+
+We have designed the table adapter API to be general enough to support other types of useful adapters in the future. Here are two examples:
+
+**Integrated website adapters**: A key benefit of the table adapter abstraction is that Wildcard is not coupled to web scraping as the only means for integrating with existing sites, but can also accommodate first party developers adding support directly into their own websites. An "integrated website adapter" installed by the developer could directly access the internal state of the application, providing the same functionality as a DOM scraping adapter but in a more robust way.
+
+With the advent of rich frontend web frameworks, structured application state is now often available in the web client. We suspect it is possible to create plugins for frontend frameworks that expose this state to Wildcard with only minimal effort from the application developers. To test this hypothesis, we created an early proof-of-concept of an integrated website adapter for the popular [Redux](https://redux.js.org/) Javascript state management library. In Redux, app developers conveniently already represent the state of a user interface as a single object, so to expose a table of data to Wildcard, the developer simply writes a function that maps the centralized state object to a table.
+
+Customizability is sometimes a key selling point for software. An integrated website adapter would provide a way for developers to integrate with an ecosystem of formulas and customization tools without needing to build all that functionality from scratch.
+
+**Shared storage adapter**: It would be useful to share user annotations among users and across devices—for example, collaboratively taking notes with friends on options for places to stay together on a trip. The existing local storage adapter could be extended to share live synchronized data with other users. This could be achieved through a centralized web server, or through P2P connections that might provide stronger privacy guarantees.

@@ -488,71 +488,46 @@ layer}. The data shown in the table is a projection of some underlying
 state, and edits to the table can have complex effects on the underlying
 state.
 
-Here we describe the abstract interface fulfilled by a table adapter,
-and then describe specific types of table adapters we've built so far in
-the Wildcard system.
-
-\hypertarget{abstract-interface}{%
-\subsubsection{Abstract interface}\label{abstract-interface}}
-
-\emph{Returning a table}: A table adapter exposes a table of data: an
-ordered list of records. Each record carries a unique identifier and
-associates named attributes with values. Tables have a typed schema, so
-the same attributes are shared across all records. We currently support
-strings, numeric values, booleans, and datetimes as types. The columns
-also carry some additional metadata, such as whether or not they are
-read-only or editable.
-
-A table adapter can update the contents of a table at any time in
-response to changes in the underlying state (e.g., a DOM scraping
-adapter can update the table when the page body changes). When data
-changes, the query view is reactively updated in response.
-
-\emph{Handling edits}: The query engine can issue a request to a table
-adapter to make an edit to a record. The meaning of making an edit can
-vary depending on the adapter: in the local storage adapter, a new value
-may be persisted into local storage; in the DOM scraping adapter, an
-edit may result in changing the value of a form field.
-
-In addition, the query engine also sends additional information about
-the combined query view to each table adapter:
-
-\emph{Sorting/filtering}: When the user sorts or filters the query view,
-an ordered list of visible IDs is sent to each table adapter. The DOM
-scraping adapter uses this information to change the list of rows shown
-in the web page.
-
-\emph{Data from other tables}: The query engine provides each table
-adapter with the entire combined table shown to the user. The DOM
-scraping adapter uses this for injecting annotations---values from other
-tables are added to the original web page.
-
-\emph{Currently selected record}: As the user clicks around the table
-view, the query engine broadcasts the record currently selected by the
-user to each table adapter. The DOM scraping adapter uses this
-information to highlight the row in the page that corresponds to the
-selected row in the table, which helps the user understand the mapping
-between the table and the original UI.
+Here we describe the three types of table adapters we have built so far
+in Wildcard. These do not represent an exhaustive set of all possible
+table adapters---in Section~\ref{sec:visions} we discuss other types of
+adapters that would fit well into the general paradigm.
 
 \hypertarget{dom-scraping-adapters}{%
 \subsubsection{DOM scraping adapters}\label{dom-scraping-adapters}}
 
 DOM scraping adapters enable Wildcard to interface with an existing
-website UI. A DOM scraping adapter performs the standard web scraping
+website UI. A DOM scraping adapter fulfills the standard web scraping
 task of extracting a table of data from the DOM, but it must also handle
 the reverse direction: manipulating the DOM to reflect edits to the
 table.
 
-Currently, DOM scraping adapters are programmed manually for each
-website using Javascript code. Once an adapter is defined for a website,
-it is added to a shared repository where it can be used by
-non-programmer users for customization.
+Currently, we require DOM scraping adapters to be programmed manually
+for each website using Javascript code. It might seem that this
+prohibits non-programmer users from using the system, but we solve this
+problem via a shared repository of adapters. Once an adapter is
+programmed for a website, it is added to a shared code repository,
+enabling any end user to perform customizations on that website.
 
-To make the adapter definition process as easy as possible, Wildcard
-provides a scraping framework which a programmer can configure with the
-minimal site-specific parts. Figure~\ref{fig:scraper-code} shows an
-example of the scraper code used for the Hacker News example. It
-contains the following parts:
+There are other ways a DOM scraping adapter could be produced which
+would reduce this dependence on programmers: an end user could specify
+the scraping logic via demonstration, or the desired data table could be
+automatically inferred from the page. While we are interested in these
+techniques and discuss them later in Section~\ref{sec:visions}, we
+believe that a shared repository of manually programmed adapters is a
+pragmatic starting point; given that many users visit the same popular
+websites,a critical mass of adapters could serve the needs of many
+users.
+
+To ease the burden on programmers of creating these adapters, we have
+created a framework makes the process feel more like writing
+unidirectional scraping code than performing a complex bidirectional
+synchronization. The key idea is this: programmers return pointers to
+DOM elements representing table rows and table cells; Wildcard extracts
+data from these DOM elements, but it also uses the pointers to
+synchronize table edits back into the page. For example, when the user
+sorts the table, the DOM elements representing the table rows are moved
+around in the DOM to reflect the new sorted order.
 
 \begin{figure*}
 
@@ -614,28 +589,37 @@ contains the following parts:
 \caption{Source code for the Hacker News scraper. Some details removed for brevity.}\label{fig:scraper-code}
 \end{figure*}
 
-\emph{Basic metadata}: The programmer specifies URL patterns that the
-adapter should activate on, and a set of column names and types to
-return in the table.
+Figure~\ref{fig:scraper-code} shows an example of the scraper code used
+for the Hacker News example (with some code eliminated for brevity.) It
+defines the following main components:
 
-\emph{Specifying scraping logic}: The main component of a site-specific
-adapter is a single Javascript function that extracts relevant elements
-from the page using web scraping technqiues. For each scraped row of
-data, the programmer must return a unique identifier, and values for
-each column in the table.
+\begin{itemize}
+\tightlist
+\item
+  \texttt{enabled}: defines when this adapter should run, usually based
+  on the active URL in the browser.\footnote{Currently Wildcard can only
+    show a single table at a time, so if multiple adapters are enabled
+    for a single page, we arbitrarily pick one. It would be a
+    straightforward extension to allow the user to switch between
+    multiple possible tables available on the page.}
+\item
+  \texttt{attributes}: defines a schema for the table, with a name and
+  type for each column
+\item
+  \texttt{scrapePage}: defines a scraping function which returns an
+  array of objects, each containing the data for a single row of the
+  table.
+\end{itemize}
 
-The generic adapter then wraps this scraping function to implement the
-table adapter interface. For example, when the user sorts the table
-view, the generic adapter synchronizes the sort order to the DOM by
-removing the DOM elements corresponding to the rows in the table and
-reinserting them back into the page in the new order.
+Here are some of the concerns that emerge when building adapters in
+practice:
 
-\emph{Choosing an ID}: When possible, it is best to choose a server-side
-identifier that remains stable across pageloads. This enables user
-annotations persisted in local storage to be associated with the same
-records on subsequent pageloads. We have found that it's usually
-possible to find such an identifier; for example, each item in a page
-often contains a link to a page with more details, with a URL that
+\emph{Choosing a row ID}: When possible, it is best to choose a
+server-side identifier that remains stable across pageloads. This
+enables user annotations persisted in local storage to be associated
+with the same records on subsequent pageloads. We have found that it's
+usually possible to find such an identifier; for example, each item in a
+page often contains a link to a page with more details, with a URL that
 contains a stable ID.
 
 \emph{Types of scraped values}: For each individual value within a row,
@@ -644,17 +628,10 @@ programmer-specified scraping function.
 
 The default option is to return a DOM element, in which case the generic
 adapter extracts the text contents of the DOM element and casts them to
-the type of the column. For example, if the scraping function returns a
-\texttt{\textless{}div\textgreater{}} containing the string ``1.23'',
-and the column has a numeric type, the generic adapter extracts the
-number 1.23. The advantage of returning a DOM element is that the value
-is editable---when the user changes the value in the table, the generic
-adapter can simply overwrite the inner contents of the DOM element. In
-practice, this is most useful for editing the value of form input
-fields. It's technically possible to edit the contents of any element in
-the page (e.g.~editing the title of a post on Hacker News), but this
-often isn't particularly useful, so adapter authors have the ability to
-mark fields as readonly.
+the type of the column. The advantage of returning a DOM element is that
+the value is editable---when the user changes the value in the table,
+the generic adapter can simply overwrite the inner contents of the DOM
+element.
 
 Another option is to directly return a value, rather than returning a
 DOM element. The advantage of this approach is that the adapter author
@@ -664,16 +641,27 @@ disadvantage is that the field is no longer writable. The computation
 used to derive the value isn't reversible, so there's no way to reflect
 a table edit in the DOM.
 
-\emph{Other site-specific customization}: The programmer can optionally
-override other behavior of the generic DOM scraping adapter, including
-logic for when to re-run the scraping function in response to page
-changes, how to style injected annotations, and how to style the
-currently selected row in the table. We've chosen sensible defaults that
-generally result in a workable adapter without needing to change these
-options, but they can improve the experience on a specific website. For
-example, by default we highlight the currently selected row with a blue
-border, but on some sites this is hard to see or breaks the layout, so
-setting a background color works better.
+\emph{Optional overrides}: In order to turn a unidirectional scraping
+function into a bidirectional scraping adapter, there are a number of
+behaviors that must be specified:
+
+\begin{itemize}
+\tightlist
+\item
+  when should the scraping function be re-run in response to changes on
+  the page?
+\item
+  how should injected annotations appear in table rows?
+\item
+  when the user selects a row in the table, how should the corresponding
+  row in the DOM be highlighted?
+\end{itemize}
+
+The scraping framework defines sensible defaults that work well on many
+sites, but the programmer can optionally override them to provide better
+site-specific behavior. For example, the Hacker News adapter specifies
+annotation options which make user annotations appear more naturally in
+the context of the original design.
 
 \hypertarget{ajax-scraping-adapters}{%
 \subsubsection{AJAX scraping adapters}\label{ajax-scraping-adapters}}
@@ -712,45 +700,6 @@ Section~\ref{sec:example}. When the user makes edits to these columns,
 new rows are created in the local storage table. The rows contain the
 record ID from the DOM scraping adapter, which enables them to be
 re-associated with the same records on subsequent pageloads.
-
-\hypertarget{future-adapters}{%
-\subsubsection{Future Adapters}\label{future-adapters}}
-
-We have designed the table adapter API to be general enough to support
-other types of useful adapters in the future. Here are two examples:
-
-\textbf{Integrated website adapters}: A key benefit of the table adapter
-abstraction is that Wildcard is not coupled to web scraping as the only
-means for integrating with existing sites, but can also accommodate
-first party developers adding support directly into their own websites.
-An ``integrated website adapter'' installed by the developer could
-directly access the internal state of the application, providing the
-same functionality as a DOM scraping adapter but in a more robust way.
-
-With the advent of rich frontend web frameworks, structured application
-state is now often available in the web client. We suspect it is
-possible to create plugins for frontend frameworks that expose this
-state to Wildcard with only minimal effort from the application
-developers. To test this hypothesis, we created an early
-proof-of-concept of an integrated website adapter for the popular
-\href{https://redux.js.org/}{Redux} Javascript state management library.
-In Redux, app developers conveniently already represent the state of a
-user interface as a single object, so to expose a table of data to
-Wildcard, the developer simply writes a function that maps the
-centralized state object to a table.
-
-Customizability is sometimes a key selling point for software. An
-integrated website adapter would provide a way for developers to
-integrate with an ecosystem of formulas and customization tools without
-needing to build all that functionality from scratch.
-
-\textbf{Shared storage adapter}: It would be useful to share user
-annotations among users and across devices---for example,
-collaboratively taking notes with friends on options for places to stay
-together on a trip. The existing local storage adapter could be extended
-to share live synchronized data with other users. This could be achieved
-through a centralized web server, or through P2P connections that might
-provide stronger privacy guarantees.
 
 \hypertarget{query-engine}{%
 \subsection{Query engine}\label{query-engine}}

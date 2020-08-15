@@ -1,7 +1,7 @@
 %%
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL initial-submission.tex   Sun Aug  9 12:56:33 2020
-%DIF ADD paper.tex                Sat Aug 15 10:45:20 2020
+%DIF ADD paper.tex                Sat Aug 15 12:08:48 2020
 %% This is file `sample-sigconf.tex',
 %% generated with the docstrip utility.
 %%
@@ -540,57 +540,79 @@ layer}. The data shown in the table is a projection of some underlying
 state, and edits to the table can have complex effects on the underlying
 state.
 
-Here we describe the abstract interface fulfilled by a table adapter,
-and then describe specific types of table adapters we've built so far in
-the Wildcard system.
+Here we describe the \DIFdelbegin \DIFdel{abstract interface fulfilled by a table adapter,
+and then describe specific }\DIFdelend \DIFaddbegin \DIFadd{three }\DIFaddend types of table adapters we \DIFdelbegin \DIFdel{'ve }\DIFdelend \DIFaddbegin \DIFadd{have }\DIFaddend built so far
+in \DIFdelbegin \DIFdel{the Wildcardsystem. }%DIFDELCMD < 
 
-\hypertarget{abstract-interface}{%
-\subsubsection{Abstract interface}\label{abstract-interface}}
+%DIFDELCMD < \hypertarget{abstract-interface}{%
+%DIFDELCMD < \subsubsection{Abstract interface}\label{abstract-interface}}
+%DIFDELCMD < 
 
-\emph{Returning a table}: A table adapter exposes a table of data: an
-ordered list of records. Each record carries a unique identifier and
+%DIFDELCMD < %%%
+\emph{\DIFdel{Returning a table}}%DIFAUXCMD
+\DIFdel{: A table adapter exposes a table of data: an ordered list of records. Each record carries a unique identifier and
 associates named attributes with values. Tables have a typed schema, so
 the same attributes are shared across all records. We currently support
 strings, numeric values, booleans, and datetimes as types. The columns
 also carry some additional metadata, such as whether or not they are
 read-only or editable.
+}%DIFDELCMD < 
 
-A table adapter can update the contents of a table at any time in
+%DIFDELCMD < %%%
+\DIFdel{A table adapter can update the contents of
+a table at any time in
 response to changes in the underlying state (e.g., a DOM scraping
 adapter can update the table when the page body changes). When data
 changes, the query view is reactively updated in response.
+}%DIFDELCMD < 
 
-\emph{Handling edits}: The query engine can issue a request to a table
+%DIFDELCMD < %%%
+\emph{\DIFdel{Handling edits}}%DIFAUXCMD
+\DIFdel{: The query engine can issue a request to a table
 adapter to make an edit to a record. The meaning of making an edit can
 vary depending on the adapter: in the local storage adapter, a new value
 may be persisted into local storage; in the DOM scraping adapter, an
-edit may result in changing the value of a form field.
+edit may result in changing the value of a form field}\DIFdelend \DIFaddbegin \DIFadd{Wildcard}\DIFaddend . \DIFaddbegin \DIFadd{These do not represent an exhaustive set of all possible
+table adapters---in Section~\ref{sec:visions} we discuss other types of
+adapters that would fit well into the general paradigm.
+}\DIFaddend 
 
-In addition, the query engine also sends additional information about
+\DIFdelbegin \DIFdel{In addition, the query engine also sends additional information about
 the combined query view to each table adapter:
+}%DIFDELCMD < 
 
-\emph{Sorting/filtering}: When the user sorts or filters the query view,
+%DIFDELCMD < %%%
+\emph{\DIFdel{Sorting/filtering}}%DIFAUXCMD
+\DIFdel{: When the user sorts or filters the query view,
 an ordered list of visible IDs is sent to each table adapter. The DOM
 scraping adapter uses this information to change the list of rows shown
 in the web page.
+}%DIFDELCMD < 
 
-\emph{Data from other tables}: The query engine provides each table
+%DIFDELCMD < %%%
+\emph{\DIFdel{Data from other tables}}%DIFAUXCMD
+\DIFdel{: The query engine provides each table
 adapter with the entire combined table shown to the user. The DOM
 scraping adapter uses this for injecting annotations---values from other
 tables are added to the original web page.
+}%DIFDELCMD < 
 
-\emph{Currently selected record}: As the user clicks around the table
+%DIFDELCMD < %%%
+\emph{\DIFdel{Currently selected record}}%DIFAUXCMD
+\DIFdel{: As the user clicks around the table
 view, the query engine broadcasts the record currently selected by the
 user to each table adapter. The DOM scraping adapter uses this
 information to highlight the row in the page that corresponds to the
 selected row in the table, which helps the user understand the mapping
 between the table and the original UI.
+}%DIFDELCMD < 
 
-\hypertarget{dom-scraping-adapters}{%
+%DIFDELCMD < %%%
+\DIFdelend \hypertarget{dom-scraping-adapters}{%
 \subsubsection{DOM scraping adapters}\label{dom-scraping-adapters}}
 
 DOM scraping adapters \DIFdelbegin \DIFdel{are the essential component that enables }\DIFdelend \DIFaddbegin \DIFadd{enable }\DIFaddend Wildcard to interface with an existing
-website UI. \DIFdelbegin \DIFdel{In addition to }\DIFdelend \DIFaddbegin \DIFadd{A DOM scraping adapter performs }\DIFaddend the standard web scraping
+website UI. \DIFdelbegin \DIFdel{In addition to }\DIFdelend \DIFaddbegin \DIFadd{A DOM scraping adapter fulfills }\DIFaddend the standard web scraping
 \DIFdelbegin \DIFdel{problem }\DIFdelend \DIFaddbegin \DIFadd{task }\DIFaddend of extracting a table of data from the DOM, \DIFdelbegin \DIFdel{a
 scraping adapter must also manipulate the DOM to reorder rows, edit form
 entries, and inject annotations as the
@@ -599,22 +621,59 @@ the reverse direction: manipulating the DOM to reflect edits to the
 table}\DIFaddend .
 
 \DIFdelbegin \DIFdel{Because every website has unique content, we rely on programmers to
-create a DOM scraping adapter for each
-individual website to make it available for customizationin Wildcard.
-To make this approach viable, we have built a generic DOM scraping adapter }\DIFdelend \DIFaddbegin \DIFadd{Currently, DOM scraping adapters are programmed manually for each
-website using Javascript code. Once an adapter is defined for a website,
-it is added to a shared repository where it can be used by
-non-programmer users for customization.
-}
+create a DOM scraping adapter for each individual website to make it
+available for customization in Wildcard. To make this
+approach viable, we have built a generic DOM scraping adapter which a programmer can
+configure with the minimal site-specific parts}\DIFdelend \DIFaddbegin \DIFadd{Currently, we require DOM scraping adapters to be programmed manually
+for each website using Javascript code. It might seem that this
+prohibits non-programmer users from using the system, but we solve this
+problem via a shared repository of adapters. Once an adapter is
+programmed for a website, it is added to a shared code repository,
+enabling any end user to perform customizations on that website}\DIFaddend .
 
-\DIFadd{To make the adapter definition process as easy as possible, Wildcard
-provides a scraping framework }\DIFaddend which a programmer can configure with the
-minimal site-specific parts. \DIFaddbegin \DIFadd{Figure~\ref{fig:scraper-code} shows an
-example of the scraper code used for the Hacker News example. It
-contains the following parts:
+\DIFdelbegin \emph{\DIFdel{Basic metadata}}%DIFAUXCMD
+\DIFdel{: The programmer specifies URL patterns that the
+adapter should activate on , and a set of column names and types to
+return in the table.
+}\DIFdelend \DIFaddbegin \DIFadd{There are other ways a DOM scraping adapter could be produced which
+would reduce this dependence on programmers: an end user could specify
+the scraping logic via demonstration, or the desired data table could be
+automatically inferred from the page. While we are interested in these
+techniques and discuss them later in Section~\ref{sec:visions}, we
+believe that a shared repository of manually programmed adapters is a
+pragmatic starting point; given that many users visit the same popular
+websites,a critical mass of adapters could serve the needs of many
+users.
 }\DIFaddend 
 
-\DIFaddbegin \begin{figure*}
+\DIFdelbegin \emph{\DIFdel{Specifying scraping logic}}%DIFAUXCMD
+\DIFdel{: The main component of a site-specific
+adapter is a
+single Javascript function that extracts relevant elements
+from the page using web scraping technqiues.
+For each scraped row of data, the programmer must return a unique identifier, and values for
+each column in the table. }%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdel{The generic adapter then wraps thisscraping function to
+implement the table adapter interface}\DIFdelend \DIFaddbegin \DIFadd{To ease the burden on programmers of creating these adapters, we have
+created a framework makes the process feel more like writing
+unidirectional scraping code than performing a complex bidirectional
+synchronization. The key idea is this: programmers return pointers to
+DOM elements representing table rows and table cells; Wildcard extracts
+data from these DOM elements, but it also uses the pointers to
+synchronize table edits back into the page}\DIFaddend . For example, when the user
+sorts the table\DIFdelbegin \DIFdel{view, the generic adapter synchronizes the sort order to the DOM by
+removing the DOM elements corresponding to }\DIFdelend \DIFaddbegin \DIFadd{, }\DIFaddend the \DIFdelbegin \DIFdel{rows in the table and
+reinserting them back into the page in the
+  new order.
+}\DIFdelend \DIFaddbegin \DIFadd{DOM elements representing the table rows are moved
+around in the DOM to reflect the new sorted order.
+}\DIFaddend 
+
+\DIFdelbegin \emph{\DIFdel{Choosing an ID}}%DIFAUXCMD
+\DIFdel{:
+}\DIFdelend \DIFaddbegin \begin{figure*}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -681,28 +740,39 @@ contains the following parts:
 \caption{\DIFaddFL{Source code for the Hacker News scraper. Some details removed for brevity.}}\label{fig:scraper-code}
 \end{figure*}
 
-\DIFaddend \emph{Basic metadata}: The programmer specifies URL patterns that the
-adapter should activate on, and a set of column names and types to
-return in the table.
+\DIFadd{Figure~\ref{fig:scraper-code} shows an example of the scraper code used
+for the Hacker News example (with some code eliminated for brevity.) It
+defines the following main components:
+}
 
-\emph{Specifying scraping logic}: The main component of a site-specific
-adapter is a single Javascript function that extracts relevant elements
-from the page using web scraping technqiues. For each scraped row of
-data, the programmer must return a unique identifier, and values for
-each column in the table.
+\begin{itemize}
+\tightlist
+\item
+  \texttt{\DIFadd{enabled}}\DIFadd{: defines when this adapter should run, usually based
+  on the active URL in the browser.}\footnote{\DIFadd{Currently Wildcard can only
+    show a single table at a time, so if multiple adapters are enabled
+    for a single page, we arbitrarily pick one. It would be a
+    straightforward extension to allow the user to switch between
+    multiple possible tables available on the page.}}
+\item
+  \texttt{\DIFadd{attributes}}\DIFadd{: defines a schema for the table, with a name and
+  type for each column
+}\item
+  \texttt{\DIFadd{scrapePage}}\DIFadd{: defines a scraping function which returns an
+  array of objects, each containing the data for a single row of the
+  table.
+}\end{itemize}
 
-The generic adapter then wraps this scraping function to implement the
-table adapter interface. For example, when the user sorts the table
-view, the generic adapter synchronizes the sort order to the DOM by
-removing the DOM elements corresponding to the rows in the table and
-reinserting them back into the page in the new order.
+\DIFadd{Here are some of the concerns that emerge when building adapters in
+practice:
+}
 
-\emph{Choosing an ID}: When possible, it is best to choose a server-side
-identifier that remains stable across pageloads. This enables user
-annotations persisted in local storage to be associated with the same
-records on subsequent pageloads. We have found that it's usually
-possible to find such an identifier; for example, each item in a page
-often contains a link to a page with more details, with a URL that
+\emph{\DIFadd{Choosing a row ID}}\DIFadd{: }\DIFaddend When possible, it is best to choose a
+server-side identifier that remains stable across pageloads. This
+enables user annotations persisted in local storage to be associated
+with the same records on subsequent pageloads. We have found that it's
+usually possible to find such an identifier; for example, each item in a
+page often contains a link to a page with more details, with a URL that
 contains a stable ID.
 
 \emph{Types of scraped values}: For each individual value within a row,
@@ -711,17 +781,21 @@ programmer-specified scraping function.
 
 The default option is to return a DOM element, in which case the generic
 adapter extracts the text contents of the DOM element and casts them to
-the type of the column. For example, if the scraping function returns a
-\texttt{\textless{}div\textgreater{}} containing the string ``1.23'',
+the type of the column. \DIFdelbegin \DIFdel{For example, if the scraping function returns a
+}\texttt{\DIFdel{\textless{}div\textgreater{}}} %DIFAUXCMD
+\DIFdel{containing the string ``1.23'',
 and the column has a numeric type, the generic adapter extracts the
-number 1.23. The advantage of returning a DOM element is that the value
-is editable---when the user changes the value in the table, the generic
-adapter can simply overwrite the inner contents of the DOM element. In
+number 1.23. }\DIFdelend The advantage of returning a DOM element is that
+the value is editable---when the user changes the value in the table,
+the generic adapter can simply overwrite the inner contents of the DOM
+element.
+\DIFdelbegin \DIFdel{In
 practice, this is most useful for editing the value of form input
 fields. It's technically possible to edit the contents of any element in
 the page (e.g.~editing the title of a post on Hacker News), but this
 often isn't particularly useful, so adapter authors have the ability to
 mark fields as readonly.
+}\DIFdelend 
 
 Another option is to directly return a value, rather than returning a
 DOM element. The advantage of this approach is that the adapter author
@@ -731,16 +805,35 @@ disadvantage is that the field is no longer writable. The computation
 used to derive the value isn't reversible, so there's no way to reflect
 a table edit in the DOM.
 
-\emph{Other site-specific customization}: The programmer can optionally
-override other behavior of the generic DOM scraping adapter, including
-logic for when to re-run the scraping function in response to page
-changes, how to style injected annotations, and how to style the
-currently selected row in the table. We've chosen sensible defaults that
-generally result in a workable adapter without needing to change these
-options, but they can improve the experience on a specific website. For
-example, by default we highlight the currently selected row with a blue
+\emph{\DIFdelbegin \DIFdel{Other site-specific customization}\DIFdelend \DIFaddbegin \DIFadd{Optional overrides}\DIFaddend }: \DIFdelbegin \DIFdel{The programmer can optionally
+override other behavior of the generic DOM scraping
+adapter, including
+logic for when to re-run }\DIFdelend \DIFaddbegin \DIFadd{In order to turn a unidirectional scraping
+function into a bidirectional scraping adapter, there are a number of
+behaviors that must be specified:
+}
+
+\begin{itemize}
+\tightlist
+\item
+  \DIFadd{when should }\DIFaddend the scraping function \DIFaddbegin \DIFadd{be re-run }\DIFaddend in response to \DIFdelbegin \DIFdel{page
+changes , how to style injected annotations , and how to style the currently selected }\DIFdelend \DIFaddbegin \DIFadd{changes on
+  the page?
+}\item
+  \DIFadd{how should injected annotations appear in table rows?
+}\item
+  \DIFadd{when the user selects a row in the table, how should the corresponding
+  }\DIFaddend row in the \DIFdelbegin \DIFdel{table. We've chosen }\DIFdelend \DIFaddbegin \DIFadd{DOM be highlighted?
+}\end{itemize}
+
+\DIFadd{The scraping framework defines }\DIFaddend sensible defaults that \DIFdelbegin \DIFdel{generally result in a workable adapter without needing to change these
+options, but they can improve the experience on a specific website}\DIFdelend \DIFaddbegin \DIFadd{work well on many
+sites, but the programmer can optionally override them to provide better
+site-specific behavior}\DIFaddend . For example, \DIFdelbegin \DIFdel{by default we highlight the currently selected row with a blue
 border, but on some sites this is hard to see or breaks the layout, so
-setting a background color works better.
+setting a background color works better}\DIFdelend \DIFaddbegin \DIFadd{the Hacker News adapter specifies
+annotation options which make user annotations appear more naturally in
+the context of the original design}\DIFaddend .
 
 \hypertarget{ajax-scraping-adapters}{%
 \subsubsection{AJAX scraping adapters}\label{ajax-scraping-adapters}}
@@ -780,46 +873,61 @@ new rows are created in the local storage table. The rows contain the
 record ID from the DOM scraping adapter, which enables them to be
 re-associated with the same records on subsequent pageloads.
 
-\hypertarget{future-adapters}{%
-\subsubsection{Future Adapters}\label{future-adapters}}
+\DIFdelbegin %DIFDELCMD < \hypertarget{future-adapters}{%
+%DIFDELCMD < \subsubsection{Future Adapters}\label{future-adapters}}
+%DIFDELCMD < 
 
-We have designed the table adapter API to be general enough to support
+%DIFDELCMD < %%%
+\DIFdel{We have designed the table adapter API to be general enough to support
 other types of useful adapters in the future. Here are two examples:
+}%DIFDELCMD < 
 
-\textbf{Integrated website adapters}: A key benefit of the table adapter
+%DIFDELCMD < %%%
+\textbf{\DIFdel{Integrated website adapters}}%DIFAUXCMD
+\DIFdel{: A key benefit of the table adapter
 abstraction is that Wildcard is not coupled to web scraping as the only
 means for integrating with existing sites, but can also accommodate
 first party developers adding support directly into their own websites.
 An ``integrated website adapter'' installed by the developer could
-directly \DIFdelbegin \DIFdel{accesses }\DIFdelend \DIFaddbegin \DIFadd{access }\DIFaddend the internal state of the application, providing the
+directly accesses the internal state of the application, providing the
 same functionality as a DOM scraping adapter but in a more robust way.
+}%DIFDELCMD < 
 
-With the advent of rich frontend web frameworks, structured application
+%DIFDELCMD < %%%
+\DIFdel{With the advent of rich frontend web frameworks, structured application
 state is now often available in the web client. We suspect it is
 possible to create plugins for frontend frameworks that expose this
 state to Wildcard with only minimal effort from the application
 developers. To test this hypothesis, we created an early
 proof-of-concept of an integrated website adapter for the popular
-\href{https://redux.js.org/}{Redux} Javascript state management library.
+}\href{https://redux.js.org/}{\DIFdel{Redux}} %DIFAUXCMD
+\DIFdel{Javascript state management library.
 In Redux, app developers conveniently already represent the state of a
 user interface as a single object, so to expose a table of data to
 Wildcard, the developer simply writes a function that maps the
 centralized state object to a table.
+}%DIFDELCMD < 
 
-Customizability is sometimes a key selling point for software. An
+%DIFDELCMD < %%%
+\DIFdel{Customizability is sometimes a key selling point for software. An
 integrated website adapter would provide a way for developers to
 integrate with an ecosystem of formulas and customization tools without
 needing to build all that functionality from scratch.
+}%DIFDELCMD < 
 
-\textbf{Shared storage adapter}: It would be useful to share user
+%DIFDELCMD < %%%
+\textbf{\DIFdel{Shared storage adapter}}%DIFAUXCMD
+\DIFdel{: It would be useful to share user
 annotations among users and across devices---for example,
 collaboratively taking notes with friends on options for places to stay
 together on a trip. The existing local storage adapter could be extended
 to share live synchronized data with other users. This could be achieved
 through a centralized web server, or through P2P connections that might
 provide stronger privacy guarantees.
+}%DIFDELCMD < 
 
-\hypertarget{query-engine}{%
+%DIFDELCMD < %%%
+\DIFdelend \hypertarget{query-engine}{%
 \subsection{Query engine}\label{query-engine}}
 
 The query engine is responsible for coordinating across multiple table

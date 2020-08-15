@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  15 AUG 2020 10:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  15 AUG 2020 12:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1194,27 +1194,109 @@ Class acmart Warning: A possible image without description on input line 501.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [4.4 <./media/table-adapter-eps-converted-to.pdf>]
-Overfull \hbox (6.32816pt too wide) in paragraph at lines 577--581
-\T1/LinuxLibertineT-TLF/m/n/10 (-20) The DOM scrap-ing adapter uses this for in
--ject-ing annotations---
+Overfull \hbox (8.08987pt too wide) in paragraph at lines 543--546
+|   []   |   []   |   []   |   []   |   []   [][]|   []   []\T1/LinuxLibertineT
+-TLF/m/n/10 (-20) types of ta-ble adapters
  []
 
 
-Overfull \hbox (1.45761pt too wide) in paragraph at lines 592--600
-|   []   |   []   |   []   |   []   |   []   |   [][][]|   []   |   []   |   []
-   |   []   |   []
+Overfull \hbox (13.3394pt too wide) in paragraph at lines 552--560
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []   |   []
  []
 
 
-Overfull \hbox (5.98111pt too wide) in paragraph at lines 611--616
-\T1/LinuxLibertineT-TLF/m/n/10 (-20) mer can con-fig-ure with the min-i-mal sit
-e-specific parts. []|   []   |   []
+Overfull \hbox (12.69339pt too wide) in paragraph at lines 567--568
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
  []
 
+
+Overfull \hbox (23.81448pt too wide) in paragraph at lines 570--579
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []   |   []
+ []
+
+
+Overfull \hbox (19.67145pt too wide) in paragraph at lines 582--583
+[]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [
+]
+ []
+
+
+Overfull \hbox (3.45935pt too wide) in paragraph at lines 585--591
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (59.0817pt too wide) in paragraph at lines 593--599
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Overfull \hbox (8.53836pt too wide) in paragraph at lines 614--622
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Overfull \hbox (12.12447pt too wide) in paragraph at lines 614--622
+|   []   |   []   |   []   |   [][][]|   []   |   []   |   []   |   []   |   []
+   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (2.56754pt too wide) in paragraph at lines 634--648
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Overfull \hbox (3.2836pt too wide) in paragraph at lines 634--648
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (9.95757pt too wide) in paragraph at lines 634--648
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Overfull \hbox (21.17316pt too wide) in paragraph at lines 649--656
+[][]|   []   |   []   |   [][][]|   []   |   []   |   []   |   []   |   []   | 
+  []   |   []
+ []
+
+
+Overfull \hbox (24.95047pt too wide) in paragraph at lines 659--673
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (46.37352pt too wide) in paragraph at lines 659--673
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (1.89671pt too wide) in paragraph at lines 659--673
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Overfull \hbox (4.56964pt too wide) in paragraph at lines 659--673
+[][]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |  
+ []
+ []
+
+[5.5]
 LaTeX Font Info:    Font shape `T1/zi4/bx/n' in size <10> not available
-(Font)              Font shape `T1/zi4/b/n' tried instead on input line 623.
+(Font)              Font shape `T1/zi4/b/n' tried instead on input line 682.
 LaTeX Font Info:    Font shape `T1/zi4/b/n' will be
-(Font)              scaled to size 10.0pt on input line 623.
+(Font)              scaled to size 10.0pt on input line 682.
 Package microtype Info: Character `textendash ' is missing
 (microtype)             in font `T1/zi4/b/n/10'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -1223,10 +1305,10 @@ Package microtype Info: Character `textemdash ' is missing
 (microtype)             Ignoring protrusion settings for this character.
 
 LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
-(Font)              using `T1/zi4/m/n' instead on input line 633.
+(Font)              using `T1/zi4/m/n' instead on input line 692.
 
 LaTeX Font Info:    Font shape `T1/zi4/m/it' will be
-(Font)              scaled to size 10.0pt on input line 643.
+(Font)              scaled to size 10.0pt on input line 702.
 Package microtype Info: Character `textendash ' is missing
 (microtype)             in font `T1/zi4/m/it/10'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -1234,112 +1316,228 @@ Package microtype Info: Character `textemdash ' is missing
 (microtype)             in font `T1/zi4/m/it/10'.
 (microtype)             Ignoring protrusion settings for this character.
 
-Class acmart Warning: A possible image without description on input line 682.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[5.5]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Class acmart Warning: A possible image without description on input line 741.
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 758.
+(Font)              scaled to size 7.3pt on input line 752.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.2pt on input line 762.
+(Font)              scaled to size 6.2pt on input line 756.
 
-Underfull \vbox (badness 1648) has occurred while \output is active []
-
-[6.6]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 880.
-
-[7.7]
-<media/amazon.png, id=245, 975.645pt x 726.715pt>
-File: media/amazon.png Graphic file (type png)
-<use media/amazon.png>
-Package pdftex.def Info: media/amazon.png  used on input line 958.
-(pdftex.def)             Requested size: 240.94499pt x 179.46054pt.
-
-Class acmart Warning: A possible image without description on input line 959.
-
-<media/ubereats.png, id=246, 1027.84pt x 614.295pt>
-File: media/ubereats.png Graphic file (type png)
-<use media/ubereats.png>
-Package pdftex.def Info: media/ubereats.png  used on input line 966.
-(pdftex.def)             Requested size: 240.94499pt x 144.00314pt.
-
-Class acmart Warning: A possible image without description on input line 967.
-
-[8.8 <./media/amazon.png> <./media/ubereats.png>]
-<media/instacart.png, id=265, 1027.84pt x 686.565pt>
-File: media/instacart.png Graphic file (type png)
-<use media/instacart.png>
-Package pdftex.def Info: media/instacart.png  used on input line 1009.
-(pdftex.def)             Requested size: 240.94499pt x 160.9447pt.
-
-Class acmart Warning: A possible image without description on input line 1010.
-
-<media/blogger.png, id=269, 843.15pt x 531.9875pt>
-File: media/blogger.png Graphic file (type png)
-<use media/blogger.png>
-Package pdftex.def Info: media/blogger.png  used on input line 1040.
-(pdftex.def)             Requested size: 240.94499pt x 152.02388pt.
-
-Class acmart Warning: A possible image without description on input line 1041.
-
-
-Underfull \vbox (badness 1552) has occurred while \output is active []
-
-[9.9 <./media/instacart.png> <./media/blogger.png>] [10.10]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[11.11]
-Overfull \hbox (5.22694pt too wide) in paragraph at lines 1352--1353
-[]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+Overfull \hbox (3.37709pt too wide) in paragraph at lines 751--758
+[][]|   [][][]|   []   |   []   |   []   |   []   |   []   |   []   |   []   | 
+  []
  []
 
 
-Overfull \hbox (3.8906pt too wide) in paragraph at lines 1377--1378
+Overfull \hbox (3.47926pt too wide) in paragraph at lines 761--764
+[][]|   [][][]|   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (39.86484pt too wide) in paragraph at lines 808--815
+[][]|   []   |   []   |   [][][]|   []   |   [][]\T1/LinuxLibertineT-TLF/m/n/10
+ (-20) : []|   []   |   []
+ []
+
+
+Overfull \hbox (1.52061pt too wide) in paragraph at lines 808--815
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (14.6561pt too wide) in paragraph at lines 819--823
+\T1/LinuxLibertineT-TLF/m/n/10 (-20) sponse to []|   []   |   []   |   []   |  
+ []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (3.09816pt too wide) in paragraph at lines 826--827
+|   []   |   []   []\T1/LinuxLibertineT-TLF/m/n/10 (-20) row in the []|   []   
+|   []   |   []   [][]|   []
+ []
+
+
+Overfull \hbox (21.97539pt too wide) in paragraph at lines 829--837
+|   []   |   []   |   []   |   [][][]|   []   |   []   |   []   |   []   |   []
+   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (15.7635pt too wide) in paragraph at lines 829--837
+|   []   |   []   |   [][][]|   []   |   []   |   []   |   []   |   []   |   []
+
+ []
+
+[6.6]
+Overfull \hbox (4.03458pt too wide) in paragraph at lines 883--884
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []   |   []
+ []
+
+
+Overfull \hbox (2.73141pt too wide) in paragraph at lines 886--895
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (14.87544pt too wide) in paragraph at lines 886--895
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (33.19838pt too wide) in paragraph at lines 886--895
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Overfull \hbox (13.20131pt too wide) in paragraph at lines 903--910
 []|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [
 ]
  []
 
 
-Underfull \vbox (badness 1389) has occurred while \output is active []
+Overfull \hbox (8.72752pt too wide) in paragraph at lines 903--910
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
 
 
-Overfull \hbox (3.74953pt too wide) in paragraph at lines 1395--1396
+Overfull \hbox (16.52922pt too wide) in paragraph at lines 903--910
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (12.42061pt too wide) in paragraph at lines 916--917
+[]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [
+]
+ []
+
+
+Overfull \hbox (23.9274pt too wide) in paragraph at lines 916--917
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Overfull \hbox (5.13065pt too wide) in paragraph at lines 916--917
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (5.8406pt too wide) in paragraph at lines 919--928
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (8.09244pt too wide) in paragraph at lines 919--928
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+Overfull \hbox (14.84975pt too wide) in paragraph at lines 919--928
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[7.7]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 988.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+<media/amazon.png, id=242, 975.645pt x 726.715pt>
+File: media/amazon.png Graphic file (type png)
+<use media/amazon.png>
+Package pdftex.def Info: media/amazon.png  used on input line 1066.
+(pdftex.def)             Requested size: 240.94499pt x 179.46054pt.
+
+Class acmart Warning: A possible image without description on input line 1067.
+
+<media/ubereats.png, id=243, 1027.84pt x 614.295pt>
+File: media/ubereats.png Graphic file (type png)
+<use media/ubereats.png>
+Package pdftex.def Info: media/ubereats.png  used on input line 1074.
+(pdftex.def)             Requested size: 240.94499pt x 144.00314pt.
+
+Class acmart Warning: A possible image without description on input line 1075.
+
+[8.8 <./media/amazon.png>]
+<media/instacart.png, id=261, 1027.84pt x 686.565pt>
+File: media/instacart.png Graphic file (type png)
+<use media/instacart.png>
+Package pdftex.def Info: media/instacart.png  used on input line 1117.
+(pdftex.def)             Requested size: 240.94499pt x 160.9447pt.
+
+Class acmart Warning: A possible image without description on input line 1118.
+
+[9.9 <./media/ubereats.png> <./media/instacart.png>]
+<media/blogger.png, id=280, 843.15pt x 531.9875pt>
+File: media/blogger.png Graphic file (type png)
+<use media/blogger.png>
+Package pdftex.def Info: media/blogger.png  used on input line 1148.
+(pdftex.def)             Requested size: 240.94499pt x 152.02388pt.
+
+Class acmart Warning: A possible image without description on input line 1149.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[10.10 <./media/blogger.png>] [11.11]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (5.22694pt too wide) in paragraph at lines 1460--1461
+[]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (3.8906pt too wide) in paragraph at lines 1485--1486
+[]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [
+]
+ []
+
+[12.12]
+Overfull \hbox (3.74953pt too wide) in paragraph at lines 1503--1504
 []|   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (15.132pt too wide) in paragraph at lines 1407--1408
+Overfull \hbox (15.132pt too wide) in paragraph at lines 1515--1516
 []|   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (14.29823pt too wide) in paragraph at lines 1407--1408
+Overfull \hbox (14.29823pt too wide) in paragraph at lines 1515--1516
 |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (6.49525pt too wide) in paragraph at lines 1429--1433
+Overfull \hbox (6.49525pt too wide) in paragraph at lines 1537--1541
 []|   []   [][]|   []   []\T1/LinuxLibertineT-TLF/m/n/10 (-20) cus-tomiza-tion 
 re-lates to two broad
  []
 
 
+Underfull \vbox (badness 1558) has occurred while \output is active []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[12.12] (./diff.bbl
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[13.13]
+[13.13] (./diff.bbl
 LaTeX Info: Redefining \tempurl on input line 70.
 LaTeX Info: Redefining \tempurl on input line 87.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 LaTeX Info: Redefining \tempurl on input line 105.
 LaTeX Info: Redefining \tempurl on input line 123.
 LaTeX Info: Redefining \tempurl on input line 139.
@@ -1351,10 +1549,11 @@ LaTeX Info: Redefining \tempurl on input line 236.
 LaTeX Info: Redefining \tempurl on input line 255.
 LaTeX Info: Redefining \tempurl on input line 271.
 LaTeX Info: Redefining \tempurl on input line 289.
+LaTeX Info: Redefining \tempurl on input line 309.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \tempurl on input line 309.
+[14.14]
 LaTeX Info: Redefining \tempurl on input line 325.
 LaTeX Info: Redefining \tempurl on input line 341.
 )
@@ -1362,15 +1561,14 @@ LaTeX Info: Redefining \tempurl on input line 341.
 Class acmart Warning: Some images may lack descriptions.
 
 
-Package balance Warning: You have called \balance in second column
-(balance)                Columns might not be balanced.
+Overfull \vbox (1.896pt too high) has occurred while \output is active []
 
-[14.14]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1567.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1567.
+[15.15]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1675.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1675.
 (./diff.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1567.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1567.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1675.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1675.
 
 Package rerunfilecheck Info: File `diff.out' has not changed.
 (rerunfilecheck)             Checksum: 2D704E16179C1F3A706169827EBF3083;3372.
@@ -1382,13 +1580,13 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 20326 strings out of 492616
- 307586 string characters out of 6129482
- 473156 words of memory out of 5000000
- 23223 multiletter control sequences out of 15000+600000
- 174734 words of font info for 355 fonts, out of 8000000 for 9000
+ 20313 strings out of 492616
+ 307265 string characters out of 6129482
+ 523973 words of memory out of 5000000
+ 23221 multiletter control sequences out of 15000+600000
+ 173621 words of font info for 349 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,17n,94p,795b,595s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,17n,94p,795b,628s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-4.enc}{
 /usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/
 usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/u
@@ -1406,10 +1604,10 @@ ibertine/LinLibertineTBI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/pu
 blic/libertine/LinLibertineTI.pfb></usr/local/texlive/2019/texmf-dist/fonts/typ
 e1/public/amsfonts/latxfont/lasy6.pfb></usr/local/texlive/2019/texmf-dist/fonts
 /type1/public/newtx/txsys.pfb>
-Output written on diff.pdf (14 pages, 2381958 bytes).
+Output written on diff.pdf (15 pages, 2411446 bytes).
 PDF statistics:
- 458 PDF objects out of 1000 (max. 8388607)
- 384 compressed objects within 4 object streams
- 112 named destinations out of 1000 (max. 500000)
+ 462 PDF objects out of 1000 (max. 8388607)
+ 387 compressed objects within 4 object streams
+ 110 named destinations out of 1000 (max. 500000)
  52432 words of extra memory for PDF output out of 61914 (max. 10000000)
 
