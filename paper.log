@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  15 AUG 2020 17:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  15 AUG 2020 17:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1151,10 +1151,15 @@ t line 453.
 Class acmart Warning: A possible image without description on input line 454.
 
 [4.4 <./media/table-adapter-eps-converted-to.pdf>]
+Overfull \hbox (6.32816pt too wide) in paragraph at lines 529--533
+\T1/LinuxLibertineT-TLF/m/n/10 (-20) The DOM scrap-ing adapter uses this for in
+-ject-ing annotations---
+ []
+
 LaTeX Font Info:    Font shape `T1/zi4/bx/n' in size <10> not available
-(Font)              Font shape `T1/zi4/b/n' tried instead on input line 539.
+(Font)              Font shape `T1/zi4/b/n' tried instead on input line 584.
 LaTeX Font Info:    Font shape `T1/zi4/b/n' will be
-(Font)              scaled to size 10.0pt on input line 539.
+(Font)              scaled to size 10.0pt on input line 584.
 Package microtype Info: Character `textendash ' is missing
 (microtype)             in font `T1/zi4/b/n/10'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -1163,101 +1168,100 @@ Package microtype Info: Character `textemdash ' is missing
 (microtype)             Ignoring protrusion settings for this character.
 
 LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
-(Font)              using `T1/zi4/m/n' instead on input line 542.
+(Font)              using `T1/zi4/m/n' instead on input line 587.
 
 LaTeX Font Info:    Font shape `T1/zi4/m/it' will be
-(Font)              scaled to size 10.0pt on input line 551.
+(Font)              scaled to size 10.0pt on input line 596.
 Package microtype Info: Character `textendash ' is missing
 (microtype)             in font `T1/zi4/m/it/10'.
 (microtype)             Ignoring protrusion settings for this character.
 Package microtype Info: Character `textemdash ' is missing
 (microtype)             in font `T1/zi4/m/it/10'.
 (microtype)             Ignoring protrusion settings for this character.
-LaTeX Font Info:    Try loading font information for TS1+zi4 on input line 584.
+LaTeX Font Info:    Try loading font information for TS1+zi4 on input line 629.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/inconsolata/ts1zi4.fd
 File: ts1zi4.fd 2018/01/14 TS1/zi4 (Inconsolata)
 )
 LaTeX Font Info:    Font shape `TS1/zi4/m/n' will be
-(Font)              scaled to size 10.0pt on input line 584.
+(Font)              scaled to size 10.0pt on input line 629.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zi4' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Class acmart Warning: A possible image without description on input line 593.
-
-
-Underfull \vbox (badness 2698) has occurred while \output is active []
+Class acmart Warning: A possible image without description on input line 638.
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 603.
+(Font)              scaled to size 7.3pt on input line 648.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.2pt on input line 607.
-[5.5] [6.6]
+(Font)              scaled to size 6.2pt on input line 652.
+[5.5] [6.6] [7.7]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 765.
+               Default added (so using `tbp') on input line 810.
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[7.7]
 <media/amazon.png, id=241, 975.645pt x 726.715pt>
 File: media/amazon.png Graphic file (type png)
 <use media/amazon.png>
-Package pdftex.def Info: media/amazon.png  used on input line 843.
+Package pdftex.def Info: media/amazon.png  used on input line 888.
 (pdftex.def)             Requested size: 240.94499pt x 179.46054pt.
 
-Class acmart Warning: A possible image without description on input line 844.
+Class acmart Warning: A possible image without description on input line 889.
 
 <media/ubereats.png, id=242, 1027.84pt x 614.295pt>
 File: media/ubereats.png Graphic file (type png)
 <use media/ubereats.png>
-Package pdftex.def Info: media/ubereats.png  used on input line 851.
+Package pdftex.def Info: media/ubereats.png  used on input line 896.
 (pdftex.def)             Requested size: 240.94499pt x 144.00314pt.
 
-Class acmart Warning: A possible image without description on input line 852.
+Class acmart Warning: A possible image without description on input line 897.
 
 [8.8 <./media/amazon.png> <./media/ubereats.png>]
 <media/instacart.png, id=261, 1027.84pt x 686.565pt>
 File: media/instacart.png Graphic file (type png)
 <use media/instacart.png>
-Package pdftex.def Info: media/instacart.png  used on input line 894.
+Package pdftex.def Info: media/instacart.png  used on input line 939.
 (pdftex.def)             Requested size: 240.94499pt x 160.9447pt.
 
-Class acmart Warning: A possible image without description on input line 895.
+Class acmart Warning: A possible image without description on input line 940.
+
+
+Underfull \vbox (badness 6157) has occurred while \output is active []
 
 <media/blogger.png, id=265, 843.15pt x 531.9875pt>
 File: media/blogger.png Graphic file (type png)
 <use media/blogger.png>
-Package pdftex.def Info: media/blogger.png  used on input line 925.
+Package pdftex.def Info: media/blogger.png  used on input line 970.
 (pdftex.def)             Requested size: 240.94499pt x 152.02388pt.
 
-Class acmart Warning: A possible image without description on input line 926.
+Class acmart Warning: A possible image without description on input line 971.
 
+[9.9 <./media/instacart.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Underfull \vbox (badness 1552) has occurred while \output is active []
-
-[9.9 <./media/instacart.png> <./media/blogger.png>]
-Underfull \vbox (badness 1558) has occurred while \output is active []
-
-[10.10]
-Overfull \hbox (3.65454pt too wide) in paragraph at lines 1089--1101
+[10.10 <./media/blogger.png>]
+Overfull \hbox (3.65454pt too wide) in paragraph at lines 1134--1146
 []\T1/LinuxLibertineT-TLF/m/n/10 (-20) By us-ing third-party data ex-trac-tion,
  data-driven cus-tomiza-
  []
 
-[11.11] [12.12]
-Underfull \vbox (badness 1558) has occurred while \output is active []
+[11.11]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[13.13]
+[12.12]
 Underfull \vbox (badness 1558) has occurred while \output is active []
 
+[13.13]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 (./paper.bbl
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[14.14]
 LaTeX Info: Redefining \tempurl on input line 70.
 LaTeX Info: Redefining \tempurl on input line 87.
 LaTeX Info: Redefining \tempurl on input line 105.
@@ -1278,13 +1282,12 @@ LaTeX Info: Redefining \tempurl on input line 149.
 LaTeX Info: Redefining \tempurl on input line 167.
 LaTeX Info: Redefining \tempurl on input line 182.
 LaTeX Info: Redefining \tempurl on input line 200.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[14.14]
 LaTeX Info: Redefining \tempurl on input line 216.
 LaTeX Info: Redefining \tempurl on input line 246.
 LaTeX Info: Redefining \tempurl on input line 265.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 LaTeX Info: Redefining \tempurl on input line 284.
 LaTeX Info: Redefining \tempurl on input line 300.
 LaTeX Info: Redefining \tempurl on input line 318.
@@ -1296,14 +1299,15 @@ LaTeX Info: Redefining \tempurl on input line 370.
 Class acmart Warning: Some images may lack descriptions.
 
 
-Overfull \vbox (1.90399pt too high) has occurred while \output is active []
+Package balance Warning: You have called \balance in second column
+(balance)                Columns might not be balanced.
 
 [15.15]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1473.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1473.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1518.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1518.
 (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1473.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1473.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1518.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1518.
 
 Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: EE99BE84C5613C43F7787D46CB699B3A;3152.
@@ -1312,13 +1316,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 20236 strings out of 492616
- 306793 string characters out of 6129482
- 437511 words of memory out of 5000000
- 23143 multiletter control sequences out of 15000+600000
- 173804 words of font info for 349 fonts, out of 8000000 for 9000
+ 20245 strings out of 492616
+ 307000 string characters out of 6129482
+ 437697 words of memory out of 5000000
+ 23144 multiletter control sequences out of 15000+600000
+ 174546 words of font info for 353 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,17n,94p,796b,618s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,17n,94p,796b,570s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/
 usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-4.enc}{/usr
 /local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/
@@ -1336,10 +1340,10 @@ LinLibertineTB.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/liber
 tine/LinLibertineTBI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public
 /libertine/LinLibertineTI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/p
 ublic/newtx/txsys.pfb>
-Output written on paper.pdf (15 pages, 2371735 bytes).
+Output written on paper.pdf (15 pages, 2373960 bytes).
 PDF statistics:
- 467 PDF objects out of 1000 (max. 8388607)
- 393 compressed objects within 4 object streams
- 112 named destinations out of 1000 (max. 500000)
+ 469 PDF objects out of 1000 (max. 8388607)
+ 395 compressed objects within 4 object streams
+ 114 named destinations out of 1000 (max. 500000)
  52936 words of extra memory for PDF output out of 61914 (max. 10000000)
 

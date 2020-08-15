@@ -170,7 +170,28 @@ We now examine each component of the system in more detail.
 
 A key idea in data-driven customization is that a wide variety of data sources can be mapped to a generic table abstraction. In a relational database, the table matches the underlying storage format, but in data-driven customization, the table is merely an _interface layer_. The data shown in the table is a projection of some underlying state, and edits to the table can have complex effects on the underlying state.
 
-Here we describe the three types of table adapters we have built so far in Wildcard. These do not represent an exhaustive set of all possible table adapters—in [@sec:visions ] we discuss other types of adapters that would fit well into the general paradigm.
+### Abstract interface
+
+We begin by describing the abstract interface fulfilled by a table adapter.
+
+_Returning a table_: A table adapter exposes a table of data: an ordered list of records. Each record carries a unique identifier and  associates named attributes with values. Tables have a typed schema, so the same attributes are shared across all records. We currently support strings, numeric values, booleans, and datetimes as types. The columns also carry some additional metadata, such as whether or not they are read-only or editable.
+
+A table adapter can update the contents of a table at any time in response to changes in the underlying state (e.g., a DOM scraping adapter can update the table when the page body changes). When data changes, the query view is reactively updated in response.
+
+_Handling edits_: The query engine can issue a request to a table adapter to make an edit to a record. The meaning of making an edit can vary depending on the adapter: in the local storage adapter, a new value may be persisted into local storage; in the DOM scraping adapter, an edit may result in changing the value of a form field.
+
+In addition, the query engine also sends additional information about the combined query view
+to each table adapter:
+
+_Sorting/filtering_: When the user sorts or filters the query view, an ordered list of
+visible IDs is sent to each table adapter. The DOM scraping adapter uses this information
+to change the list of rows shown in the web page.
+
+_Data from other tables_: The query engine provides each table adapter with the entire combined table  shown to the user. The DOM scraping adapter uses this for injecting annotations—values from other tables are added to the original web page.
+
+_Currently selected record_: As the user clicks around the table view, the query engine broadcasts the record currently selected by the user to each table adapter. The DOM scraping adapter uses this information to highlight the row in the page that corresponds to the selected row in the table, which helps the user understand the mapping between the table and the original UI.
+
+Next, we present the three types of table adapters we have built in Wildcard so far. These do not represent an exhaustive set of all possible table adapters—in [@sec:visions] we discuss other types of adapters that would fit well into the general paradigm.
 
 ### DOM scraping adapters
 
