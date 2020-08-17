@@ -459,12 +459,11 @@ arithmetic and string operations, as shown in [@sec:example].
 
 ### Cell editors
 
-We developed two cell editors, to explore the benefits of adding custom UI
-for editing values in the table.
+We developed two *cell editors*: custom UI widgets for editing values in the table.
 
-One valuable feature is that users can incorporate their private information into a web UI. We created a datepicker based on the [FullCalendar](https://fullcalendar.io/) plugin, which can load data from a Google Calendar. This makes it convenient to enter dates into a website based on the user’s personal calendar information, without uploading that information to the website itself.
+One benefit that cell editors provide is enabling users to incorporate their private information into a web UI. We created a datepicker widget (based on the [FullCalendar](https://fullcalendar.io/) plugin), which can load calendar data from a Google Calendar. This makes it convenient to enter dates into a website based on the user’s personal calendar information, without needing to upload a user's calendar to the website itself.
 
-Another benefit is that a user can choose a preferred widget for editing information across different sites that typically provide a fragmented editing experience. We built a text editor based on the [CKEditor](https://ckeditor.com/) rich text editor, and integrated it with Google’s Blogger website by representing the contents of a blog post as a single table cell containing an HTML string (shown in [@fig:blogger]). If there were site adapters available for other websites with rich text entry, the user could then use a single rich text editor to edit text across the whole web.
+Another benefit is that a user can choose a single preferred widget for editing a certain type of information across different sites. For example, a user could use their favorite rich text editor to edit text in various websites like blogging platforms and task trackers. To demonstrate this capability, we built a text editor based on the [CKEditor](https://ckeditor.com/) rich text editor. We used the editor with Google’s Blogger website, by building a site adapter that represented the contents of a blog post as a single table cell containing an HTML string (shown in [@fig:blogger]).
 
 <div class="html-only">
 ![Using a custom text editor widget to edit a blog post on Blogger. The text is synchronized with the Blogger editor through a table cell.](media/blogger.png){#fig:blogger}

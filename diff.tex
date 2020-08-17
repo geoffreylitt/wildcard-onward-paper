@@ -1,7 +1,7 @@
 %%
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL initial-submission.tex   Sun Aug  9 12:56:33 2020
-%DIF ADD paper.tex                Sat Aug 15 17:15:36 2020
+%DIF ADD paper.tex                Sat Aug 15 17:38:06 2020
 %% This is file `sample-sigconf.tex',
 %% generated with the docstrip utility.
 %%
@@ -1144,25 +1144,32 @@ string operations, as shown in Section~\ref{sec:example}.
 \hypertarget{cell-editors}{%
 \subsubsection{Cell editors}\label{cell-editors}}
 
-We developed two cell editors, to explore the benefits of adding custom
-UI for editing values in the table.
+We developed two \DIFdelbegin \DIFdel{cell editors, to explore the benefits of adding custom UI }\DIFdelend \DIFaddbegin \emph{\DIFadd{cell editors}}\DIFadd{: custom UI widgets }\DIFaddend for editing
+values in the table.
 
-One valuable feature is that users can incorporate their private
-information into a web UI. We created a datepicker based on the
-\href{https://fullcalendar.io/}{FullCalendar} plugin, which can load
-data from a Google Calendar. This makes it convenient to enter dates
-into a website based on the user's personal calendar information,
-without uploading that information to the website itself.
+One \DIFdelbegin \DIFdel{valuable feature is that users can }\DIFdelend \DIFaddbegin \DIFadd{benefit that cell editors provide is enabling users to }\DIFaddend incorporate
+their private information into a web UI. We created a datepicker \DIFaddbegin \DIFadd{widget
+(}\DIFaddend based on the \href{https://fullcalendar.io/}{FullCalendar} plugin\DIFaddbegin \DIFadd{)}\DIFaddend ,
+which can load \DIFaddbegin \DIFadd{calendar }\DIFaddend data from a Google Calendar. This makes it
+convenient to enter dates into a website based on the user's personal
+calendar information, without \DIFdelbegin \DIFdel{uploading that information to }\DIFdelend \DIFaddbegin \DIFadd{needing to upload a user's calendar to }\DIFaddend the
+website itself.
 
-Another benefit is that a user can choose a preferred widget for editing
-information across different sites that typically provide a fragmented
-editing experience. We built a text editor based on the
-\href{https://ckeditor.com/}{CKEditor} rich text editor, and integrated
-it with Google's Blogger website by representing the contents of a blog
-post as a single table cell containing an HTML string (shown in
-Figure~\ref{fig:blogger}). If there were site adapters available for
+Another benefit is that a user can choose a \DIFaddbegin \DIFadd{single }\DIFaddend preferred widget for
+editing \DIFaddbegin \DIFadd{a certain type of }\DIFaddend information across different sites\DIFdelbegin \DIFdel{that typically provide a fragmented
+editing experience. We }\DIFdelend \DIFaddbegin \DIFadd{. For
+example, a user could use their favorite rich text editor to edit text
+in various websites like blogging platforms and task trackers. To
+demonstrate this capability, we }\DIFaddend built a text editor based on the
+\href{https://ckeditor.com/}{CKEditor} rich text editor\DIFdelbegin \DIFdel{, and integrated
+it }\DIFdelend \DIFaddbegin \DIFadd{. We used the
+editor }\DIFaddend with Google's Blogger website\DIFdelbegin \DIFdel{by representing }\DIFdelend \DIFaddbegin \DIFadd{, by building a site adapter that
+represented }\DIFaddend the contents of a blog post as a single table cell
+containing an HTML string (shown in Figure~\ref{fig:blogger}).
+\DIFdelbegin \DIFdel{If there were site adapters available for
 other websites with rich text entry, the user could then use a single
 rich text editor to edit text across the whole web.
+}\DIFdelend 
 
 \begin{figure}
 \hypertarget{fig:blogger}{%
